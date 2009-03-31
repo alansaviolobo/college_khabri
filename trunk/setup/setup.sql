@@ -13,7 +13,50 @@
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ collegekhabri;
 USE collegekhabri;
-GRANT ALL PRIVILEGES ON collegekhabri.* TO 'collegekhabri'@'localhost' IDENTIFIED BY 'collegekhabri';
+
+--
+-- Table structure for table `collegekhabri`.`users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `user_id` integer unsigned NOT NULL auto_increment,
+  `username` varchar(255) NOT NULL,
+  `password` char(32) NOT NULL,
+  `birth_date` date NOT NULL,
+--  `mobile` char(10) NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+--  `birth_date` date NOT NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`universities`
+--
+
+DROP TABLE IF EXISTS `universities`;
+CREATE TABLE `universities` (
+  `id` tinyint unsigned NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+--  `city` varchar(45) NOT NULL default '',
+--  `districtsUnderControl` varchar(45) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
 
 --
 -- Table structure for table `collegekhabri`.`admissions_status`
@@ -25,7 +68,7 @@ CREATE TABLE `admissions_status` (
   `year` year(4) NOT NULL,
   `sanctioned_intakte` integer NOT NULL default 0,
   `actual_admissions` integer NOT NULL default 0,
-  PRIMARY KEY  (`ChoiceCode`)
+  PRIMARY KEY  (`choice_code`)
 ) ENGINE=InnoDB;
 
 --
@@ -62,7 +105,7 @@ CREATE TABLE `cutoff` (
   `home_uni_status` enum('home', 'outside') NOT NULL default 'home',
   `ladies_status` enum('ladies', 'general') NOT NULL default 'general',
   `cutoff_merit_rank` mediumint unsigned NOT NULL default '0',
-  `cutoff_cet_score` mediumint unsigned NOT NULL default '',
+  `cutoff_cet_score` mediumint unsigned NOT NULL default '0',
   PRIMARY KEY  (`choice_code`)
 ) ENGINE=InnoDB;
 
@@ -98,7 +141,7 @@ CREATE TABLE `faculty_details` (
   `experience` enum('teaching','industry','research') default NULL,
   `joining_institute` varchar(45) NOT NULL default '',
   `choice_code` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`Name`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB;
 
 --
@@ -109,8 +152,8 @@ DROP TABLE IF EXISTS `faculty_stability`;
 CREATE TABLE `faculty_stability` (
   `choice_code` integer unsigned NOT NULL auto_increment,
   `category` varchar(45) NOT NULL default '',
-  `LessThan6Months` boolean NOT NULL default '',
-  `6monthTo1yr` boolean NOT NULL default '',
+  `LessThan6Months` boolean NOT NULL,
+  `6monthTo1yr` boolean NOT NULL,
   PRIMARY KEY  (`choice_code`)
 ) ENGINE=InnoDB;
 
@@ -133,8 +176,8 @@ DROP TABLE IF EXISTS `fee_structure`;
 CREATE TABLE `fee_structure` (
   `institute_code` integer unsigned NOT NULL auto_increment,
   `fee_head_code` varchar(45) NOT NULL default '',
-  `fee` mediumint NOT NULL default '',
-  PRIMARY KEY  (`InstituteCode`)
+  `fee` mediumint NOT NULL,
+  PRIMARY KEY  (`institute_code`)
 ) ENGINE=InnoDB;
 
 --
@@ -278,19 +321,6 @@ CREATE TABLE `seatdistribution` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`universities`
---
-
-DROP TABLE IF EXISTS `universities`;
-CREATE TABLE `universities` (
-  `UniversityCode` int(10) unsigned NOT NULL auto_increment,
-  `Name` varchar(255) NOT NULL default '',
-  `City` varchar(45) NOT NULL default '',
-  `DistrictsUnderControl` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`UniversityCode`)
-) ENGINE=InnoDB;
-
---
 -- Table structure for table `collegekhabri`.`vacancyposition`
 --
 
@@ -301,3 +331,5 @@ CREATE TABLE `vacancyposition` (
   `Vacancy` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`ChoiceCode`)
 ) ENGINE=InnoDB;
+
+GRANT ALL PRIVILEGES ON collegekhabri.* TO 'collegekhabri'@'localhost' IDENTIFIED BY 'collegekhabri';

@@ -1,22 +1,23 @@
 <html>
-<head>
-<title>{$title}</title>
-</head>
-<body>
-
-<img src="{php} echo base_url() . 'images/logo.jpg';{/php}">
-{php}
-  echo form_open('welcome/search');
-  echo form_dropdown('priority', array('high' => 'high', 'medium' => 'medium', 'low' => 'low' ), 'medium');
-  echo form_close();
-{/php}
-<hr>
-{include file="$template"}
-<hr>
-&copy; Copyright {php} echo date('Y'); {/php} College Khabri<br>
-{php} echo anchor('welcome/terms-of-use','terms of use');{/php} |
-{php} echo anchor('welcome/privacy-policy','privacy policy');{/php} |
-{php} echo anchor('welcome/contact-us','contact us');{/php}
-</body>
+    <head>
+        <title>{$title|default:'Welcome to College Khabri'}</title>
+    </head>
+    <body>
+        <a href="/"><img src="{php} echo base_url() . 'images/logo.jpg';{/php}"></a>
+        {php}
+        echo form_open('welcome/changestate');
+        echo form_dropdown('State', array('mh'=>'Maharashtra'), 'mh', "onchange='this.form.submit()'");
+        echo form_close();
+        {/php}
+        {php} echo anchor('welcome/login','Login');{/php} |
+        {php} echo anchor('welcome/register','Register');{/php}
+        <hr>
+        {include file="$template"}
+        <hr>
+        &copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br>
+        {php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
+        {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
+        {php} echo anchor('welcome/contact_us','contact us');{/php}
+    </body>
 </html>
 
