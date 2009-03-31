@@ -84,14 +84,15 @@ CREATE TABLE `approval_status` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`course`
+-- Table structure for table `collegekhabri`.`courses`
 --
 
-DROP TABLE IF EXISTS `course`;
-CREATE TABLE `course` (
-  `code` integer unsigned NOT NULL auto_increment,
+DROP TABLE IF EXISTS `courses`;
+CREATE TABLE `courses` (
+  `id` integer unsigned NOT NULL auto_increment,
+  `code` integer unsigned,
   `name` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`code`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB;
 
 --

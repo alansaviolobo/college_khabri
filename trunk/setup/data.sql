@@ -11,7 +11,7 @@ INSERT INTO `universities` (`id`,`name`) VALUES
  (10,'S.N.D.T.'),
  (11,'Solapur');
 
-insert into courses (id, course_code, name) values
+insert into courses (id, code, name) values
 (74,1,"Automobile Engineering"),
 (75,6,"Bio-Medical Engineering"),
 (62,8,"Chemical Engineering"),

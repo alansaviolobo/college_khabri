@@ -28,7 +28,10 @@
     function addOption(div)
     {
         var masterdiv = document.getElementById(div);
-        masterdiv.parentNode.innerHTML += masterdiv.innerHTML;
+        masterdiv.parentNode.innerHTML += '<span><br>'
+                                        + masterdiv.innerHTML
+                                        + '<a href=# onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
+                                        + '</span>';
     }
 </script>
 {/literal}
