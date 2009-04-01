@@ -1,17 +1,54 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
+<!--
+body {
+	background-image: url(http://www.anaykamat.com/demos/collegekhabri/images/back-main-college-khabri.jpg);
+}
+.style1 {
+	color: #b63148;
+	font-weight: bold;
+}
+.style3 {
+	font-size: small;
+	color: #666666;
+}
+.style5 {
+	color: #999999;
+	font-style: italic;
+}
+-->
+</style></head>
+<body>
+<div align="center">
+  <p><img src="http://www.anaykamat.com/demos/collegekhabri/images/logo-college-khabri.jpg" style="margin-top: -15px;"/></p>
+  <p><span class="style5" style="font-family:Arial, Helvetica, sans-serif;  font-size:medium; ">Your search would be for <strong>Engineering Colleges</strong> in <strong>Maharashtra</strong></span> </p>
+</div>
+<div style="width:717px; height:auto;margin:auto;border: 1px solid #c7c7c7;font-family:Arial, Helvetica, sans-serif;padding:5px;">
+
+<p style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;">Search Colleges</p>
 <form method="post" action="">
-    University: <select name="university">
+    <span align="left" class="style1">University</span><br>
+    <span align="left"> 
+      <select name="university">
+        
+        
         {html_options options=$universities}
-    </select>
-    <br>
-    District:
-    <div>
+    
+      
+      </select>
+      <br><br>
+    </span>
+    <span class="style1">District</span>
+<div>
         <span id="districts_div">
             <select name="districts[]">
                 {html_options options=$districts}
             </select>
         </span>
-    </div>
-    <a href=# onClick="addOption('districts_div')">[+] Add District</a>
+        <div align="left"><a href=# onClick="addOption('districts_div')">[+] Add another district</a></span><br>
+          <span class="style5">Click here to include another district like 'Thane' in the search</span></div>
+</div>
+    
     <br>
     <div id="coursegroup_selection_div" style="display:none">
         Course Group:
@@ -24,21 +61,23 @@
         </div>
         <a href=# onClick="addOption('coursegroup_div')">[+] Add Course Group</a>
     <br><br>
-     <a href=# onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Show Courses</a>
+     <a href=# onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by a course group?</a>
     </div>
     <div id="course_selection_div">
-        Course:
-        <div>
+        <span class="style1">Course</span>
+  <div>
             <span id="course_div">
                 <select name="course[]">
                     {html_options options=$courses}
                 </select>
-            </span>
-        </div>
-        <a href=# onClick="addOption('course_div')">[+] Add Course</a>
-    <br><br>
-     <a href=# onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Show Course Groups</a>
-     </div>
+            </span> 
+            <div><a href=# onClick="addOption('course_div')">[+] Add another course</a> <br>
+        <span class="style3">Click here to combine two or more course groups<br>
+Eg. (1) Electronics + Instrumentation & Control + Electrical<br/>
+Eg. (2) Bio-technology +  Pharmacy</span>      </div>
+        <br><br>
+     <a href=# onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by specific course?</a> <br>
+     <span class="style3">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span>     </div>
     <input type="submit" name="submit" value="Submit">
 </form>
 {literal}
@@ -53,3 +92,6 @@
     }
 </script>
 {/literal}
+</div>
+</body>
+</html>
