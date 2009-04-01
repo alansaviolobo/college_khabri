@@ -3,16 +3,6 @@
         {html_options options=$universities}
     </select>
     <br>
-    Course Group:
-    <div>
-        <span id="coursegroup_div">
-            <select name="coursegroup[]">
-                {html_options options=$coursegroups}
-            </select>
-        </span>
-    </div>
-    <a href=# onClick="addOption('coursegroup_div')">[+] Add Course Group</a>
-    <br>
     District:
     <div>
         <span id="districts_div">
@@ -22,6 +12,34 @@
         </span>
     </div>
     <a href=# onClick="addOption('districts_div')">[+] Add District</a>
+    <br>
+    <div id="coursegroup_selection_div" style="display:none">
+        Course Group:
+        <div>
+            <span id="coursegroup_div">
+                <select name="coursegroup[]">
+                    {html_options options=$coursegroups}
+                </select>
+            </span>
+        </div>
+        <a href=# onClick="addOption('coursegroup_div')">[+] Add Course Group</a>
+    <br><br>
+     <a href=# onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Show Courses</a>
+    </div>
+    <div id="course_selection_div">
+        Course:
+        <div>
+            <span id="course_div">
+                <select name="course[]">
+                    {html_options options=$courses}
+                </select>
+            </span>
+        </div>
+        <a href=# onClick="addOption('course_div')">[+] Add Course</a>
+    <br><br>
+     <a href=# onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Show Course Groups</a>
+     </div>
+    <input type="submit" name="submit" value="Submit">
 </form>
 {literal}
 <script language="javascript">
@@ -29,9 +47,9 @@
     {
         var masterdiv = document.getElementById(div);
         masterdiv.parentNode.innerHTML += '<span><br>'
-                                        + masterdiv.innerHTML
-                                        + '<a href=# onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
-                                        + '</span>';
+            + masterdiv.innerHTML
+            + '<a href=# onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
+            + '</span>';
     }
 </script>
 {/literal}

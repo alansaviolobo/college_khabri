@@ -1,26 +1,26 @@
 <?php
-class University extends Model
+class Course extends Model
 {
-    function University()
+    function Course()
     {
         parent::Model();
     }
 
-    function getUniversity($universityId)
+    function getCourse($courseId)
     {
         parent::Model();
 
-        $result = $this->db->from('universities')->where('id', $universityId);
+        $result = $this->db->from('courses')->where('id', $courseId);
         if ($result->num_rows() <> 1){
-            throw new Exception('Invalid Username or Password');
+            throw new Exception('Invalid Course');
         }
         $this->set($result->row_object());
         $result->free_result();
     }
 
-    function getAllUniversities()
+    function getAllCourses()
     {
-        $query = $this->db->select('id, name')->get('universities');
+        $query = $this->db->select('id, name')->get('courses');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['id']]=$row['name'];
         return $result;

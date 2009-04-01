@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('University');
+$autoload['model'] = array('university', 'course');
 
 
 

@@ -11,6 +11,7 @@ class Welcome extends Controller {
     function index()
     {
         $this->smarty->assign('universities', University::getAllUniversities());
+        $this->smarty->assign('courses', Course::getAllCourses());
         $this->smarty->assign('coursegroups', array(
           '70' => 'Chemical',
           '10' => 'Civil',
