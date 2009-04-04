@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        <td>search criteria here...</td>
+        <td>
+            <table>
+                {foreach from=$results item='institute'}
+                    <tr><td>
+                    {$institute->name()}
+                    </td></tr>
+                {/foreach}
+            </table>
+
+        </td>
+    </tr>
+</table>

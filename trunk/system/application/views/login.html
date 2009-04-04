@@ -6,3 +6,7 @@
 {$loginForm.passwordBox}
 {$loginForm.submit}
 {$loginForm.formClose}
+{php}
+  echo anchor('welcome/forgot_password', 'Forgot Password?');
+  echo anchor('welcome/signup', 'New user? Signup');
+{/php}

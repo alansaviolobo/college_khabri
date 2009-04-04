@@ -10,38 +10,20 @@
 --
 -- Create schema collegekhabri
 --
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ collegekhabri;
+DROP DATABASE IF EXISTS collegekhabri;
+CREATE DATABASE collegekhabri;
 USE collegekhabri;
 
 --
 -- Table structure for table `collegekhabri`.`users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` integer unsigned NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
   `password` char(32) NOT NULL,
   `birth_date` date NOT NULL,
 --  `mobile` char(10) NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
---  `birth_date` date NOT NULL,
   PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB;
 
@@ -49,7 +31,6 @@ CREATE TABLE `users` (
 -- Table structure for table `collegekhabri`.`universities`
 --
 
-DROP TABLE IF EXISTS `universities`;
 CREATE TABLE `universities` (
   `id` tinyint unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL default '',
@@ -59,35 +40,70 @@ CREATE TABLE `universities` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`admissions_status`
+-- Table structure for table `collegekhabri`.`institutes`
 --
 
-DROP TABLE IF EXISTS `admissions_status`;
-CREATE TABLE `admissions_status` (
-  `choice_code` integer unsigned NOT NULL auto_increment,
-  `year` year(4) NOT NULL,
-  `sanctioned_intakte` integer NOT NULL default 0,
-  `actual_admissions` integer NOT NULL default 0,
-  PRIMARY KEY  (`choice_code`)
+CREATE TABLE `institutes` (
+  `code` char(10) NOT NULL,
+  `name` varchar(255) NOT NULL default '',
+  `university` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL default '',
+  `address` varchar(255) NOT NULL default '',
+  `city` varchar(255) NOT NULL default '',
+  `district` varchar(255) NOT NULL default '',
+  `state` varchar(255) NOT NULL default '',
+  `pincode` varchar(255) NOT NULL default '',
+  `phone` varchar(255) NOT NULL default '',
+  `fax` varchar(255) NOT NULL default '',
+  `email` varchar(255) NOT NULL default '',
+  `url` varchar(255) NOT NULL default '',
+  `library` varchar(255) NOT NULL default '',
+  `building` varchar(255) NOT NULL default '',
+  `classrooms` varchar(255) NOT NULL default '',
+  `land_availability` varchar(255) NOT NULL default '',
+  `computers` varchar(255) NOT NULL default '',
+  `laboratory` varchar(255) NOT NULL default '',
+  `hostel_intake_boys` integer unsigned NOT NULL default 0,
+  `hostel_intake_girls` integer unsigned NOT NULL default 0,
+  `sactioned_intake` tinyint unsigned NOT NULL,
+  `required_faculty` tinyint unsigned NOT NULL,
+  `professors` tinyint unsigned NOT NULL,
+  `asst_professors` tinyint unsigned NOT NULL,
+  `lecturers` tinyint unsigned NOT NULL,
+  `visiting_faculty` tinyint unsigned NOT NULL,
+  `permanent_faculty` tinyint unsigned NOT NULL,
+  `apporved_faculty` tinyint unsigned NOT NULL,
+  `adhoc_faculty` tinyint unsigned NOT NULL,
+  PRIMARY KEY  (`code`),
+  FOREIGN KEY (`university`) REFERENCES `universities`(`name`)
+  ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`approval_status`
+-- Table structure for table `collegekhabri`.`faculty`
 --
 
-DROP TABLE IF EXISTS `approval_status`;
-CREATE TABLE `approval_status` (
-  `choice_code` integer unsigned NOT NULL auto_increment,
-  `accredition_valid_from` year(4) NOT NULL default '',
-  `accredition_valid_to` year(4) NOT NULL default '',
-  PRIMARY KEY  (`choice_code`)
+CREATE TABLE `faculty` (
+  `id` integer NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `designation` varchar(255) NOT NULL default '',
+  `qualification` enum('ug','pg','doctorate') default NULL,
+  `experience` enum('teaching','industry','research') default NULL,
+  `joining_institute` varchar(45) NOT NULL default '',
+  `choice_code` varchar(45) NOT NULL default '',
+  `category` varchar(45) NOT NULL default '',
+  `LessThan6Months` boolean NOT NULL,
+  `6monthTo1yr` boolean NOT NULL,
+  `institute_code` char(10) NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
+  ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB;
 
 --
 -- Table structure for table `collegekhabri`.`courses`
 --
 
-DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
   `id` integer unsigned NOT NULL auto_increment,
   `code` integer unsigned,
@@ -96,10 +112,54 @@ CREATE TABLE `courses` (
 ) ENGINE=InnoDB;
 
 --
+-- Table structure for table `collegekhabri`.`institutecourse`
+--
+
+CREATE TABLE `institutecourse` (
+  `course_code` int(10) unsigned NOT NULL auto_increment,
+  `institute_code` char(10) NOT NULL default '',
+  `AccreditedFrom` varchar(45) NOT NULL default '',
+  `Intake` varchar(45) NOT NULL default '',
+  `StartYear` varchar(45) NOT NULL default '',
+  `CAPSeats` varchar(45) NOT NULL default '',
+  `MSSeats` varchar(45) NOT NULL default '',
+  `InstituteSeats` varchar(45) NOT NULL default '',
+  `MinoritySeats` varchar(45) NOT NULL default '',
+  `MKB` varchar(45) NOT NULL default '',
+  PRIMARY KEY  (`course_code`, `institute_code`),
+  FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
+  ON DELETE RESTRICT ON UPDATE RESTRICT,
+  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
+  ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`admissions_status`
+--
+
+CREATE TABLE `admissions_status` (
+  `choice_code` integer unsigned NOT NULL auto_increment,
+  `year` year(4) NOT NULL,
+  `sanctioned_intake` integer NOT NULL default 0,
+  `actual_admissions` integer NOT NULL default 0,
+  PRIMARY KEY  (`choice_code`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`approval_status`
+--
+
+CREATE TABLE `approval_status` (
+  `choice_code` integer unsigned NOT NULL auto_increment,
+  `accredition_valid_from` year(4) NOT NULL default '',
+  `accredition_valid_to` year(4) NOT NULL default '',
+  PRIMARY KEY  (`choice_code`)
+) ENGINE=InnoDB;
+
+--
 -- Table structure for table `collegekhabri`.`cutoff`
 --
 
-DROP TABLE IF EXISTS `cutoff`;
 CREATE TABLE `cutoff` (
   `choice_code` int(10) unsigned NOT NULL auto_increment,
   `category_code` varchar(45) NOT NULL default '',
@@ -111,58 +171,9 @@ CREATE TABLE `cutoff` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`faculty`
---
-
-DROP TABLE IF EXISTS `faculty`;
-CREATE TABLE `faculty` (
-  `choice_code` integer unsigned NOT NULL auto_increment,
-  `sactioned_intake` tinyint unsigned NOT NULL,
-  `required_faculty` tinyint unsigned NOT NULL,
-  `professors` tinyint unsigned NOT NULL,
-  `asst_professors` tinyint unsigned NOT NULL,
-  `lecturers` tinyint unsigned NOT NULL,
-  `visiting_faculty` tinyint unsigned NOT NULL,
-  `permanent_faculty` tinyint unsigned NOT NULL,
-  `apporved_Faculty` tinyint unsigned NOT NULL,
-  `adhoc_faculty` tinyint unsigned NOT NULL,
-  PRIMARY KEY  (`choice_code`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`faculty_details`
---
-
-DROP TABLE IF EXISTS `faculty_details`;
-CREATE TABLE `faculty_details` (
-  `id` integer NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
-  `designation` varchar(255) NOT NULL default '',
-  `qualification` enum('ug','pg','doctorate') default NULL,
-  `experience` enum('teaching','industry','research') default NULL,
-  `joining_institute` varchar(45) NOT NULL default '',
-  `choice_code` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`faculty_stability`
---
-
-DROP TABLE IF EXISTS `faculty_stability`;
-CREATE TABLE `faculty_stability` (
-  `choice_code` integer unsigned NOT NULL auto_increment,
-  `category` varchar(45) NOT NULL default '',
-  `LessThan6Months` boolean NOT NULL,
-  `6monthTo1yr` boolean NOT NULL,
-  PRIMARY KEY  (`choice_code`)
-) ENGINE=InnoDB;
-
---
 -- Table structure for table `collegekhabri`.`fees_heads`
 --
 
-DROP TABLE IF EXISTS `fees_heads`;
 CREATE TABLE `fees_heads` (
   `fee_head_code` integer unsigned NOT NULL auto_increment,
   `description` varchar(255) NOT NULL default '',
@@ -173,7 +184,6 @@ CREATE TABLE `fees_heads` (
 -- Table structure for table `collegekhabri`.`fee_structure`
 --
 
-DROP TABLE IF EXISTS `fee_structure`;
 CREATE TABLE `fee_structure` (
   `institute_code` integer unsigned NOT NULL auto_increment,
   `fee_head_code` varchar(45) NOT NULL default '',
@@ -182,77 +192,9 @@ CREATE TABLE `fee_structure` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`infrastructure`
---
-
-DROP TABLE IF EXISTS `infrastructure`;
-CREATE TABLE `infrastructure` (
-  `library` varchar(45) NOT NULL default '',
-  `building` varchar(45) NOT NULL default '',
-  `classrooms` varchar(45) NOT NULL default '',
-  `land_availability` varchar(45) NOT NULL default '',
-  `computers` varchar(45) NOT NULL default '',
-  `laboratory` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`library`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`institutes`
---
-
-DROP TABLE IF EXISTS `institutes`;
-CREATE TABLE `institutes` (
-  `institute_code` integer unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
-  `city` varchar(255) NOT NULL default '',
-  `university_code` varchar(255) NOT NULL default '',
-  `status` varchar(255) NOT NULL default '',
-  `address` varchar(255) NOT NULL default '',
-  `district` varchar(255) NOT NULL default '',
-  `phone` varchar(255) NOT NULL default '',
-  `fax` varchar(255) NOT NULL default '',
-  `pincode` varchar(255) NOT NULL default '',
-  `email` varchar(255) NOT NULL default '',
-  `url` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`institute_code`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`institutecourse`
---
-
-DROP TABLE IF EXISTS `institutecourse`;
-CREATE TABLE `institutecourse` (
-  `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
-  `InstituteCode` varchar(45) NOT NULL default '',
-  `CourseCode` varchar(45) NOT NULL default '',
-  `AccreditedFrom` varchar(45) NOT NULL default '',
-  `Intake` varchar(45) NOT NULL default '',
-  `StartYear` varchar(45) NOT NULL default '',
-  `CAPSeats` varchar(45) NOT NULL default '',
-  `MSSeats` varchar(45) NOT NULL default '',
-  `InstituteSeats` varchar(45) NOT NULL default '',
-  `MinoritySeats` varchar(45) NOT NULL default '',
-  `MKB` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`ChoiceCode`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`instituteinfrastructure`
---
-
-DROP TABLE IF EXISTS `instituteinfrastructure`;
-CREATE TABLE `instituteinfrastructure` (
-  `HostelIntakeBoys` int(10) unsigned NOT NULL auto_increment,
-  `HostelIntakeGirls` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`HostelIntakeBoys`)
-) ENGINE=InnoDB;
-
---
 -- Table structure for table `collegekhabri`.`passdata`
 --
 
-DROP TABLE IF EXISTS `passdata`;
 CREATE TABLE `passdata` (
   `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
   `Year` varchar(45) NOT NULL default '',
@@ -269,7 +211,6 @@ CREATE TABLE `passdata` (
 -- Table structure for table `collegekhabri`.`placementcompanies`
 --
 
-DROP TABLE IF EXISTS `placementcompanies`;
 CREATE TABLE `placementcompanies` (
   `Year` int(10) unsigned NOT NULL auto_increment,
   `NameOfCompany` varchar(45) NOT NULL default '',
@@ -281,7 +222,6 @@ CREATE TABLE `placementcompanies` (
 -- Table structure for table `collegekhabri`.`placementdata`
 --
 
-DROP TABLE IF EXISTS `placementdata`;
 CREATE TABLE `placementdata` (
   `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
   `PlacementFacility` varchar(45) NOT NULL default '',
@@ -299,7 +239,6 @@ CREATE TABLE `placementdata` (
 -- Table structure for table `collegekhabri`.`reservation`
 --
 
-DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE `reservation` (
   `CategoryCode` int(10) unsigned NOT NULL auto_increment,
   `Category` varchar(45) NOT NULL default '',
@@ -311,7 +250,6 @@ CREATE TABLE `reservation` (
 -- Table structure for table `collegekhabri`.`seatdistribution`
 --
 
-DROP TABLE IF EXISTS `seatdistribution`;
 CREATE TABLE `seatdistribution` (
   `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
   `CategoryCode` varchar(45) NOT NULL default '',
@@ -325,7 +263,6 @@ CREATE TABLE `seatdistribution` (
 -- Table structure for table `collegekhabri`.`vacancyposition`
 --
 
-DROP TABLE IF EXISTS `vacancyposition`;
 CREATE TABLE `vacancyposition` (
   `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
   `Round` varchar(45) NOT NULL default '',

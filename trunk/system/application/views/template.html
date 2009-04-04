@@ -1,16 +1,20 @@
 <html>
     <head>
         <title>{$title|default:'Welcome to College Khabri'}</title>
+        <script type="text/javascript" src="{php}echo base_url(){/php}/js/default.js"></script>
     </head>
     <body>
-        <a href="/"><img src="{php} echo base_url() . 'images/logo.jpg';{/php}"></a>
+        <div align="center">
+            <p><img src="{php}echo base_url(){/php}/images/logo-college-khabri.jpg" style="margin-top: -15px;"/></p>
+            <p><span class="style5" style="font-family:Arial, Helvetica, sans-serif;  font-size:medium; ">Your search would be for <strong>Engineering Colleges</strong> in <strong>Maharashtra</strong></span> </p>
+        </div>
         {php}
         echo form_open('welcome/changestate');
         echo form_dropdown('State', array('mh'=>'Maharashtra'), 'mh', "onchange='this.form.submit()'");
         echo form_close();
         {/php}
         {php} echo anchor('welcome/login','Login');{/php} |
-        {php} echo anchor('welcome/register','Register');{/php}
+        {php} echo anchor('welcome/signup','Signup');{/php}
         <hr>
         {include file="$template"}
         <hr>

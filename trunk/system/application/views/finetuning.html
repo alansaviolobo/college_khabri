@@ -63,5 +63,20 @@ body { background-image: url(images/back-main-college-khabri.jpg); }
             <span class="style3">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span>
         </div>
         <input type="submit" name="submit" value="Submit">
+            <hr>
+                <select name="aid_status">
+                    <option value="" selected="selected">Select One</option>
+                    {html_options options=$aid_status}
+                </select>
+
+                <select name="minority">
+                    <option value="" selected="selected">Select One</option>
+                    {html_options options=$minority}
+                </select>
+
+                <select name="autonomy">
+                    <option value="" selected="selected">Select One</option>
+                    {html_options options=$autonomy}
+                </select>
     </form>
 </div>
