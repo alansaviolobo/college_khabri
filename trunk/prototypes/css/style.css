@@ -18,6 +18,8 @@ h2 {
 	font-weight: bold;color:#5C5C5C;
 }
 
+li {border-top: 1px dotted #E8E8E8; padding:0 2px;}
+
 .style5 {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
 #main-container {width:780px;margin:auto;border-top:4px solid #000000;}
 #v-thin-line {border-bottom:1px dotted #44a0e1;padding-bottom:5px;margin-top:9px;}
