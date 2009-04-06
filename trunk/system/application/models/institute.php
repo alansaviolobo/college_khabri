@@ -16,11 +16,11 @@ class Institute extends Model
     function address() {if (is_null($this->address)) $this->set(); return $this->address; }
     function university() {if (is_null($this->university)) $this->set(); return $this->university; }
 
-    function getInstitute($code)
+    function getInstitute($instituteId)
     {
         parent::Model();
 
-        $result = $this->db->from('institutes')->where('code', $courseId);
+        $result = $this->db->where('code', $instituteId)->get('institutes');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid Institute');
         }

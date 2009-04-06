@@ -1,3 +1,7 @@
+<?php /* Smarty version 2.6.22, created on 2009-04-06 06:26:57
+         compiled from index.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'index.html', 9, false),)), $this); ?>
 <div style="width:717px; height:auto;margin:auto;border: 1px solid #c7c7c7;font-family:Arial, Helvetica, sans-serif;padding:5px;">
     <p style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;">Search Colleges</p>
     <form method="post" action="welcome/search_results">
@@ -6,7 +10,8 @@
         <span align="left">
             <select name="university">
                 <option value="" selected="selected">Select One</option>
-                {html_options options=$universities}
+                <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['universities']), $this);?>
+
             </select>
             <br><br>
         </span>
@@ -16,7 +21,8 @@
             <span id="districts_div">
                 <select name="districts[]">
                     <option value="" selected="selected">Select One</option>
-                    {html_options options=$districts}
+                    <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['districts']), $this);?>
+
                 </select>
             </span>
         </div>
@@ -30,7 +36,8 @@
                 <span id="coursegroup_div">
                     <select name="coursegroup[]">
                         <option value="" selected="selected">Select One</option>
-                        {html_options options=$coursegroups}
+                        <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['coursegroups']), $this);?>
+
                     </select>
                 </span>
             </div>
@@ -44,7 +51,8 @@
             <span id="course_div">
                 <select name="course[]">
                     <option value="" selected="selected">Select One</option>
-                    {html_options options=$courses}
+                    <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['courses']), $this);?>
+
                 </select>
             </span>
         </div>

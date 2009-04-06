@@ -1,0 +1,27 @@
+@charset "utf-8";
+body { background-image: url(images/back-main-college-khabri.jpg); }
+img {padding:2px; margin: 0 4px;float:right;}
+h1 { font-family: Geneva, Arial, Helvetica, sans-serif; font-size:24px; font-weight:bold; margin:0; padding:3px; letter-spacing:-1px; color: #44a0e1; }
+h2 { font-family: Georgia, "Times New Roman", Times, serif; font-size: large; font-weight: bold; color:#5C5C5C; }
+li {border-top: 1px dotted #E8E8E8; padding:0 2px;}
+#main-container {width:780px;margin:auto;border-top:4px solid #000000;}
+#v-thin-line {border-bottom:1px dotted #44a0e1;padding-bottom:5px;margin-top:9px;}
+#navcontainer { border-bottom:1px solid #000000; font-family:arial,helvetica,sans-serif; margin:10px 0 10px 0; padding:0 0 0; text-align:right; }
+ul#navlist { background-color:#000000; font-size:12px; list-style-image:none; list-style-position:outside; list-style-type:none; margin:0; padding:0; }
+ul#navlist li.home { border-left:medium none; }
+html > body ul#navlist li { width:90px; }
+ul#navlist li { voice-family:inherit; width:104px;background-color:#000000; border-left:1px solid #CCCCCC; float:left; height:45px; margin:0 1px 0 1px; padding:0; text-align:left; }
+#navcontainer > ul#navlist li a { height:auto; width:auto; }
+ul#navlist li a:hover, ul#navlist li#active a:hover { background-color:#C13447; color:#FFFFFF; height:45px; }
+ul#navlist li a { color:#CCCCCC; display:block; font-size:11px; height:1%; padding:7px 5px 25px 7px; text-decoration:none; text-shadow:0 0 0 #000000; }
+a:visited { background-color:transparent; color:#000000; text-decoration:none; }
+a {background-color:transparent;color:#000000;font-weight:bold;text-decoration:none;}
+.style1 { color: #b63148; font-weight: bold; }
+.style3 { font-size: small; color: #666666; }
+.style5 {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
+.style11 {font-size: 10; font-family: Arial, Helvetica, sans-serif; }
+.style14 {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; font-weight: bold; }
+.style16 {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
+.style21 {font-size: large;font-family: Georgia, "Times New Roman", Times, serif;}
+.small-box{ margin:2px;padding:6px 16px 15px 4px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;}
+#top-small-border { border-top:3px solid black; float:right;}

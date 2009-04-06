@@ -106,10 +106,18 @@ class Welcome extends Controller {
         $this->smarty->display('template.html');
     }
     
+    function institute_info($instituteId)
+    {
+        $institute = new Institute();
+        $institute->getInstitute($instituteId);
+        $this->smarty->assign('institute', $institute);
+        $this->smarty->assign('template', 'instituteinfo.html');
+        $this->smarty->display('template.html');
+    }
+
     function changestate()
     {
-
-
+        $this->session->set_userdata(array('residence_state' => $_POST['State']));
     }
 
 

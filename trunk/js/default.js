@@ -138,6 +138,14 @@ function SHA1 (msg) {
         var masterdiv = document.getElementById(div);
         masterdiv.parentNode.innerHTML += '<span><br>'
             + masterdiv.innerHTML
-            + '<a href=# onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
+            + '<a onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
             + '</span>';
+    }
+
+    var active_element = 'overview-div';
+    function show(objId)
+    {
+        document.getElementById(active_element).style.display='none';
+        active_element = objId.split('-')[0] + '-div';
+        document.getElementById(active_element).style.display='block';
     }

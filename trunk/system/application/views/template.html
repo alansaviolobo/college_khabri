@@ -1,7 +1,10 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{$title|default:'Welcome to College Khabri'}</title>
-        <script type="text/javascript" src="{php}echo base_url(){/php}/js/default.js"></script>
+        <script type="text/javascript" src="{php}echo base_url(){/php}js/default.js"></script>
+        <link media="all" type="text/css" rel="stylesheet" href="{php}echo base_url(){/php}css/style.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
         <div align="center">
@@ -15,9 +18,9 @@
         {/php}
         {php} echo anchor('welcome/login','Login');{/php} |
         {php} echo anchor('welcome/signup','Signup');{/php}
-        <hr>
-        {include file="$template"}
-        <hr>
+        <div id="main-container">
+            {include file="$template"}
+        </div>
         &copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br>
         {php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
         {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
