@@ -1,12 +1,13 @@
-<?php /* Smarty version 2.6.22, created on 2009-04-06 06:26:57
+<?php /* Smarty version 2.6.22, created on 2009-04-06 17:29:49
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'index.html', 9, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'index.html', 10, false),)), $this); ?>
+
 <div style="width:717px; height:auto;margin:auto;border: 1px solid #c7c7c7;font-family:Arial, Helvetica, sans-serif;padding:5px;">
-    <p style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;">Search Colleges</p>
+    <p style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;margin-top:0;">Search Colleges</p>
     <form method="post" action="welcome/search_results">
 
-        <span align="left" class="style1">University</span><br>
+        <span align="left" id="cut-off">University</span><br>
         <span align="left">
             <select name="university">
                 <option value="" selected="selected">Select One</option>
@@ -16,7 +17,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_option
             <br><br>
         </span>
 
-        <span class="style1">District</span>
+        <span id="cut-off">District</span>
         <div>
             <span id="districts_div">
                 <select name="districts[]">
@@ -24,14 +25,14 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_option
                     <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['districts']), $this);?>
 
                 </select>
-            </span>
+            </span>&nbsp;&nbsp;&nbsp;<a onClick="addOption('districts_div')">[+] Add another district</a><br>
+        <span class="style5" style="padding-left:161px"><em>Click here to include another district like 'Thane' in the search</em></span>
         </div>
-        <div><a onClick="addOption('districts_div')">[+] Add another district</a><br>
-        <span class="style5">Click here to include another district like 'Thane' in the search</span></div>
-        <br>
+        <div></div>
+  <br>
 
         <div id="coursegroup_selection_div" style="display:none">
-            <span class="style1">Course Group:</span>
+            <span id="cut-off">Course Group:</span>
             <div>
                 <span id="coursegroup_div">
                     <select name="coursegroup[]">
@@ -39,14 +40,20 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_option
                         <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['coursegroups']), $this);?>
 
                     </select>
-                </span>
+                </span><a onClick="addOption('coursegroup_div')">[+] Add Course Group</a><br>
+            
+            <span class="style5" style="padding-left:145px"><em>Click here to combine two or more course groups</em><br></span>
+            <span class="style5" style="padding-left:145px"> Eg. (1) Electronics + Instrumentation & Control + Electrical<br/></span>
+            <span class="style5" style="padding-left:145px">Eg. (2) Bio-technology +  Pharmacy</span>
             </div>
-            <div><a onClick="addOption('coursegroup_div')">[+] Add Course Group</a></div>
+            <div> 
+            
+            </div>
             <br><br>
             <a onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
         </div>
         <div id="course_selection_div">
-        <span class="style1">Course</span>
+        <span id="cut-off">Course</span>
         <div>
             <span id="course_div">
                 <select name="course[]">
@@ -54,17 +61,17 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_option
                     <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['courses']), $this);?>
 
                 </select>
-            </span>
+            </span>&nbsp;&nbsp;&nbsp;<a onClick="addOption('course_div')">[+] Add another course</a> <br>
+            
+            <span class="style5" style="padding-left:290px"><em>Click here to combine two or more courses</em><br></span>
+            <span class="style5" style="padding-left:290px">Eg.  B. Tech Electronics Engineering + B.E Electronics &amp; Tele-comm.<br/></span>
+            
         </div>
-            <div><a onClick="addOption('course_div')">[+] Add another course</a> <br>
-                <span class="style3">Click here to combine two or more course groups<br>
-                    Eg. (1) Electronics + Instrumentation & Control + Electrical<br/>
-                Eg. (2) Bio-technology +  Pharmacy</span>
-            </div>
-            <br><br>
+         
+            <br>
             <a onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a>
             <br>
-            <span class="style3">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span>
+            <span class="style5">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span>
         </div>
         <input type="submit" name="submit" value="Submit">
     </form>

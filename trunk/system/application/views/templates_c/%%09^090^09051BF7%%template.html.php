@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.22, created on 2009-04-06 09:39:39
+<?php /* Smarty version 2.6.22, created on 2009-04-06 16:18:30
          compiled from template.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'template.html', 4, false),array('modifier', 'date_format', 'template.html', 28, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'template.html', 4, false),array('modifier', 'date_format', 'template.html', 29, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -11,22 +11,23 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', '
         <link media="all" type="text/css" rel="stylesheet" href="<?php echo base_url() ?>css/style.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
-    <body>
-        <div align="center">
-            <p><img src="<?php echo base_url() ?>/images/logo-college-khabri.jpg" style="margin-top: -15px;"/></p>
-            <p><span class="style5" style="font-family:Arial, Helvetica, sans-serif;  font-size:medium; ">Your search would be for <strong>Engineering Colleges</strong> in <strong>Maharashtra</strong></span> </p>
-        </div>
+    <body style="margin:0; background:#ffffff url(<?php echo base_url() ?>/images/back-main-college-khabri.jpg) left top repeat-x;">
+        <div align="right" class="style11" style="float:right; margin:20px 100px 0 0; font-family:Geneva, Arial, Helvetica, sans-serif">
         <?php 
-        if(!isset($_SESSION['state']))
-        {
-            $_SESSION['state'] = 'mh';
-        }
         echo form_open('welcome/changestate');
-        echo form_dropdown('State', array('mh'=>'Maharashtra'), $_SESSION['state'], "onchange='this.form.submit()'");
+        echo form_dropdown('State', array('mh'=>'Maharashtra'), 'mh', "onchange='this.form.submit()'");
+        echo form_close();
+        echo form_open('welcome/changestate');
+        echo form_dropdown('Career', array('en'=>'Engineering'), 'en', "onchange='this.form.submit()'");
         echo form_close();
          ?>
         <?php  echo anchor('welcome/login','Login'); ?> |
         <?php  echo anchor('welcome/signup','Signup'); ?>
+        </div>
+        <div align="center">
+            <p><img src="<?php echo base_url() ?>/images/logo.jpg" style="margin:-15px auto 0 150px;float:none;"/></p>
+    </div>
+       
         <div id="main-container">
             <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['template']), 'smarty_include_vars' => array()));
@@ -41,3 +42,4 @@ unset($_smarty_tpl_vars);
         <?php  echo anchor('welcome/contact_us','contact us'); ?>
     </body>
 </html>
+
