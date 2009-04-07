@@ -8,6 +8,8 @@
     </head>
     <body style="margin:0; background:#ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
         <div align="right" class="style11" style="float:right; margin:20px 100px 0 0; font-family:Geneva, Arial, Helvetica, sans-serif">
+        {php} echo anchor('welcome/login','Login');{/php} |
+        {php} echo anchor('welcome/signup','Signup');{/php} 
         {php}
         echo form_open('welcome/changestate');
         echo form_dropdown('State', array('mh'=>'Maharashtra'), 'mh', "onchange='this.form.submit()'");
@@ -16,8 +18,7 @@
         echo form_dropdown('Career', array('en'=>'Engineering'), 'en', "onchange='this.form.submit()'");
         echo form_close();
         {/php}
-        {php} echo anchor('welcome/login','Login');{/php} |
-        {php} echo anchor('welcome/signup','Signup');{/php}
+      
         </div>
         <div align="center">
             <p><img src="{php}echo base_url(){/php}/images/logo.jpg" style="margin:-15px auto 0 150px;float:none;"/></p>
