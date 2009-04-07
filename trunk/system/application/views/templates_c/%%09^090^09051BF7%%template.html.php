@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.22, created on 2009-04-06 16:18:30
+<?php /* Smarty version 2.6.22, created on 2009-04-07 07:55:55
          compiled from template.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'template.html', 4, false),array('modifier', 'date_format', 'template.html', 29, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'template.html', 4, false),array('modifier', 'date_format', 'template.html', 30, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -35,11 +35,14 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
         </div>
-        &copy; Copyright <?php echo ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y") : smarty_modifier_date_format($_tmp, "%Y")); ?>
- College Khabri<br>
-        <?php  echo anchor('welcome/terms_of_use','terms of use'); ?> |
+      <div id="footer-wrapper">
+  <div id="footer" align="center"> <hr size="1px" width="50%" noshade="noshade" /><div class="style5">&copy; Copyright <?php echo ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y") : smarty_modifier_date_format($_tmp, "%Y")); ?>
+ College Khabri<br></div>
+        <span class="small-text"><?php  echo anchor('welcome/terms_of_use','terms of use'); ?> |
         <?php  echo anchor('welcome/privacy_policy','privacy policy'); ?> |
-        <?php  echo anchor('welcome/contact_us','contact us'); ?>
+        <?php  echo anchor('welcome/contact_us','contact us'); ?></span></div>
+</div>
+       
     </body>
 </html>
 
