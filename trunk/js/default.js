@@ -133,19 +133,27 @@ function SHA1 (msg) {
 	return temp.toLowerCase();
 }
 
-    function addOption(div)
+    function addOption(elementId)
     {
-        var masterdiv = document.getElementById(div);
-        masterdiv.parentNode.innerHTML += '<span><br>'
-            + masterdiv.innerHTML
-            + '<a onClick="this.parentNode.innerHTML=\'\'">[-]</a>'
-            + '</span>';
+        var element = document.getElementById(elementId);
+        var value = element.selectedIndex;
+        element.selectedIndex = 0;
+        var remlink = document.createElement('a');
+        var span = document.createElement('span');
+        span.appendChild(document.createElement('br'));
+        span.appendChild(element.cloneNode(true));
+        span.appendChild(remlink);
+        element.parentNode.appendChild(span);
+        remlink.innerHTML = '[-]';
+        if(remlink.addEventListener) remlink.addEventListener('click', function(){this.parentNode.innerHTML='';}, false); // for standards
+            else if(remlink.attachEvent) remlink.attachEvent('onclick', function(){alert(this.parent.name);}); // for IE
+        element.selectedIndex = value;
     }
 
-    var active_element = 'overview-div';
     function show(objId)
     {
         document.getElementById(active_element).style.display='none';
         active_element = objId.split('-')[0] + '-div';
         document.getElementById(active_element).style.display='block';
     }
+    var active_element = 'overview-div';

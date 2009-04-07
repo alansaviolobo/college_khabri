@@ -14,15 +14,15 @@
 
         <span id="cut-off">District</span>
         <div>
-            <span id="districts_div">
-                <select name="districts[]">
+            <div>
+                <select name="districts[]" id="districts">
                     <option value="" selected="selected">Select One</option>
                     {html_options options=$districts}
                 </select>
-            </span>&nbsp;&nbsp;&nbsp;<a onClick="addOption('districts_div')">[+] Add another district</a><br>
+            </div>
+           &nbsp;&nbsp;&nbsp;<a onClick="addOption('districts')">[+] Add another district</a><br>
         <span class="style5" style="padding-left:161px"><em>Click here to include another district like 'Thane' in the search</em></span>
         </div>
-        <div></div>
   <br>
 
         <div id="coursegroup_selection_div" style="display:none">
