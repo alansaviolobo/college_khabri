@@ -7,33 +7,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body style="margin:0; background:#ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-        <div align="right" class="style11" style="float:right; margin:20px 100px 0 0; font-family:Geneva, Arial, Helvetica, sans-serif">
-        {php} echo anchor('welcome/login','Login');{/php} |
-        {php} echo anchor('welcome/signup','Signup');{/php} 
-        {php}
-        echo form_open('welcome/changestate');
-        echo form_dropdown('State', array('mh'=>'Maharashtra'), 'mh', "onchange='this.form.submit()'");
-        echo form_close();
-        echo form_open('welcome/changestate');
-        echo form_dropdown('Career', array('en'=>'Engineering'), 'en', "onchange='this.form.submit()'");
-        echo form_close();
-        {/php}
-      
-        </div>
+            {php} echo anchor('welcome/login','Login');{/php} |
+            {php} echo anchor('welcome/signup','Signup');{/php}
         <div align="center">
             <p><img src="{php}echo base_url(){/php}/images/logo.jpg" style="margin:-15px auto 0 150px;float:none;"/></p>
-    </div>
-       
+        </div>
+
         <div id="main-container">
             {include file="$template"}
         </div>
-      <div id="footer-wrapper">
-  <div id="footer" align="center"> <hr size="1px" width="50%" noshade="noshade" /><div class="style5">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br></div>
-        <span class="small-text">{php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
-        {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
-        {php} echo anchor('welcome/contact_us','contact us');{/php}</span></div>
-</div>
-       
+        <div id="footer-wrapper">
+            <div id="footer" align="center"> <hr size="1px" width="50%" noshade="noshade" /><div class="style5">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br></div>
+                <span class="small-text">{php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
+                    {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
+            {php} echo anchor('welcome/contact_us','contact us');{/php}</span></div>
+        </div>
+
     </body>
 </html>
-

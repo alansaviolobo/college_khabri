@@ -10,9 +10,7 @@ class Welcome extends Controller {
 
     function index()
     {
-        $this->smarty->assign('universities', University::getAllUniversities());
-        $this->smarty->assign('courses', Course::getAllCourses());
-        $this->smarty->assign('coursegroups', array(
+        $coursegroups = array(
           '70' => 'Chemical',
           '10' => 'Civil',
           '60' => 'Computers',
@@ -22,9 +20,9 @@ class Welcome extends Controller {
           '80' => 'Inter Disciplinary',
           '20' => 'Mechanical',
           '30' => 'Other Management ',
-          '04' => 'Textile'));
+          '04' => 'Textile');
 
-          $this->smarty->assign('districts', array(
+        $districts = array(
           "Ahmednagar" => "Ahmednagar",
           "Akola" => "Akola",
           "Amravati" => "Amravati",
@@ -59,27 +57,23 @@ class Welcome extends Controller {
           "Solapur" => "Solapur",
           "Thane" => "Thane",
           "Wardha" => "Wardha",
-          "Yavatmal" => "Yavatmal"));
+          "Yavatmal" => "Yavatmal");
 
-        $this->smarty->assign('template', 'index.html');
-        $this->smarty->display('template.html');
-    }
-
-    function fine_tuning()
-    {
-        $this->smarty->assign('aid_status', array(
+        $aid_status = array(
           "Government",
           "Govenment Aided",
           "Government-Government-Aided",
           "Un-Aided",
           "University Managed",
           "University Department",
-          "University Managed (UA)"));
-        $this->smarty->assign('autonomy', array(
+          "University Managed (UA)");
+
+        $autonomy = array(
           "Autonomous",
           "Non-Autonomous",
-          "Deemed University"));
-        $this->smarty->assign('minority', array(
+          "Deemed University");
+
+        $minority = array(
           "Non-minority",
           "Linguistic - Gujarathi",
           "Linguistic - Gujarathi (Kutchhi)",
@@ -92,10 +86,65 @@ class Welcome extends Controller {
           "Religious - Muslim",
           "Religious - Roman Catholics",
           "Religious - Christian",
-          "Religious - Sikh"));
-        $this->smarty->assign('fees', array());
-        $this->smarty->assign('hostel', array());
-        $this->smarty->assign('template', 'finetuning.html');
+          "Religious - Sikh");
+
+        $approx_fees = array(
+            "50,000 - 1,00,000",
+            "1,00,000 - 2,00,000",
+            "2,00,000 - 4,00,000");
+
+        $hostel = array(
+            "Not Needed",
+            "First Year Only",
+            "Full Course");
+
+        $establishment_year = array(
+            "1800 - 1850",
+            "1851 - 1900",
+            "1901 - 2000");
+
+        $form = array(
+            'formOpen'          => form_open('welcome/index'),
+            'stateLabel'        => form_label('State', 'state'),
+            'stateSelect'       => form_dropdown('state', array('mh'=>'Maharashtra'), 'mh'),
+            'careerLabel'       => form_label('A Career in', 'career'),
+            'careerSelect'      => form_dropdown('career', array('en'=>'Engineering'), 'en'),
+            'universityLabel'   => form_label('University', 'university'),
+            'universityBox'     => form_dropdown('university', University::getAllUniversities()),
+            'districtLabel'     => form_label('District', 'district'),
+            'districtSelect'    => form_dropdown('district', $districts, null, "id='districts'"),
+            'coursesLabel'      => form_label('Course', 'course'),
+            'coursesSelect'     => form_dropdown('course', Course::getAllCourses(), null, "id='courses'"),
+            'coursegroupLabel'  => form_label('Course Group', 'coursegroup'),
+            'coursegroupSelect' => form_dropdown('coursegroup', $coursegroups, null, "id='coursegroups'"),
+            'collegenameLabel'  => form_label('College Name', 'collegename'),
+            'collegenameBox'    => form_input('collegename'),
+            'aidLabel'          => form_label('Aid Status', 'aid'),
+            'aidSelect'         => form_dropdown('aid', $aid_status),
+            'minorityLabel'     => form_label('Minority Status', 'minority'),
+            'minoritySelect'    => form_dropdown('minority', $minority),
+            'autonomyLabel'     => form_label('Autonomy', 'autonomy'),
+            'autonomySelect'    => form_dropdown('autonomy', $autonomy),
+            'feesLabel'         => form_label('Approx. Fees (Rs. per year)', 'fees'),
+            'feesSelect'        => form_dropdown('fees', $approx_fees),
+            'hostelLabel'       => form_label('Hostel', 'hostel'),
+            'hostelSelect'      => form_dropdown('hostel', $hostel),
+            'estiblishmentLabel'=> form_label('Established', 'establishment'),
+            'establishmentSelect'=> form_dropdown('established', $establishment_year),
+            'submit'            => form_submit('submit', 'Search'),
+            'formClose'         => form_close()
+        );
+        //$this->form_validation->set_rules('username', 'Username', 'required');
+        //$this->form_validation->set_rules('password', 'Password', 'required');
+
+        if (!$this->form_validation->run())
+        {
+            //do something
+        }
+        else $form['formErrors'] = validation_errors();
+
+        $this->smarty->assign('searchForm', $form);
+        $this->smarty->assign('template', 'index.html');
         $this->smarty->display('template.html');
     }
 
@@ -105,7 +154,7 @@ class Welcome extends Controller {
         $this->smarty->assign('template', 'searchresults.html');
         $this->smarty->display('template.html');
     }
-    
+
     function institute_info($instituteId)
     {
         $institute = new Institute();
@@ -141,8 +190,6 @@ class Welcome extends Controller {
 
     function signup()
     {
-        $this->load->library('form_validation');
-
         for($count=1, $dates =array(); $count<=31; $dates[]=$count++);
         for($count=1, $months=array(); $count<=12; $months[]=$count++);
         for($count=intval(date('Y'))-25, $years =array(); $count<=intval(date('Y'))-15; $years[]=$count++);
