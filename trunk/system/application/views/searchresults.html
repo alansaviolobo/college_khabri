@@ -1,15 +1,113 @@
-<table>
-    <tr>
-        <td>search criteria here...</td>
-        <td>
-            <table>
-                {foreach from=$results item='institute'}
-                    <tr><td>
-                    {$institute->name()}
-                    </td></tr>
-                {/foreach}
-            </table>
+<div id="center" class="column">
+    <h1>Search Results:</h1>
+    <span class="style5">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
+    <br /><br />
+    <div class="sort-back">
+        <table width="100%" border="0" cellpadding="0">
+            <tr>
+                <td width="15%"><div align="left"><strong>Sort by:</strong></div></td>
+                <td width="22%"><div align="center"><strong><a href="#">Name</a></strong></div></td> <td width="2%"> <div align="center"><strong>|</strong></div></td>
+                <td width="17%"><div align="center"><strong><a href="#">Grade</a></strong></div></td><td width="2%"> <div align="center"><strong>|</strong></div></td>
+                <td width="23%"><div align="center"><strong><a href="#">Est. Year</a></strong></div></td><td width="2%"> <div align="center"><strong>|</strong></div></td>
+                <td width="14%"><div align="center"><strong><a href="#">Fees</a></strong></div></td>
+            </tr>
+        </table>
+    </div>
+    {foreach from=$results item='institute'}
+    <div class="search-results">
+        <h2><a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/welcome/institute_info/{$institute->name()|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$institute->name()}, {$institute->address()}</a></h2>
+        <table width="100%" border="0" cellpadding="0">
+            <tr>
+                <td><div align="left"><span class="inst-code"><a href="#">{$institute->code()}</a> </span> </div></td>
+                <td><div align="center"><span class="style5">University Managed / Non-Autonomous / Non-minority </span> </div></td>
+                <td>  <div align="right"><span class="small-box">&nbsp;B</span></div></td>
+            </tr>
+        </table>
+        <div class="search-results-small">
+            <p><strong>Affiliated to:</strong>  <em><a href="#">{$institute->university->name()}</a></em>
+            <span class="small-text">[ <a href="#">More information</a> ]</span></p>
+            <p><strong>Available streams: </strong><a href="#">Petro-Chemical Engineering</a>,
+            <a href="#">Mechanical Engineering</a>, ... [ <a href="#">See all</a> ]</p>
+            <p><strong>Fees for SC category:</strong> Rs. 56,000 per year</p>
+        </div>
+        <table width="100%" border="0" cellpadding="0">
+            <tr>
+                <td width="26%" rowspan="2" bgcolor="#EAEAEA">
+                    <p align="center" class="small-text">2008 <strong>CET cutoff</strong> for SC category:</p>
+                    <div class="style16 cut-off">
+                        <div align="center">70</div>
+                </div></td>
+                <td width="30%" height="50%" class="style11"><p class="style5">Your chances:</p>
+                <div class="chance-graph" style="width:57%"><strong>57%</strong></div></td>
+                <td width="44%"><img src="images/college-khabri-rating.gif" alt="College Khabri Rating" width="104" height="41" />
+            </tr>
+            <tr>
+                <td width="30%"><p class="style5">Preferred by:</p>
+            <div class="pref-graph" style="width:27%"><strong>27%</strong></div></td>
+            <td colspan="2">
+                <img src="images/1-star-bw.gif" alt="" width="19" height="18" />
+                <img src="images/1-star-bw.gif" alt="" width="19" height="18" />
+                <img src="images/1-star-color.gif" alt="" width="19" height="18" />
+                <img src="images/1-star-color.gif" alt="" width="19" height="18" />
+                <img src="images/1-star-color.gif" alt="" width="19" height="18" />
+                </td>
+                </tr>
+        </table>
+    </div>
+    {/foreach}
+</div>
+<div id="left" class="column"><img src="images/sidebar-temp.jpg" /></div>
+<div id="right" class="column">
+    <div align="center"><img style="float:none;" src="/images/local-ad-example-temp.jpg" /></div>
+    <div id="v-thin-line" class="style14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Ut auctor. Nunc in felis ac augue dapibus consequat. Nullam consequat, dolor non gravida malesuada,
+    orci nisi sagittis tortor, at scelerisque magna risus nec lacus. Nulla viverra sapien id dolor.
+    Suspendisse potenti. Mauris non velit. Pellentesque et dui. Donec ut quam nec erat fermentum ultricies.
+    Aenean fringilla. Proin at massa sed tortor iaculis fermentum. Proin nibh lacus, consequat ut,
+    scelerisque ac, malesuada hendrerit, diam. Sed vehicula justo in dui tempor rutrum.
+    Maecenas venenatis dictum tortor. Integer porta ornare justo.
 
-        </td>
-    </tr>
-</table>
+    Aliquam pretium, nisi vel rutrum porttitor, ipsum justo gravida odio, mollis bibendum tellus urna ut lorem.
+    Praesent leo risus, ultricies eget, interdum eget, pretium consequat, mi. Sed turpis massa, porttitor non,
+    semper eget, sollicitudin eget, nisi. Mauris id sem. Sed ornare purus ut nulla. Donec ac metus et dui
+    sagittis dapibus. Fusce vitae sem. Mauris pretium ultricies quam. Mauris semper pretium nisl.
+    Aliquam consectetur enim at turpis. Sed luctus nulla sit amet diam. Proin posuere risus ut nisi.
+    Nam in diam. Suspendisse blandit ultricies urna. In hac habitasse platea dictumst. Nam erat.
+    Aenean semper dui sed lectus.
+
+    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+    In odio lacus, venenatis nec, accumsan sed, blandit et, lectus. Nunc pulvinar, sem id iaculis sodales,
+    tellus est tristique erat, faucibus volutpat velit tellus vitae justo. Class aptent taciti sociosqu ad
+    litora torquent per conubia nostra, p</div>
+</div>
+<div id="collegeInfo">
+   <div class="hd">College Information</div>
+    <div class="bd"></div>
+    <div class="ft"></div>
+</div>
+{literal}
+<script type="text/javascript">
+    YAHOO.namespace('collegekhabri');
+    YAHOO.collegekhabri.frame = document.createElement('iframe');
+	YAHOO.collegekhabri.frame.width = "100%";
+	YAHOO.collegekhabri.frame.height = "480";
+
+    YAHOO.collegekhabri.collegeInfo = new YAHOO.widget.Dialog("collegeInfo", {
+	width : "600px",
+	fixedcenter : false,
+	visible : false,
+	close: true,
+	y: 25,
+	draggable: true,
+	modal: true,
+	postmethod: 'form',
+	constraintoviewport : false});
+	YAHOO.util.Event.addListener('closeImg', 'click', function(o){YAHOO.collegekhabri.collegeInfo.hide()});
+	YAHOO.collegekhabri.collegeInfo.render();
+
+	var onCollegeInfoShow = function(e, args, o){
+		o.setBody(YAHOO.collegekhabri.frame);
+	};
+	YAHOO.collegekhabri.collegeInfo.showEvent.subscribe(onCollegeInfoShow, YAHOO.collegekhabri.collegeInfo);
+</script>
+{/literal}

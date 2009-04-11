@@ -74,7 +74,7 @@ insert into courses (id, code, name) values
 
 INSERT INTO institutes (code, name, address, city, university) VALUES
 ("EN001","Dr.Babasaheb Ambedkar Technological","Lonere","","Dr. B.A.T."),
-("EN101","SNDT Women's","Mumbai","Mumbai","SNDT"),
+("EN101","SNDT Womens","Mumbai","Mumbai","S.N.D.T."),
 ("EN202","Sardar Patel College of Engineering","Andheri","Mumbai","Mumbai"),
 ("EN204","Fr. Conceicao Rodrigues College of Engineering","Bandra","Mumbai","Mumbai"),
 ("EN205","K.J.Somaiya College of Engineering","Vidyavihar","Mumbai","Mumbai"),

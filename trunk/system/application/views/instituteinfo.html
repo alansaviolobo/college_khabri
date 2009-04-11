@@ -3,57 +3,62 @@
         <h1>{$institute->name()}, {$institute->address()}</h1>
     </div>
 
-    <p class="style5">Affiliated to <em><strong>{$institute->university()} University</strong></em></p>
+    <p class="style5">Affiliated to <em><strong>{$institute->university->name()} University</strong></em></p>
     <p class="style5">Established in <em><strong>2008 [AICTE Period of Apprival 2011 - 2008 ]</strong></em></p>
-    <div id="navcontainer">
-        <ul id="navlist">
-            <li><a onclick="show(this.id)" id="overview-link">Overview</a></li>
-            <li><a onclick="show(this.id)" id="fees-link">Fees</a></li>
-            <li><a onclick="show(this.id)" id="faculty-link">Faculty</a></li>
-            <li><a onclick="show(this.id)" id="facilities-link">Facilities</a></li>
-            <li><a onclick="show(this.id)" id="intake-link">Intake</a></li>
-            <li><a onclick="show(this.id)" id="placements-link">Placements</a></li>
-            <li><a onclick="show(this.id)" id="location-link">Location</a></li>
+    <div id="navcontainer" class="yui-navset">
+        <ul id="navlist" class="yui-nav">
+            <li class="selected"><a href="#tab1"><em>Overview</em></a></li>
+            <li><a href="#tab2"><em>Fees</em></a></li>
+            <li><a href="#tab3"><em>Faculty</em></a></li>
+            <li><a href="#tab4"><em>Facilities</em></a></li>
+            <li><a href="#tab5"><em>Intake</em></a></li>
+            <li><a href="#tab6"><em>Placements</em></a></li>
+            <li><a href="#tab7"><em>Location</em></a></li>
         </ul>
-    </div>
 
-    <p class="style5">&nbsp;</p><p class="style5">&nbsp;</p>
-    <p class="style5"><img src="Saraswati.jpg" alt="" width="201" height="150" /></p>
-    <div id="overview-div">
-        <div id="v-thin-line"><span class="style14">Status: </span><span class="style16">Un-Aided / Non-Autonomous / Non-minority </span></div>
-        <div id="v-thin-line"><span class="style14">District: </span><span class="style16">Raigad</span></div>
-        <div id="v-thin-line"><span class="style14">Name of Principal: </span><span class="style16">Dr.S.K. Ukarande </span></div>
-        <div id="v-thin-line"><span class="style14">Govt Approval Letter: </span><span class="style16">No. TEM 2008/274/08 T. Shik 1 Dt.30/6/2008 </span></div>
-        <div id="v-thin-line"><span class="style14">AICTE Approval Letter: </span><span class="style16">No. F.N.06/07/ms/engg/2008/38 Dt.30/6/2008 </span></div>
-        <div id="v-thin-line"><span class="style14">DTE Approval Letter: </span><span class="style16">Information not Available </span></div>
-        <div id="v-thin-line"><span class="style14">Hostel Accomodation ( Boys ):</span><span class="style16">0 ( for Ist Year : 0 ) </span></div>
-        <div id="v-thin-line"><span class="style14">Hostel Accomodation ( Girls )</span><span class="style16">0 ( for Ist Year : 0 ) </span></div>
-        <div id="v-thin-line"><span class="style14">Institute Remark:</span><span class="style16">Information not Available </span></div>
-    </div>
+        <div class="yui-content">
+            <div>
+                <p class="style5"><img src="Saraswati.jpg" alt="" width="201" height="150" /></p>
+                <div id="v-thin-line"><span class="style14">Status: </span><span class="style16">Un-Aided / Non-Autonomous / Non-minority </span></div>
+                <div id="v-thin-line"><span class="style14">District: </span><span class="style16">Raigad</span></div>
+                <div id="v-thin-line"><span class="style14">Name of Principal: </span><span class="style16">Dr.S.K. Ukarande </span></div>
+                <div id="v-thin-line"><span class="style14">Govt Approval Letter: </span><span class="style16">No. TEM 2008/274/08 T. Shik 1 Dt.30/6/2008 </span></div>
+                <div id="v-thin-line"><span class="style14">AICTE Approval Letter: </span><span class="style16">No. F.N.06/07/ms/engg/2008/38 Dt.30/6/2008 </span></div>
+                <div id="v-thin-line"><span class="style14">DTE Approval Letter: </span><span class="style16">Information not Available </span></div>
+                <div id="v-thin-line"><span class="style14">Hostel Accomodation ( Boys ):</span><span class="style16">0 ( for Ist Year : 0 ) </span></div>
+                <div id="v-thin-line"><span class="style14">Hostel Accomodation ( Girls )</span><span class="style16">0 ( for Ist Year : 0 ) </span></div>
+                <div id="v-thin-line"><span class="style14">Institute Remark:</span><span class="style16">Information not Available </span></div>
+            </div>
 
-    <div id="fees-div" style="display:none;">
-        <p class="style11"></p>
-    </div>
+            <div>
+                <p class="style11"></p>
+            </div>
 
-    <div id="faculty-div" style="display:none;">
-        <p class="style11"></p>
-    </div>
+            <div>
+                <p class="style11"></p>
+            </div>
 
-    <div id="facilities-div" style="display:none;">
-        <p class="style14"></p>
-    </div>
+            <div>
+                <p class="style14"></p>
+            </div>
 
-    <div id="intake-div" style="display:none;">
-        <p class="style14"></p>
-    </div>
+            <div>
+                <p class="style14"></p>
+            </div>
 
-    <div id="placements-div" style="display:none;">
-        <p class="style14"></p>
-    </div>
+            <div>
+                <p class="style14"></p>
+            </div>
 
-    <div id="location-div" style="display:none;">
-        <p class="style14"></p>
+            <div>
+                <p class="style14"></p>
+            </div>
+        </div>
     </div>
-
     <hr noshade="noshade" color="#000000" />
 </div>
+{literal}
+<script type="text/javascript">
+    var myTabs = new YAHOO.widget.TabView("navcontainer");
+</script>
+{/literal}

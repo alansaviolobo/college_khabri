@@ -6,17 +6,17 @@
         {$searchForm.careerLabel}{$searchForm.careerSelect}
     </div>
     <div id="less-details-options">
-        <span align="left" class="cut-off">{$searchForm.universityLabel}</span><br>
+        <span align="left" class="cut-off">{$searchForm.universityLabel}</span><br />
         <span align="left">
             {$searchForm.universitySelect}
-            <br><br>
+            <br /><br />
         </span>
         <span class="cut-off">{$searchForm.districtLabel}</span>
         <div>
             <div>
                 {$searchForm.districtSelect}
             </div>
-            &nbsp;&nbsp;&nbsp;<a onClick="addOption('districts')">[+] Add another district</a><br>
+            &nbsp;&nbsp;&nbsp;<a onClick="addOption('districts')">[+] Add another district</a><br />
             <span class="style5" style="padding-left:145px"><em>Click here to include another district like 'Thane' in the search</em></span>
 
         </div>
@@ -26,12 +26,12 @@
                 <div>
                     {$searchForm.coursegroupSelect}
                 </div>
-                &nbsp;&nbsp;&nbsp;<a onClick="addOption('coursegroups')">[+] Add Course Group</a><br>
-                <span class="style5" style="padding-left:145px"><em>Click here to combine two or more course groups</em><br></span>
+                &nbsp;&nbsp;&nbsp;<a onClick="addOption('coursegroups')">[+] Add Course Group</a><br />
+                <span class="style5" style="padding-left:145px"><em>Click here to combine two or more course groups</em><br /></span>
                 <span class="style5" style="padding-left:145px">Eg. (1) Electronics + Instrumentation & Control + Electrical<br/></span>
                 <span class="style5" style="padding-left:145px">Eg. (2) Bio-technology +  Pharmacy</span>
             </div>
-            <br><br>
+            <br /><br />
             <a onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
         </div>
         <div id="course_selection_div">
@@ -40,42 +40,42 @@
                 <div>
                     {$searchForm.coursesSelect}
                 </div>
-                &nbsp;&nbsp;&nbsp;<a onClick="addOption('courses')">[+] Add another course</a> <br>
-                <span class="style5" style="padding-left:290px"><em>Click here to combine two or more courses</em><br></span>
+                &nbsp;&nbsp;&nbsp;<a onClick="addOption('courses')">[+] Add another course</a> <br />
+                <span class="style5" style="padding-left:290px"><em>Click here to combine two or more courses</em><br /></span>
                 <span class="style5" style="padding-left:290px">Eg.  B. Tech Electronics Engineering + B.E Electronics &amp; Tele-comm.<br/></span>
             </div>
-        <br>
+        <br />
         <a onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a>
         </div>
-        <br>
-        <span class="style5">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span><br>
+        <br />
+        <span class="style5">If you want to search all colleges under one group, Eg. Mechanical or Electrical</span><br />
         <a onclick="this.parentNode.style.display='none';getElementById('less-details-search').style.display='block'">Search by typing the name of the college</a>
         <a onclick="getElementById('more-details').style.display='block'">more options</a>
     </div>
     <div id="less-details-search" style="display:none;">
-        <span class="cut-off">{$searchForm.collegenameLabel}</span><br>
-        {$searchForm.collegenameBox}<br>
+        <span class="cut-off">{$searchForm.collegenameLabel}</span><br />
+        {$searchForm.collegenameBox}<br />
         <span class="style5" style="padding-left:290px">Eg. BATU College, Lonere<br/></span>
         <a onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a>
         <a onclick="getElementById('more-details').style.display='block'">more options</a>
     </div>
     <div id="more-details" style="display:none">
-        <span class="cut-off">{$searchForm.aidLabel}</span><br>
+        <span class="cut-off">{$searchForm.aidLabel}</span><br />
         {$searchForm.aidSelect}
-        <br><span class="cut-off">{$searchForm.minorityLabel}</span><br>
+        <br /><span class="cut-off">{$searchForm.minorityLabel}</span><br />
         {$searchForm.minoritySelect}
-        <br><span class="cut-off">{$searchForm.autonomyLabel}</span><br>
+        <br /><span class="cut-off">{$searchForm.autonomyLabel}</span><br />
         {$searchForm.autonomySelect}
-        <hr>
-        <span class="cut-off">{$searchForm.hostelLabel}</span><br>
+        <hr/>
+        <span class="cut-off">{$searchForm.hostelLabel}</span><br />
         {$searchForm.hostelSelect}
-        <br><span class="cut-off">{$searchForm.establishmentLabel}</span><br>
+        <br /><span class="cut-off">{$searchForm.establishmentLabel}</span><br />
         {$searchForm.establishmentSelect}
-        <br><span class="cut-off">{$searchForm.feesLabel}</span><br>
+        <br /><span class="cut-off">{$searchForm.feesLabel}</span><br />
         {$searchForm.feesSelect}
-        <br>
+        <br />
         <a onclick="getElementById('more-details').style.display='none'">hide these options</a>
     </div>
     {$searchForm.submit}
-    {$searchForm.formclose}
+    {$searchForm.formClose}
 </div>

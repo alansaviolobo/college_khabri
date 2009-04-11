@@ -9,24 +9,20 @@
     <body>
        	<div id="header"><img src="{php}echo base_url(){/php}images/main-logo.jpg" width="245" height="110" style="float:none;" />
         </div>
-        
-        <div id="container">
+
+        <div id="main-container">
   			<div id="center" class="column"><p>Replace this content with center content.</p></div>
-            
+
             <div id="left" class="column"><p>Replace this content with left content.</p></div>
-            
+
              <div id="right" class="column">Replace this content with left content.</div>
-         </div>
- 
-        
-      	<div id="footer-wrapper">
-            <div id="footer" align="center"> <hr size="1px" width="50%" noshade="noshade" /><div class="style5">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br></div>
-            <span class="small-text">{php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
-            {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
-            {php} echo anchor('welcome/contact_us','contact us');{/php}</span>
-            </div>
-		</div>
-       
+        </div>
+        <div id="footer-wrapper">
+            <div id="footer" align="center"> <hr size="1" width="50%" noshade="noshade" />
+            <div class="style5">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br/></div>
+                <span class="small-text">{php} echo anchor('welcome/terms_of_use','terms of use');{/php} |
+                    {php} echo anchor('welcome/privacy_policy','privacy policy');{/php} |
+            {php} echo anchor('welcome/contact_us','contact us');{/php}</span></div>
+        </div>
     </body>
 </html>
-

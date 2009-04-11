@@ -104,13 +104,13 @@ class Welcome extends Controller {
             "1901 - 2000");
 
         $form = array(
-            'formOpen'          => form_open('welcome/index'),
+            'formOpen'          => form_open('welcome/search_results'),
             'stateLabel'        => form_label('State', 'state'),
             'stateSelect'       => form_dropdown('state', array('mh'=>'Maharashtra'), 'mh'),
             'careerLabel'       => form_label('A Career in', 'career'),
             'careerSelect'      => form_dropdown('career', array('en'=>'Engineering'), 'en'),
             'universityLabel'   => form_label('University', 'university'),
-            'universityBox'     => form_dropdown('university', University::getAllUniversities()),
+            'universitySelect'  => form_dropdown('university', University::getAllUniversities()),
             'districtLabel'     => form_label('District', 'district'),
             'districtSelect'    => form_dropdown('district', $districts, null, "id='districts'"),
             'coursesLabel'      => form_label('Course', 'course'),
@@ -129,19 +129,11 @@ class Welcome extends Controller {
             'feesSelect'        => form_dropdown('fees', $approx_fees),
             'hostelLabel'       => form_label('Hostel', 'hostel'),
             'hostelSelect'      => form_dropdown('hostel', $hostel),
-            'estiblishmentLabel'=> form_label('Established', 'establishment'),
+            'establishmentLabel'=> form_label('Established', 'establishment'),
             'establishmentSelect'=> form_dropdown('established', $establishment_year),
             'submit'            => form_submit('submit', 'Search'),
             'formClose'         => form_close()
         );
-        //$this->form_validation->set_rules('username', 'Username', 'required');
-        //$this->form_validation->set_rules('password', 'Password', 'required');
-
-        if (!$this->form_validation->run())
-        {
-            //do something
-        }
-        else $form['formErrors'] = validation_errors();
 
         $this->smarty->assign('searchForm', $form);
         $this->smarty->assign('template', 'index.html');
@@ -155,20 +147,14 @@ class Welcome extends Controller {
         $this->smarty->display('template.html');
     }
 
-    function institute_info($instituteId)
+    function institute_info($instituteName, $showTemplate = 'true')
     {
         $institute = new Institute();
-        $institute->getInstitute($instituteId);
+        $institute->getInstituteByName($instituteName);
         $this->smarty->assign('institute', $institute);
         $this->smarty->assign('template', 'instituteinfo.html');
-        $this->smarty->display('template.html');
+        $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');
     }
-
-    function changestate()
-    {
-        $this->session->set_userdata(array('residence_state' => $_POST['State']));
-    }
-
 
     function contact_us()
     {
@@ -210,7 +196,7 @@ class Welcome extends Controller {
             'mobileLabel'   => form_label('Mobile', 'mobile'),
             'mobileBox'     => form_input('mobile'),
 
-            'submit'        => form_submit('submit', 'Login', "onclick='$submitjs'"),
+            'submit'        => form_submit('submit', 'Signup', "onclick='$submitjs'"),
             'formClose'     => form_close()
         );
         $this->form_validation->set_rules('username', 'Username', 'required');
