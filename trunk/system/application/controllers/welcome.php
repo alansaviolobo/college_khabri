@@ -271,6 +271,34 @@ class Welcome extends Controller {
         $this->smarty->assign('template', 'forgotpassword.html');
         $this->smarty->display('template.html');
     }
+
+    function refer_friends()
+    {
+        $this->load->library('openinviter');
+        $form = array(
+            'formOpen'      => form_open('welcome/refer_friends'),
+            'usernameLabel' => form_label('Username', 'username'),
+            'usernameBox'   => form_input('username'),
+            'passwordLabel' => form_label('Password', 'password'),
+            'passwordBox'   => form_input('password'),
+            'serviceLabel'  => form_dropdown('Service', 'service'),
+            'serviceSelect' => form_dropdown('service', $providers),
+            'submit'        => form_submit('submit', 'Reset my password!'),
+            'formClose'     => form_close()
+        );
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if (!$this->form_validation->run())
+        {
+            //do something
+        }
+        else $form['formErrors'] = validation_errors();
+
+        $this->smarty->assign('referForm', $form);
+        $this->smarty->assign('template', 'forgotpassword.html');
+        $this->smarty->display('template.html');
+    }
 }
 
 /* End of file welcome.php */

@@ -1,0 +1,78 @@
+{$referForm.formOpen}
+{$referForm.formErrors}
+if (!$done)
+	{
+	if ($step=='get_contacts')
+		{
+		<table align='center' class='thTable' cellspacing='0' cellpadding='0' style='border:none;'>
+			<tr class='thTableRow'>
+                <td align='right'>
+                    <label for='email_box'>Email</label>
+                </td>
+                <td>
+                    <input class='thTextbox' type='text' name='email_box' value='{$_POST['email_box']}'>
+                </td>
+            </tr>
+			<tr class='thTableRow'><td align='right'><label for='password_box'>Password</label></td><td><input class='thTextbox' type='password' name='password_box' value='{$_POST['password_box']}'></td></tr>
+			<tr class='thTableRow'><td align='right'><label for='provider_box'>Email provider</label></td><td><select class='thSelect' name='provider_box'><option value=''></option>";
+		foreach ($oi_services as $type=>$providers)
+			{
+			<option disabled>".$inviter->pluginTypes[$type]."</option>";
+			foreach ($providers as $provider=>$details)
+				<option value='{$provider}'".($_POST['provider_box']==$provider?' selected':'').">{$details['name']}</option>";
+			}
+		</select></td></tr>
+			<tr class='thTableImportantRow'><td colspan='2' align='center'><input class='thButton' type='submit' name='import' value='Import Contacts'></td></tr>
+		</table><input type='hidden' name='step' value='get_contacts'>";
+		}
+	else
+		<table class='thTable' cellspacing='0' cellpadding='0' style='border:none;'>
+				<tr class='thTableRow'><td align='right' valign='top'><label for='message_box'>Message</label></td><td><textarea rows='5' cols='50' name='message_box' class='thTextArea' style='width:300px;'>{$_POST['message_box']}</textarea></td></tr>
+				<tr class='thTableRow'><td align='center' colspan='2'><input type='submit' name='send' value='Send Invites' class='thButton' ></td></tr>
+			</table>";
+	}
+<center><a href='http://openinviter.com/'><img src='http://openinviter.com/images/banners/banner_blue_1.gif' border='0' alt='Powered by OpenInviter.com' title='Powered by OpenInviter.com'></a></center>";
+if (!$done)
+	{
+	if ($step=='send_invites')
+		{
+		if ($inviter->showContacts())
+			{
+			<table class='thTable' align='center' cellspacing='0' cellpadding='0'><tr class='thTableHeader'><td colspan='".($plugType=='email'? "3":"2")."'>Your contacts</td></tr>";
+			if (count($contacts)==0)
+				<tr class='thTableOddRow'><td align='center' style='padding:20px;' colspan='".($plugType=='email'? "3":"2")."'>You do not have any contacts in your address book.</td></tr>";
+			else
+				{
+				<tr class='thTableDesc'><td><input type='checkbox' onChange='toggleAll(this)' name='toggle_all' title='Select/Deselect all' checked>Invite?</td><td>Name</td>".($plugType == 'email' ?"<td>E-mail</td>":"")."</tr>";
+				$odd=true;$counter=0;
+				foreach ($contacts as $email=>$name)
+					{
+					$counter++;
+					if ($odd) $class='thTableOddRow'; else $class='thTableEvenRow';
+					<tr class='{$class}'><td><input name='check_{$counter}' value='{$counter}' type='checkbox' class='thCheckbox' checked><input type='hidden' name='email_{$counter}' value='{$email}'><input type='hidden' name='name_{$counter}' value='{$name}'></td><td>{$name}</td>".($plugType == 'email' ?"<td>{$email}</td>":"")."</tr>";
+					$odd=!$odd;
+					}
+				<tr class='thTableFooter'><td colspan='".($plugType=='email'? "3":"2")."' style='padding:3px;'><input type='submit' name='send' value='Send invites' class='thButton'></td></tr>";
+				}
+			</table>";
+			}
+		<input type='hidden' name='step' value='send_invites'>
+			<input type='hidden' name='provider_box' value='{$_POST['provider_box']}'>
+			<input type='hidden' name='email_box' value='{$_POST['email_box']}'>
+			<input type='hidden' name='oi_session_id' value='{$_POST['oi_session_id']}'>";
+		}
+	}
+{$referForm.formClose}
+{literal}
+<script type='text/javascript'>
+	function toggleAll(element)
+	{
+	var form = document.forms.openinviter, z = 0;
+	for(z=0; z<form.length;z++)
+		{
+		if(form[z].type == 'checkbox')
+			form[z].checked = element.checked;
+	   	}
+	}
+</script>
+{/literal}
