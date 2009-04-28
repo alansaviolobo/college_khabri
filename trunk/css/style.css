@@ -59,7 +59,7 @@ body {min-width: 630px; background-color:#FFFFFF; }
 img {padding:2px; margin: 0 4px;float:right;}
 
 a:visited {text-decoration:underline;}
-a:hover {color:#0000ca;text-decoration:underline; background-color:#e4e4e4;}
+a:hover {color:#0000ca;text-decoration:underline; background-color:#e4e4e4; cursor: pointer;}
 a:active {color:#0000ca;text-decoration:underline;background-color:#e4e4e4;}
 a {text-decoration:underline;color:#000085;}
 
@@ -170,5 +170,13 @@ ul#navlist li a {
 
 .pref-graph {border:1px solid #000000; background-color: #FF6600; height: 12px; text-shadow:#999999; font-size:11px;margin:1px 1px 4px 12px}
 
-.top-login {padding: 4px;  }
+.top-login {padding: 18px 20px 0 0;  }
+
+.main-search-div {width:717px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:5px;}
+
+.style3 {
+font-family:Arial,Helvetica,sans-serif;
+font-size:small;
+text-decoration:underline;
+}
 

@@ -14,12 +14,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body class="yui-skin-sam" style="margin:0; background:#ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-    	<div class="top-login style14" align="right">       
+    	
+          
+    {$searchForm.formOpen}
+    <div align="right" class="style11 top-login">
+        {$searchForm.stateLabel}:&nbsp;{$searchForm.stateSelect} &nbsp;&nbsp;
+        {$searchForm.careerLabel}:&nbsp;{$searchForm.careerSelect}
+    </div>
+    <div class="top-login style14" align="right">       
             {php} echo anchor('welcome/login','Login');{/php} /
             {php} echo anchor('welcome/signup','Register');{/php}
         </div>
         <div align="center">
-            <p><img src="{php}echo base_url(){/php}/images/logo.jpg" style="margin:-15px auto 0 150px;float:none;"/></p>
+            <p><img src="{php}echo base_url(){/php}/images/logo.jpg" style="margin:-82px 0 0 0;float:none;"/></p>
         </div>
 
         <div id="main-container">
