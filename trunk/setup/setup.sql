@@ -23,7 +23,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` char(32) NOT NULL,
   `birth_date` date NOT NULL,
---  `mobile` char(10) NOT NULL,
+  `mobile` char(10) NOT NULL,
   PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB;
 
@@ -35,7 +35,7 @@ CREATE TABLE `universities` (
   `id` tinyint unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL default '',
 --  `city` varchar(45) NOT NULL default '',
---  `districtsUnderControl` varchar(45) NOT NULL default '',
+  `districts_under_control` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB;
 
@@ -46,37 +46,42 @@ CREATE TABLE `universities` (
 CREATE TABLE `institutes` (
   `code` char(10) NOT NULL,
   `name` varchar(255) NOT NULL default '',
-  `university` varchar(255) NOT NULL,
+  `university` tinyint unsigned NOT NULL,
   `status` varchar(255) NOT NULL default '',
   `address` varchar(255) NOT NULL default '',
   `city` varchar(255) NOT NULL default '',
   `district` varchar(255) NOT NULL default '',
   `state` varchar(255) NOT NULL default '',
   `pincode` varchar(255) NOT NULL default '',
+  `stdcode` varchar(5) NOT NULL default '',
   `phone` varchar(255) NOT NULL default '',
   `fax` varchar(255) NOT NULL default '',
   `email` varchar(255) NOT NULL default '',
   `url` varchar(255) NOT NULL default '',
+  `established_in` varchar(255) NOT NULL default '',
+  `closest_busstop` varchar(255) NOT NULL default '',
+  `closest_railway_station` varchar(255) NOT NULL default '',
+  `closest_airport` varchar(255) NOT NULL default '',
   `library` varchar(255) NOT NULL default '',
   `building` varchar(255) NOT NULL default '',
   `classrooms` varchar(255) NOT NULL default '',
   `land_availability` varchar(255) NOT NULL default '',
   `computers` varchar(255) NOT NULL default '',
   `laboratory` varchar(255) NOT NULL default '',
-  `hostel_intake_boys` integer unsigned NOT NULL default 0,
-  `hostel_intake_girls` integer unsigned NOT NULL default 0,
-  `sactioned_intake` tinyint unsigned NOT NULL,
-  `required_faculty` tinyint unsigned NOT NULL,
-  `professors` tinyint unsigned NOT NULL,
-  `asst_professors` tinyint unsigned NOT NULL,
-  `lecturers` tinyint unsigned NOT NULL,
-  `visiting_faculty` tinyint unsigned NOT NULL,
-  `permanent_faculty` tinyint unsigned NOT NULL,
-  `apporved_faculty` tinyint unsigned NOT NULL,
-  `adhoc_faculty` tinyint unsigned NOT NULL,
+  `boys_hostel` integer unsigned NOT NULL default 0,
+  `girls_hostel` integer unsigned NOT NULL default 0,
+  `sactioned_intake` tinyint unsigned NOT NULL default 0,
+  `required_faculty` tinyint unsigned NOT NULL default 0,
+  `professors` tinyint unsigned NOT NULL default 0,
+  `asst_professors` tinyint unsigned NOT NULL default 0,
+  `lecturers` tinyint unsigned NOT NULL default 0,
+  `visiting_faculty` tinyint unsigned NOT NULL default 0,
+  `permanent_faculty` tinyint unsigned NOT NULL default 0,
+  `apporved_faculty` tinyint unsigned NOT NULL default 0,
+  `adhoc_faculty` tinyint unsigned NOT NULL default 0,
   PRIMARY KEY  (`code`),
-  FOREIGN KEY (`university`) REFERENCES `universities`(`name`)
-  ON DELETE RESTRICT ON UPDATE RESTRICT
+  FOREIGN KEY (`university`) REFERENCES `universities`(`id`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -97,7 +102,7 @@ CREATE TABLE `faculty` (
   `institute_code` char(10) NOT NULL,
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
-  ON DELETE RESTRICT ON UPDATE RESTRICT
+  ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -108,6 +113,7 @@ CREATE TABLE `courses` (
   `id` integer unsigned NOT NULL auto_increment,
   `code` integer unsigned,
   `name` varchar(255) NOT NULL default '',
+  UNIQUE KEY  (`code`),
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB;
 
@@ -128,9 +134,9 @@ CREATE TABLE `institutecourse` (
   `MKB` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`course_code`, `institute_code`),
   FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
-  ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
-  ON DELETE RESTRICT ON UPDATE RESTRICT
+  ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -185,10 +191,14 @@ CREATE TABLE `fees_heads` (
 --
 
 CREATE TABLE `fee_structure` (
-  `institute_code` integer unsigned NOT NULL auto_increment,
-  `fee_head_code` varchar(45) NOT NULL default '',
-  `fee` mediumint NOT NULL,
-  PRIMARY KEY  (`institute_code`)
+  `institute_code` char(10) NOT NULL,
+  `tuition_fee` integer NOT NULL default 0,
+  `development_fee` integer NOT NULL default 0,
+  `total_fee` integer NOT NULL default 0,
+  `year` char(7) NOT NULL,
+  PRIMARY KEY  (`institute_code`, `year`),
+  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 --

@@ -14,14 +14,14 @@ class University extends Model
 
     function getUniversity($universityId)
     {
-        parent::Model();
-
-        $result = $this->db->where('name', $universityId)->get('universities');
+    	$university = new University();
+        $result = $this->db->where('id', $universityId)->get('universities');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid University');
         }
-        $this->set($result->row_object());
+        $university->set($result->row_object());
         $result->free_result();
+        return $university;
     }
 
     private function set($data = null)

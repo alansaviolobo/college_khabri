@@ -18,26 +18,26 @@ class Institute extends Model
 
     function getInstituteById($instituteId)
     {
-        parent::Model();
-
-        $result = $this->db->where('code', $instituteId)->get('institutes');
+		$institute = new Institute();
+        $result = $institute->db->where('code', $instituteId)->get('institutes');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid Institute');
         }
-        $this->set($result->row_object());
+        $institute->set($result->row_object());
         $result->free_result();
+        return $institute;
     }
 
-    function getInstituteByName($instituteName)
+    static function getInstituteByName($instituteName)
     {
-        parent::Model();
-
-        $result = $this->db->where('name', $instituteName)->get('institutes');
+		$institute = new Institute();
+        $result = $institute->db->where('name', $instituteName)->get('institutes');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid Institute');
         }
-        $this->set($result->row_object());
+        $institute->set($result->row_object());
         $result->free_result();
+        return $institute;
     }
 
     private function set($data = null)
@@ -50,11 +50,10 @@ class Institute extends Model
         $this->code = $data->code;
         $this->name = $data->name;
         $this->address = $data->address;
-        $this->university = new University();
-        $this->university->getUniversity($data->university);
+        $this->university = University::getUniversity($data->university);
     }
 
-    function getAllInstitutes()
+    function searchInstitutes()
     {
         $query = $this->db->limit(10)->get('institutes');
         $result = array();
