@@ -1,12 +1,49 @@
-{$loginForm.formOpen}
-{$loginForm.formErrors}
-{$loginForm.usernameLabel}
-{$loginForm.usernameBox}
-{$loginForm.passwordLabel}
-{$loginForm.passwordBox}
-{$loginForm.submit}
-{$loginForm.formClose}
-{php}
-  echo anchor('welcome/forgot_password', 'Forgot Password?');
-  echo anchor('welcome/signup', 'New user? Signup');
-{/php}
+<div id="doc" class="yui-t7"> 
+ 			<div id="bd" role="main"> 
+ 				<div class="yui-g"> 
+ 				 	<div role="main" class="yui-u first"> 
+						<div class="left-float">	   					
+		 				 	<div class="grey-line-below">
+			   						<span class="cut-off">Login into College Khabri</span>
+			   					</div>
+								<br/> 
+			   					{$loginForm.formOpen}
+								{$loginForm.formErrors}
+								{$loginForm.usernameLabel}<br/>
+								{$loginForm.usernameBox}<br/><br/>
+								{$loginForm.passwordLabel}<br/>
+								{$loginForm.passwordBox}<br/><br/>
+								{$loginForm.submit}
+								{$loginForm.formClose}
+								<div class="grey-line-below">
+			   						&nbsp;<br/>
+			   					</div><br/>
+								<span class="style16"><strong>Forgot your password?</strong></span><br/><br/>
+				   					{$forgotForm.formOpen}
+									{$forgotForm.formErrors}
+									{$forgotForm.usernameLabel}
+									{$forgotForm.usernameBox}
+									{$forgotForm.passwordLabel}
+									{$forgotForm.passwordBox}
+									{$forgotForm.submit}
+									{$forgotForm.formClose}
+			   					
+		       				</div> 
+		       			</div>
+		       		
+    			<div role="contentinfo" class="yui-u"> 
+    				<div class="right-float">
+			       			<div style="background: transparent url({php}echo base_url(){/php}images/features-div-top.gif) left top no-repeat; width: 543px; height:25px;">
+			       			</div>
+			       				<div style="background: transparent url({php}echo base_url(){/php}images/features-div-back.gif) left top repeat-y;padding:0 20px">
+			       						<span class="cut-off">Not a member? {php}echo anchor('user/signup', 'Register now!');{/php}
+			       						<br/><br/>Yeh membership wembership kyu yaar?</span>
+			       						
+			       				</div>
+		       				<div style="background: transparent url({php}echo base_url(){/php}images/features-div-bot.gif) left top no-repeat; width: 543px; height:25px;">
+		       				</div>
+		       		</div>	
+        		</div> 
+			</div> 
+	    </div>
+</div> 

@@ -130,7 +130,7 @@ class Welcome extends Controller {
             'careerLabel'       => form_label('A Career in', 'career'),
             'careerSelect'      => form_dropdown('career', array('en'=>'Engineering'), 'en'),
             'universityLabel'   => form_label('University', 'university'),
-            'universitySelect'  => form_dropdown('university', University::getAllUniversities()),
+            'universitySelect'  => form_dropdown('university', University::getAllUniversities(), null, "id='universities'"),
             'districtLabel'     => form_label('District', 'districts'),
             'districtSelect'    => form_dropdown('districts[]', $districts, null, "id='districts'"),
             'coursesLabel'      => form_label('Course', 'course'),
@@ -138,7 +138,7 @@ class Welcome extends Controller {
             'coursegroupLabel'  => form_label('Course Group', 'coursegroup'),
             'coursegroupSelect' => form_dropdown('coursegroup', $coursegroups, null, "id='coursegroups'"),
             'collegenameLabel'  => form_label('College Name', 'collegename'),
-            'collegenameBox'    => form_input('collegename'),
+            'collegenameBox'    => form_input('collegename', null, "class='big-field'"),
             'aidLabel'          => form_label('Aid Status', 'aid'),
             'aidSelect'         => form_dropdown('aid', $aid),
             'minorityLabel'     => form_label('Minority Status', 'minority'),
@@ -151,7 +151,7 @@ class Welcome extends Controller {
             'hostelSelect'      => form_dropdown('hostel', $hostel),
             'establishmentLabel'=> form_label('Established', 'establishment'),
             'establishmentSelect'=> form_dropdown('established', $establishment_year),
-            'submit'            => form_submit('submit', 'Search'),
+            'submit'            => form_submit('submit', 'Search',null, "class='search-button'"),
             'formClose'         => form_close()
         );
     	return $form;

@@ -14,24 +14,25 @@
    		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/reset-fonts-grids/reset-fonts-grids.css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
-	{if $bigheader}
+	<div class="top-login">	
+    	
+	    <br/>
+	    <div class="style14">
+	            {php} echo anchor('user/login','Login');{/php} /
+	            {php} echo anchor('user/signup','Register');{/php}
+	     </div>
+     </div>
+     
+    {if $bigheader}
     <body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-   		<div align="center"><img src="{php}echo base_url(){/php}images/logo.jpg" /></div>
+   		<div style="margin:auto;"> <a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}images/logo.jpg" /></a></div>
    	{else}
-    <body class="yui-skin-sam">
-        <div style="float:left;width:245px;height:110px">
-            <a href="{php}echo base_url();{/php}" style="border:none"><img src="{php}echo base_url(){/php}/images/main-logo.jpg"/></a>
-        </div>
+    <body class="yui-skin-sam top-logo">
+            <a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}/images/main-logo.jpg"/></a>
 	{/if}
 	    {$searchForm.formOpen}
-	    <div align="right" class="style11 top-login">
-	        {$searchForm.stateLabel}:&nbsp;{$searchForm.stateSelect} &nbsp;&nbsp;
-	        {$searchForm.careerLabel}:&nbsp;{$searchForm.careerSelect}
-	    </div>
-    	<div class="top-login style14" align="right">
-            {php} echo anchor('user/login','Login');{/php} /
-            {php} echo anchor('user/signup','Register');{/php}
-        </div>
+	   
+    	
         <div id="yui-d2f main-container">
             {include file="$template"}
         </div>
