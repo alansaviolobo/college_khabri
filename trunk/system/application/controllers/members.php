@@ -1,8 +1,8 @@
 <?php
 
-class User extends Controller {
+class Members extends Controller {
 
-    function User()
+    function Members()
     {
         parent::Controller();
         $this->load->library('Smarty');
@@ -11,13 +11,10 @@ class User extends Controller {
 
     function signup()
     {
-        for($count=1, $dates =array(); $count<=31; $dates[]=$count++);
-        for($count=1, $months=array(); $count<=12; $months[]=$count++);
-        for($count=intval(date('Y'))-25, $years =array(); $count<=intval(date('Y'))-15; $years[]=$count++);
         $submitjs = "document.signupform.password1.value=SHA1(document.signupform.password1.value)".
                     "document.signupform.password2.value=SHA1(document.signupform.password2.value)";
         $form = array(
-            'formOpen'      => form_open('welcome/signup', array('name'=>'signupform')),
+            'formOpen'      => form_open('members/signup', array('name'=>'signupform')),
             'usernameLabel' => form_label('Email address', 'username', array('class'=>'style16')),
             'usernameBox'   => form_input('username', null, "class='med-field'"),
             'password1Label'=> form_label('Password', 'password1', array('class'=>'style16')),
@@ -29,12 +26,22 @@ class User extends Controller {
             'submit'        => form_submit('submit', 'Signup', "onclick='$submitjs'"),
             'formClose'     => form_close()
         );
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|valid_email|max_length[255]');
+        $this->form_validation->set_rules('password1', 'Password', 'required');
+        $this->form_validation->set_rules('password2', 'Password', 'required|matches[password1]');
+        
 
         if (!$this->form_validation->run())
         {
-            //do something
+        	try 
+        	{
+        		$this->load->model('user');
+            	$this->user->create_user($email, $mobile, $password);
+        	}
+        	catch(Exception $e)
+        	{
+        		$form['formErrors'] = 'Account could not be created!';
+        	}
         }
         else $form['formErrors'] = validation_errors();
 
@@ -48,7 +55,7 @@ class User extends Controller {
         $this->load->library('form_validation');
 
         $loginform = array(
-            'formOpen'      => form_open('user/login', array('name'=>'loginform')),
+            'formOpen'      => form_open('members/login', array('name'=>'loginform')),
             'usernameLabel' => form_label('College Khabri username (your email address)', 'username', array('class'=>'style16')),
             'usernameBox'   => form_input('username', null, "class='med-field'"),
             'passwordLabel' => form_label('Your Password', 'password', array('class'=>'style16')),
@@ -66,7 +73,7 @@ class User extends Controller {
         else $loginform['formErrors'] = validation_errors();
 
          $forgotform = array(
-            'formOpen'      => form_open('user/forgot_password'),
+            'formOpen'      => form_open('members/forgot_password'),
             'usernameLabel' => form_label('College Khabri Username:', 'username', array('class'=>'style16')),
             'usernameBox'   => form_input('username'),
             'submit'        => form_submit('submit', 'Send me my password'),
@@ -82,7 +89,7 @@ class User extends Controller {
     {
         $this->load->library('form_validation');
          $form = array(
-            'formOpen'      => form_open('user/forgot_password'),
+            'formOpen'      => form_open('members/forgot_password'),
             'usernameLabel' => form_label('Username', 'username'),
             'usernameBox'   => form_input('username'),
             'submit'        => form_submit('submit', 'Reset my password!'),
@@ -110,7 +117,7 @@ class User extends Controller {
     {
         $this->load->library('openinviter');
         $form = array(
-            'formOpen'      => form_open('welcome/refer_friends'),
+            'formOpen'      => form_open('members/refer_friends'),
             'usernameLabel' => form_label('Username', 'username'),
             'usernameBox'   => form_input('username'),
             'passwordLabel' => form_label('Password', 'password'),
@@ -135,5 +142,5 @@ class User extends Controller {
     }
 }
 
-/* End of file user.php */
-/* Location: ./system/application/controllers/user.php */
+/* End of file members.php */
+/* Location: ./system/application/controllers/members.php */
