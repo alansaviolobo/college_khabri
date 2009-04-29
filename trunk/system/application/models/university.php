@@ -12,10 +12,10 @@ class University extends Model
     function id() {if (is_null($this->id)) $this->set(); return $this->id; }
     function name() {if (is_null($this->name)) $this->set(); return $this->name; }
 
-    function getUniversity($universityId)
+    static function getUniversity($universityId)
     {
     	$university = new University();
-        $result = $this->db->where('id', $universityId)->get('universities');
+        $result = $university->db->where('id', $universityId)->get('universities');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid University');
         }
@@ -28,7 +28,7 @@ class University extends Model
     {
         if (is_null($data))
         {
-            $data = $this->db->get('universities')->where('name', $this->name)->result_object();
+            $data = $this->db->get('universities')->where('id', $this->id)->result_object();
         }
 
         $this->id = $data->id;

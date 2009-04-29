@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{$title|default:'Welcome to College Khabri'}</title>
@@ -8,9 +8,10 @@
         <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container-min.js"></script>
         <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/element/element-min.js"></script>
         <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/tabview/tabview-min.js"></script>
-        <link media="all" type="text/css" rel="stylesheet" href="{php}echo base_url(){/php}css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}css/style.css"/>
         <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/assets/skins/sam/container.css">
         <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/tabview/assets/skins/sam/tabview.css">
+   		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/reset-fonts-grids/reset-fonts-grids.css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
 	{if $bigheader}
@@ -31,7 +32,7 @@
             {php} echo anchor('user/login','Login');{/php} /
             {php} echo anchor('user/signup','Register');{/php}
         </div>
-        <div id="main-container">
+        <div id="yui-d2f main-container">
             {include file="$template"}
         </div>
         <div id="footer-wrapper">
