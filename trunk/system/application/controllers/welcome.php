@@ -31,7 +31,8 @@ class Welcome extends Controller {
     function _search_form()
     {
 		$coursegroups = array(
-          '70' => 'Chemical',
+            '' => 'All course groups',
+		  '70' => 'Chemical',
           '10' => 'Civil',
           '60' => 'Computers',
           '40' => 'Electrical',
@@ -43,6 +44,7 @@ class Welcome extends Controller {
           '04' => 'Textile');
 
         $districts = array(
+          "All Districts" => 'All Districts',
           "Ahmednagar" => "Ahmednagar",
           "Akola" => "Akola",
           "Amravati" => "Amravati",
@@ -80,6 +82,7 @@ class Welcome extends Controller {
           "Yavatmal" => "Yavatmal");
 
         $aid = array(
+          "No Choice",	
           "Government",
           "Govenment Aided",
           "Government-Government-Aided",
@@ -89,11 +92,13 @@ class Welcome extends Controller {
           "University Managed (UA)");
 
         $autonomy = array(
+          "Any",
           "Autonomous",
           "Non-Autonomous",
           "Deemed University");
 
         $minority = array(
+          "No Choice",
           "Non-minority",
           "Linguistic - Gujarathi",
           "Linguistic - Gujarathi (Kutchhi)",
@@ -109,16 +114,18 @@ class Welcome extends Controller {
           "Religious - Sikh");
 
         $approx_fees = array(
+            "Any amount",
             "50,000 - 1,00,000",
             "1,00,000 - 2,00,000",
             "2,00,000 - 4,00,000");
 
         $hostel = array(
             "Not Needed",
-            "First Year Only",
-            "Full Course");
+            "Boys",
+            "Girls");
 
         $establishment_year = array(
+            "Any",
             "1800 - 1850",
             "1851 - 1900",
             "1901 - 2000");
@@ -151,6 +158,8 @@ class Welcome extends Controller {
             'hostelSelect'      => form_dropdown('hostel', $hostel),
             'establishmentLabel'=> form_label('Established', 'establishment'),
             'establishmentSelect'=> form_dropdown('established', $establishment_year),
+            'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
+            'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
             'submit'            => form_submit('submit', 'Search',null, "class='search-button'"),
             'formClose'         => form_close()
         );

@@ -145,7 +145,7 @@ ul#navlist li a {
     text-shadow:0 0 0 #000000;
 }
 
-.style11 {font-size: 10; font-family: Arial, Helvetica, sans-serif; }
+.style11 {font-size: small; font-family: Arial, Helvetica, sans-serif; }
 .style14 {font-size: small; font-family: Georgia, "Times New Roman", Times, serif; margin: 0; padding: 3px; color: #666666; font-weight: bold; }
 .style16 {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
 .style21 {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
@@ -178,7 +178,7 @@ ul#navlist li a {
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
-.top-logo {padding:4px;}
+.top-logo {background:transparent url(../images/logo.jpg) left top no-repeat; width:292px; height:144px;margin:auto;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
@@ -191,3 +191,8 @@ ul#navlist li a {
 .right-border {border-right: 2px solid #cccccc;}
 
 .search-button { font-weight:bold; height:50px; width:120px; font-size:larger;}
+
+.modify-search {background-color: #dddddd; color:#990000; font-weight:bold;}
+
+a.toggle_open { background:transparent url(/images/elements/opened.gif) no-repeat scroll left center;
+padding:0.5em 0.5em 0.5em 15px;}

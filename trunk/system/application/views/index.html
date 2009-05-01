@@ -21,7 +21,7 @@
 				        </td>
             			<td valign="top">
 				        	&nbsp;&nbsp;&nbsp;<a class="style3" onClick="addOption('universities')">[+] Add another University</a><br />
-         				    &nbsp;&nbsp;&nbsp;<span class="style5"><em>Click here to include another district like 'Thane' in the search</em></span>
+         				    &nbsp;&nbsp;&nbsp;<span class="style5"><em>Add to search colleges or courses in two or more universities</em></span>
 						</td>
 					</tr>
 				</tbody>
@@ -61,7 +61,7 @@
 			            </td>
 			            <td valign="top">
 			                &nbsp;&nbsp;&nbsp;<a class="style3" onClick="addOption('coursegroups')">[+] Add Course Group</a><br />
-			                &nbsp;&nbsp;&nbsp;<span class="style5"><em>Click here to combine two or more course groups</em><br /></span>
+			                &nbsp;&nbsp;&nbsp;<span class="style5"><em>Add to search two or more course groups</em><br /></span>
 			                &nbsp;&nbsp;&nbsp;<span class="style5">Eg. (1) Electronics + Instrumentation & Control + Electrical<br/></span>
 			                &nbsp;&nbsp;&nbsp;<span class="style5">Eg. (2) Bio-technology +  Pharmacy</span>
 			            </td>
@@ -86,8 +86,8 @@
 			            </td>
 			            <td valign="top">    
 			                &nbsp;&nbsp;&nbsp;<a class="style3" onClick="addOption('courses')">[+] Add another course</a> <br />
-			                &nbsp;&nbsp;&nbsp;<span class="style5"><em>Click here to combine two or more courses</em><br /></span>
-			                &nbsp;&nbsp;&nbsp;<span class="style5">Eg.  B. Tech Electronics Engineering + B.E Electrical<br/></span>
+			                &nbsp;&nbsp;&nbsp;<span class="style5"><em>Add to search two or more courses</em><br /></span>
+			                &nbsp;&nbsp;&nbsp;<span class="style5">Eg. (1) Automobile + Mechanical<br/></span>
 			                    &nbsp;&nbsp;&nbsp;<span class="style5">Eg. (2) Bio-technology +  Pharmacy</span>
 			            </td>
 			     </tbody>
@@ -118,7 +118,7 @@
 			        {$searchForm.aidSelect}
 			        <br /><br /><span class="cut-off">{$searchForm.minorityLabel}</span><br />
 			        {$searchForm.minoritySelect}
-			        <br /><br /><span class="cut-off">{$searchForm.autonomyLabel}</span>
+			        <br /><br /><span class="cut-off">{$searchForm.autonomyLabel}</span><br />
 			        {$searchForm.autonomySelect}
 			    </td>
 			    <td style="padding:0 20px;">
@@ -129,6 +129,13 @@
 			        <br /><br /><span class="cut-off">{$searchForm.feesLabel}</span><br />
 			        {$searchForm.feesSelect}
 			   </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><br/>
+					<div class="style16">&nbsp;{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
+					<div class="style16">
+				<td>
 			</tr>
 		</tbody>
 		</table>

@@ -25,10 +25,11 @@
      
     {if $bigheader}
     <body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-   		<div style="margin:auto;"> <a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}images/logo.jpg" /></a></div>
+   		<div onclick="location.href="'{php}echo base_url();{/php}'"; class="top-logo"></div>   
    	{else}
-    <body class="yui-skin-sam top-logo">
-            <a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}/images/main-logo.jpg"/></a>
+    <body class="yui-skin-sam">
+        
+    	<a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}/images/main-logo.jpg"/></a>
 	{/if}
 	    {$searchForm.formOpen}
 	   
