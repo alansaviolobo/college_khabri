@@ -19,12 +19,38 @@ USE collegekhabri;
 --
 
 CREATE TABLE `users` (
-  `user_id` integer unsigned NOT NULL auto_increment,
+  `id` integer unsigned NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
-  `password` char(32) NOT NULL,
-  `birth_date` date NOT NULL,
+  `password` char(40) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255),
   `mobile` char(10) NOT NULL,
-  PRIMARY KEY  (`user_id`)
+  `cet_marks` smallint NOT NULL,
+  `cet_rank` smallint NOT NULL,
+  `home_uni` varchar(255) NOT NULL,
+  `status` ENUM('registered', 'premium', 'locked', 'inactive') NOT NULL DEFAULT 'registered',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY  (`username`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`payment_log`
+--
+
+CREATE TABLE `payment_log` (
+  `id` integer unsigned NOT NULL auto_increment,
+  `user_id` integer unsigned NOT NULL,
+  `created_on` datetime NOT NULL,
+  `paid_on` datetime DEFAULT NULL,
+  `applied_on` datetime DEFAULT NULL,
+  `amount` smallint unsigned NOT NULL default 100,
+  `description` varchar(255) NOT NULL default 'subscription charges',
+  `channel` ENUM('creditcard', 'cashdeposit', 'neft') NOT NULL default 'cashdeposit',
+  `status` ENUM('pending', 'paid', 'applied') default 'pending',
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -122,7 +148,7 @@ CREATE TABLE `courses` (
 --
 
 CREATE TABLE `institutecourse` (
-  `course_code` int(10) unsigned NOT NULL auto_increment,
+  `course_code` integer unsigned NOT NULL auto_increment,
   `institute_code` char(10) NOT NULL default '',
   `AccreditedFrom` varchar(45) NOT NULL default '',
   `Intake` varchar(45) NOT NULL default '',
@@ -167,7 +193,7 @@ CREATE TABLE `approval_status` (
 --
 
 CREATE TABLE `cutoff` (
-  `choice_code` int(10) unsigned NOT NULL auto_increment,
+  `choice_code` integer unsigned NOT NULL auto_increment,
   `category_code` varchar(45) NOT NULL default '',
   `home_uni_status` enum('home', 'outside') NOT NULL default 'home',
   `ladies_status` enum('ladies', 'general') NOT NULL default 'general',
@@ -206,7 +232,7 @@ CREATE TABLE `fee_structure` (
 --
 
 CREATE TABLE `passdata` (
-  `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
+  `ChoiceCode` integer unsigned NOT NULL auto_increment,
   `Year` varchar(45) NOT NULL default '',
   `SactionedIntake` varchar(45) NOT NULL default '',
   `Admitted` varchar(45) NOT NULL default '',
@@ -222,7 +248,7 @@ CREATE TABLE `passdata` (
 --
 
 CREATE TABLE `placementcompanies` (
-  `Year` int(10) unsigned NOT NULL auto_increment,
+  `Year` integer unsigned NOT NULL auto_increment,
   `NameOfCompany` varchar(45) NOT NULL default '',
   `TotalPlaced` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`Year`)
@@ -233,7 +259,7 @@ CREATE TABLE `placementcompanies` (
 --
 
 CREATE TABLE `placementdata` (
-  `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
+  `ChoiceCode` integer unsigned NOT NULL auto_increment,
   `PlacementFacility` varchar(45) NOT NULL default '',
   `Year` varchar(45) NOT NULL default '',
   `TotalPassingStudents` varchar(45) NOT NULL default '',
@@ -250,7 +276,7 @@ CREATE TABLE `placementdata` (
 --
 
 CREATE TABLE `reservation` (
-  `CategoryCode` int(10) unsigned NOT NULL auto_increment,
+  `CategoryCode` integer unsigned NOT NULL auto_increment,
   `Category` varchar(45) NOT NULL default '',
   `ReservationPercentage` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`CategoryCode`)
@@ -261,7 +287,7 @@ CREATE TABLE `reservation` (
 --
 
 CREATE TABLE `seatdistribution` (
-  `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
+  `ChoiceCode` integer unsigned NOT NULL auto_increment,
   `CategoryCode` varchar(45) NOT NULL default '',
   `HUorOHU` varchar(45) NOT NULL default '',
   `GeneralOrLadies` varchar(45) NOT NULL default '',
@@ -274,7 +300,7 @@ CREATE TABLE `seatdistribution` (
 --
 
 CREATE TABLE `vacancyposition` (
-  `ChoiceCode` int(10) unsigned NOT NULL auto_increment,
+  `ChoiceCode` integer unsigned NOT NULL auto_increment,
   `Round` varchar(45) NOT NULL default '',
   `Vacancy` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`ChoiceCode`)

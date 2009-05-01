@@ -39,7 +39,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','session','email','validation','form_validation');
+$autoload['libraries'] = array('database', 'Smarty');
 
 
 /*
@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('university', 'institute', 'course');
+$autoload['model'] = array();
 
 
 

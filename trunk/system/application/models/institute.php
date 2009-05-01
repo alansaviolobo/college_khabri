@@ -13,7 +13,7 @@ class Institute extends Model
 	public $stdcode;
 	public $phone;
 	public $fax;
-	public $email;
+	public $emailAddress;
 	public $url;
 	public $establishedIn;
 	public $closestBusstop;
@@ -54,7 +54,7 @@ class Institute extends Model
     function stdcode() {if (is_null($this->stdcode)) $this->set(); return $this->stdcode; }
     function phone() {if (is_null($this->phone)) $this->set(); return $this->phone; }
     function fax() {if (is_null($this->fax)) $this->set(); return $this->fax; }
-    function email() {if (is_null($this->email)) $this->set(); return $this->email; }
+    function emailAddress() {if (is_null($this->emailAddress)) $this->set(); return $this->emailAddress; }
     function url() {if (is_null($this->url)) $this->set(); return $this->url; }
     function establishedIn() {if (is_null($this->establishedIn)) $this->set(); return $this->establishedIn; }
     function closestBusstop() {if (is_null($this->closestBusstop)) $this->set(); return $this->closestBusstop; }
@@ -104,7 +104,7 @@ class Institute extends Model
 		$this->stdcode = $data->stdcode;
 		$this->phone = $data->phone;
 		$this->fax = $data->fax;
-		$this->email = $data->email;
+		$this->emailAddress = $data->email;
 		$this->url = $data->url;
 		$this->establishedIn = $data->established_in;
 		$this->closestBusstop = $data->closest_busstop;

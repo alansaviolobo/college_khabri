@@ -5,7 +5,9 @@ class Welcome extends Controller {
     function Welcome()
     {
         parent::Controller();
-        $this->load->library('Smarty');
+        $this->load->model('University');
+        $this->load->model('Institute');
+        $this->load->model('Course');
     }
 
     function index()
