@@ -180,7 +180,7 @@ ul#navlist li a {
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
-.top-logo {padding:4px;}
+.top-logo {padding:4px;background: transparent url(../images/logo.jpg) left top no-repeat; width:292px; height:144px; margin:auto;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
