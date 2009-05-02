@@ -82,7 +82,7 @@ h2 {
 li {border-top: 1px dotted #E8E8E8; padding:0 2px;}
 
 
-.style5 {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
+.grey-context {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
 
 #v-thin-line {border-bottom:1px dotted #44a0e1;padding-bottom:5px;margin-top:9px;}
 
@@ -145,10 +145,10 @@ ul#navlist li a {
     text-shadow:0 0 0 #000000;
 }
 
-.style11 {font-size: small; font-family: Arial, Helvetica, sans-serif; }
-.style14 {font-size: small; font-family: Georgia, "Times New Roman", Times, serif; margin: 0; padding: 3px; color: #666666; font-weight: bold; }
-.style16 {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
-.style21 {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
+.basic-text {font-size: small; font-family: Arial, Helvetica, sans-serif; }
+.large-context {font-size: small; font-family: Georgia, "Times New Roman", Times, serif; margin: 0; padding: 3px; color: #666666; font-weight: bold; }
+.medium-text {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
+.black-context {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
 
 .small-box{ margin:2px;padding:6px 16px 15px 2px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;cursor: default;}
 
@@ -176,7 +176,7 @@ ul#navlist li a {
 
 .main-search-div {width:717px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:25px; border: 1px solid #cccccc;}
 
-.style3 {font-family:Arial,Helvetica,sans-serif;font-size:small; text-decoration:underline;}
+.small-link {font-family:Arial,Helvetica,sans-serif;font-size:small; text-decoration:underline;}
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
