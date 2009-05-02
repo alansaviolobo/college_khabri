@@ -150,13 +150,15 @@ ul#navlist li a {
 .style16 {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
 .style21 {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
 
-.small-box{ margin:2px;padding:6px 16px 15px 4px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;}
+.small-box{ margin:2px;padding:6px 16px 15px 2px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;cursor: default;}
 
 #top-small-border { border-top:3px solid black; float:right;}
 
 .sort-back {background:#c13447 url(../images/sort-row-back.jpg) repeat-x left top; font-family:Geneva, Arial, Helvetica, sans-serif; font-size:small; color:#000000; height:23px; }
 
-#search-results { border-bottom:1px dotted #6E6E6E; border-top:2px solid #0E0E0E; margin:7px 0px 0; padding:0 3px;}
+#search-table { }
+
+#search-table td { padding: 8px 3px;}
 
 .inst-code {border: 1px dashed #c13447; font-size:small; font-family:verdana; background-color:#e5f4ff; padding:1px;}
 
@@ -178,7 +180,7 @@ ul#navlist li a {
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
-.top-logo {background:transparent url(../images/logo.jpg) left top no-repeat; width:292px; height:144px;margin:auto;}
+.top-logo {padding:4px;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
@@ -194,5 +196,8 @@ ul#navlist li a {
 
 .modify-search {background-color: #dddddd; color:#990000; font-weight:bold;}
 
-a.toggle_open { background:transparent url(/images/elements/opened.gif) no-repeat scroll left center;
-padding:0.5em 0.5em 0.5em 15px;}
+.floatr {}
+
+.floatr img {float:right;}
+
+
