@@ -161,7 +161,9 @@ class Members extends Controller {
     
     function profile()
     {
-    	$this->smarty->display('profile.html');
+	    $this->smarty->assign('bigheader', false);
+	    $this->smarty->assign('template','profile.html');
+    	$this->smarty->display('template.html');
     	
     }
 

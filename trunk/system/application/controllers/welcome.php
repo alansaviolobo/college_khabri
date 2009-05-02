@@ -162,7 +162,7 @@ class Welcome extends Controller {
             'establishmentSelect'=> form_dropdown('established', $establishment_year),
             'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
             'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
-            'submit'            => form_submit('submit', 'Search',null, "class='search-button'"),
+            'submit'            => form_submit('submit', 'Search', "class='search-button'"),
             'formClose'         => form_close()
         );
     	return $form;

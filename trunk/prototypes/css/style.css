@@ -17,7 +17,6 @@ body {min-width: 630px; background-color:#FFFFFF; margin:0; }
 }
 #center {
     padding: 10px 20px;    /* CC padding */
-    width: 100%;
     border-top:4px solid #000000;
     border-right:1px solid #CCCCCC;
     border-left:2px solid #CCCCCC
@@ -158,7 +157,7 @@ ul#navlist li a {
 
 #search-table { }
 
-#search-table td { padding: 8px 3px;}
+#search-table td { padding: 8px 3px; border-bottom: 1px dashed #cdcdcd;}
 
 .inst-code {border: 1px dashed #c13447; font-size:small; font-family:verdana; background-color:#e5f4ff; padding:1px;}
 
@@ -180,7 +179,7 @@ ul#navlist li a {
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
-.top-logo {padding:4px;}
+.top-logo {padding:4px;background: transparent url(../images/logo.jpg) left top no-repeat; width:292px; height:144px; margin:auto;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
@@ -200,4 +199,4 @@ ul#navlist li a {
 
 .floatr img {float:right;}
 
-
+.green-bar {border: 1px solid #333333; height:10px; background: transparent url(../images/bar-stripe.png);}
