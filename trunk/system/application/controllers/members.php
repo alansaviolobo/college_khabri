@@ -27,7 +27,7 @@ class Members extends Controller {
             'password2Box'  => form_password('password2', null, "class='med-field'"),
             'mobileLabel'   => form_label('Mobile', 'mobile', array('class'=>'style16')),
             'mobileBox'     => form_input('mobile', null, "class='med-field'"),
-            'submit'        => form_submit('submit', 'Signup'),
+            'submit'        => form_submit('submit', 'Send me the activation code'),
             'formClose'     => form_close()
         );
         $rules = array(
@@ -241,6 +241,14 @@ class Members extends Controller {
     {
     	
     }
+    
+    function savedsearches()
+    {
+    	$this->smarty->assign('template', 'savedsearches.html');
+        $this->smarty->assign('bigheader', false);
+    	$this->smarty->display('template.html');     
+    }
+    
 }
 
 /* End of file members.php */

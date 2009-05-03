@@ -16,7 +16,7 @@ body {min-width: 630px; background-color:#FFFFFF; margin:0; }
 
 }
 #center {
-    padding: 10px 20px;    /* CC padding */
+    padding: 10px 5px;    /* CC padding */
     border-top:4px solid #000000;
     border-right:1px solid #CCCCCC;
     border-left:2px solid #CCCCCC
