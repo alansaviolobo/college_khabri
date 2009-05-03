@@ -48,7 +48,7 @@ class Course extends Model
     
     function getAllCourseGroups()
     {
-        $query = $this->db->distinct('group')->order_by('group')->get('courses');
+        $query = $this->db->distinct()->select('group')->order_by('group')->get('courses');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['group']]=$row['group'];
         return $result;
