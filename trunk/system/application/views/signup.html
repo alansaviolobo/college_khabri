@@ -1,74 +1,77 @@
 <div id="doc" class="yui-t7"> 
- 			<div id="bd" role="main"> 
- 				<div class="yui-g"> 
- 				 	<div role="main" class="yui-u first"> 
-						<div>	   					
-		 				 		<div class="grey-line-below">
-			   						<span class="cut-off">Become a College Khabri member</span>
-			   					</div>
-								<br/>
-								{$signupForm.formErrors} 
-								{$signupForm.formOpen}
-								<table>
-								<tr>
-								<td>
-								{$signupForm.usernameLabel}<br/>
-								{$signupForm.usernameBox}<br/><br/>
-								</td>
-								<td width="35%">
-										<p class="grey-context">Your own Email address please. The activation code is sent on this address, so make sure its valid. (And yes, WE NEVER SPAM YOU, only important updates may be sent.)</p>
-								</td>
-								</tr>
-								<tr>
-								<td>
-								{$signupForm.password1Label}<br/>
-								{$signupForm.password1Box}<br/><br/>
-								</td>
-								<td width="35%">
-										<p class="grey-context">Choose a password which is easy yet secure. Your friend should not know it :)</p>
-								</td>
-								</tr>
-								<tr>
-								<td>
-								{$signupForm.password2Label}<br/>
-								{$signupForm.password2Box}<br /><br />
-								</td>
-								<td width="35%">
-										<p class="grey-context">Bas ek baar aur.</p>
-								</td>
-								</tr>
-								<tr>
-								<td>
+	<div id="bd" role="main"> 
+		<div class="yui-g"> 
+			<div role="main" class="yui-u first"> 
+				<div> 
+					<div class="grey-line-below">
+						<span class="cut-off">Become a College Khabri member</span>
+					</div>
+					<br />
+					{$signupForm.formErrors} 
+					{$signupForm.formOpen}
+					<table summary="layout table">
+						<tr>
+							<td>
+								{$signupForm.usernameLabel}<br />
+								{$signupForm.usernameBox}<br />
+								<br />
+							</td>
+							<td width="35%">
+								<p id="username-context" class="grey-context" style="visibility:hidden">Your own Email address please. The activation code is sent on this address, so 
+									make sure its valid. (And yes, WE NEVER SPAM YOU, only important updates may be 
+									sent.)</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{$signupForm.password1Label}<br />
+								{$signupForm.password1Box}<br />
+								<br />
+							</td>
+							<td width="35%" id="password1-context" style="visibility:hidden">
+								<p class="grey-context">Choose a password which is easy yet secure. Your friend should not know it :)</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{$signupForm.password2Label}<br />
+								{$signupForm.password2Box}<br />
+								<br />
+							</td>
+							<td width="35%" id="password2-context" style="visibility:hidden">
+								<p class="grey-context">Bas ek baar aur.</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								{$signupForm.mobileLabel}<br />
-								{$signupForm.mobileBox}<br /><br />
-								</td>
-								<td width="35%">
-										<p class="grey-context">Used only for updates, notifications and important dates related to engineering. </p>
-								</td>
-								</tr>
-								
-								</table>
-								{$signupForm.submit}
-								{$signupForm.formClose}
-								
-						</div> 
-		       		</div>
-
-
-    			<div role="contentinfo" class="yui-u"> 
-    				<div>
-			       			<div style="background: transparent url({php}echo base_url(){/php}images/features-div-top.gif) left top no-repeat; width: 543px; height:25px;">
-			       			</div>
-			       				
-			       			<div style="background: transparent url({php}echo base_url(){/php}images/features-div-back.gif) left top repeat-y;padding:0 20px; width:499px;">
-			       						<span class="cut-off">Yeh membership wembership kyu yaar?</span><br/>akjdgs kagdhasg hgjh kg kags lkhask akjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhask
-			       			</div>
-			       			
-		       					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-bot.gif) left bottom no-repeat; width:543px; height:25px;">
-			       			</div>
-		       		</div>	
-        		</div> 
-			
-        		</div> 
-	    </div>
-</div> 
+								{$signupForm.mobileBox}<br />
+								<br />
+							</td>
+							<td width="35%" id="mobile-context" style="visibility:hidden">
+								<p class="grey-context">Used only for updates, notifications and important dates related to engineering. </p>
+							</td>
+						</tr>
+					</table>
+					{$signupForm.submit}
+					{$signupForm.formClose}
+				</div>
+			</div>
+			<div role="contentinfo" class="yui-u"> 
+				<div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-top.gif) left top no-repeat; width: 543px; height:25px;">
+					</div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-back.gif) left top repeat-y;padding:0 20px; width:499px;">
+						<span class="cut-off">Yeh membership wembership kyu yaar?</span><br />
+						akjdgs kagdhasg hgjh kg kags lkhask akjdgs kagdhasg hgjh kg kags lkhaskakjdgs 
+						kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg 
+						hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags 
+						lkhaskakjdgs kagdhasg hgjh kg kags lkhaskakjdgs kagdhasg hgjh kg kags lkhask
+					</div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-bot.gif) left bottom no-repeat; width:543px; height:25px;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

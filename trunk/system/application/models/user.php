@@ -62,7 +62,7 @@ class User extends Model
             $data = $this->db->where('id', $this->id)->get('users')->result_object();
         }
 
-	    $this->userId = $data->id;
+	    $this->id = $data->id;
 	    $this->username = $data->username;
 	    $this->mobile = $data->mobile;
 	    $this->firstName = $data->first_name;
@@ -72,7 +72,7 @@ class User extends Model
 	    $this->CETMarks = $data->cet_marks;
 	    $this->CETRank = $data->cet_rank;
 	    $this->homeUni = $data->home_uni;
-	    $this->lastTx = $this->db->where('user_id', $this->userId)->order_by('id')
+	    $this->lastTx = $this->db->where('user_id', $this->id)->order_by('id')
 	    						->limit(1)->get('payment_log')->result_object();
     }
 
