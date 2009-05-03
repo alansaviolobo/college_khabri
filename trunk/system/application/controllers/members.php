@@ -10,7 +10,7 @@ class Members extends Controller {
         $this->load->library('form_validation');
         $this->load->model('user');
         $this->smarty->assign('bigheader', true);
-        $this->smarty->assign('titlelink', $this->session->userdata('firstName'));var_dump($this->session->userdata('firstName'));
+        $this->smarty->assign('titlelink', $this->session->userdata('firstName'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 
@@ -84,11 +84,27 @@ class Members extends Controller {
 
     	$form = array(
             'formOpen'      => form_open('members/activation'),
-            'usernameLabel' => form_label('College Khabri username (your email address)', 'username', array('class'=>'medium-text')),
-            'usernameBox'   => form_input('username', null, "class='med-field'"),
-            'codeLabel' 	=> form_label('Your Activation Code', 'code', array('class'=>'medium-text')),
+            'codeLabel' 	=> form_label('Your Activation Code', 'code', array('class'=>'medium-text v-thin-line')),
             'codeBox'   	=> form_input('code', null, "class='med-field'"),
-            'submit'        => form_submit('submit', 'Activate my account'),
+	    	'fNameLabel' 	=> form_label('First Name', 'fname', array('class'=>'medium-text v-thin-line')),
+            'fNameBox'   	=> form_input('fname', null, "class='med-field'"),
+	    	'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
+            'lNameBox'   	=> form_input('lname', null, "class='med-field'"),
+	    	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
+            'categorySelect'=> form_dropdown('category', array(), "class='med-field'"),
+	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'mhtcetAppNo', array('class'=>'medium-text v-thin-line')),
+            'mhtAppNoBox'  	=> form_input('mhtcetAppNo', null, "class='med-field'"),
+	    	'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
+            'pCETScoreBox'  => form_input('pCETScore', null, "class='med-field'"),
+	    	'pCETRankLabel' => form_label('Projected CET rank', 'pCETRank', array('class'=>'medium-text v-thin-line')),
+            'pCETRankBox'   => form_input('pCETRank', null, "class='med-field'"),
+	    	'ai3eAppNoLabel'=> form_label('AIEEE application number', 'ai3eAppNo', array('class'=>'medium-text v-thin-line')),
+            'ai3eAppNoBox' 	=> form_input('ai3eAppNo', null, "class='med-field'"),
+        	'pAI3EScoreLabel'=> form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
+            'pAI3EScoreBox' => form_input('pAI3EScore', null, "class='med-field'"),
+	    	'pAI3ERankLabel'=> form_label('Projected AIEEE rank', 'pAI3ERank', array('class'=>'medium-text v-thin-line')),
+            'pAI3ERankBox'  => form_input('pAI3ERank', null, "class='med-field'"),
+        	'submit'        => form_submit('submit', 'Activate my account'),
             'formClose'     => form_close()
         );
     	
