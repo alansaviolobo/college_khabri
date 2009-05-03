@@ -1,12 +1,21 @@
-<div id="ck_nav_bar" class="yuimenubar yuimenubarnav" style="float:right">
+<div id="ck_nav_bar" class="yuimenubar yuimenubarnav">
 	<div class="bd">
 		<ul class="first-of-type">
-			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#communication">Communication</a>
+		
+		<span class="large-context" style="float:right;padding: 0px 3px;">
+			    	{if $titlelink neq ''}
+			    		Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / '.anchor('members/logout','Logout');{/php}
+			    	{else}
+			            {php} echo anchor('members/login','Login').' / '.anchor('members/signup','Register');{/php}
+			        {/if}
+		  	   	</span>
+		
+			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#communication">The field of Engineering</a>
 				<div id="communication" class="yuimenu">
 					<div class="bd">
 						<ul>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://360.yahoo.com">360&#176;</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://alerts.yahoo.com">Alerts</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://360.yahoo.com"><table><tr><td width="30px"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-what-is-engg.gif"></td><td>What is this thing <strong>'Engineering'?</strong></td></tr></table></a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://alerts.yahoo.com"><strong>Benefits</strong> of becoming an Engineer</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://avatars.yahoo.com">Avatars</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://groups.yahoo.com">Groups</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://promo.yahoo.com/broadband/">Internet Access</a></li>
@@ -30,7 +39,7 @@
 					</div>
 				</div>
 			</li>
-			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://shopping.yahoo.com">Shopping</a>
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://shopping.yahoo.com">Admission procedure</a>
 				<div id="shopping" class="yuimenu">
 					<div class="bd"> 
 						<ul>
@@ -46,7 +55,7 @@
 					</div>
 				</div>
 			</li>
-			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://entertainment.yahoo.com">Entertainment</a>
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://entertainment.yahoo.com">Kaam ka information</a>
 				<div id="entertainment" class="yuimenu">
 					<div class="bd"> 
 						<ul>
@@ -62,27 +71,12 @@
 					</div>
 				</div>
 			</li>
-			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#">Information</a>
-				<div id="information" class="yuimenu">
-					<div class="bd"> 
-						<ul>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://downloads.yahoo.com">Downloads</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://finance.yahoo.com">Finance</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://health.yahoo.com">Health</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://local.yahoo.com">Local</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://maps.yahoo.com">Maps &#38; Directions</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://my.yahoo.com">My Yahoo!</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://news.yahoo.com">News</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://search.yahoo.com">Search</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://smallbusiness.yahoo.com">Small Business</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://weather.yahoo.com">Weather</a></li>
-						</ul>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
+			
+			</ul>
+			 
+		</div>
 </div>
+<br/>
 {literal}
 <script>
 var ua = YAHOO.env.ua,

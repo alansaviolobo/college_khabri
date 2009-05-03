@@ -171,15 +171,17 @@ ul#navlist li a {
 
 .pref-graph {border:1px solid #000000; background-color: #FF6600; height: 12px; text-shadow:#999999; font-size:11px;margin:1px 1px 4px 12px}
 
-.top-login {padding: 18px 20px 0 0; float:right; }
+.top-login {padding: 6px 6px 0 0; float:right; }
 
-.main-search-div {width:717px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:25px; border: 1px solid #cccccc;}
+.main-search-div {width:795px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:25px; border: 1px solid #cccccc;}
 
 .small-link {font-family:Arial,Helvetica,sans-serif;font-size:small; text-decoration:underline;}
 
 .grey-line-below {border-bottom: 2px solid #e5e5e5; padding: 0 0 10px 0;}
 
-.top-logo {padding:4px;background: transparent url(../images/logo.jpg) left top no-repeat; width:292px; height:144px; margin:auto;}
+.top-logo {padding:4px;background: transparent url(../images/big-logo.png) left top no-repeat; width:276px; height:150px; margin:auto;}
+
+.main-logo {padding:4px;background: transparent url(../images/main-logo.png) left top no-repeat; width:245px; height:133px; margin:auto;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
@@ -193,6 +195,8 @@ ul#navlist li a {
 
 .search-button { font-weight:bold; height:50px; width:120px; font-size:larger;}
 
+.medium-button { font-weight:bold; height:30px; width:80px; font-size:larger;}
+
 .modify-search {background-color: #dddddd; color:#990000; font-weight:bold;}
 
 .floatr {}
@@ -200,3 +204,17 @@ ul#navlist li a {
 .floatr img {float:right;}
 
 .green-bar {border: 1px solid #333333; height:10px; background: transparent url(../images/bar-stripe.png);}
+
+.errormsg {padding:2px; color:red;}
+
+.yui-skin-sam .yuimenubaritemlabel { border-style:hidden;margin:0;}
+
+.yui-skin-sam .yuimenubarnav .yuimenubaritemlabel-hassubmenu {font-family:arial,helvetica,clean,sans-serif; font-size:112%;}
+
+.yui-skin-sam .yuimenuitem {font-size:110%;}
+
+.sm-icon {padding: 0px 2px;}
+
+.yui-skin-sam .yuimenuitemlabel {padding:7px 12px 4px;}
+
+.yuimenubar li, .yuimenu li {border-top:0;}

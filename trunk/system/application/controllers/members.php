@@ -132,7 +132,7 @@ class Members extends Controller {
             'usernameBox'   => form_input('username', null, "class='med-field'"),
             'passwordLabel' => form_label('Your Password', 'password', array('class'=>'medium-text')),
             'passwordBox'   => form_password('password', null, "class='med-field'"),
-            'submit'        => form_submit('submit', 'Login'),
+            'submit'        => form_submit('submit', 'Login', "class='medium-button'"),
             'formClose'     => form_close()
         );
         $this->form_validation->set_rules('username', 'Username', 'required');

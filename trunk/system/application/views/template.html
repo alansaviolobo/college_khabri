@@ -11,33 +11,33 @@
         <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/element/element-min.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/menu/menu.js"></script>
         <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/tabview/tabview-min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}css/style.css"/>
         <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/assets/skins/sam/container.css">
 		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/menu/assets/skins/sam/menu.css"> 
    		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/reset-fonts-grids/reset-fonts-grids.css">
         <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/tabview/assets/skins/sam/tabview.css">
+        <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}css/style.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {literal} 
+        <!--[if lte IE 6]>
+			<style type="text/css">
+			        .top-logo {	
+						background-image: none;
+			        	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{php}echo base_url(){/php}/images/main-logo.png', sizingMethod='scale');
+			       	}       
+			  
+			 </style>
+			<![endif]-->
+		{/literal}
     </head>
     
-    {include file='infomenu.html'}
-	<div class="top-login">	
-	    <br/>
-	    <div class="large-context">
-	    	{if $titlelink neq ''}
-	    		Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / '.anchor('members/logout','Logout');{/php}
-	    	{else}
-	            {php} echo anchor('members/login','Login').' / '.anchor('members/signup','Register');{/php}
-	        {/if}
-	     </div>
-     </div>
-     
+	
+	{include file='infomenu.html'}	    
+
+      <body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;"> 
+
     {if $bigheader}
-    <body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-   		<a href="{php}echo base_url(){/php}"><div class="top-logo"></div></a>   
-   	{else}
-    <body class="yui-skin-sam">
-    	<a href="{php}echo base_url();{/php}"><img src="{php}echo base_url(){/php}/images/main-logo.jpg"/></a>
-	{/if}
+       		<a href="{php}echo base_url(){/php}"><div class="top-logo"></div></a>  
+  	{/if}
         <div id="yui-d2f main-container">
             {include file="$template"}
         </div>
