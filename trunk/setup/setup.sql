@@ -73,7 +73,9 @@ CREATE TABLE `institutes` (
   `code` char(10) NOT NULL,
   `name` varchar(255) NOT NULL default '',
   `university` tinyint unsigned NOT NULL,
-  `status` varchar(255) NOT NULL default '',
+  `aid_status` varchar(255) NOT NULL default '',
+  `autonomy_status` varchar(255) NOT NULL default '',
+  `minority_status` varchar(255) NOT NULL default '',
   `address` varchar(255) NOT NULL default '',
   `city` varchar(255) NOT NULL default '',
   `district` varchar(255) NOT NULL default '',
@@ -136,11 +138,10 @@ CREATE TABLE `faculty` (
 --
 
 CREATE TABLE `courses` (
-  `id` integer unsigned NOT NULL auto_increment,
-  `code` integer unsigned,
+  `code` integer unsigned NOT NULL,
   `name` varchar(255) NOT NULL default '',
-  UNIQUE KEY  (`code`),
-  PRIMARY KEY  (`id`)
+  `group` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`code`)
 ) ENGINE=InnoDB;
 
 --

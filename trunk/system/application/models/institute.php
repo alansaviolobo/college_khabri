@@ -112,20 +112,32 @@ class Institute extends Model
 		$this->closestAirport = $data->closest_airport;
         $this->university = University::getUniversity($data->university);
     }
-
-    function searchInstitutes()
+    
+    function getAllMinorities()
     {
-        $query = $this->db->limit(10)->get('institutes');
+        $query = $this->db->distinct('minority_status')->order_by('minority_status')->get('institutes');
         $result = array();
-        $count = 0;
-        foreach($query->result_object() as $row)
-        {
-            $result[$count] = new Institute();
-            $result[$count]->set($row);
-            $count++;
-        }
-        
-        return $result;
+        foreach($query->result_array() as $row) $result[$row['minority_status']]=$row['minority_status'];
+        ksort($result);
+        return array('' => 'No Choice') + $result;
+    }
+
+    function getAllAutonomies()
+    {
+        $query = $this->db->distinct('autonomy_status')->order_by('autonomy_status')->get('institutes');
+        $result = array();
+        foreach($query->result_array() as $row) $result[$row['autonomy_status']]=$row['autonomy_status'];
+        ksort($result);
+        return array('' => 'Any') + $result;
+    }
+    
+    function getAllAidStatus()
+    {
+        $query = $this->db->distinct('aid_status')->order_by('aid_status')->get('institutes');
+        $result = array();
+        foreach($query->result_array() as $row) $result[$row['autonomy_status']]=$row['autonomy_status'];
+        ksort($result);
+        return array('' => 'Any') + $result;
     }
 }
 ?>

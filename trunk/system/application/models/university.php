@@ -35,12 +35,26 @@ class University extends Model
         $this->name = $data->name;
     }
 
-    function getAllUniversities()
+    function getUniversities()
     {
-        $query = $this->db->select('id, name')->get('universities');
+        $query = $this->db->select('id, name')->order_by('name')->get('universities');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['id']]=$row['name'];
-        return $result;
+        return array('' => 'All Universities') + $result;
+    }
+    
+    function getDistricts()
+    {
+    	$query = $this->db->select('districts_under_control')->get('universities');
+        $result = array();
+        foreach($query->result_object() as $row)
+        {
+        	$list = explode(',', $row->districts_under_control);
+        	foreach($list as $district)
+        		$result[$district] = $district;
+        }
+        ksort($result);
+        return array('' => 'Any District') + $result;
     }
 }
 ?>
