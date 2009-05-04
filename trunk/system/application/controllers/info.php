@@ -38,6 +38,12 @@ class Info extends Controller {
         $this->smarty->assign('template', 'whatisengineering.html');
         $this->smarty->display('template.html');
     }    
+    
+    function benefits_of_becoming_an_engineer()
+    {
+        $this->smarty->assign('template', 'benefits_of_becoming_an_engineer.html');
+        $this->smarty->display('template.html');
+    }   
 }
 
 /* End of file static.php */

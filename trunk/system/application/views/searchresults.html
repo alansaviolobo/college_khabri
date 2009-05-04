@@ -33,7 +33,7 @@
 					    {foreach from=$results item='choicecode'}
 					    	<tr>
 			      				<td><span class="inst-code"><a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a></span></td>
-			      				<td class="basic-text">
+			      				<td class="basic-text search-results-small">
 			      					<span class="basic-text"><strong><a href="#">{$choicecode->cname}</a></strong></span> @ <a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->iname}</a></td>
 			      				<td class="basic-text"><div align="left">{$choicecode->district}</div></td>
 			      				<td class="basic-text"><div align="left"><strong>{$choicecode->total_fee}</strong></div></td>

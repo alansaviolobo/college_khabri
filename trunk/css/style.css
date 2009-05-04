@@ -146,7 +146,7 @@ ul#navlist li a {
 
 .basic-text {font-size: small; font-family: Arial, Helvetica, sans-serif; }
 .large-context {font-size: small; font-family: Georgia, "Times New Roman", Times, serif; margin: 0; padding: 3px; color: #666666; font-weight: bold; }
-.medium-text {font-size: medium; font-family: Arial, Helvetica, sans-serif; }
+.medium-text {font-size: medium; font-family: Arial, Helvetica, sans-serif;color:#232323;font-size:11pt;line-height:15pt; }
 .black-context {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
 
 .small-box{ margin:2px;padding:6px 16px 15px 2px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;cursor: default;}
@@ -166,10 +166,6 @@ ul#navlist li a {
 .cut-off {font-size: 16pt; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: #c13447;}
 
 .small-text {font-size: x-small; font-family: Arial, Helvetica, sans-serif;}
-
-.chance-graph {border:1px solid #000000; background-color:#00FF00; height: 12px; text-shadow:#999999; font-size:11px;margin:1px 1px 4px 12px}
-
-.pref-graph {border:1px solid #000000; background-color: #FF6600; height: 12px; text-shadow:#999999; font-size:11px;margin:1px 1px 4px 12px}
 
 .top-login {padding: 6px 6px 0 0; float:right; }
 
