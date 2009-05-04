@@ -60,8 +60,6 @@ CREATE TABLE `payment_log` (
 CREATE TABLE `universities` (
   `id` tinyint unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL default '',
---  `city` varchar(45) NOT NULL default '',
-  `districts_under_control` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB;
 
@@ -72,7 +70,7 @@ CREATE TABLE `universities` (
 CREATE TABLE `institutes` (
   `code` char(10) NOT NULL,
   `name` varchar(255) NOT NULL default '',
-  `university` tinyint unsigned NOT NULL,
+  `university_id` tinyint unsigned NOT NULL,
   `aid_status` varchar(255) NOT NULL default '',
   `autonomy_status` varchar(255) NOT NULL default '',
   `minority_status` varchar(255) NOT NULL default '',
@@ -90,25 +88,67 @@ CREATE TABLE `institutes` (
   `closest_busstop` varchar(255) NOT NULL default '',
   `closest_railway_station` varchar(255) NOT NULL default '',
   `closest_airport` varchar(255) NOT NULL default '',
-  `library` varchar(255) NOT NULL default '',
-  `building` varchar(255) NOT NULL default '',
-  `classrooms` varchar(255) NOT NULL default '',
-  `land_availability` varchar(255) NOT NULL default '',
-  `computers` varchar(255) NOT NULL default '',
-  `laboratory` varchar(255) NOT NULL default '',
   `boys_hostel` integer unsigned NOT NULL default 0,
   `girls_hostel` integer unsigned NOT NULL default 0,
-  `sactioned_intake` tinyint unsigned NOT NULL default 0,
-  `required_faculty` tinyint unsigned NOT NULL default 0,
-  `professors` tinyint unsigned NOT NULL default 0,
-  `asst_professors` tinyint unsigned NOT NULL default 0,
-  `lecturers` tinyint unsigned NOT NULL default 0,
-  `visiting_faculty` tinyint unsigned NOT NULL default 0,
-  `permanent_faculty` tinyint unsigned NOT NULL default 0,
-  `apporved_faculty` tinyint unsigned NOT NULL default 0,
-  `adhoc_faculty` tinyint unsigned NOT NULL default 0,
   PRIMARY KEY  (`code`),
-  FOREIGN KEY (`university`) REFERENCES `universities`(`id`)
+  FOREIGN KEY (`university_id`) REFERENCES `universities`(`id`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`courses`
+--
+
+CREATE TABLE `courses` (
+  `code` smallint unsigned NOT NULL,
+  `name` varchar(255) NOT NULL default '',
+  `group` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`code`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`choice_codes`
+--
+
+CREATE TABLE `choice_codes` (
+  `code` integer unsigned NOT NULL auto_increment,
+  `institute_code` char(10) NOT NULL,
+  `course_code` smallint unsigned NOT NULL,
+  `accredited_from` year,
+  `accredited_to` year,
+  `start_year` year,
+  PRIMARY KEY  (`code`),
+  FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
+  ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`reservation_categories`
+--
+
+CREATE TABLE `reservation_categories` (
+  `id` tinyint unsigned NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`reservation_quotas`
+--
+
+CREATE TABLE `choice_code_reservation_quotas` (
+  `choice_code` integer unsigned NOT NULL auto_increment,
+  `category_id` tinyint unsigned NOT NULL,
+  `category_parent` tinyint unsigned NOT NULL,
+  `quota` tinyint unsigned,
+  PRIMARY KEY  (`choice_code`, `category_id`, `category_parent`),
+  FOREIGN KEY (`choice_code`) REFERENCES `choice_codes`(`code`)
+  ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`category_id`) REFERENCES `reservation_categories`(`id`)
+  ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`category_parent`) REFERENCES `reservation_categories`(`id`)
   ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
@@ -129,39 +169,6 @@ CREATE TABLE `faculty` (
   `6monthTo1yr` boolean NOT NULL,
   `institute_code` char(10) NOT NULL,
   PRIMARY KEY  (`id`),
-  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
-  ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`courses`
---
-
-CREATE TABLE `courses` (
-  `code` integer unsigned NOT NULL,
-  `name` varchar(255) NOT NULL default '',
-  `group` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`code`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `collegekhabri`.`institutecourse`
---
-
-CREATE TABLE `institutecourse` (
-  `course_code` integer unsigned NOT NULL auto_increment,
-  `institute_code` char(10) NOT NULL default '',
-  `AccreditedFrom` varchar(45) NOT NULL default '',
-  `Intake` varchar(45) NOT NULL default '',
-  `StartYear` varchar(45) NOT NULL default '',
-  `CAPSeats` varchar(45) NOT NULL default '',
-  `MSSeats` varchar(45) NOT NULL default '',
-  `InstituteSeats` varchar(45) NOT NULL default '',
-  `MinoritySeats` varchar(45) NOT NULL default '',
-  `MKB` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`course_code`, `institute_code`),
-  FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
-  ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
   ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;

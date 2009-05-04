@@ -8,7 +8,7 @@
       
   
   <div id="less-details-options">
-      <div align="right"><a class="small-link" onclick="this.parentNode.parentNode.style.display='none';getElementById('less-details-search').style.display='block'">Search by typing the name of the college?</a></div>
+      <div align="right">{$searchForm.searchLink}</div>
     <br/> 
       <span class="cut-off">{$searchForm.universityLabel}</span><br />
         <div>
@@ -70,7 +70,7 @@
 			 </table>
             </div>
             <br /><br />
-            <a class="small-link" onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
+            {$searchForm.coursesLink}
             <br/><span class="grey-context"><i>If you want know the exact course to search,</i><br/>Eg. B. Tech Mechanical or B.E Electrical Engg.</span>
         </div>
         <div id="course_selection_div">
@@ -93,8 +93,8 @@
 			 </table>
             </div>
         <br />
-        <a class="small-link" onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
-        <span class="grey-context"><i>If you want to search all colleges under one group, Eg. Mechanical or Electrical</i></span><br />
+        {$searchForm.courseGroupLink}<br />
+        <span class="grey-context"><em>If you want to search all colleges under one group, Eg. Mechanical or Electrical</em></span><br />
         </div>
         <br/><br/>
        <div><span><a class="small-link" onclick="getElementById('more-details').style.display='block'">Advanced Search</a> <img src="images/rba-arrow-small-down.gif">
@@ -103,8 +103,8 @@
        <br/><br/>
     </div>
     <div id="less-details-search" style="display:none;">
-        <span class="cut-off">{$searchForm.collegenameLabel}</span><br />
-        {$searchForm.collegenameBox}<br />
+        <span class="cut-off">{$searchForm.searchLabel}</span><br />
+        {$searchForm.searchBox}<br />
         <span class="grey-context">Eg. <i>Vidyalankar Institute of Technology</i></span><br/><br/>
         <a class="small-link" onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a><br/><br/>
     </div>

@@ -1,22 +1,18 @@
 <div id="doc3" class="yui-t3">
 	<div id="hd" role="banner">
-		
 	</div>
 	<div id="bd" role="main">
 		<div id="yui-main">
 			<div class="yui-b">
 				<div class="yui-gc">
 					<div class="yui-u first">
-					
 					<div id="center">
-						
 						<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC">
   							<tr>
   	 							<td width="35%" class="modify-search medium-text"><a href="#">Modify your search</a>&nbsp;&#187;</td>
 								<td width="65%" class="basic-text"><div align="left">Mumbai University | All Districts | Automobile Engineering, Mechanical Engineering</div></td>   
  							</tr>
 						</table>
-					    
 						<h1>Search Results:</h1>
 					    <span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
 					    <br /><br />
@@ -24,7 +20,6 @@
 				    		<tr>
 				    			<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg">
 				    		</tr>	
-				     
 					     <tr class="sort-back">
 			                  <td width="10%" style="padding:0px;border:0;"><div align="center"><strong>Choice code</strong></div></td>
 			                  <td width="25%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>Stream @ College Name</strong></a>&#x2193;</div></td>
@@ -35,13 +30,13 @@
 			     			  <td width="16%" style="padding:0px;border:0;"><div align="center"><strong>Your chances</strong></div></td>
 			    			</tr>
 					    
-					    {foreach from=$results item='institute'}
-					    
+					    {foreach from=$results item='choicecode'}
 					    	<tr>
-			      				<td><span class="inst-code"><a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$institute->name()|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">53653</a></span></td>
-			      				<td class="basic-text"><span class="basic-text"><strong><a href="#">Information Technology</a></strong></span> @ <a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$institute->name()|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$institute->name()}</a></td>
-			      				<td class="basic-text"><div align="left">Aurangabad </div></td>
-			      				<td class="basic-text"><div align="left"><strong>45000</strong></div></td>
+			      				<td><span class="inst-code"><a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a></span></td>
+			      				<td class="basic-text">
+			      					<span class="basic-text"><strong><a href="#">{$choicecode->cname}</a></strong></span> @ <a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->iname}</a></td>
+			      				<td class="basic-text"><div align="left">{$choicecode->district}</div></td>
+			      				<td class="basic-text"><div align="left"><strong>{$choicecode->total_fee}</strong></div></td>
 			      				<td><div align="center"><span class="small-box"><span title="Popularity Rank of the college">003</span></span></div></td>
 			       				<td class="cut-off"><div align="center">160</div></td>
 			      				<td>

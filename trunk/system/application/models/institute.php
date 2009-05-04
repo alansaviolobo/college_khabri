@@ -19,24 +19,7 @@ class Institute extends Model
 	public $closestBusstop;
 	public $closestRailwayStation;
 	public $closestAirport;
-/*	public $library;
-	public $building;
-	public $classrooms;
-	public $landAvailability;
-	public $computers;
-	public $laboratory;
-	public $boysHostel;
-	public $girlsHostel;
-	public $sactionedIntake;
-	public $requiredFaculty;
-	public $professors;
-	public $asstProfessors;
-	public $lecturers;
-	public $visitingFaculty;
-	public $permanentFaculty;
-	public $apporvedFaculty;
-	public $adhocFaculty;
-*/	
+	
     function Institute()
     {
         parent::Model();
@@ -113,12 +96,19 @@ class Institute extends Model
         $this->university = University::getUniversity($data->university);
     }
     
+    function getDistricts()
+    {
+    	$query = $this->db->distinct()->select('district')->order_by('district')->get('institutes');
+        $result = array();
+        foreach($query->result_array() as $row) $result[$row['district']]=$row['district'];
+        return array('' => 'Any District') + $result;
+    }
+    
     function getAllMinorities()
     {
         $query = $this->db->distinct()->select('minority_status')->order_by('minority_status')->get('institutes');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['minority_status']]=$row['minority_status'];
-        ksort($result);
         return array('' => 'No Choice') + $result;
     }
 
@@ -127,7 +117,6 @@ class Institute extends Model
         $query = $this->db->distinct()->select('autonomy_status')->order_by('autonomy_status')->get('institutes');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['autonomy_status']]=$row['autonomy_status'];
-        ksort($result);
         return array('' => 'Any') + $result;
     }
     
