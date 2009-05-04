@@ -32,6 +32,12 @@ class Info extends Controller {
         $this->smarty->assign('template', 'privacypolicy.html');
         $this->smarty->display('template.html');
     }
+
+ 	function what_is_engineering()
+    {
+        $this->smarty->assign('template', 'whatisengineering.html');
+        $this->smarty->display('template.html');
+    }    
 }
 
 /* End of file static.php */

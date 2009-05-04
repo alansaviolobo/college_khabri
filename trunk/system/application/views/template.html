@@ -33,10 +33,11 @@
 	
 	{include file='infomenu.html'}	    
 
-      <body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;"> 
-
-    {if $bigheader}
-       		<a href="{php}echo base_url(){/php}"><div class="top-logo"></div></a>  
+     {if $bigheader}
+       	<body class="yui-skin-sam" style="background: #ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;"> 	
+    	<a href="{php}echo base_url(){/php}"><div class="top-logo"></div></a> 
+    {else}
+    	<body class="yui-skin-sam" style="background-color:#ffffff;">  
   	{/if}
         <div id="yui-d2f main-container">
             {include file="$template"}

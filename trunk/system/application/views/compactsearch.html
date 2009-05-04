@@ -1,10 +1,7 @@
-<div class="main-search-div">
+<div>
 	{$searchForm.formOpen}
-		<div class="basic-text" style="float:right">
-		        {$searchForm.stateLabel}:&nbsp;{$searchForm.stateSelect} &nbsp;&nbsp;
-		        {$searchForm.careerLabel}:&nbsp;{$searchForm.careerSelect}
-		        </div>  
-<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;margin-top:0;">Search</p>
+		
+<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:12pt;letter-spacing:-1px;margin-top:0;">Search</p>
       
   
   <div id="less-details-options">
@@ -21,8 +18,8 @@
 				            </span>
 				        </td>
             			<td valign="top">
-				        	&nbsp;<a class="small-link" onClick="addOption('universities')">[+] Add another University</a><br />
-         				    &nbsp;<span class="grey-context"><i>Add to search colleges or courses in two or more universities</i></span>
+				        	<a title="Add to search colleges or courses in two or more universities" class="small-link" onClick="addOption('universities')">[+]</a><br />
+         				    
 						</td>
 					</tr>
 				</tbody>
@@ -42,8 +39,7 @@
 				            </span>
 				        </td>
             			<td valign="top">
-				        	&nbsp;<a class="small-link" onClick="addOption('districts')">[+] Add another district</a><br />
-         				    &nbsp;<span class="grey-context"><i>Click here to include another district like 'Thane' in the search</i></span>
+				        	<a title="Click here to include another district like 'Thane' in the search" class="small-link" onClick="addOption('districts')">[+] Add another district</a><br />
 						</td>
 					</tr>
 				</tbody>
@@ -61,17 +57,13 @@
 			                </span>
 			            </td>
 			            <td valign="top">
-			                &nbsp;<a class="small-link" onClick="addOption('coursegroups')">[+] Add Course Group</a><br />
-			                &nbsp;<span class="grey-context"><i>Add to search two or more course groups</i><br /></span>
-			                &nbsp;<span class="grey-context">Eg. (1) Electronics + Instrumentation & Control + Electrical<br/></span>
-			                &nbsp;<span class="grey-context">Eg. (2) Bio-technology +  Pharmacy</span>
+			                &nbsp;<a title="Add to search two or more course groups; Eg. (1) Electronics + Instrumentation & Control + Electrical" class="small-link" onClick="addOption('coursegroups')">[+] </a><br />
 			            </td>
 			     </tbody>
 			 </table>
             </div>
             <br /><br />
-            <a class="small-link" onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
-            <br/><span class="grey-context"><i>If you want know the exact course to search,</i><br/>Eg. B. Tech Mechanical or B.E Electrical Engg.</span>
+            <a title="If you want know the exact course to search, Eg. B. Tech Mechanical or B.E Electrical Engg." class="small-link" onClick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
         </div>
         <div id="course_selection_div">
             <span class="cut-off">{$searchForm.coursesLabel}</span>
@@ -84,17 +76,13 @@
 			                <span>
 			                    {$searchForm.coursesSelect}			                            </span>			            </td>
 	              <td valign="top">    
-	                		&nbsp;<a class="small-link" onClick="addOption('courses')">[+] Add another course</a> <br />
-			                &nbsp;<span class="grey-context"><i>Add to search two or more courses</i><br /></span>
-			                &nbsp;<span class="grey-context">Eg. (1) Automobile + Mechanical<br/></span>
-			                &nbsp;<span class="grey-context">Eg. (2) Bio-technology +  Pharmacy</span>
+	                		&nbsp;<a title="Add to search two or more courses, Eg. Automobile + Mechanical" class="small-link" onClick="addOption('courses')">[+] </a> <br />
 			            </td>
 			     </tbody>
 			 </table>
             </div>
         <br />
-        <a class="small-link" onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
-        <span class="grey-context"><i>If you want to search all colleges under one group, Eg. Mechanical or Electrical</i></span><br />
+        <a title="If you want to search all colleges under one group, Eg. Mechanical or Electrical" class="small-link" onClick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
         </div>
         <br/><br/>
        <div><span><a class="small-link" onclick="getElementById('more-details').style.display='block'">Advanced Search</a> <img src="images/rba-arrow-small-down.gif">
