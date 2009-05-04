@@ -10,9 +10,11 @@ class Info extends Controller {
 
     function institute_info($instituteName, $showTemplate = 'true')
     {
+	    $this->load->model('institute');
+	    $this->load->model('university');
         $this->smarty->assign('institute', Institute::getInstituteByName($instituteName));
         $this->smarty->assign('template', 'instituteinfo.html');
-        $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');
+        $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');	        	        
     }
 
     function contact_us()

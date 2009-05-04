@@ -132,7 +132,7 @@ ul#navlist li {
 ul#navlist li a:hover, ul#navlist li#active a:hover {
     background-color:#C13447;
     color:#FFFFFF;
-    height:45px;
+    height:13px;
 }
 
 ul#navlist li a {
@@ -216,4 +216,3 @@ ul#navlist li a {
 
 .yuimenubar li, .yuimenu li {border-top:0;}
 
-.yui-skin-sam .yuimenubar {background:transparent url(../images/grey-stripes.png) repeat scroll 0 0;

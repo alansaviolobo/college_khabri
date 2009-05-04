@@ -78,8 +78,9 @@ class Institute extends Model
         $this->code = $data->code;
         $this->name = $data->name;
         $this->address = $data->address;
-		$this->university = $data->university;
-		$this->status = $data->status;
+		$this->aidStatus = $data->aid_status;
+		$this->minorityStatus = $data->minority_status;
+		$this->autonomyStatus = $data->autonomy_status;
 		$this->city = $data->city;
 		$this->district = $data->district;
 		$this->state = $data->state;
@@ -93,7 +94,7 @@ class Institute extends Model
 		$this->closestBusstop = $data->closest_busstop;
 		$this->closestRailwayStation = $data->closest_railway_station;
 		$this->closestAirport = $data->closest_airport;
-        $this->university = University::getUniversity($data->university);
+        $this->university = University::getUniversity($data->university_id);
     }
     
     function getDistricts()
