@@ -1,21 +1,21 @@
 <div id="ck_nav_bar" class="yuimenubar yuimenubarnav">
 	<div class="bd">
 		<ul class="first-of-type">
-		
-		<span class="large-context" style="float:right;padding: 0px 3px;">
-			    	{if $titlelink neq ''}
-			    		Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / '.anchor('members/logout','Logout');{/php}
-			    	{else}
-			            {php} echo anchor('members/login','Login').' / '.anchor('members/signup','Register');{/php}
-			        {/if}
-		  	   	</span>
-		
+			<span class="large-context" style="float:right;padding: 0px 3px;">
+				{if $titlelink neq ''}
+				Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / 
+				'.anchor('members/logout','Logout');{/php}
+				{else}
+				{php} echo anchor('members/login','Login').' / 
+				'.anchor('members/signup','Register');{/php}
+				{/if}
+			</span>
 			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#engineering">The field of Engineering</a>
 				<div id="engineering" class="yuimenu">
 					<div class="bd">
 						<ul>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-what-is-engg.gif">&nbsp;What is <b>'Engineering'</b> anyway?</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-benefits-of-engg.gif">&nbsp;<b>Benefits</b> of becoming an Engineer</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-what-is-engg.gif" alt="" />&nbsp;What is <b>'Engineering'</b> anyway?</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-benefits-of-engg.gif" alt="" />&nbsp;<b>Benefits</b> of becoming an Engineer</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://avatars.yahoo.com">Avatars</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering">Groups</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://promo.yahoo.com/broadband/">Internet Access</a></li>
@@ -71,12 +71,10 @@
 					</div>
 				</div>
 			</li>
-			
-			</ul>
-			 
-		</div>
+		</ul>
+	</div>
 </div>
-<br/>
+<br />
 {literal}
 <script>
 var ua = YAHOO.env.ua,

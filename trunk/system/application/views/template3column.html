@@ -23,27 +23,50 @@
 		<style type="text/css">
 		.top-logo { 
 			background-image: none;
-			filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{php}echo 
-			base_url(){/php}/images/main-logo.png', sizingMethod='scale');
+			filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{php}echo base_url(){/php}/images/main-logo.png', sizingMethod='scale');
 		} 
 		</style>
 		<![endif]-->
 		{/literal}
 	</head>
-	<body class="yui-skin-sam blue-shade">
+	<body class="yui-skin-sam">
 		{include file='infomenu.html'} 
-		<a href="{php}echo site_url(){/php}">
-			<div class="top-logo"></div>
-		</a> 
 		<div id="yui-d2f main-container">
-			{include file="$template"}
+			<div id="doc3" class="yui-t3">
+				<div id="hd" role="banner">
+				</div>
+				<div id="bd" role="main">
+					<div id="yui-main">
+						<div class="yui-b">
+							<div class="yui-gc">
+								<div class="yui-u first">
+									{include file="$template"}
+								</div>
+								<div class="yui-u">
+									<div align="center">
+										<img style="float:none;" src="{php}echo base_url();{/php}/images/local-ad-example-temp.jpg" alt="" />
+									</div>
+									<div id="v-thin-line" class="large-context"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="yui-b">
+						<a href="{php}echo site_url(){/php}">
+							<div class="main-logo"></div>
+						</a> 
+						{include file='compactsearch.html'}
+					</div>
+				</div>
+			</div>
 		</div>
-		<div id="footer-wrapper">
+		<div id="ft" role="contentinfo">
 			<div id="footer" align="center"> 
 				<hr size="1" width="50%" noshade="noshade" />
 				<div class="grey-context">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br />
 				</div>
-				<span class="small-text">{php} echo anchor('info/terms_of_use','terms of use');{/php} |
+				<span class="small-text">
+					{php} echo anchor('info/terms_of_use','terms of use');{/php} |
 					{php} echo anchor('info/privacy_policy','privacy policy');{/php} |
 					{php} echo anchor('info/contact_us','contact us');{/php}
 				</span>

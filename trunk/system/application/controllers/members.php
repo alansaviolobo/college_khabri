@@ -9,7 +9,6 @@ class Members extends Controller {
     	$this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('user');
-        $this->smarty->assign('bigheader', true);
         $this->smarty->assign('titlelink', $this->session->userdata('firstName'));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
@@ -183,9 +182,10 @@ class Members extends Controller {
         	return;
         }
 
-    	$this->smarty->assign('bigheader', false);
+        $this->load->model('search');
+        $this->smarty->assign('searchForm', Search::search_form());
         $this->smarty->assign('template', 'profile.html');
-    	$this->smarty->display('template.html');
+    	$this->smarty->display('template3column.html');
     }
 
     function forgot_password()
@@ -271,7 +271,6 @@ class Members extends Controller {
     function savedsearches()
     {
     	$this->smarty->assign('template', 'savedsearches.html');
-        $this->smarty->assign('bigheader', false);
     	$this->smarty->display('template.html');     
     }
 }

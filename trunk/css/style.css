@@ -3,6 +3,7 @@
 
 body {min-width: 630px; background-color:#FFFFFF; margin:0; }
 
+body.blue-shade {background: #ffffff url(../images/back-main-college-khabri.jpg) left top repeat-x;}
 #container {
     padding-left: 200px;   /* LC fullwidth */
     padding-right: 260px;  /* RC fullwidth + CC padding */

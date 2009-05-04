@@ -1,113 +1,117 @@
-<div id="doc3" class="yui-t3">
-	<div id="hd" role="banner">
-	</div>
-	<div id="bd" role="main">
-		<div id="yui-main">
-			<div class="yui-b">
-				<div class="yui-gc">
-					<div class="yui-u first">
-					<div id="center">
-						<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC">
-  							<tr>
-  	 							<td width="35%" class="modify-search medium-text"><a href="#">Modify your search</a>&nbsp;&#187;</td>
-								<td width="65%" class="basic-text"><div align="left">Mumbai University | All Districts | Automobile Engineering, Mechanical Engineering</div></td>   
- 							</tr>
-						</table>
-						<h1>Search Results:</h1>
-					    <span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
-					    <br /><br />
-					     <table width="100%" border="0" id="search-table">
-				    		<tr>
-				    			<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg">
-				    		</tr>	
-					     <tr class="sort-back">
-			                  <td width="10%" style="padding:0px;border:0;"><div align="center"><strong>Choice code</strong></div></td>
-			                  <td width="25%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>Stream @ College Name</strong></a>&#x2193;</div></td>
-			                  <td width="16%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div></td>
-			                  <td width="9%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div></td>
-			                  <td width="14%" style="padding:0px;border:0;"><div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div></td>
-			                  <td width="10%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div></td>            
-			     			  <td width="16%" style="padding:0px;border:0;"><div align="center"><strong>Your chances</strong></div></td>
-			    			</tr>
-					    
-					    {foreach from=$results item='choicecode'}
-					    	<tr>
-			      				<td><span class="inst-code"><a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a></span></td>
-			      				<td class="basic-text search-results-small">
-			      					<span class="basic-text"><strong><a href="#">{$choicecode->cname}</a></strong></span> @ <a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->iname}</a></td>
-			      				<td class="basic-text"><div align="left">{$choicecode->district}</div></td>
-			      				<td class="basic-text"><div align="left"><strong>{$choicecode->total_fee}</strong></div></td>
-			      				<td><div align="center"><span class="small-box"><span title="Popularity Rank of the college">003</span></span></div></td>
-			       				<td class="cut-off"><div align="center">160</div></td>
-			      				<td>
-			      					<table width="100%" align="right">
-        								<tr>
-				                            <td width="10%" class="small-text"  style="border:0;">45%</td>
-				                            <td width="90%" style="border:0;"><div class="green-bar" style="width:45%">&nbsp;</div>
-                        					</td>
-      									</tr>
-             						</table>    
-          					</tr> 
-          					{/foreach} 
-  						
-          					<tr class="sort-back">
-			                  <td width="10%" style="padding:0px;border:0;"><div align="center"><strong>Choice code</strong></div></td>
-			                  <td width="25%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>Stream @ College Name</strong></a>&#x2193;</div></td>
-			                  <td width="16%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div></td>
-			                  <td width="9%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div></td>
-			                  <td width="14%" style="padding:0px;border:0;"><div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div></td>
-			                  <td width="10%" style="padding:0px;border:0;"><div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div></td>            
-			     			  <td width="16%" style="padding:0px;border:0;"><div align="center"><strong>Your chances</strong></div></td>
-			    			</tr>
-			    			
-			    			<tr>
-				    			<td></td>
-				    			<td></td>
-				    			<td></td>
-				    			<td></td>
-				    			<td></td>
-				    			<td></td>
-			    				<td><img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg"></td>
-				    		</tr>	
-          			</table>
-					 
-  						
-  					</div>
-					    </div>
-					<div class="yui-u">
-					    <div align="center"><img style="float:none;" src="{php}echo base_url();{/php}/images/local-ad-example-temp.jpg" /></div>
-						    <div id="v-thin-line" class="large-context">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-						    Ut auctor. Nunc in felis ac augue dapibus consequat. Nullam consequat, dolor non gravida malesuada,
-						    orci nisi sagittis tortor, at scelerisque magna risus nec lacus. Nulla viverra sapien id dolor.
-						    Suspendisse potenti. Mauris non velit. Pellentesque et dui. Donec ut quam nec erat fermentum ultricies.
-						    Aenean fringilla. Proin at massa sed tortor iaculis fermentum. Proin nibh lacus, consequat ut,
-						    scelerisque ac, malesuada hendrerit, diam. Sed vehicula justo in dui tempor rutrum.
-						    Maecenas venenatis dictum tortor. Integer porta ornare justo.
-						
-						    Aliquam pretium, nisi vel rutrum porttitor, ipsum justo gravida odio, mollis bibendum tellus urna ut lorem.
-						    Praesent leo risus, ultricies eget, interdum eget, pretium consequat, mi. Sed turpis massa, porttitor non,
-						    semper eget, sollicitudin eget, nisi. Mauris id sem. Sed ornare purus ut nulla. Donec ac metus et dui
-						    sagittis dapibus. Fusce vitae sem. Mauris pretium ultricies quam. Mauris semper pretium nisl.
-						    Aliquam consectetur enim at turpis. Sed luctus nulla sit amet diam. Proin posuere risus ut nisi.
-						    Nam in diam. Suspendisse blandit ultricies urna. In hac habitasse platea dictumst. Nam erat.
-						    Aenean semper dui sed lectus.
-						
-						    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-						    In odio lacus, venenatis nec, accumsan sed, blandit et, lectus. Nunc pulvinar, sem id iaculis sodales,
-						    tellus est tristique erat, faucibus volutpat velit tellus vitae justo. Class aptent taciti sociosqu ad
-						    litora torquent per conubia nostra, p
-						    </div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<div class="yui-b">
-				<img src="http://localhost/collegekhabri/trunk/prototypes/images/sidebar-temp.jpg" /> 
-			</div>
-		</div>
-	</div>
-	<div id="ft" role="contentinfo"><p>Footer</p></div>
+<div id="center">
+	<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
+		<tr>
+			<td width="35%" class="modify-search medium-text"><a href="#">Modify your search</a>&nbsp;&#187;</td>
+			<td width="65%" class="basic-text">
+				<div align="left">Mumbai University | All Districts | Automobile Engineering, Mechanical 
+					Engineering</div>
+			</td>
+		</tr>
+	</table>
+	<h1>Search Results:</h1>
+	<span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
+	<br />
+	<br />
+	<table width="100%" border="0" id="search-table" summary="layout table">
+		<tr>
+			<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
+		</tr>
+		<tr class="sort-back">
+			<td width="10%" style="padding:0px;border:0;">
+				<div align="center"><strong>Choice code</strong></div>
+			</td>
+			<td width="25%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>Stream @ College Name</strong></a>&#x2193;</div>
+			</td>
+			<td width="16%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div>
+			</td>
+			<td width="9%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div>
+			</td>
+			<td width="14%" style="padding:0px;border:0;">
+				<div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div>
+			</td>
+			<td width="10%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div>
+			</td>
+			<td width="16%" style="padding:0px;border:0;">
+				<div align="center"><strong>Your chances</strong></div>
+			</td>
+		</tr>
+		{foreach from=$results item='choicecode'}
+		<tr>
+			<td>
+				<span class="inst-code">
+					<a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:" url"}false';yahoo.collegekhabri.collegeinfo.show()"="url" }false';yahoo.collegekhabri.collegeinfo.show()""="}false';yahoo.collegekhabri.collegeinfo.show()""">{$choicecode->code}</a>
+				</span>
+			</td>
+			<td class="basic-text search-results-small">
+				<span class="basic-text">
+					<strong>
+						<a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:" url"}false';yahoo.collegekhabri.collegeinfo.show()"="url" }false';yahoo.collegekhabri.collegeinfo.show()""="}false';yahoo.collegekhabri.collegeinfo.show()""">{$choicecode->cname}</a>
+					</strong>
+				</span> @ 
+				<a onclick="YAHOO.collegekhabri.frame.src = '{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:" url"}false';yahoo.collegekhabri.collegeinfo.show()"="url" }false';yahoo.collegekhabri.collegeinfo.show()""="}false';yahoo.collegekhabri.collegeinfo.show()""">{$choicecode->iname}</a>
+			</td>
+			<td class="basic-text">
+				<div align="left">{$choicecode->district}</div>
+			</td>
+			<td class="basic-text">
+				<div align="left"><strong>{$choicecode->total_fee}</strong></div>
+			</td>
+			<td>
+				<div align="center"><span class="small-box"><span title="Popularity Rank of the college">003</span></span></div>
+			</td>
+			<td class="cut-off">
+				<div align="center">160</div>
+			</td>
+			<td>
+				<table width="100%" align="right" summary="layout table">
+					<tr>
+						<td width="10%" class="small-text" style="border:0;">45%</td>
+						<td width="90%" style="border:0;">
+							<div class="green-bar" style="width:45%">&nbsp;</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		{/foreach} 
+		<tr class="sort-back">
+			<td width="10%" style="padding:0px;border:0;">
+				<div align="center"><strong>Choice code</strong></div>
+			</td>
+			<td width="25%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>Stream @ College Name</strong></a>&#x2193;</div>
+			</td>
+			<td width="16%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div>
+			</td>
+			<td width="9%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div>
+			</td>
+			<td width="14%" style="padding:0px;border:0;">
+				<div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div>
+			</td>
+			<td width="10%" style="padding:0px;border:0;">
+				<div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div>
+			</td>
+			<td width="16%" style="padding:0px;border:0;">
+				<div align="center"><strong>Your chances</strong></div>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" /></td>
+		</tr>
+	</table>
+</div>
 
 <div id="collegeInfo">
    <div class="hd">College Information</div>
@@ -122,8 +126,8 @@
 	YAHOO.collegekhabri.frame.height = "480";
 
     YAHOO.collegekhabri.collegeInfo = new YAHOO.widget.Dialog("collegeInfo", {
-	width : "600px",
-	fixedcenter : false,
+	width : "800px",
+	fixedcenter : true,
 	visible : false,
 	close: true,
 	y: 25,
