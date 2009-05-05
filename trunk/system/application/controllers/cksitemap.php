@@ -26,4 +26,5 @@ class CKSitemap extends Controller {
     }
 }
 
-?>
+/* End of file cksitemap.php */
+/* Location: ./system/application/controllers/cksitemap.php */

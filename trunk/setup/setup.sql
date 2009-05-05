@@ -88,8 +88,8 @@ CREATE TABLE `institutes` (
   `closest_busstop` varchar(255) NOT NULL default '',
   `closest_railway_station` varchar(255) NOT NULL default '',
   `closest_airport` varchar(255) NOT NULL default '',
-  `boys_hostel` integer unsigned NOT NULL default 0,
-  `girls_hostel` integer unsigned NOT NULL default 0,
+  `boys_hostel` varchar(255) NOT NULL default '',
+  `girls_hostel` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`code`),
   FOREIGN KEY (`university_id`) REFERENCES `universities`(`id`)
   ON DELETE RESTRICT ON UPDATE CASCADE

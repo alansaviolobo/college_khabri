@@ -37,16 +37,20 @@ class Info extends Controller {
 
  	function what_is_engineering()
     {
+        $this->load->model('search');
+        $this->smarty->assign('searchForm', Search::search_form());
         $this->smarty->assign('template', 'whatisengineering.html');
-        $this->smarty->display('template.html');
+        $this->smarty->display('template3column.html');
     }    
     
     function benefits_of_becoming_an_engineer()
     {
-        $this->smarty->assign('template', 'benefits_of_becoming_an_engineer.html');
-        $this->smarty->display('template.html');
+        $this->load->model('search');
+        $this->smarty->assign('searchForm', Search::search_form());
+    	$this->smarty->assign('template', 'benefits_of_becoming_an_engineer.html');
+        $this->smarty->display('template3column.html');
     }   
 }
 
-/* End of file static.php */
-/* Location: ./system/application/controllers/static.php */
+/* End of file info.php */
+/* Location: ./system/application/controllers/info.php */

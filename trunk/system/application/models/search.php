@@ -124,6 +124,4 @@ class Search extends Model {
     	
     }
 }
-
-/* End of file search.php */
-/* Location: ./system/application/models/search.php */
+?>
