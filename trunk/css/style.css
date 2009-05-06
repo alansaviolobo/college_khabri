@@ -3,7 +3,7 @@
 
 body {min-width: 630px; background-color:#FFFFFF; margin:0; }
 
-body.blue-shade {background: #ffffff url(../images/back-main-college-khabri.jpg) left top repeat-x;}
+body.blue-shade {background: #ffffff url(../images/main-background.jpg) left top repeat-x;}
 #container {
     padding-left: 200px;   /* LC fullwidth */
     padding-right: 260px;  /* RC fullwidth + CC padding */
@@ -158,7 +158,7 @@ ul#navlist li a {
 
 #search-table { }
 
-#search-table td { padding: 8px 3px; border-bottom: 1px dashed #cdcdcd;}
+#search-table td { padding: 14px 3px; border-bottom: 1px dashed #cdcdcd;}
 
 .inst-code {border: 1px dashed #c13447; font-size:small; font-family:verdana; background-color:#e5f4ff; padding:1px;}
 
@@ -178,7 +178,7 @@ ul#navlist li a {
 
 .top-logo {padding:4px;background: transparent url(../images/big-logo.png) left top no-repeat; width:276px; height:150px; margin:auto;}
 
-.main-logo {padding:4px;background: transparent url(../images/main-logo.png) left top no-repeat; width:245px; height:133px; margin:auto;}
+.main-logo {padding:4px;background: transparent url(../images/main-logo.png) left top no-repeat; width:159px; height:86px; margin:auto;}
 
 .left-float {float:left; margin:3px 3px 3px 30px;padding:20px;width:40%;}
 
@@ -200,7 +200,7 @@ ul#navlist li a {
 
 .floatr img {float:right;}
 
-.green-bar {border: 1px solid #333333; height:10px; background: transparent url(../images/bar-stripe.png);}
+.green-bar {border: 1px solid #333333; height:10px; background: red url(../images/bar-stripe.png);}
 
 .errormsg {padding:2px; color:red;}
 
@@ -216,3 +216,12 @@ ul#navlist li a {
 
 .yuimenubar li, .yuimenu li {border-top:0;}
 
+.yui-skin-sam .yuimenubar {background: transparent url(../images/grey-stripes.png) repeat scroll 0 0;}
+
+.yui-t2 #yui-main .yui-b {min-width:900px;}
+
+#hd, #bd, #ft, .yui-g, .yui-gb, .yui-gc, .yui-gd, .yui-ge, .yui-gf {margin-left:0;}
+
+.yui-gc div.first, .yui-gd .yui-u {width:70%;}
+
+.yui-gb .yui-u, .yui-g .yui-gb .yui-u, .yui-gb .yui-g, .yui-gb .yui-gb, .yui-gb .yui-gc, .yui-gb .yui-gd, .yui-gb .yui-ge, .yui-gb .yui-gf, .yui-gc .yui-u, .yui-gc .yui-g, .yui-gd .yui-u {width:28%;}

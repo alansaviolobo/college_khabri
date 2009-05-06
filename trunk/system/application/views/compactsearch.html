@@ -1,8 +1,21 @@
+{literal}
+<style>
+	select, button, textarea {font-size:90%;width:140px;}
+	.cut-off {font-size:11pt;}
+	.search-button {font-size:medium;height:31px;width:120px;}
+	#hd, #bd, #ft, .yui-g, .yui-gb, .yui-gc, .yui-gd, .yui-ge, .yui-gf 
+	{margin-left:9px;}
+</style>
+{/literal}
+<br />
+<hr />
+<br />
 <div>
 	{$searchForm.formOpen}
-	<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:12pt;letter-spacing:-1px;margin-top:0;">Search</p>
+	<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:14pt;letter-spacing:-1px;margin-top:0;">Search again</p>
 	<div id="less-details-options">
-		<div align="right"><a class="small-link" onclick="this.parentNode.parentNode.style.display='none';getElementById('less-details-search').style.display='block'">Search by typing the name of the college?</a></div>
+		<br />
+		<div align="left"><a class="small-link" onclick="this.parentNode.parentNode.style.display='none';getElementById('less-details-search').style.display='block'">Search by typing the name of the college?</a></div>
 		<br />
 		<span class="cut-off">{$searchForm.universityLabel}</span><br />
 		<div>
@@ -16,6 +29,7 @@
 						</td>
 						<td valign="top">
 							<a title="Add to search colleges or courses in two or more universities" class="small-link" onclick="addOption('universities')">[+]</a><br />
+							<br />
 						</td>
 					</tr>
 				</tbody>
@@ -32,7 +46,8 @@
 							</span>
 						</td>
 						<td valign="top">
-							<a title="Click here to include another district like 'Thane' in the search" class="small-link" onclick="addOption('districts')">[+] Add another district</a><br />
+							<a title="Click here to include another district like 'Thane' in the search" class="small-link" onclick="addOption('districts')">[+]</a><br />
+							<br />
 						</td>
 					</tr>
 				</tbody>
@@ -51,6 +66,7 @@
 							</td>
 							<td valign="top">
 								&nbsp;<a title="Add to search two or more course groups; Eg. (1) Electronics + Instrumentation & Control + Electrical" class="small-link" onclick="addOption('coursegroups')">[+] </a><br />
+								<br />
 							</td>
 						</tr>
 					</tbody>
@@ -80,61 +96,45 @@
 			<a title="If you want to search all colleges under one group, Eg. Mechanical or Electrical" class="small-link" onclick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
 		</div>
 		<br />
-		<br />
-		<div><span><a class="small-link" onclick="getElementById('more-details').style.display='block'">Advanced Search</a> <img src="images/rba-arrow-small-down.gif" alt="" />
-				&nbsp;&nbsp;&nbsp;&nbsp;
 			</span></div>
-		<br />
-		<br />
+		
 	</div>
 	<div id="less-details-search" style="display:none;">
-		<span class="cut-off">{$searchForm.collegenameLabel}</span><br />
-		{$searchForm.collegenameBox}<br />
+		<span class="cut-off">{$searchForm.searchLabel}</span><br />
+		<br />
+		{$searchForm.searchBox}<br />
+		<br />
 		<span class="grey-context">Eg. <em>Vidyalankar Institute of Technology</em></span><br />
 		<br />
+		<br />
 		<a class="small-link" onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a><br />
+	</div><hr/>
+	<div id="more-details">
+		<span class="cut-off">{$searchForm.aidLabel}</span><br />
+		{$searchForm.aidSelect}
 		<br />
-	</div>
-	<div id="more-details" style="display:none">
-		<table valign="top" summary="layout table">
-			<tbody>
-				<tr>
-					<td class="right-border" style="padding:0 20px;">
-						<span class="cut-off">{$searchForm.aidLabel}</span><br />
-						{$searchForm.aidSelect}
-						<br />
-						<br />
-						<span class="cut-off">{$searchForm.minorityLabel}</span><br />
-						{$searchForm.minoritySelect}
-						<br />
-						<br />
-						<span class="cut-off">{$searchForm.autonomyLabel}</span><br />
-						{$searchForm.autonomySelect}
-					</td>
-					<td style="padding:0 20px;">
-						<span class="cut-off">{$searchForm.hostelLabel}</span><br />
-						{$searchForm.hostelSelect}
-						<br />
-						<br />
-						<span class="cut-off">{$searchForm.establishmentLabel}</span><br />
-						{$searchForm.establishmentSelect}
-						<br />
-						<br />
-						<span class="cut-off">{$searchForm.feesLabel}</span><br />
-						{$searchForm.feesSelect}
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><br />
-						<div class="medium-text">&nbsp;{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
-						<div class="medium-text"></div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
 		<br />
-		[<a class="small-link" onclick="getElementById('more-details').style.display='none'">x</a>] <a class="small-link" onclick="getElementById('more-details').style.display='none'">Close advanced search</a>
+		<span class="cut-off">{$searchForm.minorityLabel}</span><br />
+		{$searchForm.minoritySelect}
+		<br />
+		<br />
+		<span class="cut-off">{$searchForm.autonomyLabel}</span><br />
+		{$searchForm.autonomySelect}
+		<span class="cut-off">{$searchForm.hostelLabel}</span><br />
+		{$searchForm.hostelSelect}
+		<br />
+		<br />
+		<span class="cut-off">{$searchForm.establishmentLabel}</span><br />
+		{$searchForm.establishmentSelect}
+		<br />
+		<br />
+		<span class="cut-off">{$searchForm.feesLabel}</span><br />
+		{$searchForm.feesSelect}
+		<br />
+		<br />
+		<div>{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
+		<div class="medium-text"></div>
+		<br />
 	</div>
 	<div align="right">{$searchForm.submit}</div>
 	{$searchForm.formClose}
