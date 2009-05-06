@@ -1,23 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+"http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>{$title|default:'Welcome to College Khabri'}</title>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/default.js"></script>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/dragdrop/dragdrop-min.js"></script>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container-min.js"></script>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/element/element-min.js"></script>
-        <script type="text/javascript" src="{php}echo base_url(){/php}js/yui/tabview/tabview-min.js"></script>      
-        <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/assets/skins/sam/container.css">
-        <link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/tabview/assets/skins/sam/tabview.css">
-        <link media="all" type="text/css" rel="stylesheet" href="{php}echo base_url(){/php}css/style.css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    </head>
-    <body class="yui-skin-sam" style="margin:0; background:#ffffff url({php}echo base_url(){/php}images/back-main-college-khabri.jpg) left top repeat-x;">
-            
-        <div id="main-container">
-            {include file="$template"}
-        </div>
-       
-    </body>
+	<head>
+		<title>{$title|default:'Welcome to College Khabri'}</title>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/default.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container-min.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/dragdrop/dragdrop-min.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/element/element-min.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/tabview/tabview-min.js"></script> 
+		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/assets/skins/sam/container.css" />
+		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/tabview/assets/skins/sam/tabview.css" />
+		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}css/style.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body class="yui-skin-sam blue-shade">
+		<div id="main-container">
+			{include file="$template"}
+		</div>
+		{literal}
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-8707145-1");
+			pageTracker._trackPageview();
+		} catch(err) {}
+		</script>
+		{/literal}
+	</body>
 </html>
