@@ -23,11 +23,12 @@ class Search extends Model {
             'boys' => 'Boys',
             'girls' => 'Girls');
 
-        $establishment_year = array(
-            "Any",
-            "1800 - 1850",
-            "1851 - 1900",
-            "1901 - 2000");
+        $established_in = array(
+            		 '' => "Any",
+            '1850,1900' => "1850 - 1900",
+            '1901,1950' => "1901 - 1950",
+            '1951,2000' => "1951 - 2000",
+        	'2001,2009' => "2001 - 2009");
 
 		$coursesJS = 	"this.parentNode.style.display='none';".
 						"getElementById('course_selection_div').style.display='block';".
@@ -67,8 +68,8 @@ class Search extends Model {
             'feesSelect'        => form_dropdown('fees', $approx_fees),
             'hostelLabel'       => form_label('Hostel', 'hostel'),
             'hostelSelect'      => form_dropdown('hostel', $hostel),
-            'establishmentLabel'=> form_label('Established', 'establishment'),
-            'establishmentSelect'=> form_dropdown('established', $establishment_year),
+            'establishmentLabel'=> form_label('Established', 'establishedin'),
+            'establishmentSelect'=> form_dropdown('establishedin', $established_in),
             'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
             'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
         	'coursesLink'		=> anchor('','Search by specific course?', array('class'=>'small-link', 'onClick'=>$coursesJS)),
@@ -98,6 +99,7 @@ class Search extends Model {
 	    	if (count($districts)) $this->db->where_in('district', $districts);
 	    	if (!empty($aid)) $this->db->where('aid_status', $aid);
 	    	if (!empty($fees)) $this->db->where('total_fee between ' . str_replace(',', ' and ', $fees));
+	    	if (!empty($establishedin)) $this->db->where('established_in between ' . str_replace(',', ' and ', $establishedin));
 	    	if (!empty($autonomy)) $this->db->where('autonomy_status', $autonomy);
 	    	if (!empty($minority)) $this->db->where('minority_status', $minority);
     		if($mode == 'c')
@@ -120,8 +122,6 @@ class Search extends Model {
     	
     	//'hostel' = $this->input->get('hostel'),
     	//'ladies' = $this->input->get('ladies'),
-    	//'establishedin' = $this->input->get('establishedin'));
-    	
     }
 }
 ?>
