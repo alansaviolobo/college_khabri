@@ -91,7 +91,9 @@ class Search extends Model {
 
     	if ($mode == 's')
     	{
-    		$this->db->where('name', "%$search%")->limit(10)->get('institutes');
+    		$this->db->like('institutes.name', $search);
+    		$this->db->or_like('courses.name', $search);
+    		$this->db->or_like('choice_codes.code', $search);
     	}
     	else
     	{
