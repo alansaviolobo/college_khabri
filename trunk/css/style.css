@@ -84,7 +84,7 @@ li {border-top: 1px dotted #E8E8E8; padding:0 2px;}
 
 .grey-context {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
 
-#v-thin-line {border-bottom:1px dotted #44a0e1;padding-bottom:5px;margin-top:9px;}
+.v-thin-line {border-bottom:1px dotted #44a0e1;padding-bottom:5px;margin-top:9px;}
 
 #navcontainer {
     border-bottom:1px solid #000000;

@@ -1,49 +1,24 @@
-<div class="floatr">
-	<div id="center" class="column"><img src="{php}echo base_url();{/php}images/logo-only.jpg" width="176" height="270" alt="" />
-		<div id="v-thin-line ">
-			<h1>My Profile</h1>
-			<hr />
-			<p class="medium-text" id="v-thin-line">Username: <span class="med-field">pareshdhake@googlemail.com</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
-			<p class="medium-text" id="v-thin-line">Change password: 
-				<input type="text" name="ss2" id="ss2" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Type changed password again: 
-				<input type="text" name="ss3" id="ss3" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Mobile Number: <span class="med-field">99701788679</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
-			<hr />
-			<p class="medium-text" id="v-thin-line">Your Name:
-				<input type="text" name="ss9" id="ss9" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Surname:
-				<input type="text" name="ss10" id="ss10" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Your category: <span class="med-field">Open</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
-			<hr />
-			<p class="medium-text" id="v-thin-line">MHT-CET application number: 
-				<input type="text" name="ss" id="ss" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Projected CET score: 
-				<input type="text" name="ss4" id="ss4" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Projected CET rank: 
-				<input type="text" name="ss5" id="ss5" />
-			</p>
-			<hr />
-			<p class="medium-text" id="v-thin-line">AIEEE application number: 
-				<input type="text" name="ss6" id="ss6" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Projected AIEEE score: 
-				<input type="text" name="ss7" id="ss7" />
-			</p>
-			<p class="medium-text" id="v-thin-line">Projected AIEEE rank: 
-				<input type="text" name="ss8" id="ss8" />
-			</p>
-			<p class="medium-text">
-				<label>
-					<input type="submit" name="Submit Changes" id="Submit Changes" value="Submit changes" />
-				</label>
-			</p>
-		</div>
+<div class="floatr main-search-div">
+	<img src="{php}echo base_url();{/php}images/logo-only.jpg" width="176" height="270" alt="" />
+	<div id="v-thin-line ">
+		<h1>My Profile</h1>
+		{$profileForm.formOpen}
+		<hr />
+		<p class="medium-text v-thin-line">Username: <span class="med-field">{$user->emailAddress()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<p class="medium-text v-thin-line">{$profileForm.password1Label}{$profileForm.password1Box}</p>
+		<p class="medium-text v-thin-line">{$profileForm.password2Label}{$profileForm.password2Box}</p>
+		<p class="medium-text v-thin-line">Mobile Number: <span class="med-field">{$user->mobile()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.fnameLabel}{$profileForm.fnameBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.lnameLabel}{$profileForm.lnameBox}</p>
+		<p class="medium-text v-thin-line">Category<span class="med-field">Open</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}</p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.cetAppLabel}{$profileForm.cetAppBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}</p>
+		<p class="medium-text">{$profileForm.submit}</p>
+		{$profileForm.formClose}
 	</div>
 </div>

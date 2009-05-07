@@ -10,6 +10,8 @@ class User extends Model
     private $status;
     private $CETMarks;
     private $CETRank;
+    private $AIEEEMarks;
+    private $AIEEERank;
     private $homeUni;
     private $lastTx;
 
@@ -27,12 +29,14 @@ class User extends Model
     function status() {if (is_null($this->status)) $this->set(); return $this->status; }
     function CETMarks() {if (is_null($this->CETMarks)) $this->set(); return $this->CETMarks; }
     function CETRank() {if (is_null($this->CETRank)) $this->set(); return $this->CETRank; }
+	function AIEEEMarks() {if (is_null($this->AIEEEMarks)) $this->set(); return $this->AIEEEMarks; }
+    function AIEEERank() {if (is_null($this->AIEEERank)) $this->set(); return $this->AIEEERank; }
 	function lastTx() {if (is_null($this->lastTx)) $this->set(); return $this->lastTx; }
     
-    static function getUserByUserId($userId)
+    static function getUserByUserId($user_id)
     {
         $user = new User();
-        $result = $user->db->where('id', $userId)->get('users');
+        $result = $user->db->where('id', $user_id)->get('users');
         if ($result->num_rows() <> 1)
         {
             throw new Exception('Invalid User');
@@ -80,15 +84,19 @@ class User extends Model
     {    	
     	$this->db->trans_start();
     	$this->db->insert('users', array('id'=>0, 'username'=>$email, 'email'=>$email, 'mobile'=>$mobile, 'password'=>$password));
-		$userId = $this->db->insert_id();
-    	$this->db->set('created_on', 'NOW()', FALSE)->insert('payment_log', array('user_id'=>$userId, 'channel'=>'cashdeposit'));
+		$user_id = $this->db->insert_id();
+		do {
+			$code = substr(md5($email . $mobile . time()), 5, 10);
+		} while ($this->db->where('code', $code)->where('status', 'pending')->count_all_results('payment_log'));
+		
+    	$this->db->set('created_on', 'NOW()', FALSE)->insert('payment_log', array('user_id'=>$user_id, 'code' => $code, 'channel'=>'cashdeposit'));
 		$this->db->trans_complete();
 
 		if ($this->db->trans_status() === FALSE)
 		{
 		    throw new Exception('Could not create account!');
 		} 
-    	return $userId;
+    	return $user_id;
     	
     }
     
@@ -110,6 +118,42 @@ class User extends Model
 		    throw new Exception('Could not activate account!');
 		} 
     	
+    }
+    
+    function update_details($params)
+    {
+    	$password	= $this->db->escape(@$params['password']);
+        $fname		= $this->db->escape(@$params['fname']);
+        $lname		= $this->db->escape(@$params['lname']);
+        $ai3eappno	= $this->db->escape(@$params['ai3eappno']);
+        $ai3erank	= $this->db->escape(@$params['ai3erank']);
+        $cetappno	= $this->db->escape(@$params['cetappno']);
+        $cetrank	= $this->db->escape(@$params['cetrank']);
+        $homeuni	= $this->db->escape(@$params['homeuni']);
+            	
+    	$query = "UPDATE users SET
+				    	first_name = IF ($fname IS NULL, first_name, $fname),
+				    	last_name = IF ($lname IS NULL, last_name, $lname),
+				    	password = IF ($password IS NULL, password, $password),
+				    	aieee_rank = IF (aieee_rank IS NULL, $ai3erank, aieee_rank),
+				    	aieee_appno = IF (aieee_appno IS NULL, $ai3eappno, aieee_appno),
+				    	cet_rank =  IF (cet_rank IS NULL, $cetrank, cet_appno),
+				    	cet_appno =  IF (cet_appno IS NULL, $cetappno, cet_appno),
+				    	home_uni =  IF (home_uni IS NULL, $homeuni, home_uni)
+			    	WHERE id = $this->id";
+    	$this->db->query($query);
+    }
+    
+    function reset_password()
+    {
+    	$range = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234566890';
+    	$newpassword = '';
+    	for($count = 0; $count<5; $count++)
+    	{
+    		$newpassword .= $range[rand(0, strlen($range))]; 
+    	}
+    	$this->update_details(array('password' => $newpassword));
+    	return $newpassword;
     }
 }
 ?>

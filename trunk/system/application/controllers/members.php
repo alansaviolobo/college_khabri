@@ -15,19 +15,19 @@ class Members extends Controller {
 
     function signup()
     {
-        $submitjs = "document.signupform.password1.value=SHA1(document.signupform.password1.value);".
-                    "document.signupform.password2.value=SHA1(document.signupform.password2.value)";
+        $submitjs = "if (document.signupform.password1.value) document.signupform.password1.value=SHA1(document.signupform.password1.value);".
+                    "if (document.signupform.password2.value) document.signupform.password2.value=SHA1(document.signupform.password2.value)";
         $fieldFx = "class='med-field' onfocus=\"getElementById(this.name+'-context').style.visibility='visible'\" onblur=\"getElementById(this.name+'-context').style.visibility='hidden'\"";
         $form = array(
             'formOpen'      => form_open('members/signup', array('name'=>'signupform', 'onsubmit'=>$submitjs)),
             'usernameLabel' => form_label('Email address', 'username', array('class'=>'medium-text')),
-            'usernameBox'   => form_input('username', set_value('username'), $fieldFx),
+            'usernameBox'   => form_input('username', $this->input->post('username'), $fieldFx),
             'password1Label'=> form_label('Password', 'password1', array('class'=>'medium-text')),
             'password1Box'  => form_password('password1', null, $fieldFx),
             'password2Label'=> form_label('Retype Password', 'password2', array('class'=>'medium-text')),
             'password2Box'  => form_password('password2', null, $fieldFx),
             'mobileLabel'   => form_label('Mobile', 'mobile', array('class'=>'medium-text')),
-            'mobileBox'     => form_input('mobile', null, $fieldFx),
+            'mobileBox'     => form_input('mobile', $this->input->post('mobile'), $fieldFx),
             'submit'        => form_submit('submit', 'Send me the activation code'),
             'formClose'     => form_close()
         );
@@ -43,8 +43,8 @@ class Members extends Controller {
         {
         	try 
         	{
-            	$userId = User::create_user($this->input->post('username'), $this->input->post('mobile'), $this->input->post('password1'));
-				$user = User::getUserByUserId($userId);
+            	$user_id = User::create_user($this->input->post('username'), $this->input->post('mobile'), $this->input->post('password1'));
+				$user = User::getUserByUserId($user_id);
 				$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName()));
 				$this->smarty->assign('titlelink', $this->session->userdata('firstName'));
 
@@ -53,8 +53,9 @@ class Members extends Controller {
  				$this->email->to($user->emailAddress());
  				$this->email->bcc('support@collegekhabri.com');
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
- 				$this->email->message($this->smarty->fetch('email_payment_details.tpl'));
+ 				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
  				$this->email->send();
+ 				echo $this->email->print_debugger();
             	$this->activation();
             	return;
         	}
@@ -70,15 +71,28 @@ class Members extends Controller {
         $this->smarty->display('template.html');
     }
 
-    function activation($username = null, $code = null)
+    function activation($user_id)
     {
-    	if(is_null($username) and $this->session->userdata('userId'))
+    	if (is_null($user_id) and !$this->session->userdata('userId'))
     	{
-    		$user = User::getUserByuserId($this->session->userdata('userId'));
+    		redirect('/members/login');
+        	return;
+    	}
+    	
+    	if(is_null($user_id) and $this->session->userdata('userId'))
+    	{
+    		$user_id = $this->session->userdata('userId');
     	}
     	else
     	{
-    		$user = User::getUserByUsername($username);
+    		$this->session->set_userdata(array('userId'=>$user_id));
+    	}
+    	
+    	$user = User::getUserByUserId($user_id);
+    	if ($user->status() <> 'registered')
+    	{
+    		redirect('/members/login');
+        	return;
     	}
 
     	$form = array(
@@ -89,30 +103,54 @@ class Members extends Controller {
             'fNameBox'   	=> form_input('fname', null, "class='med-field'"),
 	    	'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
             'lNameBox'   	=> form_input('lname', null, "class='med-field'"),
-	    	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
+	    	'homeUniLabel'	=> form_label('Home University', 'homeUni', array('class'=>'medium-text v-thin-line')),
+            'homeUniSelect'	=> form_dropdown('homeUni', array(), "class='med-field'"),
+    	   	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
             'categorySelect'=> form_dropdown('category', array(), "class='med-field'"),
-	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'mhtcetAppNo', array('class'=>'medium-text v-thin-line')),
-            'mhtAppNoBox'  	=> form_input('mhtcetAppNo', null, "class='med-field'"),
+	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'cetAppNo', array('class'=>'medium-text v-thin-line')),
+            'mhtAppNoBox'  	=> form_input('cetAppNo', null, "class='med-field'"),
 	    	'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
             'pCETScoreBox'  => form_input('pCETScore', null, "class='med-field'"),
 	    	'pCETRankLabel' => form_label('Projected CET rank', 'pCETRank', array('class'=>'medium-text v-thin-line')),
             'pCETRankBox'   => form_input('pCETRank', null, "class='med-field'"),
 	    	'ai3eAppNoLabel'=> form_label('AIEEE application number', 'ai3eAppNo', array('class'=>'medium-text v-thin-line')),
             'ai3eAppNoBox' 	=> form_input('ai3eAppNo', null, "class='med-field'"),
-        	'pAI3EScoreLabel'=> form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
+        	'pAI3EScoreLabel'=>form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
             'pAI3EScoreBox' => form_input('pAI3EScore', null, "class='med-field'"),
 	    	'pAI3ERankLabel'=> form_label('Projected AIEEE rank', 'pAI3ERank', array('class'=>'medium-text v-thin-line')),
             'pAI3ERankBox'  => form_input('pAI3ERank', null, "class='med-field'"),
         	'submit'        => form_submit('submit', 'Activate my account'),
             'formClose'     => form_close()
         );
-    	
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|valid_email|max_length[255]');
-        $this->form_validation->set_rules('code', 'Code', 'trim|required|exact[10]');
+    	$rules = array(
+        	array('field'=>'code',		'label'=>'Activation code',	'rules'=>'trim|required|exact[10]'),
+        	array('field'=>'fname',		'label'=>'First Name',		'rules'=>'trim|required|max_length[255]'),
+        	array('field'=>'lname',		'label'=>'Surname',			'rules'=>'trim|required|max_length[255]'),
+        	array('field'=>'homeUni',	'label'=>'Home University',	'rules'=>'trim|required|is_natural'),
+        	array('field'=>'pCETScore',	'label'=>'CET Score',		'rules'=>'trim|is_natural'),
+        	array('field'=>'pCETRank',	'label'=>'CET Rank',		'rules'=>'trim|is_natural'),
+        	array('field'=>'pAI3EScore','label'=>'AIEEE Score',		'rules'=>'trim|is_natural'),
+        	array('field'=>'pAI3ERank',	'label'=>'AIEEE Rank',		'rules'=>'trim|is_natural'),
+        	array('field'=>'cetAppNo',	'label'=>'CET Application No.','rules'=>'trim|required|exact[10]'),
+        	array('field'=>'ai3eAppNo',	'label'=>'AIEEE Application No.','rules'=>'trim|required|exact[9]')
+    	);
+        $this->form_validation->set_rules($rules);
 
         if (!is_null($code) or $this->form_validation->run())
         {
-    		$user->activate($code);
+        	$params = array(
+        		'fname' => $this->input->post('fname'),
+        		'lname' => $this->input->post('lname'),
+	        	'homeUni' => $this->input->post('homeUni'),
+	        	'pCETScore' => $this->input->post('pCETScore'),
+	        	'pCETRank' => $this->input->post('pCETRank'),
+	        	'pAI3EScore' => $this->input->post('pAI3EScore'),
+	        	'pAI3ERank' => $this->input->post('pAI3ERank'),
+        		'cetAppNo' => $this->input->post('cetAppNo'),
+        		'ai3eAppNo' => $this->input->post('ai3eAppNo')
+        	);
+    		$user->activate($this->input->post('code'));
+    		$user->update_details($params);
     		return;
         }
         else $form['formErrors'] = validation_errors();
@@ -126,17 +164,20 @@ class Members extends Controller {
     function login()
     {
         $loginform = array(
-            'formOpen'      => form_open('members/login', array('name'=>'loginform', 'onsubmit'=>'document.loginform.password.value=SHA1(document.loginform.password.value)')),
+            'formOpen'      => form_open('members/login', array('name'=>'loginform', 'onsubmit'=>'if (document.loginform.password.value) document.loginform.password.value=SHA1(document.loginform.password.value)')),
             'usernameLabel' => form_label('College Khabri username (your email address)', 'username', array('class'=>'medium-text')),
-            'usernameBox'   => form_input('username', null, "class='med-field'"),
+            'usernameBox'   => form_input('username', $this->input->post('username'), "class='med-field'"),
             'passwordLabel' => form_label('Your Password', 'password', array('class'=>'medium-text')),
             'passwordBox'   => form_password('password', null, "class='med-field'"),
             'submit'        => form_submit('submit', 'Login', "class='medium-button'"),
             'formClose'     => form_close()
         );
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-
+        $rules = array(
+        	array('field'=>'username' , 'label'=>'Username', 'rules'=>'trim|required|valid_email|max_length[255]'),
+        	array('field'=>'password1', 'label'=>'Password', 'rules'=>'trim|required|exact[40]')
+        );
+        $this->form_validation->set_rules($rules);
+        
         if ($this->form_validation->run())
         {
         	try
@@ -181,11 +222,67 @@ class Members extends Controller {
         	redirect('/members/login');
         	return;
         }
+        $user = User::getUserByUserId($this->session->userdata('userId'));
 
-        $this->load->model('search');
-        $this->smarty->assign('searchForm', Search::search_form());
+         $form = array(
+            'formOpen'		=> form_open('members/profile'),
+            'password1Label'=> form_label('New password:', 'password1'),
+            'password1Box'	=> form_input('password1'),
+            'password2Label'=> form_label('New password again:', 'password2'),
+            'password2Box'	=> form_input('password2'),
+            'fnameLabel'	=> form_label('First Name:', 'fname'),
+            'fnameBox'		=> form_input('fname'),
+            'lnameLabel'	=> form_label('Last Name:', 'lname'),
+            'lnameBox'		=> form_input('lname'),
+            'ai3eAppLabel'	=> form_label('AIEEE application no:', 'ai3eappno'),
+            'ai3eAppBox'	=> form_input('ai3eappno'),
+            'ai3eRankLabel'	=> form_label('AIEEE Rank:', 'ai3erank'),
+            'ai3eRankBox'	=> form_input('ai3erank'),
+            'cetAppLabel'	=> form_label('CET Application no:', 'cetappno'),
+            'cetAppBox'		=> form_input('cetappno'),
+            'cetRankLabel'	=> form_label('MHTCET Rank:', 'cetrank'),
+            'cetRankBox'	=> form_input('cetrank'),
+            'submit'		=> form_submit('submit', 'Update my profile'),
+            'formClose'		=> form_close()
+        );
+        $rules = array(
+        	array('field'=>'password1' ,'label'=>'Password',		'rules'=>'trim|exact[40]'),
+        	array('field'=>'password2', 'label'=>'Retype Password',	'rules'=>'trim|matches[password1]'),
+        	array('field'=>'fname', 	'label'=>'First Name',		'rules'=>'trim|required|matches[password1]'),
+        	array('field'=>'lname',		'label'=>'Last Name',		'rules'=>'trim|required|matches[password1]'),
+        	array('field'=>'ai3eapno',	'label'=>'AIEEE App No',	'rules'=>'trim|required|exact[10]'),
+        	array('field'=>'ai3erank',	'label'=>'AIEEE Rank',		'rules'=>'trim|required|matches[password1]'),
+        	array('field'=>'cetappno',	'label'=>'CET App No',		'rules'=>'trim|required|exact[9]'),
+        	array('field'=>'cetrank',	'label'=>'CET Rank',		'rules'=>'trim|required|matches[password1]'));
+        $this->form_validation->set_rules($rules);
+        
+        if ($this->form_validation->run())
+        {
+            try
+            {
+            	$params = array(
+            		'password'	=> $this->input->post('password1'),
+            		'fname'		=> $this->input->post('fname'),
+            		'lname'		=> $this->input->post('lname'),
+            		'ai3eappno'	=> $this->input->post('ai3eappno'),
+            		'ai3erank'	=> $this->input->post('ai3erank'),
+            		'cetappno'	=> $this->input->post('cetappno'),
+            		'cetrank'	=> $this->input->post('cetrank'));
+            	$user->update_details($params);
+        		$this->smarty->display('template.html');
+            	return;
+            }
+            catch(Exception $e)
+            {
+            	$form['formErrors'] = 'Error updating your details';
+            }
+        }
+        else $form['formErrors'] = validation_errors();
+
+		$this->smarty->assign('user', $user);
+        $this->smarty->assign('profileForm', $form);
         $this->smarty->assign('template', 'profile.html');
-    	$this->smarty->display('template3column.html');
+    	$this->smarty->display('template.html');
     }
 
     function forgot_password()
@@ -193,7 +290,7 @@ class Members extends Controller {
          $form = array(
             'formOpen'      => form_open('members/forgot_password'),
             'usernameLabel' => form_label('Username', 'username'),
-            'usernameBox'   => form_input('username', set_value('username')),
+            'usernameBox'   => form_input('username', $this->input->post('username')),
             'submit'        => form_submit('submit', 'Reset my password!'),
             'formClose'     => form_close()
         );       
@@ -210,8 +307,8 @@ class Members extends Controller {
      			$this->email->from('support@collegekhabri.com', 'College Khabri Support');
  				$this->email->to($user->emailAddress());
  				$this->email->bcc('support@collegekhabri.com');
- 				$this->email->subject('Your new College Khabri Account: Activation pending.');
- 				$this->email->message($this->smarty->fetch('email_payment_details.tpl'));
+ 				$this->email->subject('Your New College Khabri Account Password');
+ 				$this->email->message($this->smarty->fetch('email_reset_password.tpl'));
  				$this->email->send();
  				$this->smarty->assign('pwdreset', 1);
  				$this->smarty->assign('template', 'forgotpassword.html');
