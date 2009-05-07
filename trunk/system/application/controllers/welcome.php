@@ -18,19 +18,19 @@ class Welcome extends Controller {
     function search_results()
     {	
     	$params = array(
-	    	'aid' => $this->input->get('aid'),
-	    	'fees' => $this->input->get('fees'),
-	    	'mode' => $this->input->get('mode'),
-	    	'hostel' => $this->input->get('hostel'),
-	    	'ladies' => $this->input->get('ladies'),
-	    	'search' => $this->input->get('search'),
-	    	'courses' => $this->input->get('courses'),
-	    	'autonomy' => $this->input->get('autonomy'),
-	    	'minority' => $this->input->get('minority'),
-	    	'districts' => $this->input->get('districts'),
-	    	'coursegroups' => $this->input->get('coursegroups'),
-	    	'universities' => $this->input->get('universities'),
-	    	'establishedin' => $this->input->get('establishedin'));
+	    	'aid' => $this->input->post('aid'),
+	    	'fees' => $this->input->post('fees'),
+	    	'mode' => $this->input->post('mode'),
+	    	'hostel' => $this->input->post('hostel'),
+	    	'ladies' => $this->input->post('ladies'),
+	    	'search' => $this->input->post('search'),
+	    	'courses' => $this->input->post('courses'),
+	    	'autonomy' => $this->input->post('autonomy'),
+	    	'minority' => $this->input->post('minority'),
+	    	'districts' => $this->input->post('districts'),
+	    	'coursegroups' => $this->input->post('coursegroups'),
+	    	'universities' => $this->input->post('universities'),
+	    	'establishedin' => $this->input->post('establishedin'));
 
     	$this->smarty->assign('results', Search::searchCourseCodes($params));
     	$this->smarty->assign('searchForm', Search::search_form());

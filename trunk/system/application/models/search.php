@@ -43,7 +43,7 @@ class Search extends Model {
 						"document.searchform.mode.value='s';".
 						"return false";
         $form = array(
-            'formOpen'          => form_open('welcome/search_results', array('method'=>'get', 'name'=>'searchform'), array('mode'=>'c')),
+            'formOpen'          => form_open('welcome/search_results', array('name'=>'searchform'), array('mode'=>'c')),
             'stateLabel'        => form_label('State', 'state'),
             'stateSelect'       => form_dropdown('state', array('mh'=>'Maharashtra'), 'mh'),
             'careerLabel'       => form_label('A Career in', 'career'),

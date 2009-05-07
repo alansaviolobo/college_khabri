@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/collegekhabri/";
+$config['base_url']	= "http://www.collegekhabri.com/";
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ $config['base_url']	= "http://localhost/collegekhabri/";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index.php";
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------
@@ -148,7 +148,7 @@ $config['permitted_uri_chars'] = "'a-z 0-9~%.:_\-";
 | use segment based URLs.
 |
 */
-$config['enable_query_strings'] = TRUE;
+$config['enable_query_strings'] = FALSE;
 $config['controller_trigger'] 	= 'c';
 $config['function_trigger'] 	= 'm';
 $config['directory_trigger'] 	= 'd'; // experimental not currently in use
@@ -231,11 +231,11 @@ $config['encryption_key'] = "";
 | 'time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
+$config['sess_cookie_name']		= 'ck_session';
 $config['sess_expiration']		= 7200;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'ci_sessions';
+$config['sess_table_name']		= 'ck_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update'] 	= 300;
@@ -282,7 +282,7 @@ $config['global_xss_filtering'] = FALSE;
 | by the output class.  Do not "echo" any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
