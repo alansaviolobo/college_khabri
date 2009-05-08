@@ -79,7 +79,7 @@ h2 {
     font-weight: bold;color:#5C5C5C;
 }
 
-li {border-top: 1px dotted #E8E8E8; padding:0 2px;}
+li {border-top: 1px dotted #E8E8E8; padding:0 2px; list-style:disc; margin-left:20px;}
 
 
 .grey-context {font-size: small; margin: 0; padding: 3px; font-family: Georgia, "Times New Roman", Times, serif; color: #666666; }
@@ -147,7 +147,7 @@ ul#navlist li a {
 
 .basic-text {font-size: small; font-family: Arial, Helvetica, sans-serif; }
 .large-context {font-size: small; font-family: Georgia, "Times New Roman", Times, serif; margin: 0; padding: 3px; color: #666666; font-weight: bold; }
-.medium-text {font-size: medium; font-family: Arial, Helvetica, sans-serif;color:#232323;font-size:11pt;line-height:15pt; }
+.medium-text {font-size: medium; font-family: Arial, Helvetica, sans-serif;color:#232323;font-size:10pt;line-height:15pt; }
 .black-context {font-size: large;font-family: Georgia, "Times New Roman", Times, serif; }
 
 .small-box{ margin:2px;padding:6px 16px 15px 2px;background: transparent url(../images/small-lred-box.gif) left top no-repeat; width: 30px; height:38px;font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;font-weight:bold;size:10px;cursor: default;}
@@ -170,7 +170,7 @@ ul#navlist li a {
 
 .top-login {padding: 6px 6px 0 0; float:right; }
 
-.main-search-div {width:795px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:25px; border: 1px solid #cccccc;}
+.main-search-div {width:795px; height:auto;margin:auto;font-family:Arial, Helvetica, sans-serif;padding:25px; border: 1px solid #bbbbbb;}
 
 .small-link {font-family:Arial,Helvetica,sans-serif;font-size:small; text-decoration:underline;}
 
@@ -213,6 +213,8 @@ ul#navlist li a {
 .sm-icon {padding: 0px 2px;}
 
 .yui-skin-sam .yuimenuitemlabel {padding:7px 12px 4px;}
+
+.itl {font-style: italic;}; 
 
 .yuimenubar li, .yuimenu li {border-top:0;}
 
