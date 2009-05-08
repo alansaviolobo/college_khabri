@@ -49,7 +49,7 @@ class Search extends Model {
             'careerLabel'       => form_label('A Career in', 'career'),
             'careerSelect'      => form_dropdown('career', array('en'=>'Engineering'), 'en'),
             'universityLabel'   => form_label('University', 'universities[]'),
-            'universitySelect'  => form_dropdown('universities[]', University::getUniversities(), null, "id='universities'"),
+            'universitySelect'  => form_dropdown('universities[]', array('' => 'All Universities') + University::getUniversities(), null, "id='universities'"),
             'districtLabel'     => form_label('District', 'districts'),
             'districtSelect'    => form_dropdown('districts[]', Institute::getDistricts(), null, "id='districts'"),
             'coursesLabel'      => form_label('Course', 'courses[]'),

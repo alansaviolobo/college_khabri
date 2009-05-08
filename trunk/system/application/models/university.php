@@ -40,7 +40,7 @@ class University extends Model
         $query = $this->db->select('id, name')->order_by('name')->get('universities');
         $result = array();
         foreach($query->result_array() as $row) $result[$row['id']]=$row['name'];
-        return array('' => 'All Universities') + $result;
+        return $result;
     }    
 }
 ?>

@@ -26,6 +26,7 @@ CREATE TABLE `users` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255),
   `mobile` char(10) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `cet_appno` char(9) NOT NULL,
   `cet_marks` smallint NOT NULL,
   `cet_rank` smallint NOT NULL,

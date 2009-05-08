@@ -55,8 +55,8 @@ class Members extends Controller {
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
  				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
  				$this->email->send();
- 				echo $this->email->print_debugger();
-            	$this->activation();
+ 				//echo $this->email->print_debugger();
+            	redirect("members/activation/$user_id");
             	return;
         	}
         	catch(Exception $e)
@@ -95,30 +95,32 @@ class Members extends Controller {
         	return;
     	}
 
+		$this->load->model('university');
+    	
     	$form = array(
-            'formOpen'      => form_open('members/activation'),
+            'formOpen'      => form_open("members/activation/$user_id"),
             'codeLabel' 	=> form_label('Your Activation Code', 'code', array('class'=>'medium-text v-thin-line')),
             'codeBox'   	=> form_input('code', null, "class='med-field'"),
 	    	'fNameLabel' 	=> form_label('First Name', 'fname', array('class'=>'medium-text v-thin-line')),
-            'fNameBox'   	=> form_input('fname', null, "class='med-field'"),
+            'fNameBox'   	=> form_input('fname', $this->input->post('fname'), "class='med-field'"),
 	    	'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
-            'lNameBox'   	=> form_input('lname', null, "class='med-field'"),
+            'lNameBox'   	=> form_input('lname', $this->input->post('lname'), "class='med-field'"),
 	    	'homeUniLabel'	=> form_label('Home University', 'homeUni', array('class'=>'medium-text v-thin-line')),
-            'homeUniSelect'	=> form_dropdown('homeUni', array(), "class='med-field'"),
+            'homeUniSelect'	=> form_dropdown('homeUni', array('' => 'None') + University::getUniversities(), $this->input->post('homeUni'), "class='med-field'"),
     	   	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
-            'categorySelect'=> form_dropdown('category', array(), "class='med-field'"),
+            'categorySelect'=> form_dropdown('category', User::getStatuses(), $this->input->post('category'), "class='med-field'"),
 	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'cetAppNo', array('class'=>'medium-text v-thin-line')),
-            'mhtAppNoBox'  	=> form_input('cetAppNo', null, "class='med-field'"),
+            'mhtAppNoBox'  	=> form_input('cetAppNo', $this->input->post('cetAppNo'), "class='med-field'"),
 	    	'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
-            'pCETScoreBox'  => form_input('pCETScore', null, "class='med-field'"),
+            'pCETScoreBox'  => form_input('pCETScore', $this->input->post('pCETScore'), "class='med-field'"),
 	    	'pCETRankLabel' => form_label('Projected CET rank', 'pCETRank', array('class'=>'medium-text v-thin-line')),
-            'pCETRankBox'   => form_input('pCETRank', null, "class='med-field'"),
+            'pCETRankBox'   => form_input('pCETRank', $this->input->post('pCETRank'), "class='med-field'"),
 	    	'ai3eAppNoLabel'=> form_label('AIEEE application number', 'ai3eAppNo', array('class'=>'medium-text v-thin-line')),
-            'ai3eAppNoBox' 	=> form_input('ai3eAppNo', null, "class='med-field'"),
+            'ai3eAppNoBox' 	=> form_input('ai3eAppNo', $this->input->post('ai3eAppNo'), "class='med-field'"),
         	'pAI3EScoreLabel'=>form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
-            'pAI3EScoreBox' => form_input('pAI3EScore', null, "class='med-field'"),
+            'pAI3EScoreBox' => form_input('pAI3EScore', $this->input->post('pAI3EScore'), "class='med-field'"),
 	    	'pAI3ERankLabel'=> form_label('Projected AIEEE rank', 'pAI3ERank', array('class'=>'medium-text v-thin-line')),
-            'pAI3ERankBox'  => form_input('pAI3ERank', null, "class='med-field'"),
+            'pAI3ERankBox'  => form_input('pAI3ERank', $this->input->post('pAI3ERank'), "class='med-field'"),
         	'submit'        => form_submit('submit', 'Activate my account'),
             'formClose'     => form_close()
         );
@@ -126,7 +128,6 @@ class Members extends Controller {
         	array('field'=>'code',		'label'=>'Activation code',	'rules'=>'trim|required|exact[10]'),
         	array('field'=>'fname',		'label'=>'First Name',		'rules'=>'trim|required|max_length[255]'),
         	array('field'=>'lname',		'label'=>'Surname',			'rules'=>'trim|required|max_length[255]'),
-        	array('field'=>'homeUni',	'label'=>'Home University',	'rules'=>'trim|required|is_natural'),
         	array('field'=>'pCETScore',	'label'=>'CET Score',		'rules'=>'trim|is_natural'),
         	array('field'=>'pCETRank',	'label'=>'CET Rank',		'rules'=>'trim|is_natural'),
         	array('field'=>'pAI3EScore','label'=>'AIEEE Score',		'rules'=>'trim|is_natural'),
@@ -136,22 +137,31 @@ class Members extends Controller {
     	);
         $this->form_validation->set_rules($rules);
 
-        if (!is_null($code) or $this->form_validation->run())
+        if ($this->form_validation->run())
         {
-        	$params = array(
-        		'fname' => $this->input->post('fname'),
-        		'lname' => $this->input->post('lname'),
-	        	'homeUni' => $this->input->post('homeUni'),
-	        	'pCETScore' => $this->input->post('pCETScore'),
-	        	'pCETRank' => $this->input->post('pCETRank'),
-	        	'pAI3EScore' => $this->input->post('pAI3EScore'),
-	        	'pAI3ERank' => $this->input->post('pAI3ERank'),
-        		'cetAppNo' => $this->input->post('cetAppNo'),
-        		'ai3eAppNo' => $this->input->post('ai3eAppNo')
-        	);
-    		$user->activate($this->input->post('code'));
-    		$user->update_details($params);
-    		return;
+        	try
+        	{
+	        	$params = array(
+	        		'fname' => $this->input->post('fname'),
+	        		'lname' => $this->input->post('lname'),
+		        	'homeUni' => $this->input->post('homeUni'),
+	        		'category' => $this->input->post('category'),
+	        		'pCETScore' => $this->input->post('pCETScore'),
+		        	'pCETRank' => $this->input->post('pCETRank'),
+		        	'pAI3EScore' => $this->input->post('pAI3EScore'),
+		        	'pAI3ERank' => $this->input->post('pAI3ERank'),
+	        		'cetAppNo' => $this->input->post('cetAppNo'),
+	        		'ai3eAppNo' => $this->input->post('ai3eAppNo'));
+	    		$user->activate($this->input->post('code'));
+	    		$user->update_details($params);
+	    		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName()));
+	    		redirect('members/profile');
+	    		return;
+        	}
+        	catch(Exception $e)
+        	{
+        		$form['formErrors'] = 'Invalid code entered.';
+        	}
         }
         else $form['formErrors'] = validation_errors();
 

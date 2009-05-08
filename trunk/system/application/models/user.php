@@ -31,8 +31,23 @@ class User extends Model
     function CETRank() {if (is_null($this->CETRank)) $this->set(); return $this->CETRank; }
 	function AIEEEMarks() {if (is_null($this->AIEEEMarks)) $this->set(); return $this->AIEEEMarks; }
     function AIEEERank() {if (is_null($this->AIEEERank)) $this->set(); return $this->AIEEERank; }
-	function lastTx() {if (is_null($this->lastTx)) $this->set(); return $this->lastTx; }
-    
+    function homeUni() {if (is_null($this->homeUni)) $this->set(); return $this->homeUni; }
+    function lastTx() {if (is_null($this->lastTx)) $this->set(); return $this->lastTx; }
+
+	function getStatuses()
+	{
+		return array (	'NTB'=>'NTB',
+						'NTC'=>'NTC',
+						'NTD'=>'NTD',
+						'OBC'=>'OBC',
+						'SC'=>'SC',
+						'ST'=>'ST',
+						'VJ'=>'VJ',
+						'SBC'=>'SBC',
+						'SBC/OB'=>'SBC/OB',
+						'SBC/ST'=>'SBC/ST');
+	}
+	
     static function getUserByUserId($user_id)
     {
         $user = new User();
@@ -61,6 +76,7 @@ class User extends Model
     
     private function set($data = null)
     {
+    	$this->load->model('university');
         if (is_null($data))
         {
             $data = $this->db->where('id', $this->id)->get('users')->result_object();
@@ -75,9 +91,9 @@ class User extends Model
 	    $this->status = $data->status;
 	    $this->CETMarks = $data->cet_marks;
 	    $this->CETRank = $data->cet_rank;
-	    $this->homeUni = $data->home_uni;
+	    $this->homeUni = University::getUniversity($data->home_uni);
 	    $this->lastTx = $this->db->where('user_id', $this->id)->order_by('id')
-	    						->limit(1)->get('payment_log')->result_object();
+	    						->limit(1)->get('payment_log')->row();
     }
 
     function create_user($email, $mobile, $password)
@@ -102,15 +118,15 @@ class User extends Model
     
     function activate($code)
     {
-	    if ($user->status() <> 'registered' or $user->lastTx()->status <> 'pending' or $user->lastTx()->code <> $code)
+	    if ($this->status() <> 'registered' or $this->lastTx()->status <> 'pending' or $this->lastTx()->code <> $code)
 	    {
 	    	throw new Exception ('Invalid Code');
 	    }
 	    
 	    $this->db->trans_start();
-    	$this->db->where('id', $this->id)->update(array('status'=>'premium'));
+    	$this->db->where('id', $this->id)->update('users', array('status'=>'premium'));
     	$this->db->set('paid_on', 'NOW()', FALSE)->set('applied_on', 'NOW()', FALSE)
-    				->where('id', $this->lastTx->id)->update(array('status'=>'applied'));
+    				->where('id', $this->lastTx->id)->update('payment_log', array('status'=>'applied'));
 		$this->db->trans_complete();
 
 		if ($this->db->trans_status() === FALSE)
@@ -130,6 +146,7 @@ class User extends Model
         $cetappno	= $this->db->escape(@$params['cetappno']);
         $cetrank	= $this->db->escape(@$params['cetrank']);
         $homeuni	= $this->db->escape(@$params['homeuni']);
+        $category	= $this->db->escape(@$params['category']);
             	
     	$query = "UPDATE users SET
 				    	first_name = IF ($fname IS NULL, first_name, $fname),
@@ -139,7 +156,8 @@ class User extends Model
 				    	aieee_appno = IF (aieee_appno IS NULL, $ai3eappno, aieee_appno),
 				    	cet_rank =  IF (cet_rank IS NULL, $cetrank, cet_appno),
 				    	cet_appno =  IF (cet_appno IS NULL, $cetappno, cet_appno),
-				    	home_uni =  IF (home_uni IS NULL, $homeuni, home_uni)
+				    	home_uni =  IF (home_uni IS NULL, $homeuni, home_uni),
+				    	category =  IF (category IS NULL, $category, category)
 			    	WHERE id = $this->id";
     	$this->db->query($query);
     }

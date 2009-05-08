@@ -12,6 +12,7 @@
 		<p class="medium-text v-thin-line">{$profileForm.fnameLabel}{$profileForm.fnameBox}</p>
 		<p class="medium-text v-thin-line">{$profileForm.lnameLabel}{$profileForm.lnameBox}</p>
 		<p class="medium-text v-thin-line">Category<span class="med-field">Open</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<p class="medium-text v-thin-line">Home University: <span class="med-field">{assign var=uni value=$user->homeUni()}{$uni->name()|default:'outside candidate'}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
 		<hr />
 		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}</p>
 		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}</p>
