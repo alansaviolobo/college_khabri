@@ -80,6 +80,7 @@ CREATE TABLE `institutes` (
   `aid_status` varchar(255) NOT NULL default '',
   `autonomy_status` varchar(255) NOT NULL default '',
   `minority_status` varchar(255) NOT NULL default '',
+  `ladies_only` boolean NOT NULL default false,
   `address` varchar(255) NOT NULL default '',
   `city` varchar(255) NOT NULL default '',
   `district` varchar(255) NOT NULL default '',
@@ -94,8 +95,10 @@ CREATE TABLE `institutes` (
   `closest_busstop` varchar(255) NOT NULL default '',
   `closest_railway_station` varchar(255) NOT NULL default '',
   `closest_airport` varchar(255) NOT NULL default '',
-  `boys_hostel` varchar(255) NOT NULL default '',
-  `girls_hostel` varchar(255) NOT NULL default '',
+  `boys_hostel` smallint unsigned NOT NULL default 0,
+  `girls_hostel` smallint unsigned NOT NULL default 0,
+  `boys_hostel_1styear` smallint unsigned NOT NULL default 0,
+  `girls_hostel_1styear` smallint unsigned NOT NULL default 0,
   PRIMARY KEY  (`code`),
   FOREIGN KEY (`university_id`) REFERENCES `universities`(`id`)
   ON DELETE RESTRICT ON UPDATE CASCADE

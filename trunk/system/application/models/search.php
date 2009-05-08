@@ -104,6 +104,8 @@ class Search extends Model {
 	    	if (!empty($establishedin)) $this->db->where('established_in between ' . str_replace(',', ' and ', $establishedin));
 	    	if (!empty($autonomy)) $this->db->where('autonomy_status', $autonomy);
 	    	if (!empty($minority)) $this->db->where('minority_status', $minority);
+	    	if (!empty($ladies)) $this->db->where('ladies_only', true);
+	    	if (!empty($hostel)) $this->db->where("{$hostel}_hostel > ", '0');
     		if($mode == 'c')
     		{
 		    	if (count($courses)) $this->db->where_in('courses.code', $courses);
@@ -121,9 +123,6 @@ class Search extends Model {
 		$this->db->join('fee_structure', 'fee_structure.institute_code = institutes.code');
 		$this->db->limit(10);
     	return $this->db->get()->result_object();
-    	
-    	//'hostel' = $this->input->get('hostel'),
-    	//'ladies' = $this->input->get('ladies'),
     }
 }
 ?>
