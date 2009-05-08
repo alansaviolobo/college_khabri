@@ -115,14 +115,14 @@ class Search extends Model {
 	    		if (count($coursegroups)) $this->db->where_in('group', $coursegroups);
     		}
     	}
-    	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, institutes.district, total_fee');
+    	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, institutes.district, total_fee AS fees');
     	$this->db->from('universities');
 		$this->db->join('institutes', 'institutes.university_id = universities.id');
 		$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');
 		$this->db->join('courses', 'courses.code = choice_codes.course_code');
 		$this->db->join('fee_structure', 'fee_structure.institute_code = institutes.code');
-		$this->db->limit(10);
-    	return $this->db->get()->result_object();
+		if (!empty($sortorder)) $this->db->order_by($sortorder);
+		return $this->db->get()->result_object();
     }
 }
 ?>

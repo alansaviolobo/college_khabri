@@ -1,3 +1,103 @@
+{capture name=tableheader}
+		<tr class="sort-back">
+			<td width="10%" style="padding:0px;border:0;" align="center">
+				<strong>Choice code</strong>
+			</td>
+			<td width="18%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'cname' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dcname'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ucname'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ucname'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Course</strong></a>{$sortarrow}
+			</td>
+			<td width="25%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'iname' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='diname'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='uiname'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='uiname'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>College Name</strong></a>{$sortarrow}
+			</td>
+			<td width="16%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'district' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='ddistrict'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='udistrict'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='udistrict'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>District</strong></a>{$sortarrow}
+			</td>
+			<td width="9%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'fees' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dfees'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ufees'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ufees'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Fees</strong></a>{$sortarrow}
+			</td>
+			<td width="14%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'popularity' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dpopularity'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='upopularity'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='upopularity'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Popularity rank</strong></a>{$sortarrow}
+			</td>
+			<td width="17%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'ccutoff' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dcutoff'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ucutoff'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ucutoff'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>CET cut-off</strong></a>{$sortarrow}
+			</td>
+			<td width="16%" style="padding:0px;border:0;" align="center">
+				<a href="{php}echo site_url(){/php}/{$pageno}/uchances"><strong>Your chances</strong></a>
+			</td>
+		</tr>
+{/capture}
 <div id="center">
 	<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
 		<tr>
@@ -10,43 +110,20 @@
 	</table>
 	<h1>Search Results:</h1>
 	<span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
-	<br />
-	<br />
 	<table width="100%" border="0" id="search-table" summary="layout table">
 		<tr>
-			<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
-		</tr>
-		<tr class="sort-back">
-			<td width="10%" style="padding:0px;border:0;">
-				<div align="center"><strong>Choice code</strong></div>
-			</td>
-			<td width="18%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>Course</strong></a>&#x2193;</div>
-			</td>
-			<td width="25%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>College Name</strong></a>&#x2193;</div>
-			</td>
-			<td width="16%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div>
-			</td>
-			<td width="9%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div>
-			</td>
-			<td width="14%" style="padding:0px;border:0;">
-				<div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div>
-			</td>
-			<td width="17%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div>
-			</td>
-			<td width="16%" style="padding:0px;border:0;">
-				<div align="center"><strong>Your chances</strong></div>
+			<td colspan=8>
+				<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
+				{$pagelinks}
 			</td>
 		</tr>
-		{foreach from=$results item='choicecode'}
+		{$smarty.capture.tableheader}
+		{foreach name='results' from=$results item='choicecode'}
+		{if $smarty.foreach.results.index gte $pageno && $smarty.foreach.results.iteration lte $pageno+$pagerows}
 		<tr>
 			<td>
 				<span class="inst-code">
-					<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/institute_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a>
+					<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->iname|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a>
 				</span>
 			</td>
 			<td class="basic-text search-results-small">
@@ -63,7 +140,7 @@
 				<div align="left">{$choicecode->district}</div>
 			</td>
 			<td class="basic-text">
-				<div align="left"><strong>{$choicecode->total_fee}</strong></div>
+				<div align="left"><strong>{$choicecode->fees}</strong></div>
 			</td>
 			<td>
 				<div align="center"><span class="small-box"><span title="Popularity Rank of the college">003</span></span></div>
@@ -82,42 +159,13 @@
 				</table>
 			</td>
 		</tr>
+		{/if}
 		{/foreach} 
-		<tr class="sort-back">
-			<td width="10%" style="padding:0px;border:0;">
-				<div align="center"><strong>Choice code</strong></div>
-			</td>
-			<td width="25%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>Course</strong></a>&#x2193;</div>
-			</td>
-			<td width="25%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>College Name</strong></a>&#x2193;</div>
-			</td>
-			<td width="16%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>District</strong></a>&#x2193;</div>
-			</td>
-			<td width="9%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>Fees</strong></a>&#x2193;</div>
-			</td>
-			<td width="14%" style="padding:0px;border:0;">
-				<div align="center"><strong><a href="#">Popularity rank</a></strong>&#x2193;</div>
-			</td>
-			<td width="10%" style="padding:0px;border:0;">
-				<div align="center"><a href="#"><strong>CET cut-off</strong></a>&#x2193;</div>
-			</td>
-			<td width="16%" style="padding:0px;border:0;">
-				<div align="center"><strong>Your chances</strong></div>
-			</td>
-		</tr>
+		{$smarty.capture.tableheader}
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td><img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" /></td>
+			<td colspan=8>
+				<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
+			</td>
 		</tr>
 	</table>
 </div>
