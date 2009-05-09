@@ -5,8 +5,10 @@
 				<div> 			
 					<div class="grey-line-below">
 						<span class="cut-off">Become a College Khabri member</span>
+						<div class="small-context">(Already registered? {php}echo anchor('members/login', 'Click here to log in');{/php})</div>
 					</div>
 					<br />
+					
 					{$signupForm.formErrors} 
 					{$signupForm.formOpen}
 					<table summary="layout table" valign="top">
@@ -51,7 +53,8 @@
 								<p class="grey-context">Used only for updates, notifications and important dates related to engineering. </p>
 							</td>
 						</tr>
-					</table>
+					</table><br/>
+					<span class="small-text">Make sure you have read the {php} echo anchor('info/terms_of_use','terms of use');{/php} before you click the button below.</span>
 					{$signupForm.submit}
 					{$signupForm.formClose}
 				</div>
@@ -102,8 +105,8 @@
 									<td><br />
 										<h1>We make a note of 'You'</h1>
 										<span class="basic-text">Relevant search results and choice code information is filtered as per <strong>your profile</strong>. 
-											We make sure you don't get unnecesary information. If you belong to a specific 
-											category, cut-offs and your chances of getting
+											We make sure you don't see unnecesary details. If you belong to a specific 
+											category (SC, NT etc.), cut-offs and your chances of getting
 											into a college are calculated accordingly.<br />
 											<br />
 										</span></td>
