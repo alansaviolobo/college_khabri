@@ -129,7 +129,8 @@ class Search extends Model {
 		}
 		else
 		{
-			$params = $this->session->userdata('search');
+			$sortorder = $params['sortorder'];
+			$params = array_merge($params, $this->session->userdata('search'), array('sortorder'=>$sortorder));
 		}
 
     	extract($params);
@@ -164,7 +165,8 @@ class Search extends Model {
 	    		if (count($coursegroups)) $this->db->where_in('group', $coursegroups);
     		}
     	}
-    	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, institutes.district, total_fee AS fees');
+    	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, 
+    						institutes.district, total_fee AS fees, popularity');
     	$this->db->from('universities');
 		$this->db->join('institutes', 'institutes.university_id = universities.id');
 		$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');

@@ -123,9 +123,7 @@ CREATE TABLE `choice_codes` (
   `code` integer unsigned NOT NULL auto_increment,
   `institute_code` char(10) NOT NULL,
   `course_code` smallint unsigned NOT NULL,
-  `accredited_from` year,
-  `accredited_to` year,
-  `start_year` year,
+  `popularity` smallint,
   PRIMARY KEY  (`code`),
   FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
   ON DELETE RESTRICT ON UPDATE CASCADE,
