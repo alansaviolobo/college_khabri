@@ -91,9 +91,9 @@ class User extends Model
 	    $this->status = $data->status;
 	    $this->CETMarks = $data->cet_marks;
 	    $this->CETRank = $data->cet_rank;
-	    $this->homeUni = University::getUniversity($data->home_uni);
 	    $this->lastTx = $this->db->where('user_id', $this->id)->order_by('id')
 	    						->limit(1)->get('payment_log')->row();
+	    try {$this->homeUni = University::getUniversity($data->home_uni);}catch(Exception $e){}
     }
 
     function create_user($email, $mobile, $password)
