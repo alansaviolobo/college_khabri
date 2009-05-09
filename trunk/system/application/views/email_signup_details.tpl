@@ -8,7 +8,7 @@ admission process.
 click on this link to activate your account.
 {php}echo base_url(){/php}/members/activation/{$user->id()}
 
-and enter this code: {assign var='lasttx' value=$user->lastTx()}{$lasttx()->code()}
+and enter this code: {assign var='lasttx' value=$user->lastTx()}{$lasttx->code}
 
 Best Regards,
 The College Khabri Team
