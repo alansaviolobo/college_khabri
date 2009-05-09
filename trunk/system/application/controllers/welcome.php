@@ -6,7 +6,6 @@ class Welcome extends Controller {
     {
         parent::Controller();
         $this->load->model('Search');
-		$this->load->library('session');
     }
 
     function index()

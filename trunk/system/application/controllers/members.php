@@ -6,7 +6,6 @@ class Members extends Controller {
     {
         parent::Controller();
     	$this->load->library('email');
-    	$this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('user');
         $this->smarty->assign('titlelink', $this->session->userdata('firstName'));

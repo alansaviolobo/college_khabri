@@ -5,7 +5,8 @@ class Info extends Controller {
     function Info()
     {
         parent::Controller();
-        $this->load->library('Smarty');
+        $this->load->model('search');
+        $this->smarty->assign('searchForm', Search::search_form());
     }
 
     function institute_info($instituteName, $showTemplate = 'true')
@@ -37,16 +38,12 @@ class Info extends Controller {
 
  	function what_is_engineering()
     {
-        $this->load->model('search');
-        $this->smarty->assign('searchForm', Search::search_form());
         $this->smarty->assign('template', 'whatisengineering.html');
         $this->smarty->display('template3column.html');
     }    
     
     function benefits_of_becoming_an_engineer()
     {
-        $this->load->model('search');
-        $this->smarty->assign('searchForm', Search::search_form());
     	$this->smarty->assign('template', 'benefits_of_becoming_an_engineer.html');
         $this->smarty->display('template3column.html');
     }   
