@@ -78,11 +78,60 @@ class Search extends Model {
             'submit'            => form_submit('submit', 'Search', "class='search-button'"),
             'formClose'         => form_close()
         );
+        
+		$params = $this->session->userdata('search');
+        if(count(array_filter($params)) > 1)
+        {
+			extract($params);
+			$courses = array_filter($courses);
+	    	$districts = array_filter($districts);
+	    	$coursegroups = array_filter($coursegroups);
+	    	$universities = array_filter($universities);
+			$js = '';
+	    	for($count=1; $count<count($universities); $count++) $js .= "addOption('universities');";
+	    	$js .= "var universitiesv = ['" . implode("','", $universities) . "'];
+	    			var universitiesdd = document.getElementsByName('universities[]');
+	    			for(var count=0; count < universitiesdd.length; universitiesdd[count].value=universitiesv[count++]);\n";
+	    	
+	    	for($count=1; $count<count($districts); $count++) $js .= "addOption('districts');";
+	    	$js .= "var districtsv = ['" . implode("','", $districts) . "'];
+	    			var districtsdd = document.getElementsByName('districts[]');
+	    			for(var count=0; count < districtsdd.length; districtsdd[count].value=districtsv[count++]);\n";
+	    	
+	    	for($count=1; $count<count($courses); $count++) $js .= "addOption('courses');";
+	    	$js .= "var coursesv = ['" . implode("','", $courses) . "'];
+	    			var coursesdd = document.getElementsByName('courses[]');
+	    			for(var count=0; count < coursesdd.length; coursesdd[count].value=coursesv[count++]);\n";
+	    	
+	    	for($count=1; $count<count($coursegroups); $count++) $js .= "addOption('coursegroups');";
+	    	$js .= "var coursegroupsv = ['" . implode("','", $coursegroups) . "'];
+	    			var coursegroupsdd = document.getElementsByName('coursegroups[]');
+	    			for(var count=0; count < coursegroupsdd.length; coursegroupsdd[count].value=coursegroupsv[count++]);\n";
+	    	
+	    	$js .= "document.getElementsByName('aid')[0].value = '$aid';\n";
+	    	$js .= "document.getElementsByName('fees')[0].value = '$fees';\n";
+	    	$js .= "document.getElementsByName('establishedin')[0].value = '$establishedin';\n";
+	    	$js .= "document.getElementsByName('autonomy')[0].value = '$autonomy';\n";
+	    	$js .= "document.getElementsByName('minority')[0].value = '$minority';\n";
+	    	$js .= "document.getElementsByName('hostel')[0].value = '$hostel';\n";
+	    	$js .= "document.getElementsByName('ladies')[0].checked = " . ($ladies?'true':'false') . ";\n";
+
+	    	$form['acjs'] = "<script>$js</script>";
+        }
     	return $form;
     }
     
     function searchCourseCodes($params)
     {
+		if(count(array_filter($params))>1)
+		{
+			$this->session->set_userdata(array('search'=>$params));
+		}
+		else
+		{
+			$params = $this->session->userdata('search');
+		}
+
     	extract($params);
     	$courses = array_filter($courses);
     	$districts = array_filter($districts);

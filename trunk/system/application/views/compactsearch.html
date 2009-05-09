@@ -10,8 +10,8 @@
 <br />
 <hr />
 <br />
+{$searchForm.formOpen}
 <div>
-	{$searchForm.formOpen}
 	<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:14pt;letter-spacing:-1px;margin-top:0;">Search again</p>
 	<div id="less-details-options">
 		<br />
@@ -96,46 +96,46 @@
 			<a title="If you want to search all colleges under one group, Eg. Mechanical or Electrical" class="small-link" onclick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
 		</div>
 		<br />
-			</span></div>
-		
 	</div>
-	<div id="less-details-search" style="display:none;">
-		<span class="cut-off">{$searchForm.searchLabel}</span><br />
-		<br />
-		{$searchForm.searchBox}<br />
-		<br />
-		<span class="grey-context">Eg. <em>Vidyalankar Institute of Technology</em></span><br />
-		<br />
-		<br />
-		<a class="small-link" onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a><br />
-	</div><hr/>
-	<div id="more-details">
-		<span class="cut-off">{$searchForm.aidLabel}</span><br />
-		{$searchForm.aidSelect}
-		<br />
-		<br />
-		<span class="cut-off">{$searchForm.minorityLabel}</span><br />
-		{$searchForm.minoritySelect}
-		<br />
-		<br />
-		<span class="cut-off">{$searchForm.autonomyLabel}</span><br />
-		{$searchForm.autonomySelect}
-		<span class="cut-off">{$searchForm.hostelLabel}</span><br />
-		{$searchForm.hostelSelect}
-		<br />
-		<br />
-		<span class="cut-off">{$searchForm.establishmentLabel}</span><br />
-		{$searchForm.establishmentSelect}
-		<br />
-		<br />
-		<span class="cut-off">{$searchForm.feesLabel}</span><br />
-		{$searchForm.feesSelect}
-		<br />
-		<br />
-		<div>{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
-		<div class="medium-text"></div>
-		<br />
-	</div>
-	<div align="right">{$searchForm.submit}</div>
-	{$searchForm.formClose}
 </div>
+<div id="less-details-search" style="display:none;">
+	<span class="cut-off">{$searchForm.searchLabel}</span><br />
+	<br />
+	{$searchForm.searchBox}<br />
+	<br />
+	<span class="grey-context">Eg. <em>Vidyalankar Institute of Technology</em></span><br />
+	<br />
+	<br />
+	<a class="small-link" onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a><br />
+</div>
+<hr />
+<div id="more-details">
+	<span class="cut-off">{$searchForm.aidLabel}</span><br />
+	{$searchForm.aidSelect}
+	<br />
+	<br />
+	<span class="cut-off">{$searchForm.minorityLabel}</span><br />
+	{$searchForm.minoritySelect}
+	<br />
+	<br />
+	<span class="cut-off">{$searchForm.autonomyLabel}</span><br />
+	{$searchForm.autonomySelect}
+	<span class="cut-off">{$searchForm.hostelLabel}</span><br />
+	{$searchForm.hostelSelect}
+	<br />
+	<br />
+	<span class="cut-off">{$searchForm.establishmentLabel}</span><br />
+	{$searchForm.establishmentSelect}
+	<br />
+	<br />
+	<span class="cut-off">{$searchForm.feesLabel}</span><br />
+	{$searchForm.feesSelect}
+	<br />
+	<br />
+	<div>{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
+	<div class="medium-text"></div>
+	<br />
+</div>
+<div align="right">{$searchForm.submit}</div>
+{$searchForm.formClose}
+{$searchForm.acjs}

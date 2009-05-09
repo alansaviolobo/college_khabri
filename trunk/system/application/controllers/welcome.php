@@ -6,6 +6,7 @@ class Welcome extends Controller {
     {
         parent::Controller();
         $this->load->model('Search');
+		$this->load->library('session');
     }
 
     function index()
@@ -18,7 +19,6 @@ class Welcome extends Controller {
     function search_results($page = 0, $sortcode = '')
     {
 		$this->load->library('pagination');
-		$this->load->library('session');
 		
     	$params = array(
 	    	'aid' => $this->input->post('aid'),
@@ -35,15 +35,6 @@ class Welcome extends Controller {
 	    	'universities' => $this->input->post('universities'),
 	    	'establishedin' => $this->input->post('establishedin'));
 
-    	if(count(array_filter($params)))
-    	{
-    		$this->session->set_userdata(array('search'=>$params));
-    	}
-    	else
-    	{
-    		$params = $this->session->userdata('search');
-    	}
-    	
    		$params['sortorder'] = $sortorder = $sortfield = '';
     	if ($sortcode <> '')
     	{
