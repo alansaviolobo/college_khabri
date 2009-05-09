@@ -1,5 +1,5 @@
-<div id="ck_nav_bar" class="yuimenubar yuimenubarnav">
-	<div class="bd">
+<div id="ck_nav_bar" class="yuimenubar yuimenubarnav" align="right">
+	<div class="bd leftalign">
 		<ul class="first-of-type">
 			<span class="large-context" style="float:right;padding: 0px 3px;">
 				{if $titlelink neq ''}
@@ -10,14 +10,15 @@
 				'.anchor('members/signup','Register');{/php}
 				{/if}
 			</span>
+			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="{php}echo site_url(){/php}"><ul><li class="yuimenuitem">Home</li></ul></a></li>
 			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#engineering">The field of Engineering</a>
-				<div id="engineering" class="yuimenu">
+				<div id="engineering" class="yuimenu"  align="right"> 
 					<div class="bd">
 						<ul>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-what-is-engg.gif" alt="" />&nbsp;What is <b>'Engineering'</b> anyway?</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-benefits-of-engg.gif" alt="" />&nbsp;<b>Benefits</b> of becoming an Engineer</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://avatars.yahoo.com">Avatars</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering">Groups</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-what-is-engg.gif" alt="What is Engineering" />&nbsp;What is <b>'Engineering'</b> anyway?</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-benefits-of-engg.gif" alt="enefits" />&nbsp;<b>Benefits</b> of becoming an Engineer</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/engineering_achievements"><img class="sm-icon" src="{php}echo base_url(){/php}images/icon-20-engg-ach.gif">&nbsp;Engineering achievements of the 20th century</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/work_engineers_do">Work engineers do</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://promo.yahoo.com/broadband/">Internet Access</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#">PIM</a>
 								<div id="pim" class="yuimenu">
@@ -39,7 +40,7 @@
 					</div>
 				</div>
 			</li>
-			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://shopping.yahoo.com">Admission procedure</a>
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://shopping.yahoo.com">Admissions</a>
 				<div id="shopping" class="yuimenu">
 					<div class="bd"> 
 						<ul>
@@ -71,7 +72,24 @@
 					</div>
 				</div>
 			</li>
-		</ul>
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel">Engineering Branches</a>
+				<div id="branches" class="yuimenu">
+					<div class="bd"> 
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/aerospace">Aerospace Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://www.yahooligans.com">Kids</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com">Music</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://movies.yahoo.com">Movies</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com/launchcast">Radio</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://travel.yahoo.com">Travel</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://tv.yahoo.com">TV</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			
 	</div>
 </div>
 <br />

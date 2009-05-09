@@ -70,7 +70,7 @@ class Welcome extends Controller {
     	$this->smarty->assign('sortfield', $sortfield);
     	$this->smarty->assign('searchForm', Search::search_form());
         $this->smarty->assign('template', 'searchresults.html');
-        $this->smarty->display('template3column.html');
+        $this->smarty->display('template_search_results.html');
     }
 }
 
