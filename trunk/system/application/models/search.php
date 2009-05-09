@@ -80,7 +80,7 @@ class Search extends Model {
         );
         
 		$params = $this->session->userdata('search');
-        if(count(array_filter($params)) > 1)
+        if($params and count(array_filter($params)) > 1)
         {
 			extract($params);
 			$courses = array_filter($courses);
@@ -133,10 +133,10 @@ class Search extends Model {
 		}
 
     	extract($params);
-    	$courses = array_filter($courses);
-    	$districts = array_filter($districts);
-    	$coursegroups = array_filter($coursegroups);
-    	$universities = array_filter($universities);
+    	if(is_array($courses)) $courses = array_filter($courses);
+    	if(is_array($districts)) $districts = array_filter($districts);
+    	if(is_array($coursegroups)) $coursegroups = array_filter($coursegroups);
+    	if(is_array($universities)) $universities = array_filter($universities);
 
     	if ($mode == 's')
     	{
