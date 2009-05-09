@@ -174,7 +174,7 @@ class Members extends Controller {
     {
         $loginform = array(
             'formOpen'      => form_open('members/login', array('name'=>'loginform', 'onsubmit'=>'if (document.loginform.password.value) document.loginform.password.value=SHA1(document.loginform.password.value)')),
-            'usernameLabel' => form_label('College Khabri username (your email address)', 'username', array('class'=>'medium-text')),
+            'usernameLabel' => form_label('Login ID (your email address)', 'username', array('class'=>'medium-text')),
             'usernameBox'   => form_input('username', $this->input->post('username'), "class='med-field'"),
             'passwordLabel' => form_label('Your Password', 'password', array('class'=>'medium-text')),
             'passwordBox'   => form_password('password', null, "class='med-field'"),
