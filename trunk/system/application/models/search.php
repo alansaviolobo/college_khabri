@@ -127,10 +127,14 @@ class Search extends Model {
 		{
 			$this->session->set_userdata(array('search'=>$params));
 		}
-		else
+		elseif(is_array($this->session->userdata('search')))
 		{
 			$sortorder = $params['sortorder'];
 			$params = array_merge($params, $this->session->userdata('search'), array('sortorder'=>$sortorder));
+		}
+		else
+		{
+			throw new Exception('invalid search params');
 		}
 
     	extract($params);

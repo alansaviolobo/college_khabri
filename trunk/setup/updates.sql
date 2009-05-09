@@ -1,6 +1,6 @@
 update choice_codes set popularity = 1 where code = 20288;
-update choice_codes set popularity = 2 where code = 21211 
-update choice_codes set popularity = 3 where code = 50180 
+update choice_codes set popularity = 2 where code = 21211; 
+update choice_codes set popularity = 3 where code = 50180; 
 update choice_codes set popularity = 4 where code = 50184;
 update choice_codes set popularity = 5 where code = 21223;
 update choice_codes set popularity = 6 where code = 90912;

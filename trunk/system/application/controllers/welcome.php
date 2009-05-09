@@ -45,7 +45,14 @@ class Welcome extends Controller {
     		}
     	}
 
-    	$results = Search::searchCourseCodes($params);
+    	try
+    	{
+	    	$results = Search::searchCourseCodes($params);
+    	}
+    	catch(Exception $e)
+    	{
+    		redirect('welcome/index');
+    	}
 
 		$config['base_url'] = site_url() . '/welcome/search_results/';
 		$config['total_rows'] = count($results);
