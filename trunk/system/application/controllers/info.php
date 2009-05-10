@@ -46,7 +46,56 @@ class Info extends Controller {
     	$this->smarty->assign('template', 'benefits_of_becoming_an_engineer.html');
         $this->smarty->display('template3column.html');
     }   
+    
+    function engineering_achievements()
+    {
+        $this->smarty->assign('template', 'engineering_achievements.html');
+        $this->smarty->display('template3column.html');
+    }  
+    
+     function work_engineers_do()
+    {
+        $this->smarty->assign('template', 'work-engineers-do.html');
+        $this->smarty->display('template3column.html');
+    } 
+    
+      function aerospace()
+    {
+        $this->smarty->assign('template', 'branches/aerospace.html');
+        $this->smarty->display('template3column.html');
+    }  
+    
+    function agriculture()
+    {
+        $this->smarty->assign('template', 'branches/agriculture.html');
+        $this->smarty->display('template3column.html');
+    }    
+      
+	function biomedical()
+    {
+        $this->smarty->assign('template', 'branches/biomed.html');
+        $this->smarty->display('template3column.html');
+    } 
+    
+    function civil()
+    {
+        $this->smarty->assign('template', 'branches/civil.html');
+        $this->smarty->display('template3column.html');
+    } 
+    
+    function computer()
+    {
+        $this->smarty->assign('template', 'branches/computer.html');
+        $this->smarty->display('template3column.html');
+    }    
+    
+     function computerscience()
+    {
+        $this->smarty->assign('template', 'branches/computerscience.html');
+        $this->smarty->display('template3column.html');
+    }   
 }
 
 /* End of file info.php */
+
 /* Location: ./system/application/controllers/info.php */
