@@ -93,7 +93,13 @@ class Info extends Controller {
     {
         $this->smarty->assign('template', 'branches/computerscience.html');
         $this->smarty->display('template3column.html');
-    }   
+    }  
+    
+    function circleofenggadmissions()
+    {
+        $this->smarty->assign('template', 'circle-of-admissions.html');
+        $this->smarty->display('template3column.html');
+    }  
 }
 
 /* End of file info.php */

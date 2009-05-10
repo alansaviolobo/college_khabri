@@ -103,7 +103,7 @@
 		<tr>
 			<td width="20%" class="modify-search medium-text">You searched for:</td>
 			<td width="80%" class="basic-text">
-				<div align="left">Mumbai University | All Districts | Automobile Engineering, Mechanical 
+				<div align="left">&nbsp;Mumbai University | All Districts | Automobile Engineering, Mechanical 
 					Engineering</div>
 			</td>
 		</tr>
@@ -121,34 +121,34 @@
 		{foreach name='results' from=$results item='choicecode'}
 		{if $smarty.foreach.results.index gte $pageno && $smarty.foreach.results.iteration lte $pageno+$pagerows}
 		<tr>
-			<td>
+			<td style="border-right: 1px dashed #dddddd;">
 				<span class="inst-code">
 					<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a>
 				</span>
 			</td>
-			<td class="basic-text search-results-small">
+			<td style="border-right: 1px dashed #dddddd;" class="basic-text search-results-small">
 				<span class="basic-text">
 					<strong>
 						<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->cname}</a>
 					</strong>
 				</span>
 			</td>
-			<td class="basic-text search-results-small">
+			<td style="border-right: 1px dashed #dddddd;" class="basic-text search-results-small">
 				<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->iname}</a>
 			</td>
-			<td class="basic-text">
+			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
 				<div align="left">{$choicecode->district}</div>
 			</td>
-			<td class="basic-text">
+			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
 				<div align="left"><strong>{$choicecode->fees}</strong></div>
 			</td>
-			<td>
+			<td  style="border-right: 1px dashed #dddddd;" >
 				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity}</span></div>
 			</td>
-			<td class="cut-off">
+			<td  style="border-right: 1px dashed #dddddd;" class="cut-off">
 				<div align="center">160</div>
 			</td>
-			<td>
+			<td style="border-right: 1px dashed #dddddd;" >
 				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
 					<tr">
 						<td width="10%" class="small-text" style="border:0;">Medium</td>
