@@ -54,7 +54,6 @@ class Members extends Controller {
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
  				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
  				$this->email->send();
- 				//echo $this->email->print_debugger();
             	redirect("members/activation/$user_id");
             	return;
         	}
@@ -183,7 +182,7 @@ class Members extends Controller {
         );
         $rules = array(
         	array('field'=>'username' , 'label'=>'Username', 'rules'=>'trim|required|valid_email|max_length[255]'),
-        	array('field'=>'password1', 'label'=>'Password', 'rules'=>'trim|required|exact[40]')
+        	array('field'=>'password', 'label'=>'Password', 'rules'=>'trim|required|exact[40]')
         );
         $this->form_validation->set_rules($rules);
         
@@ -196,11 +195,11 @@ class Members extends Controller {
         		$this->smarty->assign('titlelink', $this->session->userdata('firstName'));
 	            if ($user->status() == 'registered')
 	            {
-	            	$this->activation();
+	            	redirect('members/activation/' . $user->id());
 	            }
 	            else
 	            {
-	        		$this->profile();
+	        		redirect('/members/profile');
 	            }
 				return;
         	}
