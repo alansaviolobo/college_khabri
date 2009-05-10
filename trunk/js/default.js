@@ -136,6 +136,7 @@ function SHA1 (msg) {
     function addOption(elementId)
     {
         var element = document.getElementById(elementId);
+        if(document.getElementsByName(element.name).length > 2) return;
         var value = element.selectedIndex;
         element.selectedIndex = 0;
         var remlink = document.createElement('a');
@@ -149,11 +150,3 @@ function SHA1 (msg) {
             else if(remlink.attachEvent) remlink.attachEvent('onclick', function(){alert(this.parent.name);}); // for IE
         element.selectedIndex = value;
     }
-
-    function show(objId)
-    {
-        document.getElementById(active_element).style.display='none';
-        active_element = objId.split('-')[0] + '-div';
-        document.getElementById(active_element).style.display='block';
-    }
-    var active_element = 'overview-div';
