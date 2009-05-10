@@ -25,10 +25,11 @@ class Search extends Model {
 
         $established_in = array(
             		 '' => "Any",
-            '1850,1900' => "1850 - 1900",
-            '1901,1950' => "1901 - 1950",
-            '1951,2000' => "1951 - 2000",
-        	'2001,2009' => "2001 - 2009");
+        	'2004,2009' => "1 - 5 years",
+        	'1999,2003' => "5 - 10 years",
+            '1989,1998' => "10 - 20 years",
+            '1979,1988' => "20 - 30 years",
+            '1850,1978' => "more than 30 years");
 
 		$coursesJS = 	"this.parentNode.style.display='none';".
 						"getElementById('course_selection_div').style.display='block';".
@@ -68,7 +69,7 @@ class Search extends Model {
             'feesSelect'        => form_dropdown('fees', $approx_fees),
             'hostelLabel'       => form_label('Hostel', 'hostel'),
             'hostelSelect'      => form_dropdown('hostel', $hostel),
-            'establishmentLabel'=> form_label('Established', 'establishedin'),
+            'establishmentLabel'=> form_label('Age of the Institute', 'establishedin'),
             'establishmentSelect'=> form_dropdown('establishedin', $established_in),
             'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
             'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
