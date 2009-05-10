@@ -53,6 +53,7 @@
 				</tbody>
 			</table>
 		</div>
+<!--		
 		<div id="coursegroup_selection_div" style="display:none">
 			<span class="cut-off">{$searchForm.coursegroupLabel}</span>
 			<div>
@@ -76,6 +77,7 @@
 			<br />
 			<a title="If you want know the exact course to search, Eg. B. Tech Mechanical or B.E Electrical Engg." class="small-link" onclick="this.parentNode.style.display='none';getElementById('course_selection_div').style.display='block'">Search by specific course?</a>
 		</div>
+-->
 		<div id="course_selection_div">
 			<span class="cut-off">{$searchForm.coursesLabel}</span>
 			<div>
@@ -88,12 +90,23 @@
 							<td valign="top"> 
 								&nbsp;<a title="Add to search two or more courses, Eg. Automobile + Mechanical" class="small-link" onclick="addOption('courses')">[+] </a> <br />
 							</td>
+							
 						</tr>
+					
 					</tbody>
 				</table>
+					<tr><br/>
+								<div><span class="cut-off">Last year's cut-off</span></div><br/>
+								<div><form id="form1" name="form1" method="post" action="">
+  								<input type="radio" name="radio" id="MH-CET" value="MH-CET" />
+  								<label for="MH-CET">MH-CET</label><br/>
+   								<input type="radio" name="radio" id="AIEEE" value="AIEEE" />
+    							<label for="AIEEE">AIEEE</label></form><div>
+							</tr>
 			</div>
 			<br />
-			<a title="If you want to search all colleges under one group, Eg. Mechanical or Electrical" class="small-link" onclick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
+		<!--	<a title="If you want to search all colleges under one group, Eg. Mechanical or Electrical" class="small-link" onclick="this.parentNode.style.display='none';getElementById('coursegroup_selection_div').style.display='block'">Search by a course group?</a><br />
+		-->
 		</div>
 		<br />
 	</div>
@@ -135,6 +148,7 @@
 	<div>{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
 	<div class="medium-text"></div>
 	<br />
+	
 </div>
 <div align="right">{$searchForm.submit}</div>
 {$searchForm.formClose}
