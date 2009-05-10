@@ -1,24 +1,30 @@
 <?php
 class Institute extends Model
 {  
-	public $code;
-	public $name;
-	public $university;
-	public $status;
-	public $address;
-	public $city;
-	public $district;
-	public $state;
-	public $pincode;
-	public $stdcode;
-	public $phone;
-	public $fax;
-	public $emailAddress;
-	public $url;
-	public $establishedIn;
-	public $closestBusstop;
-	public $closestRailwayStation;
-	public $closestAirport;
+	private $code;
+	private $name;
+	private $uni;
+	private $status;
+	private $address;
+	private $city;
+	private $district;
+	private $state;
+	private $pincode;
+	private $stdcode;
+	private $phone;
+	private $fax;
+	private $emailAddress;
+	private $url;
+	private $establishedIn;
+	private $courses;
+	private $fees;
+	private $boysHostel;
+	private $boysHostel1styear;
+	private $girlsHostel;
+	private $girlsHostel1styear;
+	private $closestBusstop;
+	private $closestRailwayStation;
+	private $closestAirport;
 	
     function Institute()
     {
@@ -28,8 +34,10 @@ class Institute extends Model
     function code() {if (is_null($this->code)) $this->set(); return $this->code; }
     function name() {if (is_null($this->name)) $this->set(); return $this->name; }
     function address() {if (is_null($this->address)) $this->set(); return $this->address; }
-    function university() {if (is_null($this->university)) $this->set(); return $this->university; }
-    function status() {if (is_null($this->status)) $this->set(); return $this->status; }
+    function university() {if (is_null($this->uni)) $this->set(); return $this->uni; }
+	function aidStatus() {if (is_null($this->aidStatus)) $this->set(); return $this->aidStatus; }
+	function minorityStatus() {if (is_null($this->minorityStatus)) $this->set(); return $this->minorityStatus; }
+    function autonomyStatus() {if (is_null($this->autonomyStatus)) $this->set(); return $this->autonomyStatus; }
     function city() {if (is_null($this->city)) $this->set(); return $this->city; }
 	function district() {if (is_null($this->district)) $this->set(); return $this->district; }
     function state() {if (is_null($this->state)) $this->set(); return $this->state; }
@@ -40,6 +48,12 @@ class Institute extends Model
     function emailAddress() {if (is_null($this->emailAddress)) $this->set(); return $this->emailAddress; }
     function url() {if (is_null($this->url)) $this->set(); return $this->url; }
     function establishedIn() {if (is_null($this->establishedIn)) $this->set(); return $this->establishedIn; }
+	function fees() {if (is_null($this->fees)) $this->set(); return $this->fees; }
+	function courses() {if (is_null($this->courses)) $this->courses(); return $this->courses; }
+    function boysHostel() {if (is_null($this->boysHostel)) $this->set(); return $this->boysHostel; }
+    function girlsHostel() {if (is_null($this->girlsHostel)) $this->set(); return $this->girlsHostel; }
+    function boysHostel1styear() {if (is_null($this->boysHostel1styear)) $this->set(); return $this->boysHostel1styear; }
+    function girlsHostel1styear() {if (is_null($this->girlsHostel1styear)) $this->set(); return $this->girlsHostel1styear; }
     function closestBusstop() {if (is_null($this->closestBusstop)) $this->set(); return $this->closestBusstop; }
     function closestRailwayStation() {if (is_null($this->closestRailwayStation)) $this->set(); return $this->closestRailwayStation; }
     function closestAirport() {if (is_null($this->closestAirport)) $this->set(); return $this->closestAirport; }
@@ -91,10 +105,17 @@ class Institute extends Model
 		$this->emailAddress = $data->email;
 		$this->url = $data->url;
 		$this->establishedIn = $data->established_in;
+		$this->boysHostel = $data->boys_hostel;
+		$this->boysHostel1styear = $data->boys_hostel_1styear;
+		$this->girlsHostel = $data->girls_hostel;
+		$this->girlsHostel1styear = $data->girls_hostel_1styear;
 		$this->closestBusstop = $data->closest_busstop;
 		$this->closestRailwayStation = $data->closest_railway_station;
 		$this->closestAirport = $data->closest_airport;
-        $this->university = University::getUniversity($data->university_id);
+        $this->uni = University::getUniversity($data->university_id);
+        $this->fees = $this->db->where('institute_code', $this->code)->get('fees')->row();
+        $courses = $this->db->where('institute_code', $this->code)->get('choice_codes')->result_object();
+        foreach($courses as $course) { $this->courses[] = Course::getCourse($course->course_code); }
     }
     
     function getDistricts()

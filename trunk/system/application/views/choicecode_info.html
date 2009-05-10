@@ -1,124 +1,123 @@
+{assign var='course' value=$choicecode->course()}
+{assign var='institute' value=$choicecode->institute()}
+{assign var='fees' value=$institute->fees()}
+{assign var='university' value=$institute->university()}
 <div id="main-container">
-    <div id="v-thin-line">
-        <h1>{$institute->name()}, {$institute->district()}</h1>
-    </div>
-
-    <p class="grey-context">Affiliated to <em><strong>{$institute->university->name()} University</strong></em></p>
-    <p class="grey-context">Established in <em><strong>2008 [AICTE Period of Apprival 2011 - 2008 ]</strong></em></p>
-    <div id='infotabs'>
-        <ul class="yui-nav medium-text">
-            <li style="border-top:0px;" class="selected"><a href="#tab1"><em>Overview</em></a></li>
-            <li style="border-top:0px;"><a href="#tab2"><em>About college</em></a></li>
-            <li style="border-top:0px;"><a href="#tab3"><em>Fees</em></a></li>
-            <li style="border-top:0px;"><a href="#tab4"><em>Faculty</em></a></li>
-            <li style="border-top:0px;"><a href="#tab5"><em>Placements</em></a></li>
-            <li style="border-top:0px;"><a href="#tab6"><em>Admissions</em></a></li>
-        </ul>
-		
-        <div class="yui-content" style="background:none;border:none;">
-            <div>
-                <div class="floatr"><p class="grey-context"><img src="{php}echo base_url(){/php}images/college-generic.gif" alt="College" /></p></div>
-                <div class="v-thin-line"><span class="large-context">University: </span><span class="medium-text">Mumbai University</span></div>
-                <div class="v-thin-line"><span class="large-context">Establishment year: </span><span class="medium-text">1989</span></div>
-                <div class="v-thin-line"><span class="large-context">Autonomy: </span><span class="medium-text">Autonomy</span></div>
-                <div class="v-thin-line"><span class="large-context">Minority: </span><span class="medium-text">No. TEM 2008/274/08 T. Shik 1 Dt.30/6/2008 </span></div>
-                <div class="v-thin-line"><span class="large-context">Aid Status: </span><span class="medium-text">No. F.N.06/07/ms/engg/2008/38 Dt.30/6/2008 </span></div>
-                <div class="v-thin-line"><span class="large-context">Accreditation: </span><span class="medium-text">Information not Available </span></div>
-                <div class="v-thin-line"><span class="large-context">Hostel Accomodation (Boys):</span><span class="medium-text">0 ( for Ist Year : 0 ) </span></div>
-                <div class="v-thin-line"><span class="large-context">Hostel Accomodation (Girls)</span><span class="medium-text">0 ( for Ist Year : 0 ) </span></div>
-               </div>
-
-            <div>
-               <div class="v-thin-line"><span class="large-context">Institute address: </span><span class="medium-text">Mumbai University</span></div>
-               <div class="v-thin-line"><span class="large-context">Website url: </span><span class="medium-text">Mumbai University</span></div>
-               <div class="v-thin-line"><span class="large-context">Email ID: </span><span class="medium-text">Mumbai University</span></div>
-               <div class="v-thin-line"><span class="large-context">% Female candidates: </span><span class="medium-text">Mumbai University</span></div>
-				<div class="v-thin-line"><span class="large-context">Other streams in this college: </span><span class="medium-text">Mumbai University</span></div>
-            </div>
-
-            <div>
-              <table width="100%" border="0" cellspacing="0" cellpadding="1">
-  <tr>
-    <td valign="top" width="50%"><div class="v-thin-line"><span class="large-context">Institute quotas:</span></div>
-                	<table width="30%" border="1" cellspacing="0" cellpadding="1">
-					  <tr>
-					    <td width="38%"><div align="center">Management</div></td>
-					    <td width="34%"><div align="center">CET</div></td>
-					    <td width="28%"><div align="center">Others</div></td>
-					  </tr>
-					  <tr>
-					    <td><div align="center">Yes</div></td>
-					    <td><div align="center">No</div></td>
-					    <td><div align="center">Yes</div></td>
-					  </tr>
-					</table>
-                    
-                    
-                    <br />
-                   <span class="large-context">Financial Aid:</span><br/>
-                     <div class="v-thin-line"><span class="large-context">Number of fee waivers granted and Amount:</span><span 
-                     class="medium-text">nreunfuifnnuiniunun</span></div>  
-                     <div class="v-thin-line"><span class="large-context">Crieteria for fee waiver: </span><span class="medium-text">
-                     nreunfuifnnuiniunun</span></div>
-                     <div class="v-thin-line"><span class="large-context">Number of Scholarships: </span><span class="medium-text">
-                     nreunfuifnnuiniunun</span></div>
-                                      </td>
-    <td valign="top" width="50%"> <div class="v-thin-line"><span class="large-context">Admission fee:</span><span class="medium-text">Mumbai University</span></div>
-                <div class="v-thin-line"><span class="large-context">Tuition Fee:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">University fee (Examination, Registration etc.):</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Hostel fee (Rent etc.)(per Annum):</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Laboratory fee:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Library fee:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Others(Development Fund):</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context"><b>TOTAL FEES:</b></span><span class="medium-text"><b>Mumbai University</b></span></div></td>
-  </tr>
-</table>
-            </div>
-
-            <div>
-                <div class="v-thin-line"><span class="large-context">Average Experience (in terms of teaching, research and industry):</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Student to faculty ratio:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">% Doctorate faculty:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">% Post-graduate faculty:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">% Graduate faculty:</span><span class="medium-text">Mumbai University</span></div>
-            
-            </div>
-
-            <div>
-                <div class="v-thin-line"><span class="large-context">Minimum / Maximum salary offered:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Average salary:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">% Students placed:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Value for money ratio & rank:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Major recruiters:</span><span class="medium-text">Mumbai University</span></div>
-            </div>
-            
-             <div>
-                <div class="v-thin-line"><span class="large-context">Popularity rank:</span><span class="medium-text">Mumbai University</span></div>
-            	<div class="v-thin-line"><span class="large-context">Other streams:</span></div>
-	            	 <table width="50%" border="0" cellspacing="0" cellpadding="1">
-	                  <tr>
-	                    <td  bgcolor="#CCCCCC">Stream name</td>
-	                    <td  bgcolor="#CCCCCC">Cut-off</td>
-	                    <td bgcolor="#CCCCCC">Intake</td>
-	                    <td  bgcolor="#CCCCCC">My chances</td>
-	                    <td  bgcolor="#CCCCCC">Seats kept for your category</td>
-	                  </tr>
-	                  <tr>
-	                    <td>a</td>
-	                    <td>b</td>
-	                     <td>c</td>
-	                      <td>d</td>
-	                       <td>e</td>
-	                  </tr>
-	                </table>
-            </div>
-
-            <div>
-                <p class="large-context"></p>
-            </div>
-        </div>
-    </div>
-    <hr noshade="noshade" color="#000000" />
+	<div id="v-thin-line">
+		<h1>{$institute->name()}, {$institute->district()}</h1>
+	</div>
+	<p class="grey-context">Affiliated to <em><strong>{$university->name()} University</strong></em></p>
+	<p class="grey-context">Established in <em><strong>{$institute->establishedIn()}</strong></em></p>
+	<div id="infotabs">
+		<ul class="yui-nav medium-text">
+			<li style="border-top:0px;" class="selected"><a href="#tab1"><em>Overview</em></a></li>
+			<li style="border-top:0px;"><a href="#tab2"><em>About college</em></a></li>
+			<li style="border-top:0px;"><a href="#tab3"><em>Fees</em></a></li>
+			<li style="border-top:0px;"><a href="#tab4"><em>Faculty</em></a></li>
+			<li style="border-top:0px;"><a href="#tab5"><em>Placements</em></a></li>
+			<li style="border-top:0px;"><a href="#tab6"><em>Admissions</em></a></li>
+		</ul>
+		<div class="yui-content" style="background:none;border:none;">
+			<div>
+				<div class="floatr">
+					<p class="grey-context"><img src="{php}echo base_url(){/php}images/college-generic.gif" alt="College" /></p>
+				</div>
+				<div class="v-thin-line"><span class="large-context">University: </span><span class="medium-text">{$university->name()} University</span></div>
+				<div class="v-thin-line"><span class="large-context">Establishment year: </span><span class="medium-text">{$institute->establishedIn()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Autonomy: </span><span class="medium-text">{$institute->autonomyStatus()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Minority: </span><span class="medium-text">{$institute->minorityStatus()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Aid Status: </span><span class="medium-text">{$institute->aidStatus()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Accreditation: </span><span class="medium-text">Information not Available </span></div>
+				<div class="v-thin-line"><span class="large-context">Hostel Accomodation (Boys):</span><span class="medium-text">{$institute->boysHostel()} ( for Ist Year : {$institute->boysHostel1styear()} ) </span></div>
+				<div class="v-thin-line"><span class="large-context">Hostel Accomodation (Girls)</span><span class="medium-text">{$institute->girlsHostel()} ( for Ist Year : {$institute->girlsHostel1styear()} ) </span></div>
+			</div>
+			<div>
+				<div class="v-thin-line"><span class="large-context">Institute address: </span><span class="medium-text">{$institute->address()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Website url: </span><span class="medium-text">{$institute->url()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Email ID: </span><span class="medium-text">{$institute->emailAddress()}</span></div>
+				<div class="v-thin-line"><span class="large-context">% Female candidates: </span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">Other streams in this college: </span>
+					<span class="medium-text">{foreach from=$institute->courses() item=course}{$course->name()},{/foreach}</span>
+				</div>
+			</div>
+			<div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="1" summary="layout table">
+					<tr>
+						<td valign="top" width="50%">
+							<div class="v-thin-line"><span class="large-context">Institute quotas:</span></div>
+							<table width="30%" border="1" cellspacing="0" cellpadding="1" summary="layout table">
+								<tr>
+									<td width="38%"><div align="center">Management</div></td>
+									<td width="34%"><div align="center">CET</div></td>
+									<td width="28%"><div align="center">Others</div></td>
+								</tr>
+								<tr>
+									<td><div align="center">Yes</div></td>
+									<td><div align="center">No</div></td>
+									<td><div align="center">Yes</div></td>
+								</tr>
+							</table>
+							<br />
+							<span class="large-context">Financial Aid:</span><br />
+							<div class="v-thin-line"><span class="large-context">Number of fee waivers granted and Amount:</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Crieteria for fee waiver: </span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Number of Scholarships: </span><span class="medium-text">[toc]</span></div>
+						</td>
+						<td valign="top" width="50%"> 
+							<div class="v-thin-line"><span class="large-context">Admission fee:</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Tuition Fee:</span><span class="medium-text">{$fees->tuition}</span></div>
+							<div class="v-thin-line"><span class="large-context">University fee (Examination, Registration etc.):</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Hostel fee (Rent etc.)(per Annum):</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Laboratory fee:</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Library fee:</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">Others(Development Fund):</span><span class="medium-text">{$fees->development}</span></div>
+							<div class="v-thin-line"><span class="large-context"><strong>TOTAL FEES:</strong></span><span class="medium-text"><strong>{$fees->total}</strong></span></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<div class="v-thin-line"><span class="large-context">Average Experience (in terms of teaching, research and industry):</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">Student to faculty ratio:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">% Doctorate faculty:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">% Post-graduate faculty:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">% Graduate faculty:</span><span class="medium-text">[toc]</span></div>
+			</div>
+			<div>
+				<div class="v-thin-line"><span class="large-context">Minimum / Maximum salary offered:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">Average salary:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">% Students placed:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">Value for money ratio & rank:</span><span class="medium-text">[toc]</span></div>
+				<div class="v-thin-line"><span class="large-context">Major recruiters:</span><span class="medium-text">[toc]</span></div>
+			</div>
+			<div>
+				<div class="v-thin-line"><span class="large-context">Popularity rank:</span><span class="medium-text">{$choicecode->popularity()}</span></div>
+				<div class="v-thin-line"><span class="large-context">Other streams:</span></div>
+				<table width="50%" border="0" cellspacing="0" cellpadding="1" summary="layout table">
+					<tr>
+						<td bgcolor="#CCCCCC">Stream name</td>
+						<td bgcolor="#CCCCCC">Cut-off</td>
+						<td bgcolor="#CCCCCC">Intake</td>
+						<td bgcolor="#CCCCCC">My chances</td>
+						<td bgcolor="#CCCCCC">Seats kept for your category</td>
+					</tr>
+					{foreach from=$institute->courses() item=course}
+					<tr>
+						<td>{$course->name()}</td>
+						<td>[toc]</td>
+						<td>[toc]</td>
+						<td>[toc]</td>
+						<td>[toc]</td>
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			<div>
+				<p class="large-context"></p>
+			</div>
+		</div>
+	</div>
+	<hr noshade="noshade" color="#000000" />
 </div>
 {literal}
 <script type="text/javascript">

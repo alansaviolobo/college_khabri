@@ -9,12 +9,11 @@ class Info extends Controller {
         $this->smarty->assign('searchForm', Search::search_form());
     }
 
-    function institute_info($instituteName, $showTemplate = 'true')
+    function choicecode_info($choicecode, $showTemplate = 'true')
     {
-	    $this->load->model('institute');
-	    $this->load->model('university');
-        $this->smarty->assign('institute', Institute::getInstituteByName($instituteName));
-        $this->smarty->assign('template', 'instituteinfo.html');
+    	$this->load->model('choicecode');
+        $this->smarty->assign('choicecode', Choicecode::getChoicecode($choicecode));
+        $this->smarty->assign('template', 'choicecode_info.html');
         $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');	        	        
     }
 

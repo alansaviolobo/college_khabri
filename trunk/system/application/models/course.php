@@ -17,11 +17,11 @@ class Course extends Model
     static function getCourse($courseId)
     {
 		$course = new Course();
-        $result = $course->db->from('courses')->where('id', $courseId);
+        $result = $course->db->where('code', $courseId)->get('courses');
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid Course');
         }
-        $this->set($result->row_object());
+        $course->set($result->row_object());
         $result->free_result();
         return $course;
     }

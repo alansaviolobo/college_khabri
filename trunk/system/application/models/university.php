@@ -28,7 +28,7 @@ class University extends Model
     {
         if (is_null($data))
         {
-            $data = $this->db->get('universities')->where('id', $this->id)->result_object();
+            $data = $this->db->where('id', $this->id)->get('universities')->result_object();
         }
 
         $this->id = $data->id;

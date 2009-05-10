@@ -228,14 +228,14 @@ CREATE TABLE `fees_heads` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`fee_structure`
+-- Table structure for table `collegekhabri`.`fees`
 --
 
-CREATE TABLE `fee_structure` (
+CREATE TABLE `fees` (
   `institute_code` char(10) NOT NULL,
-  `tuition_fee` integer NOT NULL default 0,
-  `development_fee` integer NOT NULL default 0,
-  `total_fee` integer NOT NULL default 0,
+  `tuition` integer NOT NULL default 0,
+  `development` integer NOT NULL default 0,
+  `total` integer NOT NULL default 0,
   `year` char(7) NOT NULL,
   PRIMARY KEY  (`institute_code`, `year`),
   FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
