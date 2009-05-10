@@ -25,7 +25,7 @@ class Sms extends Controller {
     	$msgparts = explode(',', $message);
     	if(count($msgparts)<4) $msgparts = explode(' ', $message);
     	$cetappno = '';
-    	for($count=0; strlen($msgparts[$count].$cetappno)<=9; $count++)
+    	for($count=1; strlen($msgparts[$count].$cetappno)<=9; $count++)
     	{
     		$cetappno .= $msgparts[$count]; 
     		unset($msgparts[$count]);
@@ -38,10 +38,16 @@ class Sms extends Controller {
     	$password = substr(md5($email),5,10);
 
     	$this->load->model('user');
-    	$user_id = User::create_user($email, $phone, sha1($password));
-    	
-    	var_dump( "Thank you for registering with collegekhabri. Your user id is $email,".
-    		" your password is $password. Visit www.collegekhabri.com for more information.");
+		try
+		{
+    		$user_id = User::create_user($email, $phone, sha1($password));
+	    	echo "Thank you for registering with collegekhabri. Your user id is $email,".
+    			" your password is $password. Visit www.collegekhabri.com for more information.";
+		}
+		catch (Exception $e)
+		{
+			echo "user already exists";
+		}
     }
 }
 
