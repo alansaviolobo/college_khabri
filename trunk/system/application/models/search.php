@@ -34,11 +34,11 @@ class Search extends Model {
 						"getElementById('course_selection_div').style.display='block';".
 						"document.searchform.mode.value='c';".
 						"return false";
-		$coursegroupsJS="this.parentNode.style.display='none';".
+/*		$coursegroupsJS="this.parentNode.style.display='none';".
 						"getElementById('coursegroup_selection_div').style.display='block';".
 						"document.searchform.mode.value='cg';".
 						"return false";
-		$searchJS = 	"this.parentNode.parentNode.style.display='none';".
+*/		$searchJS = 	"this.parentNode.parentNode.style.display='none';".
 						"getElementById('less-details-search').style.display='block';".
 						"document.searchform.mode.value='s';".
 						"return false";
@@ -54,8 +54,8 @@ class Search extends Model {
             'districtSelect'    => form_dropdown('districts[]', Institute::getDistricts(), null, "id='districts'"),
             'coursesLabel'      => form_label('Course', 'courses[]'),
             'coursesSelect'     => form_dropdown('courses[]', Course::getAllCourses(), null, "id='courses' onchange=\"document.searchform.mode.value='c'\""),
-            'coursegroupLabel'  => form_label('Course Group', 'coursegroupss[]'),
-            'coursegroupSelect' => form_dropdown('coursegroups[]', Course::getAllCourseGroups(), null, "id='coursegroups' onchange=\"document.searchform.mode.value='cg'\""),
+//            'coursegroupLabel'  => form_label('Course Group', 'coursegroupss[]'),
+//            'coursegroupSelect' => form_dropdown('coursegroups[]', Course::getAllCourseGroups(), null, "id='coursegroups' onchange=\"document.searchform.mode.value='cg'\""),
             'searchLabel'		=> form_label('College Name or Course', 'search'),
             'searchBox'		    => form_input('search', null, "class='big-field' onchange=\"document.searchform.mode.value='s'\""),
             'aidLabel'          => form_label('Aid Status', 'aid'),
@@ -73,7 +73,7 @@ class Search extends Model {
             'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
             'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
         	'coursesLink'		=> anchor('','Search by specific course?', array('class'=>'small-link', 'onClick'=>$coursesJS)),
-        	'courseGroupLink'	=> anchor('','Search by a course group?', array('class'=>'small-link', 'onClick'=>$coursegroupsJS)),
+//        	'courseGroupLink'	=> anchor('','Search by a course group?', array('class'=>'small-link', 'onClick'=>$coursegroupsJS)),
         	'searchLink'		=> anchor('','Search by typing the name of the college?', array('class'=>'small-link', 'onclick'=>$searchJS)),
             'submit'            => form_submit('submit', 'Search', "class='search-button'"),
             'formClose'         => form_close()
@@ -85,7 +85,7 @@ class Search extends Model {
 			extract($params);
 			$courses = array_filter($courses);
 	    	$districts = array_filter($districts);
-	    	$coursegroups = array_filter($coursegroups);
+//	    	$coursegroups = array_filter($coursegroups);
 	    	$universities = array_filter($universities);
 			$js = '';
 	    	for($count=1; $count<count($universities); $count++) $js .= "addOption('universities');";
@@ -103,11 +103,11 @@ class Search extends Model {
 	    			var coursesdd = document.getElementsByName('courses[]');
 	    			for(var count=0; count < coursesdd.length; coursesdd[count].value=coursesv[count++]);\n";
 	    	
-	    	for($count=1; $count<count($coursegroups); $count++) $js .= "addOption('coursegroups');";
+/*	    	for($count=1; $count<count($coursegroups); $count++) $js .= "addOption('coursegroups');";
 	    	$js .= "var coursegroupsv = ['" . implode("','", $coursegroups) . "'];
 	    			var coursegroupsdd = document.getElementsByName('coursegroups[]');
 	    			for(var count=0; count < coursegroupsdd.length; coursegroupsdd[count].value=coursegroupsv[count++]);\n";
-	    	
+*/	    	
 	    	$js .= "document.getElementsByName('aid')[0].value = '$aid';\n";
 	    	$js .= "document.getElementsByName('fees')[0].value = '$fees';\n";
 	    	$js .= "document.getElementsByName('establishedin')[0].value = '$establishedin';\n";
@@ -140,7 +140,7 @@ class Search extends Model {
     	extract($params);
     	if(is_array($courses)) $courses = array_filter($courses);
     	if(is_array($districts)) $districts = array_filter($districts);
-    	if(is_array($coursegroups)) $coursegroups = array_filter($coursegroups);
+//    	if(is_array($coursegroups)) $coursegroups = array_filter($coursegroups);
     	if(is_array($universities)) $universities = array_filter($universities);
 
     	if ($mode == 's')
@@ -160,22 +160,22 @@ class Search extends Model {
 	    	if (!empty($minority)) $this->db->where('minority_status', $minority);
 	    	if (!empty($ladies)) $this->db->where('ladies_only', true);
 	    	if (!empty($hostel)) $this->db->where("{$hostel}_hostel > ", '0');
-    		if($mode == 'c')
-    		{
+//    		if($mode == 'c')
+//    		{
 		    	if (count($courses)) $this->db->where_in('courses.code', $courses);
-    		}
-    		else //mode = cg
-    		{
-	    		if (count($coursegroups)) $this->db->where_in('group', $coursegroups);
-    		}
+//    		}
+//    		else //mode = cg
+//    		{
+//	    		if (count($coursegroups)) $this->db->where_in('group', $coursegroups);
+//    		}
     	}
     	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, total_fee AS fees, popularity');
+    						institutes.district, total AS fees, popularity');
     	$this->db->from('universities');
 		$this->db->join('institutes', 'institutes.university_id = universities.id');
 		$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');
 		$this->db->join('courses', 'courses.code = choice_codes.course_code');
-		$this->db->join('fee_structure', 'fee_structure.institute_code = institutes.code');
+		$this->db->join('fees', 'fees.institute_code = institutes.code');
 		if (!empty($sortorder)) $this->db->order_by($sortorder);
 		return $this->db->get()->result_object();
     }
