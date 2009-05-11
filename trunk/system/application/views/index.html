@@ -24,14 +24,10 @@
 					<div><a class="small-link" onclick="addOption('districts')">[+] Add district</a><br />
 						<span class="grey-context itl">Click to include another district like 'Thane' in the search</span></div><br/>
 					<div><span class="cut-off">Show last year's cut-off for</span></div>
-					<div><form id="form1" name="form1" method="post" action="">
-  <input type="radio" name="radio" id="MH-CET" value="MH-CET" />
-  <label for="MH-CET">MH-CET</label><br/>
-  
-    <input type="radio" name="radio" id="AIEEE" value="AIEEE" />
-    <label for="AIEEE">AIEEE</label>
-  
-</form><div>
+					<div>
+					{$searchForm.cetCutoffRadio}{$searchForm.cetCutoffLabel}<br>
+					{$searchForm.aieeeCutoffRadio}{$searchForm.aieeeCutoffLabel}
+					<div>
 				</td>
 				<td valign="top" width="50%" style="padding-left:20px;"> 
 					<div><span class="cut-off">{$searchForm.coursesLabel}</span></div>

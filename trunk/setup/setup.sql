@@ -26,14 +26,15 @@ CREATE TABLE `users` (
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255),
   `mobile` char(10) NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `cet_appno` char(9) NOT NULL,
-  `cet_marks` smallint NOT NULL,
-  `cet_rank` smallint NOT NULL,
-  `aieee_appno` char(10) NOT NULL,
-  `aieee_marks` smallint NOT NULL,
-  `aieee_rank` smallint NOT NULL,
-  `home_uni` varchar(255) NOT NULL,
+  `category` varchar(255),
+  `cet_appno` char(9),
+  `cet_marks` smallint,
+  `cet_rank` smallint,
+  `aieee_appno` char(10),
+  `aieee_marks` smallint,
+  `aieee_rank` smallint,
+  `home_uni` varchar(255),
+  `gender` char(6),
   `status` ENUM('registered', 'premium', 'locked', 'inactive') NOT NULL DEFAULT 'registered',
   PRIMARY KEY  (`id`),
   UNIQUE KEY  (`username`)
@@ -54,6 +55,31 @@ CREATE TABLE `payment_log` (
   `description` varchar(255) NOT NULL default 'subscription charges',
   `channel` ENUM('creditcard', 'cashdeposit', 'neft') NOT NULL default 'cashdeposit',
   `status` ENUM('pending', 'paid', 'applied') default 'pending',
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `collegekhabri`.`saved_searches`
+--
+
+CREATE TABLE `saved_searches` (
+  `id` integer unsigned NOT NULL auto_increment,
+  `user_id` integer unsigned NOT NULL,
+  `saved_on` datetime NOT NULL,
+  `universities` varchar(255),
+  `districts` varchar(255),
+  `courses` varchar(255),
+  `search` varchar(255),
+  `aid` varchar(255),
+  `minority` varchar(255),
+  `autonomy` varchar(255),
+  `fees` varchar(255),
+  `hostel` varchar(255),
+  `establishedin` varchar(255),
+  `ladies` bool,
+  `cutoff` varchar(255),
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
   ON DELETE RESTRICT ON UPDATE CASCADE
@@ -123,7 +149,19 @@ CREATE TABLE `choice_codes` (
   `code` integer unsigned NOT NULL auto_increment,
   `institute_code` char(10) NOT NULL,
   `course_code` smallint unsigned NOT NULL,
-  `popularity` smallint,
+  `start_year` year not null,
+  `accredited_from` date,
+  `accredited_to` date,
+  `intake` tinyint default 0,
+  `cap_seats` tinyint default 0,
+  `ms_seats` tinyint default 0,
+  `institute_seats` tinyint default 0,
+  `minority_seats` tinyint default 0,
+  `mkb` tinyint default 0,
+  `aieee_seats` tinyint default 0,
+  `tfws` tinyint default 0,
+  `tfwsh` tinyint default 0,
+  `tfwso` tinyint default 0,
   PRIMARY KEY  (`code`),
   FOREIGN KEY (`course_code`) REFERENCES `courses`(`code`)
   ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -204,18 +242,18 @@ CREATE TABLE `approval_status` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`cutoff`
+-- Table structure for table `collegekhabri`.`cutoffs`
 --
 
-CREATE TABLE `cutoff` (
-  `choice_code` integer unsigned NOT NULL auto_increment,
-  `category_code` varchar(45) NOT NULL default '',
-  `home_uni_status` enum('home', 'outside') NOT NULL default 'home',
-  `ladies_status` enum('ladies', 'general') NOT NULL default 'general',
-  `cutoff_merit_rank` mediumint unsigned NOT NULL default '0',
-  `cutoff_cet_score` mediumint unsigned NOT NULL default '0',
-  PRIMARY KEY  (`choice_code`)
-) ENGINE=InnoDB;
+CREATE TABLE cutoffs (
+  choicecode integer unsigned DEFAULT NULL,
+  seattype char(10) DEFAULT NULL,
+  category char(10) DEFAULT NULL,
+  cutoffrank int(11) DEFAULT NULL,
+  homeuni char(10) DEFAULT NULL,
+  round int(11) DEFAULT NULL,
+  year year(4) DEFAULT NULL
+);
 
 --
 -- Table structure for table `collegekhabri`.`fees_heads`

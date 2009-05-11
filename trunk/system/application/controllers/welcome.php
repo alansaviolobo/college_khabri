@@ -47,7 +47,14 @@ class Welcome extends Controller {
 
     	try
     	{
-	    	$results = Search::searchCourseCodes($params);
+    		$user = null;
+    		$user_id = $this->session->userdata('userId');
+    		if (isset($user_id))
+    		{
+    			$this->load->model('user');
+    			$user = User::getUserByUserId($user_id);
+    		}
+	    	$results = Search::searchCourseCodes($params, $user);
     	}
     	catch(Exception $e)
     	{

@@ -99,21 +99,20 @@
 		</tr>
 {/capture}
 <div id="center">
-	<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
+	<!-- table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
 		<tr>
 			<td width="20%" class="modify-search medium-text">You searched for:</td>
 			<td width="80%" class="basic-text">
-				<div align="left">&nbsp;Mumbai University | All Districts | Automobile Engineering, Mechanical 
-					Engineering</div>
+				<div align="left">&nbsp;Mumbai University | All Districts | Automobile Engineering, Mechanical Engineering</div>
 			</td>
 		</tr>
-	</table>
+	</table -->
 	<h1>Search Results:</h1>
 	<span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
 	<table width="100%" border="0" id="search-table" summary="layout table">
 		<tr>
 			<td colspan=8>
-				<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
+				<!-- img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" / -->
 				{$pagelinks}
 			</td>
 		</tr>
@@ -146,15 +145,19 @@
 				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity}</span></div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" class="cut-off">
-				<div align="center">160</div>
+				<div align="center">{$choicecode->cutoff|default:"<img src='../../../../images/Lock_icon.png' width=18 height=18 />"}</div>
 			</td>
 			<td style="border-right: 1px dashed #dddddd;" >
 				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
-					<tr">
+					<tr>
+					{if $choicecode->chances}
 						<td width="10%" class="small-text" style="border:0;">Coming Soon</td>
 						<td width="90%" style="border:0;">
 							<div class="green-bar" style="width:100%">&nbsp;</div>
 						</td>
+					{else}
+						<img src='{php}echo base_url(){/php}images/Lock_icon.png' width=18 height=18 />
+					{/if}
 					</tr>
 				</table>
 			</td>
@@ -164,7 +167,7 @@
 		{$smarty.capture.tableheader}
 		<tr>
 			<td colspan=8>
-				<img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" />
+				<!-- img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" / -->
 			</td>
 		</tr>
 	</table>

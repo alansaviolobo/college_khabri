@@ -1,3 +1,5 @@
+alter table choice_codes add column popularity smallint;
+
 update choice_codes set popularity = 1 where code = 20288;
 update choice_codes set popularity = 2 where code = 21211; 
 update choice_codes set popularity = 3 where code = 50180; 

@@ -53,7 +53,7 @@ class Members extends Controller {
  				$this->email->bcc('support@collegekhabri.com');
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
  				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
- 				$this->email->send();
+ 				//$this->email->send();
             	redirect("members/activation/$user_id");
             	return;
         	}
@@ -107,6 +107,10 @@ class Members extends Controller {
             'homeUniSelect'	=> form_dropdown('homeUni', array('' => 'None') + University::getUniversities(), $this->input->post('homeUni'), "class='med-field'"),
     	   	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
             'categorySelect'=> form_dropdown('category', User::getStatuses(), $this->input->post('category'), "class='med-field'"),
+    		'maleLabel'		=> form_label('Male', 'gender'),
+            'maleRadio'		=> form_radio('gender','male',false),
+        	'femaleLabel'	=> form_label('Female', 'gender'),
+        	'femaleRadio'	=> form_radio('gender','female',false),
 	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'cetAppNo', array('class'=>'medium-text v-thin-line')),
             'mhtAppNoBox'  	=> form_input('cetAppNo', $this->input->post('cetAppNo'), "class='med-field'"),
 	    	'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
@@ -239,17 +243,17 @@ class Members extends Controller {
             'password2Label'=> form_label('New password again:', 'password2'),
             'password2Box'	=> form_input('password2'),
             'fnameLabel'	=> form_label('First Name:', 'fname'),
-            'fnameBox'		=> form_input('fname'),
+            'fnameBox'		=> form_input('fname', $user->firstName()),
             'lnameLabel'	=> form_label('Last Name:', 'lname'),
-            'lnameBox'		=> form_input('lname'),
+            'lnameBox'		=> form_input('lname', $user->lastName()),
             'ai3eAppLabel'	=> form_label('AIEEE application no:', 'ai3eappno'),
-            'ai3eAppBox'	=> form_input('ai3eappno'),
+            'ai3eAppBox'	=> form_input('ai3eappno', $user->aieeeAppNo()),
             'ai3eRankLabel'	=> form_label('AIEEE Rank:', 'ai3erank'),
-            'ai3eRankBox'	=> form_input('ai3erank'),
+            'ai3eRankBox'	=> form_input('ai3erank', $user->AIEEERank()),
             'cetAppLabel'	=> form_label('CET Application no:', 'cetappno'),
-            'cetAppBox'		=> form_input('cetappno'),
+            'cetAppBox'		=> form_input('cetappno', $user->cetAppNo()),
             'cetRankLabel'	=> form_label('MHTCET Rank:', 'cetrank'),
-            'cetRankBox'	=> form_input('cetrank'),
+            'cetRankBox'	=> form_input('cetrank', $user->CETRank()),
             'submit'		=> form_submit('submit', 'Update my profile'),
             'formClose'		=> form_close()
         );

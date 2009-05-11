@@ -71,9 +71,13 @@ class Search extends Model {
             'hostelSelect'      => form_dropdown('hostel', $hostel),
             'establishmentLabel'=> form_label('Age of the Institute', 'establishedin'),
             'establishmentSelect'=> form_dropdown('establishedin', $established_in),
-            'ladiesCheckLabel'  => form_label ('Search only ladies colleges', 'ladies'),
-            'ladiesCheckBox'    => form_checkbox ('ladies','ladies',false),
-        	'coursesLink'		=> anchor('','Search by specific course?', array('class'=>'small-link', 'onClick'=>$coursesJS)),
+            'ladiesCheckLabel'  => form_label('Search only ladies colleges', 'ladies'),
+            'ladiesCheckBox'    => form_checkbox('ladies','ladies',false),
+        	'cetCutoffLabel'	=> form_label('MH-CET', 'cutoff'),
+            'cetCutoffRadio'	=> form_radio('cutoff','mhtcet',false),
+        	'aieeeCutoffLabel'  => form_label('AIEEE', 'cutoff'),
+        	'aieeeCutoffRadio'  => form_radio('cutoff','aieee',false),
+            'coursesLink'		=> anchor('','Search by specific course?', array('class'=>'small-link', 'onClick'=>$coursesJS)),
 //        	'courseGroupLink'	=> anchor('','Search by a course group?', array('class'=>'small-link', 'onClick'=>$coursegroupsJS)),
         	'searchLink'		=> anchor('','Search by typing the name of the college?', array('class'=>'small-link', 'onclick'=>$searchJS)),
             'submit'            => form_submit('submit', 'Search', "class='search-button'"),
@@ -122,7 +126,7 @@ class Search extends Model {
     	return $form;
     }
     
-    function searchCourseCodes($params)
+    function searchCourseCodes($params, $user)
     {
 		if(count(array_filter($params))>1)
 		{
@@ -170,13 +174,32 @@ class Search extends Model {
 //	    		if (count($coursegroups)) $this->db->where_in('group', $coursegroups);
 //    		}
     	}
-    	$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, total AS fees, popularity');
     	$this->db->from('universities');
 		$this->db->join('institutes', 'institutes.university_id = universities.id');
 		$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');
 		$this->db->join('courses', 'courses.code = choice_codes.course_code');
 		$this->db->join('fees', 'fees.institute_code = institutes.code');
+
+		if ($user == null)
+    	{
+    		$this->db->select("institutes.name AS iname,courses.name AS cname, choice_codes.code, 
+    						institutes.district, total AS fees, popularity, '' AS cutoff");
+    	}
+    	else
+    	{
+    		$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, 
+    						institutes.district, total AS fees, popularity, MAX(cutoffrank) AS cutoff');
+    		$this->db->join('cutoffs', 'cutoffs.choicecode = choice_codes.code');
+    		$this->db->where('cutoffs.category = ' . $this->db->escape($user->category()));
+    		$this->db->where("cutoffs.homeuni = IF({$user->homeUni()->id()}=universities.id, 'HU','OHU')");
+    		$this->db->where("cutoffs.gender = 'g'");
+    		if ($user->gender() = 'female') $this->db->where_or("cutoffs.gender = 'l'");
+    		$this->db->where("cutoffs.seattype = 'open'");
+    		if ($user->category() <> 'open') $this->db->where_or('cutoffs.seattype = ' . $this->db->escape($user->category()));
+    		$this->db->where('cutoffs.round = 1');
+    		$this->db->group_by('choicecode');
+    	}
+    	
 		if (!empty($sortorder)) $this->db->order_by($sortorder);
 		return $this->db->get()->result_object();
     }
