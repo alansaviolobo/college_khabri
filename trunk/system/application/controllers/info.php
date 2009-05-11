@@ -95,9 +95,15 @@ class Info extends Controller {
         $this->smarty->display('template3column.html');
     }  
     
-    function circleofenggadmissions()
+    function electricalelectronics()
     {
-        $this->smarty->assign('template', 'circle-of-admissions.html');
+        $this->smarty->assign('template', 'branches/electricalelectronics.html');
+        $this->smarty->display('template3column.html');
+    }  
+    
+    function mechanical()
+    {
+        $this->smarty->assign('template', 'branches/mechanical.html');
         $this->smarty->display('template3column.html');
     }  
 }
