@@ -27,7 +27,7 @@ class Sms extends Controller {
     	$msgparts = explode(',', $message);
     	if(count($msgparts)<4) $msgparts = explode(' ', $message);
     	$cetappno = '';
-    	for($count=1; strlen($msgparts[$count].$cetappno)<=9; $count++)
+    	for($count=0; strlen($msgparts[$count].$cetappno)<=9; $count++)
     	{
     		$cetappno .= $msgparts[$count]; 
     		unset($msgparts[$count]);
@@ -37,7 +37,7 @@ class Sms extends Controller {
     	$email = $msgparts[max(array_keys($msgparts))];
     	unset($msgparts[max(array_keys($msgparts))]);
     	list($firstname, $lastname) = array_values($msgparts);
-    	$password = substr(md5($email),5,10);
+    	$password = substr(md5($email),5,5);
 
 		try
 		{
