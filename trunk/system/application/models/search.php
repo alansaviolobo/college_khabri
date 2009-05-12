@@ -193,9 +193,9 @@ class Search extends Model {
     		$this->db->where('cutoffs.category = ' . $this->db->escape($user->category()));
     		$this->db->where("cutoffs.homeuni = IF({$user->homeUni()->id()}=universities.id, 'HU','OHU')");
     		$this->db->where("cutoffs.gender = 'g'");
-    		if ($user->gender() = 'female') $this->db->where_or("cutoffs.gender = 'l'");
+    		if ($user->gender() == 'female') $this->db->or_where('cutoffs.gender','l');
     		$this->db->where("cutoffs.seattype = 'open'");
-    		if ($user->category() <> 'open') $this->db->where_or('cutoffs.seattype = ' . $this->db->escape($user->category()));
+    		if ($user->category() <> 'open') $this->db->or_where('cutoffs.seattype', $this->db->escape($user->category()));
     		$this->db->where('cutoffs.round = 1');
     		$this->db->group_by('choicecode');
     	}
