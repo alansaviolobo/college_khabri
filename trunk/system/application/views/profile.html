@@ -14,11 +14,11 @@
 		<p class="medium-text v-thin-line">Category: <span class="med-field">{$user->category()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
 		<p class="medium-text v-thin-line">Home University: <span class="med-field">{assign var='uni' value=$user->homeUni()}{$uni->name|default:'outside candidate'}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
 		<hr />
-		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}</p>
-		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}</p>&nbsp;&nbsp;<span class="grey-context">[ Optional ]</span>&nbsp;<span class="grey-context">Include your Application ID so that we can send your result to you.</span></p>
+		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}&nbsp;&nbsp;<span class="grey-context">[ Optional ]</span>&nbsp;<span class="grey-context">Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
 		<hr />
-		<p class="medium-text v-thin-line">{$profileForm.cetAppLabel}{$profileForm.cetAppBox}</p>
-		<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.cetAppLabel}{$profileForm.cetAppBox}&nbsp;&nbsp;<span class="grey-context">[ Optional ]</span>&nbsp;<span class="grey-context">Include your Application ID so that we can send your result to you.</span></p>
+		<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}[ Optional ]</span>&nbsp;<span class="grey-context">Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
 		<p class="medium-text">{$profileForm.submit}</p>
 		{$profileForm.formClose}
 	</div>
