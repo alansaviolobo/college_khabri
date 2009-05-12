@@ -1,0 +1,206 @@
+{capture name=tableheader}
+		<tr class="sort-back">
+			<td width="10%" style="padding:0px;border:0;" align="center">
+				<strong>Choice code</strong>
+			</td>
+			<td width="18%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'cname' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dcname'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ucname'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ucname'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Course</strong></a>{$sortarrow}
+			</td>
+			<td width="25%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'iname' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='diname'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='uiname'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='uiname'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>College Name</strong></a>{$sortarrow}
+			</td>
+			<td width="16%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'district' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='ddistrict'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='udistrict'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='udistrict'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>District</strong></a>{$sortarrow}
+			</td>
+			<td width="9%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'fees' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dfees'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ufees'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ufees'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Fees</strong></a>{$sortarrow}
+			</td>
+			<td width="14%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'popularity' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dpopularity'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='upopularity'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='upopularity'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>Popularity rank</strong></a>{$sortarrow}
+			</td>
+			<td width="17%" style="padding:0px;border:0;" align="center">
+				{if $sortfield eq 'ccutoff' }
+					{if $sortorder eq 'u'}
+						{assign var='sortvar' value='dcutoff'}
+						{assign var='sortarrow' value='&#x2193;'}
+					{else}
+						{assign var='sortvar' value='ucutoff'}
+						{assign var='sortarrow' value='&#x2191;'}
+					{/if}
+				{else}
+					{assign var='sortvar' value='ucutoff'}
+					{assign var='sortarrow' value=''}
+				{/if}
+				<a href="{php}echo site_url(){/php}/welcome/search_results/{$pageno}/{$sortvar}"><strong>CET cut-off</strong></a>{$sortarrow}
+			</td>
+			<td width="16%" style="padding:0px;border:0;" align="center">
+				<a href="{php}echo site_url(){/php}/{$pageno}/uchances"><strong>Your chances</strong></a>
+			</td>
+		</tr>
+{/capture}
+<div id="center">
+	<!-- table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
+		<tr>
+			<td width="20%" class="modify-search medium-text">You searched for:</td>
+			<td width="80%" class="basic-text">
+				<div align="left">&nbsp;Mumbai University | All Districts | Automobile Engineering, Mechanical Engineering</div>
+			</td>
+		</tr>
+	</table -->
+	<h1>Search Results:</h1>
+	<span class="grey-context">(Click on a <em><a href="#">college name</a></em> or <em><a href="#">code</a></em> for detailed information)</span>
+	<table width="100%" border="0" id="search-table" summary="layout table">
+		<tr>
+			<td colspan=8>
+				<!-- img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" / -->
+				{$pagelinks}
+			</td>
+		</tr>
+		{$smarty.capture.tableheader}
+		{foreach name='results' from=$results item='choicecode'}
+		{if $smarty.foreach.results.index gte $pageno && $smarty.foreach.results.iteration lte $pageno+$pagerows}
+		<tr>
+			<td style="border-right: 1px dashed #dddddd;">
+				<span class="inst-code">
+					<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->code}</a>
+				</span>
+			</td>
+			<td style="border-right: 1px dashed #dddddd;" class="basic-text search-results-small">
+				<span class="basic-text">
+					<strong>
+						<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->cname}</a>
+					</strong>
+				</span>
+			</td>
+			<td style="border-right: 1px dashed #dddddd;" class="basic-text search-results-small">
+				<a onclick="YAHOO.collegekhabri.frame.src='{php}echo site_url(){/php}/info/choicecode_info/{$choicecode->code|escape:"url"}/false';YAHOO.collegekhabri.collegeInfo.show()">{$choicecode->iname}</a>
+			</td>
+			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
+				<div align="left">{$choicecode->district}</div>
+			</td>
+			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
+				<div align="left"><strong>{$choicecode->fees}</strong></div>
+			</td>
+			<td  style="border-right: 1px dashed #dddddd;" >
+				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity}</span></div>
+			</td>
+			<td  style="border-right: 1px dashed #dddddd;" class="cut-off">
+				<div align="center">{$choicecode->cutoff|default:"<img src='../../../../images/Lock_icon.png' width=18 height=18 />"}</div>
+			</td>
+			<td style="border-right: 1px dashed #dddddd;" >
+				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
+					<tr>
+					{if $choicecode->chances}
+						<td width="10%" class="small-text" style="border:0;">Coming Soon</td>
+						<td width="90%" style="border:0;">
+							<div class="green-bar" style="width:100%">&nbsp;</div>
+						</td>
+					{else}
+						<img src='{php}echo base_url(){/php}images/Lock_icon.png' width=18 height=18 />
+					{/if}
+					</tr>
+				</table>
+			</td>
+		</tr>
+		{/if}
+		{/foreach} 
+		{$smarty.capture.tableheader}
+		<tr>
+			<td colspan=8>
+				<!-- img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" / -->
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="collegeInfo">
+   <div class="hd">College Information</div>
+    <div class="bd"></div>
+    <div class="ft"></div>
+</div>
+{literal}
+<script type="text/javascript">
+    YAHOO.namespace('collegekhabri');
+    YAHOO.collegekhabri.frame = document.createElement('iframe');
+	YAHOO.collegekhabri.frame.width = "100%";
+	YAHOO.collegekhabri.frame.height = "480";
+
+    YAHOO.collegekhabri.collegeInfo = new YAHOO.widget.Dialog("collegeInfo", {
+	width : "800px",
+	fixedcenter : true,
+	visible : false,
+	close: true,
+	y: 25,
+	draggable: true,
+	modal: true,
+	postmethod: 'form',
+	constraintoviewport : false});
+	YAHOO.util.Event.addListener('closeImg', 'click', function(o){YAHOO.collegekhabri.collegeInfo.hide()});
+	YAHOO.collegekhabri.collegeInfo.render();
+
+	var onCollegeInfoShow = function(e, args, o){
+		o.setBody(YAHOO.collegekhabri.frame);
+	};
+	YAHOO.collegekhabri.collegeInfo.showEvent.subscribe(onCollegeInfoShow, YAHOO.collegekhabri.collegeInfo);
+</script>
+{/literal}

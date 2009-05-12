@@ -1,0 +1,123 @@
+<div id="doc" class="yui-t7"> 	<br/><br/><br/>
+	<div id="bd" role="main"> 
+		<div class="yui-g"> 
+			<div role="main" class="yui-u first"> 
+				<div> 			
+					<div class="grey-line-below">
+						<span class="cut-off">Become a College Khabri member</span>
+						<div class="small-context">(Already registered? {php}echo anchor('members/login', 'Click here to log in');{/php})</div>
+					</div>
+					<br />
+					
+					{$signupForm.formErrors} 
+					{$signupForm.formOpen}
+					<table summary="layout table" valign="top">
+						<tr>
+							<td>
+								{$signupForm.usernameLabel}<br />
+								<span style="font-size:medium; height:20px;">{$signupForm.usernameBox}</span><br />
+								<br />
+							</td>
+							<td width="50%">
+								<p id="username-context" class="grey-context" style="visibility:hidden">Please make sure this is your OWN email address so that you get the Activation 
+									Code. (WE NEVER SPAM YOU, only important updates may be sent.)</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{$signupForm.password1Label}<br />
+								{$signupForm.password1Box}<br />
+								<br />
+							</td>
+							<td width="35%" id="password1-context" style="visibility:hidden">
+								<p class="grey-context">Choose a password which is easy yet secure. Your friend should not know it :)</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{$signupForm.password2Label}<br />
+								{$signupForm.password2Box}<br />
+								<br />
+							</td>
+							<td width="35%" id="password2-context" style="visibility:hidden">
+								<p class="grey-context">Ek baar aur.</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								{$signupForm.mobileLabel}<br />
+								{$signupForm.mobileBox}<br />
+								<br />
+							</td>
+							<td width="35%" id="mobile-context" style="visibility:hidden">
+								<p class="grey-context">Used only for updates, notifications and important dates related to engineering. </p>
+							</td>
+						</tr>
+					</table><br/>
+					<span class="small-text">Make sure you have read the {php} echo anchor('info/terms_of_use','terms of use');{/php} before you click the button below.</span>
+					{$signupForm.submit}
+					{$signupForm.formClose}
+				</div>
+			</div>
+			<div role="contentinfo" class="yui-u"> 
+				<div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-top.gif) left top no-repeat; width: 490px; height:14px;">
+					</div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-back.gif) left top repeat-y;padding:0 20px; width:490px;">
+						<span class="cut-off">Yeh membership wembership kyu yaar?</span><br />
+						<br />
+						<div style="width:450px">
+							<table summary="layout table">
+								<tr>
+									<td width="75px"><img src="{php}echo base_url(){/php}images/carrot-unlock.jpg" alt="" /></td>
+									<td>
+										<h1>Khul ja sim sim</h1>
+										<span class="basic-text">Unlock the potential of College Khabri! For any course in any college, you can 
+											view 
+											<strong>fees</strong>, last year's <strong>cutoffs</strong> 
+											and college <strong>popularity</strong>, carefully found out by by our team of experts.</span></td>
+								</tr>
+								<tr>
+									<td width="75px"><br />
+										<br />
+										<img src="{php}echo base_url(){/php}images/carrot-clock.jpg" alt="" /></td>
+									<td><br />
+										<h1>Every crucial moment</h1>
+										<span class="basic-text">Being a College Khabri member keeps you in the right groove of this great 
+											engineering 
+											sphere. Get updates about important dates, decide your choices as per 
+											deadlines. Know the stuff which only a rare 
+											<em>khabri</em> breed could have told you!</span></td>
+								</tr>
+								<tr>
+									<td width="75px"><br />
+										<br />
+										<img src="{php}echo base_url(){/php}images/carrot-analyze.jpg" alt="" /></td>
+									<td><br />
+										<h1>Analyze Karo!</h1>
+										<span class="basic-text">Registered users get information which helps you <strong>analyze</strong> your choice codes. You will realize that after you become a CK member, you are 
+											a step beyond your fellow friends who dream of a perfect career.</span></td>
+								</tr>
+								<tr>
+									<td width="75px"><br />
+										<br />
+										<img src="{php}echo base_url(){/php}images/carrot-pen.jpg" alt="" /></td>
+									<td><br />
+										<h1>We make a note of 'You'</h1>
+										<span class="basic-text">Relevant search results and choice code information is filtered as per <strong>your profile</strong>. 
+											We make sure you don't see unnecesary details. If you belong to a specific 
+											category (SC, NT etc.), cut-offs and your chances of getting
+											into a college are calculated accordingly.<br />
+											<br />
+										</span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div style="background: transparent url({php}echo base_url(){/php}images/features-div-bot.gif) left bottom no-repeat; width:490px; height:14px;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

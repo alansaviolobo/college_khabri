@@ -1,0 +1,183 @@
+<div id="ck_nav_bar" class="yuimenubar yuimenubarnav" align="right">
+	<div class="bd leftalign">
+		<ul class="first-of-type">
+			<span class="large-context" style="float:right;padding: 0px 3px;">
+				{if $titlelink neq ''}
+				Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / 
+				'.anchor('members/logout','Logout');{/php}
+				{else}
+				{php} echo anchor('members/login','Login').' / 
+				'.anchor('members/signup','Register');{/php}
+				{/if}
+			</span>
+			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="{php}echo site_url(){/php}"><ul><li class="yuimenuitem">Home</li></ul></a></li>
+			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#engineering">The field of Engineering</a>
+				<div id="engineering" class="yuimenu"  align="right"> 
+					<div class="bd">
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering">What is <b>'Engineering'</b> anyway?</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><b>Benefits</b> of becoming an Engineer</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/engineering_achievements"><b>Engineering achievements</b> of the 20th century</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/work_engineers_do"><b>Work</b> engineers do</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Branches</b> of Engineering</a>
+								<div id="pim" class="yuimenu">
+									<div class="bd">
+										<ul class="first-of-type">
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/aerospace">Aerospace Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineeing</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computerscience">Computer Science</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/electricalelectronics">Electrical and Electronics Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/mechanical">Mechanical Engineering</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://shopping.yahoo.com">Admissions related</a>
+				<div id="shopping" class="yuimenu">
+					<div class="bd"> 
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/circleofenggadmissions">Circle of <b>Engineering Admissions</b>: All you wanted to ever know</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Documents</b> you need</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#">Important <b>deadlines</b></a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+<!--		
+				 <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="http://entertainment.yahoo.com">Kaam ka information</a>
+				<div id="entertainment" class="yuimenu">
+					<div class="bd"> 
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://fantasysports.yahoo.com">Fantasy Sports</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://games.yahoo.com">Games</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://www.yahooligans.com">Kids</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com">Music</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://movies.yahoo.com">Movies</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com/launchcast">Radio</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://travel.yahoo.com">Travel</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://tv.yahoo.com">TV</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel">Engineering Branches</a>
+				<div id="branches" class="yuimenu">
+					<div class="bd"> 
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/aerospace">Aerospace Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/civil">Civil Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computerscience">Computer Science</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com/launchcast">Radio</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://travel.yahoo.com">Travel</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://tv.yahoo.com">TV</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+	-->		
+	</div>
+</div>
+<br />
+{literal}
+<script>
+var ua = YAHOO.env.ua,
+    oAnim;  // Animation instance
+function onSubmenuBeforeShow(p_sType, p_sArgs) {
+    var oBody,
+        oElement,
+        oShadow,
+        oUL;
+    if (this.parent) {
+        oElement = this.element;
+        oShadow = oElement.lastChild;
+        oShadow.style.height = "0px";
+        if (oAnim && oAnim.isAnimated()) {
+            oAnim.stop();
+            oAnim = null;
+        }
+        oBody = this.body;
+        if (this.parent && 
+            !(this.parent instanceof YAHOO.widget.MenuBarItem)) {
+            if (ua.gecko) {
+                oBody.style.width = oBody.clientWidth + "px";
+            }
+            if (ua.ie == 7) {
+                oElement.style.width = oElement.clientWidth + "px";
+            }
+        }
+        oBody.style.overflow = "hidden";
+        oUL = oBody.getElementsByTagName("ul")[0];
+        oUL.style.marginTop = ("-" + oUL.offsetHeight + "px");
+    }
+}
+
+function onTween(p_sType, p_aArgs, p_oShadow) {
+    if (this.cfg.getProperty("iframe")) {
+        this.syncIframe();
+    }
+    if (p_oShadow) {
+        p_oShadow.style.height = this.element.offsetHeight + "px";
+    }
+}
+
+function onAnimationComplete(p_sType, p_aArgs, p_oShadow) {
+    var oBody = this.body,
+        oUL = oBody.getElementsByTagName("ul")[0];
+    if (p_oShadow) {
+        p_oShadow.style.height = this.element.offsetHeight + "px";
+    }
+    oUL.style.marginTop = "";
+    oBody.style.overflow = "";
+    if (this.parent && 
+        !(this.parent instanceof YAHOO.widget.MenuBarItem)) {
+        if (ua.gecko) {
+            oBody.style.width = "";
+        }
+        if (ua.ie == 7) {
+            this.element.style.width = "";
+        }
+    }
+}
+
+function onSubmenuShow(p_sType, p_sArgs) {
+    var oElement,
+        oShadow,
+        oUL;
+    if (this.parent) {
+        oElement = this.element;
+        oShadow = oElement.lastChild;
+        oUL = this.body.getElementsByTagName("ul")[0];
+        oAnim = new YAHOO.util.Anim(oUL, 
+            { marginTop: { to: 0 } },
+            .5, YAHOO.util.Easing.easeOut);
+        oAnim.onStart.subscribe(function () {
+            oShadow.style.height = "100%";
+        });
+        oAnim.animate();
+        if (YAHOO.env.ua.ie) {
+            oShadow.style.height = oElement.offsetHeight + "px";
+            oAnim.onTween.subscribe(onTween, oShadow, this);
+        }
+        oAnim.onComplete.subscribe(onAnimationComplete, oShadow, this);
+    }
+}
+
+YAHOO.util.Event.onContentReady("ck_nav_bar", function () {
+    var oMenuBar = new YAHOO.widget.MenuBar("ck_nav_bar", {autosubmenudisplay: true,hidedelay: 750});
+    oMenuBar.render();
+    oMenuBar.subscribe("beforeShow", onSubmenuBeforeShow);
+    oMenuBar.subscribe("show", onSubmenuShow);
+});
+</script>
+{/literal}

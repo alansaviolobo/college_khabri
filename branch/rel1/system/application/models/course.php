@@ -1,0 +1,57 @@
+<?php
+class Course extends Model
+{
+	private $code;
+	private $name;
+	private $group;
+	
+    function Course()
+    {
+        parent::Model();
+    }
+
+    function code() {if (is_null($this->code)) $this->set(); return $this->code; }
+    function name() {if (is_null($this->name)) $this->set(); return $this->name; }
+    function group() {if (is_null($this->address)) $this->set(); return $this->group; }
+    
+    static function getCourse($courseId)
+    {
+		$course = new Course();
+        $result = $course->db->where('code', $courseId)->get('courses');
+        if ($result->num_rows() <> 1){
+            throw new Exception('Invalid Course');
+        }
+        $course->set($result->row_object());
+        $result->free_result();
+        return $course;
+    }
+    
+    private function set($data = null)
+    {
+        if (is_null($data))
+        {
+            $data = $this->db->where('code', $this->code)->get('courses')->result_object();
+        }
+
+        $this->code = $data->code;
+        $this->name = $data->name;
+        $this->group = $data->group;
+    }
+    
+    function getAllCourses()
+    {
+        $query = $this->db->select('code, name')->order_by('name')->get('courses');
+        $result = array();
+        foreach($query->result_array() as $row) $result[$row['code']]=$row['name'];
+        return array('' => 'All') + $result;
+    }
+    
+    function getAllCourseGroups()
+    {
+        $query = $this->db->distinct()->select('group')->order_by('group')->get('courses');
+        $result = array();
+        foreach($query->result_array() as $row) $result[$row['group']]=$row['group'];
+        return array('' => 'All') + $result;
+    }
+}
+?>

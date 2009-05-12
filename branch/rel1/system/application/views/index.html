@@ -1,0 +1,170 @@
+<div class="main-search-div">
+	{$searchForm.formOpen}
+	<div class="basic-text" style="float:right">
+		{$searchForm.stateLabel}:&nbsp;{$searchForm.stateSelect} &nbsp;&nbsp;
+		{$searchForm.careerLabel}:&nbsp;{$searchForm.careerSelect}
+	</div>
+	<p align="left" style="font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:24pt;letter-spacing:-1px;margin-top:0;">Search</p>
+	<div id="less-details-options">
+		<div align="right">{$searchForm.searchLink}</div>
+		<br />
+		<table width="100%" summary="Search Layout Table">
+			<tr>
+				<td class="right-border" width="50%" valign="top">
+					<div><span class="cut-off">{$searchForm.universityLabel}</span></div>
+					<div>{$searchForm.universitySelect} </div>
+					<br />
+					<div><a class="small-link" onclick="addOption('universities')">[+] Add University</a><br />
+						<span class="grey-context itl">Click to add two or more universities in your search </span>
+					</div>
+					<br />
+					<div><span class="cut-off">{$searchForm.districtLabel}</span></div>
+					<div>{$searchForm.districtSelect} </div>
+					<br />
+					<div><a class="small-link" onclick="addOption('districts')">[+] Add district</a><br />
+						<span class="grey-context itl">Click to include another district like 'Thane' in the search</span></div><br/>
+					<div><span class="cut-off">Show last year's cut-off for</span></div>
+					<div>
+					{$searchForm.cetCutoffRadio}{$searchForm.cetCutoffLabel}<br>
+					{$searchForm.aieeeCutoffRadio}{$searchForm.aieeeCutoffLabel}
+					<div>
+				</td>
+				<td valign="top" width="50%" style="padding-left:20px;"> 
+					<div><span class="cut-off">{$searchForm.coursesLabel}</span></div>
+					<div>{$searchForm.coursesSelect}</div>
+					<br />
+					<div>
+						&nbsp;<a class="small-link" onclick="addOption('courses')">[+] Add course</a> <br />
+						&nbsp;<span class="grey-context itl">Click to search two or more courses<br />
+						</span>
+						&nbsp;<span class="grey-context">Eg. (1) Automobile + Mechanical<br />
+						</span>
+						&nbsp;<span class="grey-context">Eg. (2) Bio-technology + Pharmacy</span>
+						<br />
+					</div>
+					<br />
+					<div><span class="cut-off">{$searchForm.minorityLabel}</span></div>
+					<div>{$searchForm.minoritySelect}</div>
+					<br />
+					<div><span class="cut-off">{$searchForm.feesLabel}</span></div>
+					<div>{$searchForm.feesSelect}</div>
+				</td>
+			</tr>
+		</table>
+		<!--
+		<div id="coursegroup_selection_div" style="display:none">
+		<span class="cut-off">{$searchForm.coursegroupLabel}</span>
+		<div>
+		<table width="100%" summary="Search layout table">
+		<tbody>
+		<tr>
+		<td valign="top"> 
+		<span>
+		{$searchForm.coursegroupSelect}
+		</span>
+		</td>
+		<td valign="top">
+		&nbsp;<a class="small-link" onclick="addOption('coursegroups')">[+] Add Course 
+		Group</a><br />
+		&nbsp;<span class="grey-context"><em>Add to search two or more course 
+		groups</em><br />
+		</span>
+		&nbsp;<span class="grey-context">Eg. (1) Electronics + Instrumentation & 
+		Control + Electrical<br />
+		</span>
+		&nbsp;<span class="grey-context">Eg. (2) Bio-technology + Pharmacy</span>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+		<br />
+		<br />
+		{$searchForm.coursesLink}
+		<br />
+		<span class="grey-context"><em>If you want know the exact course to 
+		search,</em><br />
+		Eg. B. Tech Mechanical or B.E Electrical Engg.</span>
+		</div>
+		<div id="course_selection_div">
+		<span class="cut-off">{$searchForm.coursesLabel}</span>
+		<div>
+		<table width="100%" summary="layout table">
+		<tbody>
+		<tr>
+		<td valign="top"> 
+		<span>
+		{$searchForm.coursesSelect} </span> </td>
+		<td valign="top"> 
+		&nbsp;<a class="small-link" onclick="addOption('courses')">[+] Add another 
+		course</a> <br />
+		&nbsp;<span class="grey-context"><em>Add to search two or more courses</em><br 
+		/>
+		</span>
+		&nbsp;<span class="grey-context">Eg. (1) Automobile + Mechanical<br />
+		</span>
+		&nbsp;<span class="grey-context">Eg. (2) Bio-technology + Pharmacy</span>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+		<br />
+		{$searchForm.courseGroupLink}<br />
+		<span class="grey-context"><em>If you want to search all colleges under one 
+		group, Eg. Mechanical or Electrical</em></span><br />
+		</div>
+		-->
+		<br />
+		<div><span><a class="small-link" onclick="getElementById('more-details').style.display='block'">Advanced Search</a> <img src="images/rba-arrow-small-right.gif" alt="" />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</span></div>
+		<br />
+		<br />
+	</div>
+	<div id="less-details-search" style="display:none;">
+		<br />
+		<span class="cut-off">{$searchForm.searchLabel}</span><br />
+		{$searchForm.searchBox}<br />
+		<span class="grey-context">Eg. Vidyalankar Institute of Technology</span><br />
+		<br />
+		<a class="small-link" onclick="this.parentNode.style.display='none';getElementById('less-details-options').style.display='block'">Search by selecting options</a><br />
+		<br />
+	</div>
+	<div id="more-details" style="display:none">
+		<table valign="top" summary="layout table" width="100%">
+			<tbody>
+				<tr>
+					<td class="right-border" width="50%" valign="top">
+						<span class="cut-off">{$searchForm.aidLabel}</span><br />
+						{$searchForm.aidSelect}
+						<br />
+						<br />
+						<span class="cut-off">{$searchForm.autonomyLabel}</span><br />
+						{$searchForm.autonomySelect}
+					</td>
+					<td style="padding:0 20px;">
+						<span class="cut-off">{$searchForm.hostelLabel}</span><br />
+						{$searchForm.hostelSelect}
+						<br />
+						<br />
+						<span class="cut-off">{$searchForm.establishmentLabel}</span><br />
+						{$searchForm.establishmentSelect}
+						<br />
+						<br />
+					</td>
+				</tr>
+				<tr>
+					<td><br />
+						<div class="medium-text" style="font-size:13pt;">&nbsp;{$searchForm.ladiesCheckBox}&nbsp;{$searchForm.ladiesCheckLabel}</div>
+						<div class="medium-text"></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		[<a class="small-link" onclick="getElementById('more-details').style.display='none'">x</a>] <a class="small-link" onclick="getElementById('more-details').style.display='none'">Close advanced search</a>
+	</div>
+	<div align="right">{$searchForm.submit}</div>
+	{$searchForm.formClose}
+</div>

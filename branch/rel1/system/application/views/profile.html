@@ -1,0 +1,25 @@
+<div class="floatr main-search-div">
+	<img src="{php}echo base_url();{/php}images/logo-only.jpg" width="176" height="270" alt="" />
+	<div id="v-thin-line ">
+		<h1>My Profile</h1>
+		{$profileForm.formOpen}
+		<hr />
+		<p class="medium-text v-thin-line">Username: <span class="med-field">{$user->emailAddress()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<p class="medium-text v-thin-line">{$profileForm.password1Label}{$profileForm.password1Box}</p>
+		<p class="medium-text v-thin-line">{$profileForm.password2Label}{$profileForm.password2Box}</p>
+		<p class="medium-text v-thin-line">Mobile Number: <span class="med-field">{$user->mobile()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.fnameLabel}{$profileForm.fnameBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.lnameLabel}{$profileForm.lnameBox}</p>
+		<p class="medium-text v-thin-line">Category: <span class="med-field">{$user->category()}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<p class="medium-text v-thin-line">Home University: <span class="med-field">{assign var='uni' value=$user->homeUni()}{$uni->name|default:'outside candidate'}</span> <span class="grey-context">[<a href="#">Change</a> ]</span></p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}</p>
+		<hr />
+		<p class="medium-text v-thin-line">{$profileForm.cetAppLabel}{$profileForm.cetAppBox}</p>
+		<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}</p>
+		<p class="medium-text">{$profileForm.submit}</p>
+		{$profileForm.formClose}
+	</div>
+</div>
