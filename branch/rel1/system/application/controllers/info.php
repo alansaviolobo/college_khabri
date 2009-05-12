@@ -112,6 +112,12 @@ class Info extends Controller {
         $this->smarty->assign('template', 'circle-of-admissions.html');
         $this->smarty->display('template3column.html');
     }  
+    
+    function faq()
+    {
+        $this->smarty->assign('template', 'faq.html');
+        $this->smarty->display('template.html');
+    }  
 }
 
 /* End of file info.php */

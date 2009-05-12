@@ -88,7 +88,7 @@ class User extends Model
     	$this->load->model('university');
         if (is_null($data))
         {
-            $data = $this->db->where('id', $this->id)->get('users')->row_object();
+            $data = $this->db->where('id', $this->id)->get('users')->row();
         }
 
 	    $this->id = $data->id;
