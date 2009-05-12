@@ -183,7 +183,7 @@ class Search extends Model {
 		if ($user == null)
     	{
     		$this->db->select("institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, total AS fees, popularity, '' AS cutoff");
+    						institutes.district, total AS fees, popularity, '' AS cutoff", false);
     	}
     	else
     	{
