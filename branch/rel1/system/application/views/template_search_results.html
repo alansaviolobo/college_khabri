@@ -5,12 +5,12 @@
 		<title>{$title|default:'Welcome to College Khabri'}</title>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/default.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
-		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/animation/animation.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/animation/animation-min.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container-min.js"></script>
-		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container_core.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/container/container_core-min.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/dragdrop/dragdrop-min.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/element/element-min.js"></script>
-		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/menu/menu.js"></script>
+		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/menu/menu-min.js"></script>
 		<script type="text/javascript" src="{php}echo base_url(){/php}js/yui/tabview/tabview-min.js"></script>
 		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/assets/skins/sam/container.css" />
 		<link rel="stylesheet" type="text/css" href="{php}echo base_url(){/php}js/yui/menu/assets/skins/sam/menu.css" />
@@ -67,9 +67,10 @@
 				<div class="grey-context">&copy; Copyright {$smarty.now|date_format:"%Y"} College Khabri<br />
 				</div>
 				<span class="small-text">
-					{php} echo anchor('info/terms_of_use','terms of use');{/php} |
-					{php} echo anchor('info/privacy_policy','privacy policy');{/php} |
-					{php} echo anchor('info/contact_us','contact us');{/php}
+					{php} echo anchor('info/terms_of_use','Terms of use');{/php} |
+					{php} echo anchor('info/privacy_policy','Privacy policy');{/php} |
+					{php} echo anchor('info/contact_us','Contact us');{/php} |
+					{php} echo anchor('info/faq','FAQ');{/php}
 				</span>
 			</div>
 		</div>
