@@ -25,11 +25,11 @@ class Search extends Model {
 
         $established_in = array(
             		 '' => "Any",
-        	'2004,2009' => "1 - 5 years",
-        	'1999,2003' => "5 - 10 years",
-            '1989,1998' => "10 - 20 years",
-            '1979,1988' => "20 - 30 years",
-            '1850,1978' => "more than 30 years");
+        	'1,5' => "1 - 5 years",
+        	'6,10' => "5 - 10 years",
+            '11,20' => "10 - 20 years",
+            '21,30' => "20 - 30 years",
+            '31,200' => "more than 30 years");
 
 		$coursesJS = 	"this.parentNode.style.display='none';".
 						"getElementById('course_selection_div').style.display='block';".
@@ -69,7 +69,7 @@ class Search extends Model {
             'feesSelect'        => form_dropdown('fees', $approx_fees),
             'hostelLabel'       => form_label('Hostel', 'hostel'),
             'hostelSelect'      => form_dropdown('hostel', $hostel),
-            'establishmentLabel'=> form_label('Age of the Institute', 'establishedin'),
+            'establishmentLabel'=> form_label('How old is the Institute', 'establishedin'),
             'establishmentSelect'=> form_dropdown('establishedin', $established_in),
             'ladiesCheckLabel'  => form_label('Search only ladies colleges', 'ladies'),
             'ladiesCheckBox'    => form_checkbox('ladies','ladies',false),
@@ -194,7 +194,7 @@ class Search extends Model {
 	    	if (count($districts)) $this->db->where_in('district', $districts);
 	    	if (!empty($aid)) $this->db->where('aid_status', $aid);
 	    	if (!empty($fees)) $this->db->where('total between ' . str_replace(',', ' and ', $fees));
-	    	if (!empty($establishedin)) $this->db->where('established_in between ' . str_replace(',', ' and ', $establishedin));
+	    	if (!empty($establishedin)) $this->db->where('year(now())-established_in between ' . str_replace(',', ' and ', $establishedin));
 	    	if (!empty($autonomy)) $this->db->where('autonomy_status', $autonomy);
 	    	if (!empty($minority)) $this->db->where('minority_status', $minority);
 	    	if (!empty($ladies)) $this->db->where('ladies_only', true);
