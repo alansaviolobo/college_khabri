@@ -147,6 +147,6 @@ function SHA1 (msg) {
         element.parentNode.appendChild(span);
         remlink.innerHTML = '[-]';
         if(remlink.addEventListener) remlink.addEventListener('click', function(){this.parentNode.innerHTML='';}, false); // for standards
-            else if(remlink.attachEvent) remlink.attachEvent('onclick', function(){alert(this.parent.name);}); // for IE
+            else if(remlink.attachEvent) remlink.attachEvent('onclick', function(){this.parentNode.innerHTML='';}); // for IE
         element.selectedIndex = value;
     }

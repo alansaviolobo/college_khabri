@@ -159,7 +159,7 @@ class Search extends Model {
 	    	if (count($universities)) $this->db->where_in('universities.id', $universities);
 	    	if (count($districts)) $this->db->where_in('district', $districts);
 	    	if (!empty($aid)) $this->db->where('aid_status', $aid);
-	    	if (!empty($fees)) $this->db->where('total_fee between ' . str_replace(',', ' and ', $fees));
+	    	if (!empty($fees)) $this->db->where('total between ' . str_replace(',', ' and ', $fees));
 	    	if (!empty($establishedin)) $this->db->where('established_in between ' . str_replace(',', ' and ', $establishedin));
 	    	if (!empty($autonomy)) $this->db->where('autonomy_status', $autonomy);
 	    	if (!empty($minority)) $this->db->where('minority_status', $minority);
@@ -183,7 +183,7 @@ class Search extends Model {
 		if ($user == null)
     	{
     		$this->db->select("institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, total AS fees, popularity, '' AS cutoff", false);
+    						institutes.district, '' AS fees, '' AS popularity, '' AS cutoff", false);
     	}
     	else
     	{

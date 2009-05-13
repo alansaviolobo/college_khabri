@@ -118,18 +118,6 @@ class Info extends Controller {
         $this->smarty->assign('template', 'faq.html');
         $this->smarty->display('template.html');
     }  
-    
-    function profileerror()
-    {
-        $this->smarty->assign('template', 'profile-error.html');
-        $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');	   
-    }  
-    
-    function searchresultserror()
-    {
-        $this->smarty->assign('template', 'searchresults-error.html');
-        $this->smarty->display(($showTemplate != 'false')?'template.html':'templatecompact.html');	   
-    }  
 }
 
 /* End of file info.php */

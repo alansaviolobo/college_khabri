@@ -98,6 +98,11 @@
 			</td>
 		</tr>
 {/capture}
+{capture name=lockimage}
+<a onclick="YAHOO.collegekhabri.accessError.show()">
+	<img src='{php}echo base_url(){/php}/images/Lock_icon.png' width=18 height=18 />
+</a>
+{/capture}
 <div id="center">
 	<!-- table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC" summary="layout table">
 		<tr>
@@ -139,13 +144,13 @@
 				<div align="left">{$choicecode->district}</div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
-				<div align="left"><strong>{$choicecode->fees}</strong></div>
+				<div align="left"><strong>{$choicecode->fees|default:$smarty.capture.lockimage}</strong></div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" >
-				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity}</span></div>
+				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity|default:$smarty.capture.lockimage}</span></div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" class="cut-off">
-				<div align="center">{$choicecode->cutoff|default:"<img src='../../../../images/Lock_icon.png' width=18 height=18 />"}</div>
+				<div align="center">{$choicecode->cutoff|default:$smarty.capture.lockimage}</div>
 			</td>
 			<td style="border-right: 1px dashed #dddddd;" >
 				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
@@ -156,7 +161,7 @@
 							<div class="green-bar" style="width:100%">&nbsp;</div>
 						</td>
 					{else}
-						<img src='{php}echo base_url(){/php}images/Lock_icon.png' width=18 height=18 />
+						{$smarty.capture.lockimage}
 					{/if}
 					</tr>
 				</table>
@@ -177,6 +182,13 @@
    <div class="hd">College Information</div>
     <div class="bd"></div>
     <div class="ft"></div>
+</div>
+<div id="accessError">
+	<div class="hd"></div>
+	<div class="bd basic-text"> 
+		<p align="center"><img src="{php}echo base_url();{/php}images/sorry.gif" width="176" height="190" /></p>
+		<p align="center">You have to be a registered user to access this feature. {php}echo anchor('members/signup', 'Register now!');{/php}</p>
+	</div>
 </div>
 {literal}
 <script type="text/javascript">
@@ -202,5 +214,16 @@
 		o.setBody(YAHOO.collegekhabri.frame);
 	};
 	YAHOO.collegekhabri.collegeInfo.showEvent.subscribe(onCollegeInfoShow, YAHOO.collegekhabri.collegeInfo);
+
+	YAHOO.collegekhabri.accessError = new YAHOO.widget.Dialog("accessError", {
+	width : "355px",
+	fixedcenter : true,
+	visible : false,
+	close: true,
+	draggable: true,
+	modal: true,
+	constraintoviewport : false});
+	YAHOO.util.Event.addListener('closeImg', 'click', function(o){YAHOO.collegekhabri.accessError.hide()});
+	YAHOO.collegekhabri.accessError.render();
 </script>
 {/literal}
