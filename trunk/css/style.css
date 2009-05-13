@@ -79,6 +79,8 @@ h2 {
     font-weight: bold;color:#5C5C5C;
 }
 
+p {padding-bottom: 10px;padding-top: 10px;}
+
 li {border-top: 1px dotted #E8E8E8; padding:0 2px; list-style:disc; margin-left:20px;}
 
 
