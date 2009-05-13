@@ -36,7 +36,7 @@ class Sms extends Controller {
     	unset($msgparts[max(array_keys($msgparts))]);
     	$email = $msgparts[max(array_keys($msgparts))];
     	unset($msgparts[max(array_keys($msgparts))]);
-    	list($firstname, $lastname) = array_values($msgparts);
+    	list($firstname, $lastname) = array(1=>'')+array_values($msgparts);
     	$password = substr(md5($email),5,5);
 
 		try

@@ -107,6 +107,12 @@ class Info extends Controller {
         $this->smarty->display('template3column.html');
     }  
     
+    function chemical()
+    {
+        $this->smarty->assign('template', 'branches/chemical.html');
+        $this->smarty->display('template3column.html');
+    }  
+    
     function circleofenggadmissions()
     {
         $this->smarty->assign('template', 'circle-of-admissions.html');
