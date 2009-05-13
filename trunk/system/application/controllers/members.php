@@ -59,7 +59,7 @@ class Members extends Controller {
         	}
         	catch(Exception $e)
         	{
-        		$form['formErrors'] = 'Account could not be created!';
+        		$form['formErrors'] = '<div class="error">Account could not be created!</div>';
         	}
         }
         else $form['formErrors'] = validation_errors();
@@ -162,7 +162,7 @@ class Members extends Controller {
         	}
         	catch(Exception $e)
         	{
-        		$form['formErrors'] = 'Invalid code entered.';
+        		$form['formErrors'] = '<div class="error">Invalid code entered</div>';
         	}
         }
         else $form['formErrors'] = validation_errors();
@@ -209,7 +209,7 @@ class Members extends Controller {
         	}
         	catch(Exception $e)
         	{
-        		$loginform['formErrors'] = 'Invalid username or password';
+        		$loginform['formErrors'] = '<div class="error">Invalid username or password</div>';
         	}
         }
         else $loginform['formErrors'] = validation_errors();
@@ -286,7 +286,7 @@ class Members extends Controller {
             }
             catch(Exception $e)
             {
-            	$form['formErrors'] = 'Error updating your details';
+            	$form['formErrors'] = '<div class="error">Error updating your details</div>';
             }
         }
         else $form['formErrors'] = validation_errors();
@@ -329,7 +329,7 @@ class Members extends Controller {
             }
             catch(Exception $e)
             {
-            	$form['formErrors'] = 'Invalid email address provided.';
+            	$form['formErrors'] = '<div class="error">Invalid email address provided</div>';
             }
         }
         else $form['formErrors'] = validation_errors();
@@ -375,6 +375,7 @@ class Members extends Controller {
     function logout()
     {
 		$this->session->unset_userdata(array('userId'=>'', 'firstName'=>''));
+		redirect('welcome/login');
     }
     
     function savedsearches()

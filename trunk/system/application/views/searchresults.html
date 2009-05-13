@@ -156,9 +156,15 @@
 				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
 					<tr>
 					{if $choicecode->chances}
-						<td width="10%" class="small-text" style="border:0;">Coming Soon</td>
+						<td width="10%" class="small-text" style="border:0;">{$choicecode->chances}</td>
 						<td width="90%" style="border:0;">
-							<div class="green-bar" style="width:100%">&nbsp;</div>
+						{if $choicecode->chances eq 'high'}
+							<div class="green-bar" style="width:99%">&nbsp;</div>
+						{elseif $choicecode->chances eq 'medium'}
+							<div class="green-bar" style="width:66%">&nbsp;</div>
+						{else}
+							<div class="green-bar" style="width:33%">&nbsp;</div>
+						{/if}
 						</td>
 					{else}
 						{$smarty.capture.lockimage}
