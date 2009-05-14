@@ -200,7 +200,7 @@ ul#navlist li a {
 
 .floatr {}
 
-.floatr img {float:right;}
+.floatr img {float:right;display:inline;}
 
 .green-bar {border: 1px solid #333333; height:10px; background: red url(../images/bar-stripe.png);}
 
