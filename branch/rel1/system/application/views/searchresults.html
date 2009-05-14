@@ -100,7 +100,7 @@
 {/capture}
 {capture name=lockimage}
 <a onclick="YAHOO.collegekhabri.accessError.show()">
-	<img src='{php}echo base_url(){/php}/images/Lock_icon.png' width=18 height=18 />
+	<img style="cursor:help;" src='{php}echo base_url(){/php}/images/Lock_icon.png' />
 </a>
 {/capture}
 <div id="center">
@@ -144,15 +144,16 @@
 				<div align="left">{$choicecode->district}</div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" class="basic-text">
-				<div align="left"><strong>{$choicecode->fees|default:$smarty.capture.lockimage}</strong></div>
+				<div align="center"  title="Fees for this particular course in the institute"><strong>{$choicecode->fees|default:$smarty.capture.lockimage}</strong></div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" >
 				<div align="center"><span class="small-box" title="Popularity Rank of the college">{$choicecode->popularity|default:$smarty.capture.lockimage}</span></div>
 			</td>
 			<td  style="border-right: 1px dashed #dddddd;" class="cut-off">
-				<div align="center">{$choicecode->cutoff|default:$smarty.capture.lockimage}</div>
+				<div align="center" title="Cut-off for this course">{$choicecode->cutoff|default:$smarty.capture.lockimage}</div>
 			</td>
 			<td style="border-right: 1px dashed #dddddd;" >
+				<div  title="Your chances of getting into this course">
 				<table width="100%" align="right" summary="layout table" style="background-color:#dfdfdf; border: 1px solid #cdcdcd;">
 					<tr>
 					{if $choicecode->chances}
@@ -171,6 +172,7 @@
 					{/if}
 					</tr>
 				</table>
+				</div>
 			</td>
 		</tr>
 		{/if}
@@ -181,6 +183,7 @@
 		<tr>
 			<td colspan=8>
 				<!-- img align="right" src="{php}echo base_url();{/php}images/save-this-search.jpg" alt="" / -->
+				{$pagelinks}
 			</td>
 		</tr>
 	</table>

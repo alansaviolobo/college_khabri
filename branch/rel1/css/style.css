@@ -204,7 +204,7 @@ ul#navlist li a {
 
 .green-bar {border: 1px solid #333333; height:10px; background: red url(../images/bar-stripe.png);}
 
-.errormsg {padding:2px; color:red;}
+.error {padding:2px; color:red; background-color: #fff1f1;font-weight: bold;}
 
 .yui-skin-sam .yuimenubaritemlabel { border-style:hidden;margin:0;}
 

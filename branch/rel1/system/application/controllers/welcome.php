@@ -64,6 +64,8 @@ class Welcome extends Controller {
 		$config['base_url'] = site_url() . '/welcome/search_results/';
 		$config['total_rows'] = count($results);
 		$config['per_page'] = 10;
+		$config['num_links'] = 5;
+		$this->config->set_item('enable_query_strings', false);
 
 		$this->pagination->initialize($config);
     	$this->smarty->assign('results', $results);
