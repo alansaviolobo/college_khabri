@@ -150,3 +150,33 @@ function SHA1 (msg) {
             else if(remlink.attachEvent) remlink.attachEvent('onclick', function(){this.parentNode.innerHTML='';}); // for IE
         element.selectedIndex = value;
     }
+
+    function filterDistricts()
+    {
+    	var mapping = {
+    		1: ['Solapur'],
+    		2: ['Aurangabad','Beed','Osmanabad','Jalna'],
+    		3: ['Raigad','Mumbai - Suburban','Mumbai','Ratnagiri','Thane','Sindhudurg'],
+			4: ['Jalgaon','Dhule','Nandurbar'],
+			5: ['Pune','Ahmednagar','Nashik'],
+			6: ['Chandrapur','Nagpur','Gondia','Wardha','Bhandara'],
+			7: ['Nanded','Latur'],
+			8: ['Amravati','Akola','Buldhana','Yavatmal'],
+			9: ['Satara','Sangli','Kolhapur','Solapur']
+    	};
+    	var districts = document.getElementsByName('districts[]');
+    	var universities = document.getElementsByName('universities[]');
+    	var list = [];
+    	for (var index=0; index < universities.length; index++)
+    	{
+    		if (!universities[index].value) continue;
+    		list = list.concat(mapping[universities[index].value]);
+    	}
+    	for (var index=0; index < districts.length; index++)
+    	{
+    		while(districts[index].options.length) districts[index].options[0]=null;
+    		districts[index].options[0] = new Option('Any District','');
+    		for (var count=0; count < list.length; count++)
+    			districts[index].options[count+1] = new Option(list[count],list[count]);
+    	}
+    }
