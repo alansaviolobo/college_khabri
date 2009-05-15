@@ -7,6 +7,7 @@ class Info extends Controller {
         parent::Controller();
         $this->load->model('search');
         $this->smarty->assign('searchForm', Search::search_form());
+        $this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
     }
 
     function choicecode_info($choicecode, $showTemplate = 'true')

@@ -2,8 +2,11 @@
 	<div class="bd leftalign">
 		<ul class="first-of-type">
 			<span class="large-context" style="float:right;padding: 0px 3px;display:inline;">
-				{if $titlelink neq ''}
-				Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / 
+				{if $titlelink.fn neq ''}
+				Hi {$titlelink.fn} / {php} echo anchor('members/profile','Profile').' / 
+				'.anchor('members/logout','Logout');{/php}
+				{elseif $titlelink.un neq ''}
+				Logged in as {$titlelink.un} / {php} echo anchor('members/profile','Profile').' / 
 				'.anchor('members/logout','Logout');{/php}
 				{else}
 				{php} echo anchor('members/login','Login').' / 

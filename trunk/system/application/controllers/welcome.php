@@ -6,6 +6,7 @@ class Welcome extends Controller {
     {
         parent::Controller();
         $this->load->model('Search');
+        $this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
     }
 
     function index()
