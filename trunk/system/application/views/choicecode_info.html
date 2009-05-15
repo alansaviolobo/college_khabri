@@ -93,13 +93,13 @@
 			<div>
 				<div class="v-thin-line"><span class="large-context">Popularity rank:</span><span class="medium-text">{$choicecode->popularity()}</span></div>
 				<div class="v-thin-line"><span class="large-context">Other streams:</span></div>
-				<table width="50%" border="0" cellspacing="0" cellpadding="1" summary="layout table">
+				<table width="100%" border="0" cellspacing="0" cellpadding="1" summary="layout table" class="grey-context">
 					<tr>
-						<td bgcolor="#CCCCCC">Stream name</td>
-						<td bgcolor="#CCCCCC">Cut-off</td>
-						<td bgcolor="#CCCCCC">Intake</td>
-						<td bgcolor="#CCCCCC">My chances</td>
-						<td bgcolor="#CCCCCC">Seats kept for your category</td>
+						<td bgcolor="#DDFFFF">Stream name</td>
+						<td bgcolor="#DDFFFF">Cut-off</td>
+						<td bgcolor="#DDFFFF">Intake</td>
+						<td bgcolor="#DDFFFF">My chances</td>
+						<td bgcolor="#DDFFFF">Seats kept for your category</td>
 					</tr>
 					{foreach from=$institute->courses() item=course}
 					<tr>
