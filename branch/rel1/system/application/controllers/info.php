@@ -7,6 +7,7 @@ class Info extends Controller {
         parent::Controller();
         $this->load->model('search');
         $this->smarty->assign('searchForm', Search::search_form());
+        $this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
     }
 
     function choicecode_info($choicecode, $showTemplate = 'true')
@@ -110,6 +111,60 @@ class Info extends Controller {
     function chemical()
     {
         $this->smarty->assign('template', 'branches/chemical.html');
+        $this->smarty->display('template3column.html');
+    } 
+    
+    function environmental()
+    {
+        $this->smarty->assign('template', 'branches/environmental.html');
+        $this->smarty->display('template3column.html');
+    }  
+    
+     function industrial()
+    {
+        $this->smarty->assign('template', 'branches/industrial.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function metallurgy()
+    {
+        $this->smarty->assign('template', 'branches/metallurgy.html');
+        $this->smarty->display('template3column.html');
+    } 
+    
+    function infotech()
+    {
+        $this->smarty->assign('template', 'branches/infotech.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function marine()
+    {
+        $this->smarty->assign('template', 'branches/marine.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function mining()
+    {
+        $this->smarty->assign('template', 'branches/mining.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function petrol()
+    {
+        $this->smarty->assign('template', 'branches/petrol.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function plastic()
+    {
+        $this->smarty->assign('template', 'branches/plastic.html');
+        $this->smarty->display('template3column.html');
+    }   
+    
+    function production()
+    {
+        $this->smarty->assign('template', 'branches/production.html');
         $this->smarty->display('template3column.html');
     }  
     
