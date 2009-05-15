@@ -1,9 +1,12 @@
 <div id="ck_nav_bar" class="yuimenubar yuimenubarnav" align="right">
 	<div class="bd leftalign">
 		<ul class="first-of-type">
-			<span class="large-context" style="float:right;padding: 0px 3px;">
-				{if $titlelink neq ''}
-				Hi {$titlelink} / {php} echo anchor('members/profile','Profile').' / 
+			<span class="large-context" style="float:right;padding: 0px 3px;display:inline;">
+				{if $titlelink.fn neq ''}
+				Hi {$titlelink.fn} / {php} echo anchor('members/profile','Profile').' / 
+				'.anchor('members/logout','Logout');{/php}
+				{elseif $titlelink.un neq ''}
+				Logged in as {$titlelink.un} / {php} echo anchor('members/profile','Profile').' / 
 				'.anchor('members/logout','Logout');{/php}
 				{else}
 				{php} echo anchor('members/login','Login').' / 
@@ -11,6 +14,7 @@
 				{/if}
 			</span>
 			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="{php}echo site_url(){/php}"><ul><li class="yuimenuitem">Home</li></ul></a></li>
+			
 			<li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="#engineering">The field of Engineering</a>
 				<div id="engineering" class="yuimenu"  align="right"> 
 					<div class="bd">
@@ -18,39 +22,38 @@
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/what_is_engineering">What is <b>'Engineering'</b> anyway?</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/benefits_of_becoming_an_engineer"><b>Benefits</b> of becoming an Engineer</a></li>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/engineering_achievements"><b>Engineering achievements</b> of the 20th century</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/work_engineers_do"><b>Work</b> engineers do</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Branches</b> of Engineering</a>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/work_engineers_do">What <b>Work</b> do the engineers do?</a></li>
+							<!-- <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Branches</b> of Engineering</a>
 								<div id="pim" class="yuimenu">
 									<div class="bd">
 										<ul class="first-of-type">
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/aerospace">Aerospace Engineering</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineeing</a></li>
-											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/chemical">Chemical Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computerscience">Computer Science</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/electricalelectronics">Electrical and Electronics Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/environmental">Environmental Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/industrial">Industrial Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/infotech">Information Technology</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/marine">Marine Engineering</a></li>
 											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/mechanical">Mechanical Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/metallurgy">Metallurgy Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/mining">Mining Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/petrol">Petroleum Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/plastic">Plastics and Polymer Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/production">Productio Engineering</a></li>
 										</ul>
 									</div>
 								</div>
 							</li>
-							
+							-->
 						</ul>
 					</div>
 				</div>
 			</li>
-			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#">Admissions related</a>
-				<div id="adm-related" class="yuimenu">
-					<div class="bd"> 
-						<ul>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/circleofenggadmissions">Circle of <b>Engineering Admissions</b>: All you wanted to ever know</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Documents</b> you need</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#">Important <b>deadlines</b></a></li>
-						</ul>
-					</div>
-				</div>
-			</li>
+			
 <!--		
 				 <li class="yuimenubaritem"><a class="yuimenubaritemlabel" ">Kaam ka information</a>
 				<div id="entertainment" class="yuimenu">
@@ -68,25 +71,44 @@
 					</div>
 				</div>
 			</li>
-
+-->		
 			<li class="yuimenubaritem"><a class="yuimenubaritemlabel">Engineering Branches</a>
 				<div id="branches" class="yuimenu">
-					<div class="bd"> 
+					<div class="bd basic-text "> 
 						<ul>
 							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/aerospace">Aerospace Engineering</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineering</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/civil">Civil Engineering</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computerscience">Computer Science</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://music.yahoo.com/launchcast">Radio</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://travel.yahoo.com">Travel</a></li>
-							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="http://tv.yahoo.com">TV</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/agriculture">Agriculture Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/biomedical">Biomedical Engineeing</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/chemical">Chemical Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computer">Computer Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/computerscience">Computer Science</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/electricalelectronics">Electrical and Electronics Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/environmental">Environmental Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/industrial">Industrial Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/infotech">Information Technology</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/marine">Marine Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/mechanical">Mechanical Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/metallurgy">Metallurgy Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/mining">Mining Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/petrol">Petroleum Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/plastic">Plastics and Polymer Engineering</a></li>
+											<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/production">Production Engineering</a></li>
 						</ul>
 					</div>
 				</div>
 			</li>
-	-->		
+			<li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#">Admissions related</a>
+				<div id="adm-related" class="yuimenu">
+					<div class="bd"> 
+						<ul>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="{php}echo site_url(){/php}/info/circleofenggadmissions">Circle of <b>Engineering Admissions</b>: All you wanted to ever know</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#"><b>Documents</b> you need</a></li>
+							<li class="yuimenuitem"><a class="yuimenuitemlabel" href="#">Important <b>deadlines</b></a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+	
 	</div>
 </div>
 <br />
