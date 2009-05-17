@@ -8,7 +8,7 @@ class Members extends Controller {
     	$this->load->library('email');
         $this->load->library('form_validation');
         $this->load->model('user');
-        $this->smarty->assign('titlelink', $this->session->userdata('firstName'));
+        $this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 
@@ -44,8 +44,8 @@ class Members extends Controller {
         	{
             	$user_id = User::create_user($this->input->post('username'), $this->input->post('mobile'), $this->input->post('password1'));
 				$user = User::getUserByUserId($user_id);
-				$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName()));
-				$this->smarty->assign('titlelink', $this->session->userdata('firstName'));
+				$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName(), 'username'=>$user->username()));
+				$this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
 
    		   		$this->smarty->assign('user', $user);
      			$this->email->from('support@collegekhabri.com', 'College Khabri Support');
@@ -156,7 +156,7 @@ class Members extends Controller {
 	        		'ai3eAppNo' => $this->input->post('ai3eAppNo'));
 	    		$user->activate($this->input->post('code'));
 	    		$user->update_details($params);
-	    		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName()));
+	    		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName(), 'username'=>$user->username()));
 	    		redirect('members/profile');
 	    		return;
         	}
@@ -195,8 +195,8 @@ class Members extends Controller {
         	try
         	{
         		$user = User::getUserByAuthentication($this->input->post('username'), $this->input->post('password'));
-        		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName()));
-        		$this->smarty->assign('titlelink', $this->session->userdata('firstName'));
+        		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName(), 'username'=>$user->username()));
+        		$this->smarty->assign('titlelink', array('fn'=>$this->session->userdata('firstName'),'un'=>$this->session->userdata('username')));
 	            if ($user->status() == 'registered')
 	            {
 	            	redirect('members/activation/' . $user->id());
@@ -246,11 +246,11 @@ class Members extends Controller {
             'fnameBox'		=> form_input('fname', $user->firstName()),
             'lnameLabel'	=> form_label('Last Name:', 'lname'),
             'lnameBox'		=> form_input('lname', $user->lastName()),
-            'ai3eAppLabel'	=> form_label('AIEEE application no:', 'ai3eappno'),
+            'ai3eAppLabel'	=> form_label('AIEEE roll no:', 'ai3eappno'),
             'ai3eAppBox'	=> form_input('ai3eappno', $user->aieeeAppNo()),
             'ai3eRankLabel'	=> form_label('AIEEE Rank:', 'ai3erank'),
             'ai3eRankBox'	=> form_input('ai3erank', $user->AIEEERank()),
-            'cetAppLabel'	=> form_label('CET Application no:', 'cetappno'),
+            'cetAppLabel'	=> form_label('CET roll no:', 'cetappno'),
             'cetAppBox'		=> form_input('cetappno', $user->cetAppNo()),
             'cetRankLabel'	=> form_label('MHTCET Rank:', 'cetrank'),
             'cetRankBox'	=> form_input('cetrank', $user->CETRank()),
@@ -375,7 +375,7 @@ class Members extends Controller {
     function logout()
     {
 		$this->session->unset_userdata(array('userId'=>'', 'firstName'=>''));
-		redirect('welcome/login');
+		redirect('welcome/index');
     }
     
     function savedsearches()
