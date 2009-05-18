@@ -18,29 +18,40 @@
 						{$activationForm.codeBox}<br />
 					</div>
 					{$activationForm.fNameLabel}<br />
-					{$activationForm.fNameBox}<br />
+					{$activationForm.fNameBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
 					{$activationForm.lNameLabel}<br />
-					{$activationForm.lNameBox}<br />
+					{$activationForm.lNameBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
 					{$activationForm.homeUniLabel}<br />
-					{$activationForm.homeUniSelect}<br />
+					{$activationForm.homeUniSelect}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
 					{$activationForm.categoryLabel}<br />
-					{$activationForm.categorySelect}<br />
+					{$activationForm.categorySelect}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
 					{$activationForm.maleRadio}
 					{$activationForm.maleLabel}<br />
 					{$activationForm.femaleRadio}
 					{$activationForm.femaleLabel}<br />
+
 					{$activationForm.mhtAppNoLabel}<br />
-					{$activationForm.mhtAppNoBox}<br />
-					{$activationForm.pCETScoreLabel}<br />
-					{$activationForm.pCETScoreBox}<br />
-					{$activationForm.pCETRankLabel}<br />
-					{$activationForm.pCETRankBox}<br />
+					{$activationForm.mhtAppNoBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br />
 					{$activationForm.ai3eAppNoLabel}<br />
-					{$activationForm.ai3eAppNoBox}<br />
-					{$activationForm.pAI3EScoreLabel}<br />
-					{$activationForm.pAI3EScoreBox}<br />
-					{$activationForm.pAI3ERankLabel}<br />
-					{$activationForm.pAI3ERankBox}<br />
+					{$activationForm.ai3eAppNoBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br />
+
+					{if $processStage eq 'pre-result'}
+						{$activationForm.pCETScoreLabel}<br />
+						{$activationForm.pCETScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
+						{$activationForm.pAI3EScoreLabel}<br />
+						{$activationForm.pAI3EScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
+					{elseif $processStage eq 'result-score'}
+						{$activationForm.CETScoreLabel}<br />
+						{$activationForm.CETScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
+						{$activationForm.AI3EScoreLabel}<br />
+						{$activationForm.AI3EScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
+					{elseif $processStage eq 'result-rank'}
+						{$activationForm.CETRankLabel}<br />
+						{$activationForm.CETRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]Enter the score which you think you will obtain (used to calculate your chances for a course).</span><br />
+						{$activationForm.AI3ERankLabel}<br />
+						{$activationForm.AI3ERankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Enter the score which you think you will obtain (used to calculate your chances for a course).</span><br />
+					{/if}
+
 					{$activationForm.submit}
 					{$activationForm.formClose}
 					<div class="grey-line-below">

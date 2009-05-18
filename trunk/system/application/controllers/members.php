@@ -31,10 +31,10 @@ class Members extends Controller {
             'formClose'     => form_close()
         );
         $rules = array(
-        	array('field'=>'username' , 'label'=>'Username', 'rules'=>'trim|required|valid_email|max_length[255]'),
-        	array('field'=>'password1', 'label'=>'Password', 'rules'=>'trim|required|exact[32]'),
+        	array('field'=>'username' , 'label'=>'Username',		'rules'=>'trim|required|valid_email|max_length[255]'),
+        	array('field'=>'password1', 'label'=>'Password',		'rules'=>'trim|required|exact_length[40]'),
         	array('field'=>'password2', 'label'=>'Retype Password', 'rules'=>'trim|required|matches[password1]'),
-        	array('field'=>'mobile'   , 'label'=>'Mobile'  , 'rules'=>'trim|required|exact[10]|is_natural')
+        	array('field'=>'mobile'   , 'label'=>'Mobile',			'rules'=>'trim|required|exact_length[10]|is_natural')
         );
         $this->form_validation->set_rules($rules);
         
@@ -59,7 +59,7 @@ class Members extends Controller {
         	}
         	catch(Exception $e)
         	{
-        		$form['formErrors'] = '<div class="error">Account could not be created!</div>';
+        		$form['formErrors'] = "<div class='error'>{$e->getMessage()}</div>";
         	}
         }
         else $form['formErrors'] = validation_errors();
@@ -98,44 +98,53 @@ class Members extends Controller {
     	$form = array(
             'formOpen'      => form_open("members/activation/$user_id"),
             'codeLabel' 	=> form_label('Your Activation Code', 'code', array('class'=>'medium-text v-thin-line')),
-            'codeBox'   	=> form_input('code', null, "class='med-field'"),
-	    	'fNameLabel' 	=> form_label('First Name', 'fname', array('class'=>'medium-text v-thin-line')),
+            'codeBox'   	=> form_input('code', $this->input->post('code'), "class='med-field'"),
+            'fNameLabel' 	=> form_label('First Name', 'fname', array('class'=>'medium-text v-thin-line')),
             'fNameBox'   	=> form_input('fname', $this->input->post('fname'), "class='med-field'"),
-	    	'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
+            'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
             'lNameBox'   	=> form_input('lname', $this->input->post('lname'), "class='med-field'"),
-	    	'homeUniLabel'	=> form_label('Home University', 'homeUni', array('class'=>'medium-text v-thin-line')),
-            'homeUniSelect'	=> form_dropdown('homeUni', array('' => 'None') + University::getUniversities(), $this->input->post('homeUni'), "class='med-field'"),
-    	   	'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
+            'homeUniLabel'	=> form_label('Home University', 'homeUni', array('class'=>'medium-text v-thin-line')),
+            'homeUniSelect'	=> form_dropdown('homeUni', array('-1' => 'None') + University::getUniversities(), $this->input->post('homeUni'), "class='med-field'"),
+            'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
             'categorySelect'=> form_dropdown('category', User::getStatuses(), $this->input->post('category'), "class='med-field'"),
-    		'maleLabel'		=> form_label('Male', 'gender'),
-            'maleRadio'		=> form_radio('gender','male',false),
-        	'femaleLabel'	=> form_label('Female', 'gender'),
-        	'femaleRadio'	=> form_radio('gender','female',false),
-	    	'mhtAppNoLabel'	=> form_label('MHT-CET application number', 'cetAppNo', array('class'=>'medium-text v-thin-line')),
+            'maleLabel'		=> form_label('Male', 'gender'),
+            'maleRadio'		=> form_radio('gender','male',$this->input->post('gender')=='male'),
+            'femaleLabel'	=> form_label('Female', 'gender'),
+        	'femaleRadio'	=> form_radio('gender','female',$this->input->post('gender')=='female'),
+        	'mhtAppNoLabel'	=> form_label('MHT-CET roll no', 'cetAppNo', array('class'=>'medium-text v-thin-line')),
             'mhtAppNoBox'  	=> form_input('cetAppNo', $this->input->post('cetAppNo'), "class='med-field'"),
-	    	'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
+            'pCETScoreLabel'=> form_label('Projected CET score', 'pCETScore', array('class'=>'medium-text v-thin-line')),
             'pCETScoreBox'  => form_input('pCETScore', $this->input->post('pCETScore'), "class='med-field'"),
-	    	'pCETRankLabel' => form_label('Projected CET rank', 'pCETRank', array('class'=>'medium-text v-thin-line')),
-            'pCETRankBox'   => form_input('pCETRank', $this->input->post('pCETRank'), "class='med-field'"),
-	    	'ai3eAppNoLabel'=> form_label('AIEEE application number', 'ai3eAppNo', array('class'=>'medium-text v-thin-line')),
-            'ai3eAppNoBox' 	=> form_input('ai3eAppNo', $this->input->post('ai3eAppNo'), "class='med-field'"),
-        	'pAI3EScoreLabel'=>form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
+            'CETScoreLabel'=> form_label('CET score', 'cetScore', array('class'=>'medium-text v-thin-line')),
+            'CETScoreBox'  => form_input('cetScore', $this->input->post('cetScore'), "class='med-field'"),
+            'CETRankLabel' => form_label('CET rank', 'cetRank', array('class'=>'medium-text v-thin-line')),
+            'CETRankBox'   => form_input('cetRank', $this->input->post('cetRank'), "class='med-field'"),
+            'ai3eAppNoLabel'=> form_label('AIEEE roll no', 'ai3eAppNo', array('class'=>'medium-text v-thin-line')),
+            'ai3eAppNoBox' => form_input('ai3eAppNo', $this->input->post('ai3eAppNo'), "class='med-field'"),
+            'pAI3EScoreLabel'=>form_label('Projected AIEEE score', 'pAI3EScore', array('class'=>'medium-text v-thin-line')),
             'pAI3EScoreBox' => form_input('pAI3EScore', $this->input->post('pAI3EScore'), "class='med-field'"),
-	    	'pAI3ERankLabel'=> form_label('Projected AIEEE rank', 'pAI3ERank', array('class'=>'medium-text v-thin-line')),
-            'pAI3ERankBox'  => form_input('pAI3ERank', $this->input->post('pAI3ERank'), "class='med-field'"),
-        	'submit'        => form_submit('submit', 'Activate my account'),
+            'AI3EScoreLabel'=>form_label('AIEEE score', 'ai3eScore', array('class'=>'medium-text v-thin-line')),
+            'AI3EScoreBox' => form_input('ai3eScore', $this->input->post('ai3eScore'), "class='med-field'"),
+            'AI3ERankLabel'=> form_label('AIEEE rank', 'ai3eRank', array('class'=>'medium-text v-thin-line')),
+            'AI3ERankBox'  => form_input('ai3eRank', $this->input->post('ai3eRank'), "class='med-field'"),
+            'submit'        => form_submit('submit', 'Activate my account'),
             'formClose'     => form_close()
         );
     	$rules = array(
-        	array('field'=>'code',		'label'=>'Activation code',	'rules'=>'trim|required|exact[10]'),
-        	array('field'=>'fname',		'label'=>'First Name',		'rules'=>'trim|required|max_length[255]'),
-        	array('field'=>'lname',		'label'=>'Surname',			'rules'=>'trim|required|max_length[255]'),
-        	array('field'=>'pCETScore',	'label'=>'CET Score',		'rules'=>'trim|is_natural'),
-        	array('field'=>'pCETRank',	'label'=>'CET Rank',		'rules'=>'trim|is_natural'),
-        	array('field'=>'pAI3EScore','label'=>'AIEEE Score',		'rules'=>'trim|is_natural'),
-        	array('field'=>'pAI3ERank',	'label'=>'AIEEE Rank',		'rules'=>'trim|is_natural'),
-        	array('field'=>'cetAppNo',	'label'=>'CET Application No.','rules'=>'trim|required|exact[10]'),
-        	array('field'=>'ai3eAppNo',	'label'=>'AIEEE Application No.','rules'=>'trim|required|exact[9]')
+        	array('field'=>'code',		'label'=>'Activation code',	'rules'=>'trim|required|exact_length[5]'),
+        	array('field'=>'fname',		'label'=>'First Name',		'rules'=>'trim|required|alpha|max_length[255]'),
+        	array('field'=>'lname',		'label'=>'Surname',			'rules'=>'trim|required|alpha|max_length[255]'),
+        	array('field'=>'homeUni',	'label'=>'Home University',	'rules'=>'trim|required|integer'),
+        	array('field'=>'category',	'label'=>'Category',		'rules'=>'trim|required'),
+        	array('field'=>'gender',	'label'=>'Gender',			'rules'=>'trim|required|alpha'),
+        	array('field'=>'cetAppNo',	'label'=>'CET roll no.',	'rules'=>'trim|exact_length[10]'),
+        	array('field'=>'pCETScore',	'label'=>'Proj CET Score',	'rules'=>'trim|is_natural'),
+        	array('field'=>'cetScore',	'label'=>'CET Score',		'rules'=>'trim|is_natural'),
+        	array('field'=>'cetRank',	'label'=>'CET Rank',		'rules'=>'trim|is_natural'),
+        	array('field'=>'ai3eAppNo',	'label'=>'AIEEE roll no.',	'rules'=>'trim|exact_length[9]'),
+        	array('field'=>'pAI3EScore','label'=>'Proj AIEEE Score','rules'=>'trim|is_natural'),
+        	array('field'=>'ai3eScore',	'label'=>'AIEEE Score',		'rules'=>'trim|is_natural'),
+        	array('field'=>'ai3eRank',	'label'=>'AIEEE Rank',		'rules'=>'trim|is_natural')
     	);
         $this->form_validation->set_rules($rules);
 
@@ -143,17 +152,23 @@ class Members extends Controller {
         {
         	try
         	{
+        		if (!$this->input->post('cetAppNo') and !$this->input->post('ai3eAppNo'))
+        			throw new Exception('Please enter either your AIEEE roll no. or your MHTCET roll no.');
+
 	        	$params = array(
 	        		'fname' => $this->input->post('fname'),
 	        		'lname' => $this->input->post('lname'),
 		        	'homeUni' => $this->input->post('homeUni'),
 	        		'category' => $this->input->post('category'),
-	        		'pCETScore' => $this->input->post('pCETScore'),
-		        	'pCETRank' => $this->input->post('pCETRank'),
-		        	'pAI3EScore' => $this->input->post('pAI3EScore'),
-		        	'pAI3ERank' => $this->input->post('pAI3ERank'),
+	        		'gender' => $this->input->post('gender'),
 	        		'cetAppNo' => $this->input->post('cetAppNo'),
-	        		'ai3eAppNo' => $this->input->post('ai3eAppNo'));
+	        		'pCETScore' => $this->input->post('pCETScore'),
+	        		'cetScore' => $this->input->post('cetScore'),
+		        	'cetRank' => $this->input->post('cetRank'),
+	        		'ai3eAppNo' => $this->input->post('ai3eAppNo'),
+		        	'pAI3EScore' => $this->input->post('pAI3EScore'),
+	        		'ai3eScore' => $this->input->post('ai3eScore'),
+		        	'ai3eRank' => $this->input->post('ai3eRank'));
 	    		$user->activate($this->input->post('code'));
 	    		$user->update_details($params);
 	    		$this->session->set_userdata(array('userId'=>$user->id(), 'firstName'=>$user->firstName(), 'username'=>$user->username()));
@@ -162,13 +177,14 @@ class Members extends Controller {
         	}
         	catch(Exception $e)
         	{
-        		$form['formErrors'] = '<div class="error">Invalid code entered</div>';
+        		$form['formErrors'] = "<div class='error'>{$e->getMessage()}</div>";
         	}
         }
         else $form['formErrors'] = validation_errors();
 
 	    $this->smarty->assign('user', $user);
 	    $this->smarty->assign('activationForm', $form);
+	    $this->smarty->assign('processStage', $user->processStage);
 	    $this->smarty->assign('template', 'activation.html');
         $this->smarty->display('template.html');
     }
@@ -185,8 +201,8 @@ class Members extends Controller {
             'formClose'     => form_close()
         );
         $rules = array(
-        	array('field'=>'username' , 'label'=>'Username', 'rules'=>'trim|required|valid_email|max_length[255]'),
-        	array('field'=>'password', 'label'=>'Password', 'rules'=>'trim|required|exact[40]')
+        	array('field'=>'username', 'label'=>'Username', 'rules'=>'trim|required|valid_email|max_length[255]'),
+        	array('field'=>'password', 'label'=>'Password', 'rules'=>'trim|required|exact_length[40]')
         );
         $this->form_validation->set_rules($rules);
         
@@ -236,36 +252,51 @@ class Members extends Controller {
         }
         $user = User::getUserByUserId($this->session->userdata('userId'));
 
+        $submitjs = "if (document.profileform.password1.value) document.profileform.password1.value=SHA1(document.profileform.password1.value);".
+                    "if (document.profileform.password2.value) document.profileform.password2.value=SHA1(document.profileform.password2.value)";
          $form = array(
-            'formOpen'		=> form_open('members/profile'),
+            'formOpen'		=> form_open('members/profile', array('name'=>'profileform', 'onsubmit'=>$submitjs)),
             'password1Label'=> form_label('New password:', 'password1'),
-            'password1Box'	=> form_input('password1'),
+            'password1Box'	=> form_password('password1'),
             'password2Label'=> form_label('New password again:', 'password2'),
-            'password2Box'	=> form_input('password2'),
+            'password2Box'	=> form_password('password2'),
             'fnameLabel'	=> form_label('First Name:', 'fname'),
-            'fnameBox'		=> form_input('fname', $user->firstName()),
+            'fnameBox'		=> form_input('fname', $this->input->post('fname')?$this->input->post('fname'):$user->firstName()),
             'lnameLabel'	=> form_label('Last Name:', 'lname'),
-            'lnameBox'		=> form_input('lname', $user->lastName()),
-            'ai3eAppLabel'	=> form_label('AIEEE application no:', 'ai3eappno'),
-            'ai3eAppBox'	=> form_input('ai3eappno', $user->aieeeAppNo()),
-            'ai3eRankLabel'	=> form_label('AIEEE Rank:', 'ai3erank'),
-            'ai3eRankBox'	=> form_input('ai3erank', $user->AIEEERank()),
-            'cetAppLabel'	=> form_label('CET Application no:', 'cetappno'),
-            'cetAppBox'		=> form_input('cetappno', $user->cetAppNo()),
-            'cetRankLabel'	=> form_label('MHTCET Rank:', 'cetrank'),
-            'cetRankBox'	=> form_input('cetrank', $user->CETRank()),
+            'lnameBox'		=> form_input('lname', $this->input->post('lname')?$this->input->post('lname'):$user->lastName()),
+         	'ai3eAppLabel'	=> form_label('AIEEE roll no:', 'ai3eAppNo'),
+            'ai3eAppBox'	=> form_input('ai3eAppNo', $this->input->post('ai3eAppNo')?$this->input->post('ai3eAppNo'):$user->aieeeAppNo()),
+            'cetAppLabel'	=> form_label('MHTCET roll no:', 'cetAppNo'),
+            'cetAppBox'		=> form_input('cetAppNo', $this->input->post('cetAppNo')?$this->input->post('cetAppNo'):$user->cetAppNo()),
+            'pAI3EScoreLabel'=> form_label('Projected AIEEE Score:', 'pAI3EScore'),
+            'pAI3EScoreBox'	=> form_input('pAI3EScore', $this->input->post('pAI3EScore')?$this->input->post('pAI3EScore'):$user->projAIEEEScore()),
+            'pCETScoreLabel'=> form_label('Projected MHTCET Rank:', 'pCETScore'),
+            'pCETScoreBox'	=> form_input('pCETScore', $this->input->post('pCETScore')?$this->input->post('pCETScore'):$user->projCETScore()),
+            'ai3eScoreLabel'=> form_label('AIEEE Score:', 'ai3eScore'),
+            'ai3eScoreBox'	=> form_input('ai3eScore', $this->input->post('ai3eScore')?$this->input->post('ai3eScore'):$user->AIEEEScore()),
+            'cetScoreLabel'	=> form_label('MHTCET Score:', 'cetScore'),
+            'cetScoreBox'	=> form_input('cetScore', $this->input->post('cetScore')?$this->input->post('cetScore'):$user->CETScore()),
+         	'ai3eRankLabel'	=> form_label('AIEEE Rank:', 'ai3eRank'),
+            'ai3eRankBox'	=> form_input('ai3eRank', $this->input->post('ai3eRank')?$this->input->post('ai3eRank'):$user->AIEEERank()),
+            'cetRankLabel'	=> form_label('MHTCET Rank:', 'cetRank'),
+            'cetRankBox'	=> form_input('cetRank', $this->input->post('cetRank')?$this->input->post('cetRank'):$user->CETRank()),
             'submit'		=> form_submit('submit', 'Update my profile'),
             'formClose'		=> form_close()
         );
         $rules = array(
-        	array('field'=>'password1' ,'label'=>'Password',		'rules'=>'trim|exact[40]'),
+        	array('field'=>'password1' ,'label'=>'Password',		'rules'=>'trim'),
         	array('field'=>'password2', 'label'=>'Retype Password',	'rules'=>'trim|matches[password1]'),
-        	array('field'=>'fname', 	'label'=>'First Name',		'rules'=>'trim|required|matches[password1]'),
-        	array('field'=>'lname',		'label'=>'Last Name',		'rules'=>'trim|required|matches[password1]'),
-        	array('field'=>'ai3eapno',	'label'=>'AIEEE App No',	'rules'=>'trim|required|exact[10]'),
-        	array('field'=>'ai3erank',	'label'=>'AIEEE Rank',		'rules'=>'trim|required|matches[password1]'),
-        	array('field'=>'cetappno',	'label'=>'CET App No',		'rules'=>'trim|required|exact[9]'),
-        	array('field'=>'cetrank',	'label'=>'CET Rank',		'rules'=>'trim|required|matches[password1]'));
+        	array('field'=>'fname', 	'label'=>'First Name',		'rules'=>'trim|required|max_length[255]'),
+        	array('field'=>'lname',		'label'=>'Last Name',		'rules'=>'trim|required|max_length[255]'),
+        	array('field'=>'ai3eAppNo',	'label'=>'AIEEE roll no',	'rules'=>'trim|exact_length[10]'),
+        	array('field'=>'cetAppNo',	'label'=>'MHTCET roll no',	'rules'=>'trim|exact_length[9]'),
+        	array('field'=>'pAI3EScore','label'=>'Proj AIEEE Score','rules'=>'trim|is_natural'),
+        	array('field'=>'pCETScore',	'label'=>'Proj MHTCET Score','rules'=>'trim|is_natural'),
+        	array('field'=>'ai3eScore',	'label'=>'AIEEE Score',		'rules'=>'trim|is_natural'),
+        	array('field'=>'cetScore',	'label'=>'MHTCET Score',	'rules'=>'trim|is_natural'),
+        	array('field'=>'ai3eRank',	'label'=>'AIEEE Rank',		'rules'=>'trim|is_natural'),
+        	array('field'=>'cetRank',	'label'=>'MHTCET Rank',		'rules'=>'trim|is_natural')
+        	);
         $this->form_validation->set_rules($rules);
         
         if ($this->form_validation->run())
@@ -276,13 +307,16 @@ class Members extends Controller {
             		'password'	=> $this->input->post('password1'),
             		'fname'		=> $this->input->post('fname'),
             		'lname'		=> $this->input->post('lname'),
-            		'ai3eappno'	=> $this->input->post('ai3eappno'),
-            		'ai3erank'	=> $this->input->post('ai3erank'),
-            		'cetappno'	=> $this->input->post('cetappno'),
-            		'cetrank'	=> $this->input->post('cetrank'));
+            		'ai3eAppNo'	=> $this->input->post('ai3eAppNo'),
+            		'cetAppNo'	=> $this->input->post('cetAppNo'),
+            		'pAI3EScore'=> $this->input->post('pAI3EScore'),
+            		'pCETScore' => $this->input->post('pCETScore'),
+            		'ai3eScore' => $this->input->post('ai3eScore'),
+            		'cetScore'	=> $this->input->post('cetScore'),
+            		'ai3eRank'	=> $this->input->post('ai3eRank'),
+            		'cetRank'	=> $this->input->post('cetRank'));
             	$user->update_details($params);
-        		$this->smarty->display('template.html');
-            	return;
+            	$this->smarty->assign('successMsg', 'Details successfully updated');
             }
             catch(Exception $e)
             {
@@ -293,6 +327,7 @@ class Members extends Controller {
 
 		$this->smarty->assign('user', $user);
         $this->smarty->assign('profileForm', $form);
+        $this->smarty->assign('processStage', $user->processStage);
         $this->smarty->assign('template', 'profile.html');
     	$this->smarty->display('template.html');
     }
@@ -312,10 +347,10 @@ class Members extends Controller {
         {
             try
             {
-            	$user = User::getUserByAuthentication($this->input->post('username'), $this->input->post('password'));
+            	$user = User::getUserByUsername($this->input->post('username'));
 	            $newpassword = $user->reset_password();
    		   		$this->smarty->assign('user', $user);
-   		   		$this->smarty->assign('new_password', $newpassword);
+   		   		$this->smarty->assign('newpassword', $newpassword);
      			$this->email->from('support@collegekhabri.com', 'College Khabri Support');
  				$this->email->to($user->emailAddress());
  				$this->email->bcc('support@collegekhabri.com');
@@ -323,9 +358,6 @@ class Members extends Controller {
  				$this->email->message($this->smarty->fetch('email_reset_password.tpl'));
  				$this->email->send();
  				$this->smarty->assign('pwdreset', 1);
- 				$this->smarty->assign('template', 'forgotpassword.html');
-        		$this->smarty->display('template.html');
-            	return;
             }
             catch(Exception $e)
             {
@@ -374,7 +406,7 @@ class Members extends Controller {
 
     function logout()
     {
-		$this->session->unset_userdata(array('userId'=>'', 'firstName'=>''));
+		$this->session->sess_destroy();
 		redirect('welcome/index');
     }
     

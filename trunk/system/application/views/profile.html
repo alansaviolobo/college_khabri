@@ -8,6 +8,8 @@
 	<div id="v-thin-line ">
 		<h1>My Profile</h1>
 		{$profileForm.formOpen}
+		{$profileForm.formErrors}
+		{$successMsg}
 		<hr />
 		<p class="medium-text v-thin-line">Username: <span class="med-field">{$user->emailAddress()}</span>{$smarty.capture.changelink}</p>
 		<p class="medium-text v-thin-line">{$profileForm.password1Label}{$profileForm.password1Box}</p>
@@ -17,13 +19,23 @@
 		<p class="medium-text v-thin-line">{$profileForm.fnameLabel}{$profileForm.fnameBox}</p>
 		<p class="medium-text v-thin-line">{$profileForm.lnameLabel}{$profileForm.lnameBox}</p>
 		<p class="medium-text v-thin-line">Category: <span class="med-field">{$user->category()}</span>{$smarty.capture.changelink}</p>
-		<p class="medium-text v-thin-line">Home University: <span class="med-field">{assign var='uni' value=$user->homeUni()}{$uni->name|default:'outside candidate'}</span>{$smarty.capture.changelink}</p>
+		<p class="medium-text v-thin-line">Home University: <span class="med-field">{assign var='uni' value=$user->homeUni()}{$uni->name()|default:'outside candidate'}</span>{$smarty.capture.changelink}</p>
 		<hr />
 		<p class="medium-text v-thin-line">{$profileForm.ai3eAppLabel}{$profileForm.ai3eAppBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
-		<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
-		<hr />
 		<p class="medium-text v-thin-line">{$profileForm.cetAppLabel}{$profileForm.cetAppBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
-		<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
+		<hr/>
+
+		{if $processStage eq 'pre-result'}
+			<p class="medium-text v-thin-line">{$profileForm.pAI3EScoreLabel}{$profileForm.pAI3EScoreBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
+			<p class="medium-text v-thin-line">{$profileForm.pCETScoreLabel}{$profileForm.pCETScoreBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
+		{elseif $processStage eq 'result-score'}
+			<p class="medium-text v-thin-line">{$profileForm.ai3eScoreLabel}{$profileForm.ai3eScoreBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
+			<p class="medium-text v-thin-line">{$profileForm.cetScoreLabel}{$profileForm.cetScoreBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Include your Application ID so that we can send your result to you.</span></p>
+		{elseif $processStage eq 'result-rank'}
+			<p class="medium-text v-thin-line">{$profileForm.ai3eRankLabel}{$profileForm.ai3eRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]</span>&nbsp;<span class="grey-context  small-text">Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
+			<p class="medium-text v-thin-line">{$profileForm.cetRankLabel}{$profileForm.cetRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]Enter the score which you think you will obtain (used to calculate your chances for a course).</span></p>
+		{/if}
+
 		<p class="medium-text">{$profileForm.submit}</p>
 		{$profileForm.formClose}
 	</div>

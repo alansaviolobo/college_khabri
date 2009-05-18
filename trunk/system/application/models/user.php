@@ -9,15 +9,19 @@ class User extends Model
     private $emailAddress;
     private $status;
     private $gender;
-    private $CETMarks;
+    private $projCETScore;
+    private $CETScore;
     private $CETRank;
     private $CETAppNo;
-    private $AIEEEMarks;
+    private $projAIEEEScore;
+    private $AIEEEScore;
     private $AIEEERank;
     private $AIEEEAppNo;
     private $category;
     private $homeUni;
     private $lastTx;
+
+    public $processStage = 'pre-result'; //possible values = pre-result, result-score, result-rank
 
     function User()
     {
@@ -32,10 +36,12 @@ class User extends Model
     function emailAddress() {if (is_null($this->emailAddress)) $this->set(); return $this->emailAddress; }
     function status() {if (is_null($this->status)) $this->set(); return $this->status; }
 	function gender() {if (is_null($this->gender)) $this->set(); return $this->gender; }
-    function CETMarks() {if (is_null($this->CETMarks)) $this->set(); return $this->CETMarks; }
+	function projCETScore() {if (is_null($this->projCETScore)) $this->set(); return $this->projCETScore; }
+    function CETScore() {if (is_null($this->CETScore)) $this->set(); return $this->CETScore; }
     function CETRank() {if (is_null($this->CETRank)) $this->set(); return $this->CETRank; }
 	function CETAppNo() {if (is_null($this->CETAppNo)) $this->set(); return $this->CETAppNo; }
-    function AIEEEMarks() {if (is_null($this->AIEEEMarks)) $this->set(); return $this->AIEEEMarks; }
+	function projAIEEEScore() {if (is_null($this->projAIEEEScore)) $this->set(); return $this->projAIEEEScore; }
+    function AIEEEScore() {if (is_null($this->AIEEEScore)) $this->set(); return $this->AIEEEScore; }
     function AIEEERank() {if (is_null($this->AIEEERank)) $this->set(); return $this->AIEEERank; }
     function AIEEEAppNo() {if (is_null($this->AIEEEAppNo)) $this->set(); return $this->AIEEEAppNo; }
 	function category() {if (is_null($this->category)) $this->set(); return $this->category; }
@@ -61,6 +67,19 @@ class User extends Model
     {
         $user = new User();
         $result = $user->db->where('id', $user_id)->get('users');
+        if ($result->num_rows() <> 1)
+        {
+            throw new Exception('Invalid User');
+        }
+        $user->set($result->row_object());
+        $result->free_result();
+        return $user;
+    }
+
+    static function getUserByUsername($username)
+    {
+        $user = new User();
+        $result = $user->db->where('username', $username)->get('users');
         if ($result->num_rows() <> 1)
         {
             throw new Exception('Invalid User');
@@ -99,20 +118,31 @@ class User extends Model
 	    $this->emailAddress = $data->email;
 	    $this->status = $data->status;
 	    $this->gender = $data->gender;
-	    $this->CETMarks = $data->cet_marks;
+	    $this->projCETScore = $data->projected_cet_score;
+	    $this->CETScore = $data->cet_score;
 	    $this->CETRank = $data->cet_rank;
 	    $this->CETAppNo = $data->cet_appno;
-	    $this->AIEEEMarks = $data->aieee_marks;
+	    $this->projAIEEEScore = $data->projected_aieee_score;
+	    $this->AIEEEScore = $data->aieee_score;
 	    $this->AIEEERank = $data->aieee_rank;
 	    $this->AIEEEAppNo = $data->aieee_appno;
 	    $this->category = $data->category;
 	    $this->lastTx = $this->db->where('user_id', $this->id)->order_by('id')
 	    						->limit(1)->get('payment_log')->row();
-	    try {$this->homeUni = University::getUniversity($data->home_uni);}catch(Exception $e){}
+	    try
+	    {
+	    	$this->homeUni = University::getUniversity($data->home_uni);
+	    }
+	    catch(Exception $e)
+	    {
+	    	$this->homeUni = new University();
+	    }
     }
 
     function create_user($email, $mobile, $password)
     {    	
+    	if($this->db->where('username', $email)->get('users')->num_rows())
+    		throw new Exception('Account already exists!');
     	$this->db->trans_start();
     	$this->db->insert('users', array('id'=>0, 'username'=>$email, 'email'=>$email, 'mobile'=>$mobile, 'password'=>$password));
 		$user_id = $this->db->insert_id();
@@ -153,28 +183,37 @@ class User extends Model
     
     function update_details($params)
     {
-    	$password	= $this->db->escape(@$params['password']);
+    	$params = array_filter($params);
         $fname		= $this->db->escape(@$params['fname']);
         $lname		= $this->db->escape(@$params['lname']);
-        $ai3eappno	= $this->db->escape(@$params['ai3eappno']);
-        $ai3erank	= $this->db->escape(@$params['ai3erank']);
-        $cetappno	= $this->db->escape(@$params['cetappno']);
-        $cetrank	= $this->db->escape(@$params['cetrank']);
-        $homeuni	= $this->db->escape(@$params['homeuni']);
+        $password	= $this->db->escape(@$params['password']);
+        $homeUni	= $this->db->escape(@$params['homeUni']);
         $category	= $this->db->escape(@$params['category']);
         $gender		= $this->db->escape(@$params['gender']);
+        $cetAppNo	= $this->db->escape(@$params['cetAppNo']);
+        $pCETScore	= $this->db->escape(@$params['pCETScore']);
+        $cetScore	= $this->db->escape(@$params['cetScore']);
+        $cetRank	= $this->db->escape(@$params['cetRank']);
+        $ai3eAppNo	= $this->db->escape(@$params['ai3eAppNo']);
+        $pAI3EScore	= $this->db->escape(@$params['pAI3EScore']);
+        $ai3eScore	= $this->db->escape(@$params['ai3eScore']);
+        $ai3eRank	= $this->db->escape(@$params['ai3eRank']);
             	
     	$query = "UPDATE users SET
-				    	first_name = IF ($fname IS NULL, first_name, $fname),
-				    	last_name = IF ($lname IS NULL, last_name, $lname),
-				    	password = IF ($password IS NULL, password, $password),
-				    	aieee_rank = IF (aieee_rank IS NULL, $ai3erank, aieee_rank),
-				    	aieee_appno = IF (aieee_appno IS NULL, $ai3eappno, aieee_appno),
-				    	cet_rank = IF (cet_rank IS NULL, $cetrank, cet_appno),
-				    	cet_appno = IF (cet_appno IS NULL, $cetappno, cet_appno),
-				    	home_uni = IF (home_uni IS NULL, $homeuni, home_uni),
+				    	first_name = $fname,
+				    	last_name = $lname,
+				    	password = IF($password IS NOT NULL, $password, password),
+				    	home_uni = IF (home_uni IS NULL, $homeUni, home_uni),
+				    	category =  IF (category IS NULL, $category, category),
 				    	gender = IF (gender IS NULL, $gender, gender),
-				    	category =  IF (category IS NULL, $category, category)
+				    	cet_appno = IF (cet_appno IS NULL, $cetAppNo, cet_appno),
+				    	projected_cet_score = $pCETScore,
+				    	cet_score = IF (cet_score IS NULL, $cetScore, cet_score),
+				    	cet_rank = IF (cet_rank IS NULL, $cetRank, cet_rank),
+				    	aieee_appno = IF (aieee_appno IS NULL, $ai3eAppNo, aieee_appno),
+				    	projected_aieee_score = $pAI3EScore,
+				    	aieee_score = IF (aieee_score IS NULL, $ai3eScore, aieee_score),
+				    	aieee_rank = IF (aieee_rank IS NULL, $ai3eRank, aieee_rank)
 			    	WHERE id = $this->id";
     	$this->db->query($query);
     }
@@ -187,7 +226,7 @@ class User extends Model
     	{
     		$newpassword .= $range[rand(0, strlen($range))]; 
     	}
-    	$this->update_details(array('password' => $newpassword));
+    	$this->db->where('id', $this->id)->update('users', array('password' => sha1($newpassword)));
     	return $newpassword;
     }
 }

@@ -28,13 +28,15 @@ CREATE TABLE `users` (
   `mobile` char(10) NOT NULL,
   `category` varchar(255),
   `cet_appno` char(9),
-  `cet_marks` smallint,
+  `projected_cet_score` smallint,
+  `cet_score` smallint,
   `cet_rank` smallint,
   `aieee_appno` char(10),
-  `aieee_marks` smallint,
+  `projected_aieee_score` smallint,
+  `aieee_score` smallint,
   `aieee_rank` smallint,
   `home_uni` varchar(255),
-  `gender` char(6),
+  `gender` ENUM('male', 'female'),
   `status` ENUM('registered', 'premium', 'locked', 'inactive') NOT NULL DEFAULT 'registered',
   PRIMARY KEY  (`id`),
   UNIQUE KEY  (`username`)
@@ -202,19 +204,20 @@ CREATE TABLE `choice_code_reservation_quotas` (
 --
 
 CREATE TABLE `faculty` (
-  `id` integer NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
-  `designation` varchar(255) NOT NULL default '',
-  `qualification` enum('ug','pg','doctorate') default NULL,
-  `experience` enum('teaching','industry','research') default NULL,
-  `joining_institute` varchar(45) NOT NULL default '',
-  `choice_code` varchar(45) NOT NULL default '',
-  `category` varchar(45) NOT NULL default '',
-  `LessThan6Months` boolean NOT NULL,
-  `6monthTo1yr` boolean NOT NULL,
-  `institute_code` char(10) NOT NULL,
-  PRIMARY KEY  (`id`),
-  FOREIGN KEY (`institute_code`) REFERENCES `institutes`(`code`)
+  `choice_code` integer unsigned NOT NULL,
+  `sactioned_intake` smallint unsigned NOT NULL default 0,
+  `required_faculty` smallint unsigned NOT NULL default 0,
+  `total_faculty` smallint unsigned NOT NULL default 0,
+  `graduate` smallint unsigned NOT NULL default 0,
+  `doctorate` smallint unsigned NOT NULL default 0,
+  `post_graduate` smallint unsigned NOT NULL default 0,
+  `teaching_experience` smallint unsigned NOT NULL default 0,
+  `industry_experience` smallint unsigned NOT NULL default 0,
+  `research_experience` smallint unsigned NOT NULL default 0,
+  `permanent_faculty_student_ratio` varchar(255) NOT NULL default 0,
+  `faculty_student_ratio` varchar(255) NOT NULL default 0,
+  UNIQUE KEY  (`choice_code`),
+  FOREIGN KEY (`choice_code`) REFERENCES `choice_codes`(`code`)
   ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 

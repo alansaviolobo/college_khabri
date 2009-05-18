@@ -148,19 +148,9 @@ class Search extends Model {
 //    	if(is_array($coursegroups)) $coursegroups = array_filter($coursegroups);
     	if(is_array($universities)) $universities = array_filter($universities);
 
-		if (is_null($user))
+		if (!is_null($user) and $user->status() == 'premium')
     	{
-    		$this->db->select("institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, '' AS fees, '' AS popularity, '' AS cutoff", false);
-    		//hack for active record
-    		$this->db->from('universities');
-    		$this->db->join('institutes', 'institutes.university_id = universities.id');
-			$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');
-			$this->db->join('courses', 'courses.code = choice_codes.course_code');
-			$this->db->join('fees', 'fees.institute_code = institutes.code');
-    	}
-    	else
-    	{	$user->homeUni()->id();//hack for active record;
+    		$uniId = is_null($user->homeUni())? -1 : $user->homeUni()->id();//hack for active record;
     		$gender = $user->gender() == 'female'?array('g', 'l'):array('g'); 
     		$seattype = $user->category() <> 'open'? array('open', $user->category()):array('open');
     		
@@ -178,8 +168,19 @@ class Search extends Model {
     		$this->db->where_in('cutoffs.gender', $gender);
     		$this->db->where_in('cutoffs.seattype', $seattype);
     		$this->db->where('cutoffs.round = 1');
-    		$this->db->where("cutoffs.homeuni = IF({$user->homeUni()->id()}=universities.id, 'HU','OHU')");
+    		$this->db->where("cutoffs.homeuni = IF($uniId = universities.id, 'HU','OHU')");
     		$this->db->group_by('choicecode');
+    	}
+    	else
+    	{	
+    		$this->db->select("institutes.name AS iname,courses.name AS cname, choice_codes.code, 
+    						institutes.district, '' AS fees, '' AS popularity, '' AS cutoff", false);
+    		//hack for active record
+    		$this->db->from('universities');
+    		$this->db->join('institutes', 'institutes.university_id = universities.id');
+			$this->db->join('choice_codes', 'choice_codes.institute_code = institutes.code');
+			$this->db->join('courses', 'courses.code = choice_codes.course_code');
+			$this->db->join('fees', 'fees.institute_code = institutes.code');
     	}
     	
     	if ($mode == 's')
