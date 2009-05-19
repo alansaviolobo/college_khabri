@@ -53,7 +53,7 @@ class Members extends Controller {
  				$this->email->bcc('support@collegekhabri.com');
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
  				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
- 				$this->email->send();
+ 			//	$this->email->send();
             	redirect("members/activation/$user_id");
             	return;
         	}

@@ -1,7 +1,7 @@
 <div id="ck_nav_bar" class="yuimenubar yuimenubarnav" align="right">
 	<div class="bd leftalign">
 		<ul class="first-of-type">
-			<span class="large-context" style="float:right;padding: 0px 3px;display:inline;">
+			<span class="large-context" style="float:right;padding: 0px 3px;display:inline; z-index:-1;" >
 				{if $titlelink.fn neq ''}
 				Hi {$titlelink.fn} / {php} echo anchor('members/profile','Profile').' / 
 				'.anchor('members/logout','Logout');{/php}

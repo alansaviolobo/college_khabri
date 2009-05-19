@@ -1,67 +1,59 @@
-<div id="doc" class="yui-t7"> 
-	<div id="bd" role="main">
-		<div class="yui-g">
-			<div role="main" class="yui-u first">
-				<div width="85%">
-					<div class="grey-line-below">
-						<span class="cut-off">Activate your College Khabri account</span>
-					</div>
-					<span class="large-context"><strong>An email has been sent to {$user->emailAddress()}</strong></span>
-					<br />
-					<br />
-					<div class="medium-text">Please check the email and copy-paste the activation code into the box below.</div>
-					<br />
-					{$activationForm.formOpen}
-					{$activationForm.formErrors}
-					<div class="search-results-small">
-						{$activationForm.codeLabel}<br />
-						{$activationForm.codeBox}<br />
-					</div>
-					{$activationForm.fNameLabel}<br />
-					{$activationForm.fNameBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{$activationForm.lNameLabel}<br />
-					{$activationForm.lNameBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{$activationForm.homeUniLabel}<br />
-					{$activationForm.homeUniSelect}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{$activationForm.categoryLabel}<br />
-					{$activationForm.categorySelect}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{$activationForm.maleRadio}
-					{$activationForm.maleLabel}<br />
-					{$activationForm.femaleRadio}
-					{$activationForm.femaleLabel}<br />
-
-					{$activationForm.mhtAppNoLabel}<br />
-					{$activationForm.mhtAppNoBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br />
-					{$activationForm.ai3eAppNoLabel}<br />
-					{$activationForm.ai3eAppNoBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br />
-
-					{if $processStage eq 'pre-result'}
-						{$activationForm.pCETScoreLabel}<br />
-						{$activationForm.pCETScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-						{$activationForm.pAI3EScoreLabel}<br />
-						{$activationForm.pAI3EScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{elseif $processStage eq 'result-score'}
-						{$activationForm.CETScoreLabel}<br />
-						{$activationForm.CETScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-						{$activationForm.AI3EScoreLabel}<br />
-						{$activationForm.AI3EScoreBox}&nbsp;&nbsp;<span class="grey-context small-text"></span><br />
-					{elseif $processStage eq 'result-rank'}
-						{$activationForm.CETRankLabel}<br />
-						{$activationForm.CETRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]Enter the score which you think you will obtain (used to calculate your chances for a course).</span><br />
-						{$activationForm.AI3ERankLabel}<br />
-						{$activationForm.AI3ERankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Enter the score which you think you will obtain (used to calculate your chances for a course).</span><br />
-					{/if}
-
-					{$activationForm.submit}
-					{$activationForm.formClose}
-					<div class="grey-line-below">
-						&nbsp;<br />
-					</div>
-					<br />
-				</div>
-			</div>
-			<div role="contentinfo" class="yui-u">
-			</div>
-		</div>
+<div class="main-search-div" style="width:600px">
+	<div class="grey-line-below">
+		<span class="cut-off">Activate your College Khabri account</span>
 	</div>
+	<span class="large-context"><strong>An email has been sent to {$user->emailAddress()}</strong></span>
+	<br />
+	<br />
+	<div class="medium-text">Please check the email and copy-paste the activation code into the box below.</div>
+	<br />
+	{$activationForm.formOpen}
+	{$activationForm.formErrors}
+	<div class="search-results-small" style="width:350px">
+		{$activationForm.codeLabel}<br />
+		{$activationForm.codeBox}<br />
+	</div>
+	<p class="medium-text v-thin-line">{$activationForm.fNameLabel}<br />
+	{$activationForm.fNameBox}&nbsp;&nbsp;</p>
+	<p class="medium-text v-thin-line">{$activationForm.lNameLabel}<br />
+	{$activationForm.lNameBox}&nbsp;&nbsp;</p>
+	<p class="medium-text v-thin-line">{$activationForm.homeUniLabel}<br />
+	{$activationForm.homeUniSelect}&nbsp;&nbsp;<br /></p>
+	<p class="medium-text v-thin-line">{$activationForm.categoryLabel}<br />
+	{$activationForm.categorySelect}&nbsp;&nbsp;<br /></p>
+	<p class="medium-text v-thin-line">Your gender:<br /><br />
+	{$activationForm.maleRadio}
+	{$activationForm.maleLabel}<br />
+	{$activationForm.femaleRadio}
+	{$activationForm.femaleLabel}<br /></p>
+	<p class="medium-text v-thin-line">{$activationForm.mhtAppNoLabel}<br />
+	{$activationForm.mhtAppNoBox}<br/><span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br /></p>
+	<p class="medium-text v-thin-line">{$activationForm.ai3eAppNoLabel}<br />
+	{$activationForm.ai3eAppNoBox}<br/><span class="grey-context small-text">[ Optional ] Include your Application ID so that we can send your result to you.</span><br />
+	{if $processStage eq 'pre-result'}</p>
+	<p class="medium-text v-thin-line">{$activationForm.pCETScoreLabel}<br />
+	{$activationForm.pCETScoreBox}<br/><span class="grey-context small-text">[ Optional ] Enter the CET rank which you think you will obtain (used to calculate 
+		your chances for a course).</span></p>
+	<p class="medium-text v-thin-line">{$activationForm.pAI3EScoreLabel}<br />
+	{$activationForm.pAI3EScoreBox}<br/><span class="grey-context small-text">[ Optional ] Enter the AIEEE rank which you think you will obtain (used to calculate 
+		your chances for a course).</span>
+	{elseif $processStage eq 'result-score'}</p>
+	<p class="medium-text v-thin-line">{$activationForm.CETScoreLabel}<br /></p>
+	{$activationForm.CETScoreBox}<br /></p>
+	<p class="medium-text v-thin-line">{$activationForm.AI3EScoreLabel}<br />
+	{$activationForm.AI3EScoreBox}<br />
+	{elseif $processStage eq 'result-rank'}</p>
+	<p class="medium-text v-thin-line">{$activationForm.CETRankLabel}<br />
+	{$activationForm.CETRankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ]Enter the score which you think you will obtain (used to calculate 
+		your chances for a course).</span><br /></p>
+	<p class="medium-text v-thin-line">{$activationForm.AI3ERankLabel}<br />
+	{$activationForm.AI3ERankBox}&nbsp;&nbsp;<span class="grey-context small-text">[ Optional ] Enter the score which you think you will obtain (used to calculate 
+		your chances for a course).</span><br /></p>
+	{/if}
+	<br /><br />{$activationForm.submit}
+	{$activationForm.formClose}
+	
+		&nbsp;<br />
+	</div>
+	<br />
 </div>
