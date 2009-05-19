@@ -27,7 +27,9 @@ class Members extends Controller {
             'password2Box'  => form_password('password2', null, $fieldFx),
             'mobileLabel'   => form_label('Mobile', 'mobile', array('class'=>'medium-text')),
             'mobileBox'     => form_input('mobile', $this->input->post('mobile'), $fieldFx),
-            'submit'        => form_submit('submit', 'Send me the activation code'),
+        	'tosCheckLabel'	=> form_label("I agree to the everything mentioned in the ".anchor('info/terms_of_use','terms of use.'), 'tosaccept'),
+        	'tosCheckBox'	=> form_checkbox(array('name' => 'tosaccept', 'value' => 'accept', 'onclick' => 'document.signupform.submit.disabled=!this.checked')),
+            'submit'        => form_submit('submit', 'Send me the activation code', array('disabled'=>true)),
             'formClose'     => form_close()
         );
         $rules = array(
@@ -53,7 +55,7 @@ class Members extends Controller {
  				$this->email->bcc('support@collegekhabri.com');
  				$this->email->subject('Your new College Khabri Account: Activation pending.');
  				$this->email->message($this->smarty->fetch('email_signup_details.tpl'));
- 			//	$this->email->send();
+ 				$this->email->send();
             	redirect("members/activation/$user_id");
             	return;
         	}
@@ -94,6 +96,7 @@ class Members extends Controller {
     	}
 
 		$this->load->model('university');
+		$universityList = array('' => 'Select One', '-1' => 'Outside State / AIEEE Candidate') + University::getUniversities();
     	
     	$form = array(
             'formOpen'      => form_open("members/activation/$user_id"),
@@ -104,7 +107,7 @@ class Members extends Controller {
             'lNameLabel' 	=> form_label('Surname', 'lname', array('class'=>'medium-text v-thin-line')),
             'lNameBox'   	=> form_input('lname', $this->input->post('lname'), "class='med-field'"),
             'homeUniLabel'	=> form_label('Home University', 'homeUni', array('class'=>'medium-text v-thin-line')),
-            'homeUniSelect'	=> form_dropdown('homeUni', array('-1' => 'None') + University::getUniversities(), $this->input->post('homeUni'), "class='med-field'"),
+            'homeUniSelect'	=> form_dropdown('homeUni', $universityList, $this->input->post('homeUni'), "class='med-field'"),
             'categoryLabel'	=> form_label('Your category', 'category', array('class'=>'medium-text v-thin-line')),
             'categorySelect'=> form_dropdown('category', User::getStatuses(), $this->input->post('category'), "class='med-field'"),
             'maleLabel'		=> form_label('Male', 'gender'),
