@@ -66,7 +66,7 @@
 						<td valign="top" width="50%"> 
 							<div class="v-thin-line"><span class="large-context">Admission fee:</span><span class="medium-text">Coming Soon</span></div>
 							<div class="v-thin-line"><span class="large-context">Tuition Fee:</span><span class="medium-text">{$fees->tuition}</span></div>
-							<div class="v-thin-line"><span class="large-context">University fee (Examination, Registration etc.):</span><span class="medium-text">[toc]</span></div>
+							<div class="v-thin-line"><span class="large-context">University fee (Examination, Registration etc.):</span><span class="medium-text">Coming Soon</span></div>
 							<div class="v-thin-line"><span class="large-context">Hostel fee (Rent etc.)(per Annum):</span><span class="medium-text">Coming Soon</span></div>
 							<div class="v-thin-line"><span class="large-context">Laboratory fee:</span><span class="medium-text">Coming Soon</span></div>
 							<div class="v-thin-line"><span class="large-context">Library fee:</span><span class="medium-text">Coming Soon</span></div>
@@ -77,11 +77,22 @@
 				</table>
 			</div>
 			<div>
+				{math assign="denom" equation="x+y+z" x=$choicecode->facultyDoctorate() y=$choicecode->facultyPostGraduate() z=$choicecode->facultyGraduate()}
+				{if $denom eq 0}{assign var='denom' value='1'}{/if}
 				<div class="v-thin-line"><span class="large-context">Average Experience (in terms of teaching, research and industry):</span><span class="medium-text">Coming Soon</span></div>
-				<div class="v-thin-line"><span class="large-context">Student to faculty ratio:</span><span class="medium-text">Coming Soon</span></div>
-				<div class="v-thin-line"><span class="large-context">% Doctorate faculty:</span><span class="medium-text">Coming Soon</span></div>
-				<div class="v-thin-line"><span class="large-context">% Post-graduate faculty:</span><span class="medium-text">Coming Soon</span></div>
-				<div class="v-thin-line"><span class="large-context">% Graduate faculty:</span><span class="medium-text">Coming Soon</span></div>
+				<div class="v-thin-line"><span class="large-context">Student to faculty ratio:</span><span class="medium-text">{$choicecode->facultyFacultyStudentRatio()|default:'n/a'}</span></div>
+				<div class="v-thin-line"><span class="large-context">% Doctorate faculty:</span><span class="medium-text">
+				{math assign="percent" equation="x*100/total" x=$choicecode->facultyDoctorate() total=$denom}
+				{if $percent eq 0}none{else}{$percent}&nbsp;%{/if}
+				</span></div>
+				<div class="v-thin-line"><span class="large-context">% Post-graduate faculty:</span><span class="medium-text">
+				{math assign="percent" equation="y*100/total" y=$choicecode->facultyPostGraduate() total=$denom}
+				{if $percent eq 0}none{else}{$percent}&nbsp;%{/if}
+				</span></div>
+				<div class="v-thin-line"><span class="large-context">% Graduate faculty:</span><span class="medium-text">
+				{math assign="percent" equation="z*100/total" z=$choicecode->facultyGraduate() total=$denom}
+				{if $percent eq 0}none{else}{$percent}&nbsp;%{/if}
+				</span></div>
 			</div>
 			<div>
 				<div class="v-thin-line"><span class="large-context">Minimum / Maximum salary offered:</span><span class="medium-text">Coming Soon</span></div>
