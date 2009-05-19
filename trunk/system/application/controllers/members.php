@@ -29,7 +29,7 @@ class Members extends Controller {
             'mobileBox'     => form_input('mobile', $this->input->post('mobile'), $fieldFx),
         	'tosCheckLabel'	=> form_label("I agree to the everything mentioned in the ".anchor('info/terms_of_use','terms of use.'), 'tosaccept'),
         	'tosCheckBox'	=> form_checkbox(array('name' => 'tosaccept', 'value' => 'accept', 'onclick' => 'document.signupform.submit.disabled=!this.checked')),
-            'submit'        => form_submit('submit', 'Send me the activation code', array('disabled'=>true)),
+            'submit'        => form_submit('submit', 'Send me the activation code', "'disabled'=true"),
             'formClose'     => form_close()
         );
         $rules = array(
