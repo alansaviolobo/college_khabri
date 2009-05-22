@@ -15,6 +15,13 @@ class Choicecode extends Model
 	private $facultyResearchExp;
 	private $facultyPermanentFacultyStudentRatio;
 	private $facultyFacultyStudentRatio;
+	private $placementTotalPassing;
+	private $placementTotalPlaced;
+	private $placementMinSalary;
+	private $placementMaxSalary;
+	private $placementAvgSalary;
+	private $placementMedianSalary;
+	private $placementYear;
 	
     function Choicecode()
     {
@@ -37,11 +44,21 @@ class Choicecode extends Model
 	function facultyResearchExp() {if (is_null($this->facultyResearchExp)) $this->set(); return $this->facultyResearchExp; }
 	function facultyPermanentFacultyStudentRatio() {if (is_null($this->facultyPermanentFacultyStudentRatio)) $this->set(); return $this->facultyPermanentFacultyStudentRatio; }
 	function facultyFacultyStudentRatio() {if (is_null($this->facultyFacultyStudentRatio)) $this->set(); return $this->facultyFacultyStudentRatio; }
-
+	function placementTotalPassing() {if (is_null($this->placementTotalPassing)) $this->set(); return $this->placementTotalPassing; }
+	function placementTotalPlaced() {if (is_null($this->placementTotalPlaced)) $this->set(); return $this->placementTotalPlaced; }
+	function placementMinSalary() {if (is_null($this->placementMinSalary)) $this->set(); return $this->placementMinSalary; }
+	function placementMaxSalary() {if (is_null($this->placementMaxSalary)) $this->set(); return $this->placementMaxSalary; }
+	function placementAvgSalary() {if (is_null($this->placementAvgSalary)) $this->set(); return $this->placementAvgSalary; }
+	function placementMedianSalary() {if (is_null($this->placementMedianSalary)) $this->set(); return $this->placementMedianSalary; }
+	function placementYear() {if (is_null($this->placementYear)) $this->set(); return $this->placementYear; }
+	
     static function getChoicecode($id)
     {
 		$choicecode = new Choicecode();
-        $result = $choicecode->db->from('choice_codes')->join('faculty', 'choice_codes.code = faculty.choice_code')->where('code', $id)->get();
+        $result = $choicecode->db->from('choice_codes')
+        						->join('faculty', 'choice_codes.code = faculty.choice_code', 'left outer')
+        						->join('placements', 'choice_codes.code = placements.choice_code', 'left outer')
+        						->where('code', $id)->get();
         if ($result->num_rows() <> 1){
             throw new Exception('Invalid Choice code');
         }
@@ -54,7 +71,10 @@ class Choicecode extends Model
     {
         if (is_null($data))
         {
-            $data = $this->db->from('choice_codes')->join('faculty', 'choice_codes.code = faculty.choice_code')->where('code', $this->code)->result_object();
+            $data = $this->db->from('choice_codes')
+            				->join('faculty', 'choice_codes.code = faculty.choice_code', 'left outer')
+            				->join('placemen1ts', 'choice_codes.code = placements.choice_code', 'left outer')
+            				->where('code', $this->code)->result_object();
         }
 
         $this->choice = $data->code;
@@ -71,6 +91,13 @@ class Choicecode extends Model
 		$this->facultyResearchExp = $data->research_experience;
 		$this->facultyPermanentFacultyStudentRatio = $data->permanent_faculty_student_ratio;
 		$this->facultyFacultyStudentRatio = $data->faculty_student_ratio;
+		$this->placementTotalPassing = $data->total_passing;
+		$this->placementTotalPlaced = $data->total_placed;
+		$this->placementMinSalary = $data->min_salary;
+		$this->placementMaxSalary = $data->max_salary;
+		$this->placementAvgSalary = $data->avg_salary;
+		$this->placementMedianSalary = $data->median_salary;
+		$this->placementYear = $data->year;
     }    
 }
 ?>

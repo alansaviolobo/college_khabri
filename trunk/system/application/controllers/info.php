@@ -182,5 +182,4 @@ class Info extends Controller {
 }
 
 /* End of file info.php */
-
 /* Location: ./system/application/controllers/info.php */

@@ -205,7 +205,7 @@ CREATE TABLE `choice_code_reservation_quotas` (
 
 CREATE TABLE `faculty` (
   `choice_code` integer unsigned NOT NULL,
-  `sactioned_intake` smallint unsigned NOT NULL default 0,
+  `sanctioned_intake` smallint unsigned NOT NULL default 0,
   `required_faculty` smallint unsigned NOT NULL default 0,
   `total_faculty` smallint unsigned NOT NULL default 0,
   `graduate` smallint unsigned NOT NULL default 0,
@@ -311,20 +311,19 @@ CREATE TABLE `placementcompanies` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `collegekhabri`.`placementdata`
+-- Table structure for table `collegekhabri`.`placements`
 --
 
-CREATE TABLE `placementdata` (
-  `ChoiceCode` integer unsigned NOT NULL auto_increment,
-  `PlacementFacility` varchar(45) NOT NULL default '',
-  `Year` varchar(45) NOT NULL default '',
-  `TotalPassingStudents` varchar(45) NOT NULL default '',
-  `TotalPlaced` varchar(45) NOT NULL default '',
-  `MinimumSalary` varchar(45) NOT NULL default '',
-  `MaxSalary` varchar(45) NOT NULL default '',
-  `AverageSalary` varchar(45) NOT NULL default '',
-  `MedianSalary` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`ChoiceCode`)
+CREATE TABLE `placements` (
+  `choice_code` integer unsigned NOT NULL,
+  `total_passing` smallint unsigned NOT NULL default 0,
+  `total_placed` smallint unsigned NOT NULL default 0,
+  `min_salary` integer unsigned NOT NULL default 0,
+  `max_salary` integer unsigned NOT NULL default 0,
+  `avg_salary` integer unsigned NOT NULL default 0,
+  `median_salary` integer unsigned NOT NULL default 0,
+  `year` char(7),
+  PRIMARY KEY  (`choice_code`, `year`)
 ) ENGINE=InnoDB;
 
 --

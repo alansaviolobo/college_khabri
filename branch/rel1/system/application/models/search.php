@@ -155,7 +155,7 @@ class Search extends Model {
     		$seattype = $user->category() <> 'open'? array('open', $user->category()):array('open');
     		
     		$this->db->select('institutes.name AS iname,courses.name AS cname, choice_codes.code, 
-    						institutes.district, total AS fees, popularity, MAX(cutoffrank) AS cutoff');
+    						institutes.district, total AS fees, popularity, MAX(cutoffrank) AS cutoff', false);
     		//hack for active record
     		$this->db->from('universities');
     		$this->db->join('institutes', 'institutes.university_id = universities.id');
@@ -167,8 +167,8 @@ class Search extends Model {
     		$this->db->where('cutoffs.category', $user->category());
     		$this->db->where_in('cutoffs.gender', $gender);
     		$this->db->where_in('cutoffs.seattype', $seattype);
-    		$this->db->where('cutoffs.round = 1');
-    		$this->db->where("cutoffs.homeuni = IF($uniId = universities.id, 'HU','OHU')");
+    		$this->db->where('cutoffs.round', 1);
+//    		$this->db->where("cutoffs.homeuni = IF($uniId = universities.id, 'HU','OHU')", null, false);
     		$this->db->group_by('choicecode');
     	}
     	else
